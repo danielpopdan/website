@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.session.body
+    - field.field.node.session.field_experience_level
+    - field.field.node.session.field_session_speaker
+    - field.field.node.session.field_session_status
+    - field.field.node.session.field_session_track
+    - field.field.node.session.field_slides
+    - node.type.session
+  module:
+    - text
+    - user
+id: node.session.teaser
+targetEntityType: node
+bundle: session
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_experience_level: true
+  field_session_speaker: true
+  field_session_status: true
+  field_session_track: true
+  field_slides: true

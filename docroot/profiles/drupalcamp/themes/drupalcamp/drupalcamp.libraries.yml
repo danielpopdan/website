@@ -1,0 +1,5 @@
+drupalcamplibrary:
+  version: VERSION
+  css:
+    theme:
+      css/theme.css: {}

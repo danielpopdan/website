@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: speaker
+label: Speaker
+weight: 3
+is_admin: false
+permissions: {  }
