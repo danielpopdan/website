@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Session Track'
-vid: session_track
-description: ''
-hierarchy: 0
-weight: 0
