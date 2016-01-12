@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.front .panel-separator,
+.front .panel-flexible {
+  margin: 0;
+}
+
 /***** HOMEPAGE *****/
 
 .path-frontpage {
