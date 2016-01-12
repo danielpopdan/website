@@ -1,0 +1,23 @@
+/*
+    Created on : Oct 22, 2014, 10:48:21 AM
+    Author     : adrian.mihaila
+*/
+
+#payment-details {
+  margin-top: 20px;
+}
+
+.commerce-paypal-icons {
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.commerce-paypal-icon {
+  position: relative;
+  top: 6px;
+  margin-right: 4px;
+}
+
+.commerce-paypal-icons .commerce-paypal-icon:last-child {
+  display: none;
+}
