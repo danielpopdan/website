@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function commerce_euplatesc_menu() {
+  return CommerceEuPlatescHooks::menu();
+}
+
+/**
+ * Implements hook_commerce_payment_method_info().
+ */
+function commerce_euplatesc_commerce_payment_method_info() {
+  return CommerceEuPlatescHooks::commercePaymentMethodInfo();
+}
+
+/**
+ * Payment method callback: settings form.
+ */
+function commerce_euplatesc_settings_form($settings) {
+  return CommerceEuPlatescHooks::settingsForm($settings);
+}
+
+/**
+ * Payment method callback: submit form.
+ *
+ * Add a css to the submission form.
+ */
+function commerce_euplatesc_submit_form($payment_method, $pane_values, $checkout_pane, $order) {
+  return CommerceEuPlatescHooks::submitForm($payment_method, $pane_values, $checkout_pane, $order);
+}
+
+/**
+ * Payment method callback: redirect form.
+ */
+function commerce_euplatesc_redirect_form($form, &$form_state, $order, $payment_method) {
+  return CommerceEuPlatescHooks::redirectForm($form, $form_state, $order, $payment_method);
+}
