@@ -11,6 +11,15 @@
   text-align: center;
 }
 
+.front .panel-separator,
+.front .panel-flexible {
+  margin: 0;
+}
+
+.front .panel-pane {
+  clear: both;
+}
+
 /***** HOMEPAGE *****/
 
 .path-frontpage {
@@ -364,6 +373,7 @@
 #block-footerblock {
   background: url("../images/footer_bg.png") no-repeat top center;
   background-size: cover;
+  clear: both;
   padding-top: 100px;
   color: #fff;
   font-size: 20px;
