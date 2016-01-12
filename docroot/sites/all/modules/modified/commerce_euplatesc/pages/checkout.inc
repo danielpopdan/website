@@ -34,10 +34,17 @@ function commerce_euplatesc_order_form($form, &$form_state, $order, $settings) {
   $profile = commerce_customer_profile_load($order_wrapper->commerce_customer_billing->profile_id->value());
   $profile_wrapper = entity_metadata_wrapper('commerce_customer_profile', $profile);
 
-  $customer_name_line = explode(' ', $profile_wrapper->field_address->name_line->value());
-  $customer_first_name = $profile_wrapper->field_address->first_name->value() ? $profile_wrapper->field_address->first_name->value() : $customer_name_line[0];
+  // Check to see which field is the addressfield field type.
+  foreach ($profile_wrapper->getPropertyInfo() as $key => $profile_fields) {
+    if ($profile_fields['type'] == 'addressfield') {
+      $address_field = $key;
+    }
+  }
+
+  $customer_name_line = explode(' ', $profile_wrapper->commerce_customer_address->name_line->value());
+  $customer_first_name = $profile_wrapper->{$address_field}->first_name->value() ? $profile_wrapper->{$address_field}->first_name->value() : $customer_name_line[0];
   array_shift($customer_name_line);
-  $customer_last_name = $profile_wrapper->field_address->last_name->value() ? $profile_wrapper->field_address->last_name->value() : implode(' ', $customer_name_line);
+  $customer_last_name = $profile_wrapper->{$address_field}->last_name->value() ? $profile_wrapper->{$address_field}->last_name->value() : implode(' ', $customer_name_line);
 
   // Curent timestamp.
   $timestamp = gmdate('YmdHis');
@@ -45,7 +52,7 @@ function commerce_euplatesc_order_form($form, &$form_state, $order, $settings) {
 
   // The data which should be signed to be transported to EuPlatesc.ro.
   $data = array(
-    'amount' => commerce_currency_amount_to_decimal($order_wrapper->commerce_order_total->amount->value()),
+    'amount' => commerce_currency_amount_to_decimal($order_wrapper->commerce_order_total->amount->value(), $order_wrapper->commerce_order_total->currency_code->value()),
     'curr' => $order_wrapper->commerce_order_total->currency_code->value(),
     'invoice_id' => $order->order_id,
     'order_desc' => $order_desc,
@@ -58,10 +65,10 @@ function commerce_euplatesc_order_form($form, &$form_state, $order, $settings) {
   $hidden = array(
     'fname' => $customer_first_name,
     'lname' => $customer_last_name,
-    'country' => $profile_wrapper->field_address->country->value(),
-    'city' => $profile_wrapper->field_address->locality->value(),
+    'country' => $profile_wrapper->{$address_field}->country->value(),
+    'city' => $profile_wrapper->{$address_field}->locality->value(),
     'email' => $order->mail,
-    'amount' => commerce_currency_amount_to_decimal($order_wrapper->commerce_order_total->amount->value()),
+    'amount' => commerce_currency_amount_to_decimal($order_wrapper->commerce_order_total->amount->value(), $order_wrapper->commerce_order_total->currency_code->value()),
     'curr' => $order_wrapper->commerce_order_total->currency_code->value(),
     'invoice_id' => $order->order_id,
     'order_desc' => $order_desc,
