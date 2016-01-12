@@ -1,0 +1,8 @@
+/* Temporary Homepage */
+.front #header,
+.front #navigation,
+.front #footer,
+.front #page-title,
+.front #first-time {
+  display: none;
+}
