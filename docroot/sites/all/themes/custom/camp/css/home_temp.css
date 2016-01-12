@@ -16,6 +16,10 @@
   margin: 0;
 }
 
+.front .panel-pane {
+  clear: both;
+}
+
 /***** HOMEPAGE *****/
 
 .path-frontpage {
