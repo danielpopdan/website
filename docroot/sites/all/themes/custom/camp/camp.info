@@ -1,0 +1,14 @@
+name = Camp
+description = Out-of-this-world awesomely responsive theme for Drupal Camp Transylvania 2016
+package = Custom
+version = 1.0
+core = 7.x
+
+stylesheets[all][] = css/libs/css_reset.css
+stylesheets[all][] = css/libs/bootstrap.min.css
+stylesheets[all][] = css/libs/owl.carousel.css
+stylesheets[all][] = css/main.css
+
+scripts[] = js/libs/jquery-2.2.0.min.js
+scripts[] = js/libs/owl.carousel.min.js
+scripts[] = js/scripts.js
