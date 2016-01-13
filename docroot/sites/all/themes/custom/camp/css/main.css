@@ -4,6 +4,12 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+/***** Header *****/
+#header {
+  height: 220px;
+  background: url("../images/header_bg.png") no-repeat center;
+}
+
 
 /***** Footer *****/
 #footer {
@@ -14,6 +20,7 @@ body {
   color: #fff;
   font-size: 20px;
   padding-bottom: 50px;
+  text-align: center;
 }
 
 #footer .dt-logo{
