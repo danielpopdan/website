@@ -1,0 +1,114 @@
+body {
+  font-size: 14px; 
+}
+
+html{
+  margin: 0px;
+}
+
+.invoice-invoiced{
+  margin: 20px 65px;
+}
+
+.contextual-links-wrapper{
+  display: none !important;
+}
+
+.invoice-invoiced div,p{
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  height: 280px;
+  position: absolute;
+  top: 0px;
+  background-color: white;
+  z-index: 900;
+}
+.header img {
+  width: 130px;
+  position: absolute;
+  left: 40%;
+  z-index: 1000;
+}
+.header .invoice-header{
+  position: absolute;
+  top: 130px;
+}
+.invoice-header p{
+  position: absolute;
+  text-align: left;
+  width: 50%;
+  line-height: 1.2;
+}
+
+.right-col{
+  right: 0;
+  top: 0;
+}
+.left-col{
+  left: 0;
+  top: 0;
+}
+
+/* LINE ITEMS */
+.invoice-text{
+  position: absolute;
+  top: 320px;  
+}
+.invoice-text .invoice-title{
+  text-align: center;  
+  font-size: 24px;
+}
+.invoice-text .invoice-subtitle{
+  text-align: center;    
+}
+.line-items{
+  position: absolute;
+  top: 400px;
+  margin-left: 45px;
+}
+.line-items .views-table{  
+  width: 100%;
+  /*border-collapse: collapse;*/  
+}
+.line-items .views-table th, .line-items .views-table td{
+  text-align: center;
+  border: 1px solid black;  
+}
+.line-items .views-table td{
+  
+}
+.line-items .views-table td .order-total{
+  border-right: none;
+}
+.line-items .views-table .denumire-produs{
+  width: 200px;  
+}
+
+/* FOOTER*/
+.footer{
+  position: absolute;
+  bottom: 0px;
+}
+.footer table{
+  width: 100%;
+  border: 1px solid #000000;  
+}
+.footer span.total-factura{
+  font-size: 24px;
+  text-align: center;    
+  border-left: 1px solid #000000;  
+}
+.footer .sume-tva{
+  text-align: right;
+  margin-right: 20px;
+}
+.footer td{
+  height: 50px;
+}
