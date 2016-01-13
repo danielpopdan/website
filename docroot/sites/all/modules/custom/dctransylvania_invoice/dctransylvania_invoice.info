@@ -1,0 +1,5 @@
+name = DCTransylvania Invoice
+description = Invoice
+core = 7.x
+
+dependencies[] = commerce_billy
