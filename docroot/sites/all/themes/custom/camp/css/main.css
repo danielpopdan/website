@@ -48,3 +48,17 @@ body {
 #footer .aq-logo{
   margin-bottom: 30px;
 }
+
+
+/***** Paragraphs *****/
+.paragraphs-item-description-and-image,
+.paragraphs-item-image-and-description {
+  clear: both;
+  margin-bottom: 70px;
+}
+
+.paragraphs-item-description-and-image .group-image img,
+.paragraphs-item-image-and-description .group-image img{
+  width: 100%;
+  height: auto;
+}
