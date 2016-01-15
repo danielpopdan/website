@@ -4,12 +4,22 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+
+
 /***** Header *****/
 #header {
   height: 220px;
   background: url("../images/header_bg.png") no-repeat center;
 }
 
+/***** Content *****/
+#content ul li{
+  list-style-type: disc;
+}
+
+#content ol li{
+  list-style-type: decimal;
+}
 
 /***** Footer *****/
 #footer {
