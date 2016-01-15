@@ -74,7 +74,7 @@ body {
 }
 
 .paragraphs-item-description-and-image .field-name-field-community-subtitle,
-.paragraphs-item-description-and-image .field-name-field-community-subtitle {
+.paragraphs-item-image-and-description .field-name-field-community-subtitle {
   font-size: 30px;
   margin-bottom: 10px;
 }
