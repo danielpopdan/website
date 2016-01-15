@@ -57,8 +57,24 @@ body {
   margin-bottom: 70px;
 }
 
+.paragraphs-item-description-and-image:after,
+.paragraphs-item-image-and-description:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
 .paragraphs-item-description-and-image .group-image img,
 .paragraphs-item-image-and-description .group-image img{
   width: 100%;
   height: auto;
+}
+
+.paragraphs-item-description-and-image .field-name-field-community-subtitle,
+.paragraphs-item-description-and-image .field-name-field-community-subtitle {
+  font-size: 30px;
+  margin-bottom: 10px;
 }
