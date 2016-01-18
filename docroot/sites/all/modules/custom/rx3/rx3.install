@@ -3,17 +3,17 @@
 /**
  * Implements hook_enable().
  */
-//function rx3_enable() {
-//  $weight = db_select('system', 's')
-//      ->fields('s', array('weight'))
-//      ->condition('s.name', 'rules', '=')
-//      ->condition('type', 'module')
-//      ->execute()
-//      ->fetchField();
-//
-//  db_update('system')
-//      ->fields(array('weight' => $weight - 1))
-//      ->condition('name', 'rx3')
-//      ->condition('type', 'module')
-//      ->execute();
-//}
+function rx3_enable() {
+  $weight = db_select('system', 's')
+      ->fields('s', array('weight'))
+      ->condition('s.name', 'rules', '=')
+      ->condition('type', 'module')
+      ->execute()
+      ->fetchField();
+
+  db_update('system')
+      ->fields(array('weight' => $weight + 1))
+      ->condition('name', 'rx3')
+      ->condition('type', 'module')
+      ->execute();
+}
