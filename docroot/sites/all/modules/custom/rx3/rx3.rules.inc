@@ -24,6 +24,7 @@ function rx3_rules_condition_info() {
  */
 function rx3_rules_condition_referrer($rx3) {
   error_log(print_r($_SESSION, true));
+  error_log('test : ' . $_SESSION['rx3']);
   if ($rx3 == 'session') {
     return TRUE;
   }
