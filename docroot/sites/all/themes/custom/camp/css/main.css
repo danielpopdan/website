@@ -4,6 +4,68 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+a,
+a:hover,
+a:focus {
+  color: inherit;
+}
+
+/***** Nav *****/
+#nav {
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 800;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 30px;
+}
+
+#logo {
+  display: block;
+  float: left;
+  height: 40px;
+  margin-left: 30px;
+}
+
+#logo img{
+  height: 100%;
+  width: auto;
+}
+
+#nav .block-menu {
+  float: right;
+}
+
+#nav .block-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+#nav .block-menu li {
+  list-style-type: none;
+  list-style-image: none;
+  float: left;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  font-size: 20px;
+}
+
+#nav .block-menu li a:hover,
+#nav .block-menu li a:focus{
+  text-decoration: none;
+  color: #75C5F0;
+}
+
+
+#nav .block-menu li a.active,
+#nav .block-menu li a.active-trail {
+  color: #75C5F0;
+}
 
 
 /***** Header *****/
@@ -20,6 +82,49 @@ body {
 #content ol li{
   list-style-type: decimal;
 }
+
+#page-title {
+  width: 100%;
+  background: #EDEEF0;
+  padding: 50px 0;
+  margin: 0;
+}
+
+/* Tabs */
+
+.tabs {
+  background: #EDEEF0;
+}
+
+ul.tabs {
+  margin: 0;
+  border: none;
+}
+
+ul.tabs li{
+  display: inline-block;
+}
+
+ul.tabs li a{
+  border-radius: 5px 5px 0 0 ;
+  line-height: 30px;
+  display: block;
+  background: #337ab7;
+  color: #fff;
+}
+
+ul.tabs li.active{
+  margin-bottom: -1px;
+  color: #333;
+}
+
+ul.tabs li.active a{
+  color: #333;
+}
+
+
+
+
 
 /***** Footer *****/
 #footer {
