@@ -22,8 +22,8 @@ function rx3_rules_condition_info() {
 /**
  * Condition: Verify if RX3 parameter exists.
  */
-//function rx3_rules_condition_referrer($rx3) {
-//  if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'applicant') {
-//    return TRUE;
-//  }
-//}
+function rx3_rules_condition_referrer($rx3) {
+  if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'applicant') {
+    return TRUE;
+  }
+}
