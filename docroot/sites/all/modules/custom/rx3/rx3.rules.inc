@@ -5,19 +5,8 @@
  */
 function rx3_rules_condition_info() {
   return array(
-    'rx3_rules_condition_referrer_session' => array(
-      'label' => t('Verify if RX3 session parameter exists'),
-      'group' => 'RX3',
-      'parameter' => array(
-        'rx3' => array(
-          'type' => 'text',
-          'label' => t('RX3 - Referrer'),
-        ),
-      ),
-      'module' => 'rx3',
-    ),
-    'rx3_rules_condition_referrer_ticket' => array(
-      'label' => t('Verify if RX3 ticket parameter exists'),
+    'rx3_rules_condition_referrer' => array(
+      'label' => t('Verify if RX3 parameter exists'),
       'group' => 'RX3',
       'parameter' => array(
         'rx3' => array(
@@ -31,21 +20,10 @@ function rx3_rules_condition_info() {
 }
 
 /**
- * Condition: Verify if RX3 parameter exists and it is session.
+ * Condition: Verify if RX3 parameter exists.
  */
-function rx3_rules_condition_referrer_session($rx3) {
-  error_log($rx3);
+function rx3_rules_condition_referrer($rx3) {
   if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'session') {
-    error_log($rx3);
-    return TRUE;
-  }
-}
-
-/**
- * Condition: Verify if RX3 parameter exists and it is ticket.
- */
-function rx3_rules_condition_referrer_ticket($rx3) {
-  if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'ticket') {
     return TRUE;
   }
 }
