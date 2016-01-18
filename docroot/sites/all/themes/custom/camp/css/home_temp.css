@@ -371,19 +371,40 @@
 #homepage-sst {
   padding: 50px 0;
   color: #6F6F6D;
+  overflow: auto;
 }
 
 #homepage-sst ol {
   margin: 20px 0;
 }
 
-#homepage-sst li {
+#homepage-sst ol li {
   list-style-type: upper-alpha;
   line-height: 1.5;
   list-style-position: inside;
+  font-size: 18px;
 }
 
 #homepage-sst .desc{
   font-size: 20px;
   color: #888;
+}
+
+#homepage-sst a {
+  display: inline-block;
+  height: 40px;
+  width: 120px;
+  background: #243F6D;
+  line-height: 40px;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 7px;
+  border: 1px solid #556581;
+  box-shadow: 0 0 1px rgba(0,0,0,0.8);
+  margin-top: 20px;
+}
+
+.logged-in #homepage-sst a.anon,
+.not-logged-in #homepage-sst a.logged {
+  display: none;
 }
