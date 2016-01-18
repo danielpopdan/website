@@ -372,3 +372,18 @@
   padding: 50px 0;
   color: #6F6F6D;
 }
+
+#homepage-sst ol {
+  margin: 20px 0;
+}
+
+#homepage-sst li {
+  list-style-type: upper-alpha;
+  line-height: 1.5;
+
+}
+
+#homepage-sst .desc{
+  font-size: 20px;
+  color: #888;
+}
