@@ -585,6 +585,15 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['theme_debug'] = TRUE;
 
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'dct2016',
+  'username' => 'root',
+  'password' => '123456',
+  'host' => 'dreeam',
+  'prefix' => 'main_',
+  'collation' => 'utf8_general_ci',
+);
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
@@ -593,3 +602,4 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/transylvania/transylvania-settings.inc');
 }
+
