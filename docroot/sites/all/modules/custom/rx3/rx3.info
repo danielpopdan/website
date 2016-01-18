@@ -1,0 +1,6 @@
+name = RX3
+description = "RX3 = Register, Referrer, Rules."
+package = RX3
+core = 7.x
+
+dependencies[] = rules
