@@ -368,6 +368,14 @@
 
 
 /* Homepage sessions */
+#homepage-sst h2 {
+  font-size: 40px;
+}
+
+#homepage-sst h2 + p {
+  font-size: 20px;
+}
+
 #homepage-sst {
   padding: 50px 0;
   color: #6F6F6D;
