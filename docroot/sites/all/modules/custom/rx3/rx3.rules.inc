@@ -6,7 +6,7 @@
 function rx3_rules_condition_info() {
   return array(
     'rx3_rules_condition_referrer_session' => array(
-      'label' => t('Verify if RX3 parameter exists'),
+      'label' => t('Verify if RX3 session parameter exists'),
       'group' => 'RX3',
       'parameter' => array(
         'rx3' => array(
@@ -17,7 +17,7 @@ function rx3_rules_condition_info() {
       'module' => 'rx3',
     ),
     'rx3_rules_condition_referrer_ticket' => array(
-      'label' => t('Verify if RX3 parameter exists'),
+      'label' => t('Verify if RX3 ticket parameter exists'),
       'group' => 'RX3',
       'parameter' => array(
         'rx3' => array(
