@@ -380,7 +380,7 @@
 #homepage-sst li {
   list-style-type: upper-alpha;
   line-height: 1.5;
-
+  list-style-position: inside;
 }
 
 #homepage-sst .desc{
