@@ -23,6 +23,7 @@ function rx3_rules_condition_info() {
  * Condition: Verify if RX3 parameter exists.
  */
 function rx3_rules_condition_referrer($rx3) {
+  error_log(print_r($_SESSION, true));
   if ($rx3 == 'session') {
     return TRUE;
   }
