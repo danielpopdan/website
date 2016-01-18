@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * RX3.
+ */
+
+module_load_include('inc', 'rx3', 'rx3.rules');
+
+/**
+ * Implements hook_form_alter().
+ */
+function rx3_form_user_register_form_alter(&$form, &$form_state) {
+  if (isset($_GET['rx3'])) {
+    $_SESSION["rx3"] = $_GET['rx3'];
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ */
+function rx3_user_insert(&$edit, $account, $category) {
+  if (isset($_SESSION["rx3"])) {
+    unset($_SESSION["rx3"]);
+  }
+}
