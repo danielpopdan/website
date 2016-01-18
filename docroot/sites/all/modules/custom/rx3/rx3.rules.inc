@@ -34,9 +34,9 @@ function rx3_rules_condition_info() {
  * Condition: Verify if RX3 parameter exists and it is session.
  */
 function rx3_rules_condition_referrer_session($rx3) {
-  dpm($rx3);
+  //dpm($rx3);
   if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'session') {
-    dpm($rx3);
+    //dpm($rx3);
     return TRUE;
   }
 }
