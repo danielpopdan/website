@@ -216,11 +216,6 @@ ul.tabs li.active a{
 }
 
 /***** Forms *****/
-
-form {
-  padding: 30px 0;
-}
-
 form label {
   display: block;
   font-weight: 400;
