@@ -145,6 +145,6 @@
   font-size: 30px;
 }
 
-.page-node-6 #edit-submit {
-  margin-left: 10px;
+.page-node-6 .submit-add-to-cart {
+  padding-left: 10px;
 }
