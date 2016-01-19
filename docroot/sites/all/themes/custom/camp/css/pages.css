@@ -61,3 +61,29 @@
 .page-user .field {
   margin-bottom: 10px;
 }
+
+/* Page Sponsorssss */
+.page-sponsors table td {
+  background: #fff;
+}
+
+.page-sponsors table td:nth-of-type(2) {
+  background: #FFF0F0;
+}
+
+.page-sponsors table td:nth-of-type(3) {
+  background: #F1F1F1;
+}
+
+.page-sponsors table td:nth-of-type(4) {
+  background: #FFF9E9;
+}
+
+.page-sponsors table td:nth-of-type(5) {
+  background: #F0F7FF;
+}
+
+.page-sponsors .pane-contact {
+  width: 400px;
+  margin: auto;
+}

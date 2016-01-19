@@ -94,6 +94,7 @@ a:focus {
 
 #page-title {
   width: 100%;
+  color: #243F6D;
   background: #EDEEF0;
   padding: 30px 0;
   margin: 0;
@@ -101,6 +102,19 @@ a:focus {
 
 .not-front .region-content p{
   line-height: 1.8;
+  font-size: 18px;
+}
+
+.not-front .region-content h1 {
+  font-size: 34px;
+}
+
+.not-front .region-content h3 {
+  font-size: 30px;
+}
+
+.not-front .region-content h3 {
+  font-size: 26px;
 }
 
 .not-front .region-content h1,
@@ -294,6 +308,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 40px 0;
+  font-size: 18px;
 }
 
 table th, 
@@ -306,13 +321,18 @@ table th {
   text-align: center;
   background: #4C5663;
   color: #fff;
-  font-size: 17px;
+  font-size: 20px;
   border: none;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 table th:first-child {
   border-radius: 5px 0 0 0 ;
+}
+
+table td:nth-of-type(odd) {
+  background: #f0f0f0;
 }
 
 table th:last-child {
