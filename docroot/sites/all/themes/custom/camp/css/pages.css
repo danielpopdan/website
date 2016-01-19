@@ -4,7 +4,8 @@
 }
 
 .page-news #block-system-main,
-.page-node-6 #block-system-main {
+.page-node-6 #block-system-main,
+.page-node-1 #block-system-main {
   padding-top: 70px;
 }
 

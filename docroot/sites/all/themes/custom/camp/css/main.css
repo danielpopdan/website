@@ -76,6 +76,9 @@ a:focus {
 }
 
 /***** Content *****/
+#content a {
+  color: #1C56B7;
+}
 
 #content ul,
 #content ol {
@@ -260,7 +263,7 @@ input:not([type=submit]):not([type=checkbox]):not([type=radio]) {
 
 input[type=file] {
   display: inline-block;
-  padding-top: 6px;
+  padding-top: 6px !important;
 }
 
 select {
