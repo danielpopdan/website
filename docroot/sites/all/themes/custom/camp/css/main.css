@@ -327,7 +327,7 @@ button[type="submit"],
   background: #243F6D;
   border: 1px solid #556581;
   box-shadow: 0 0 1px rgba(0,0,0,0.8);
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
