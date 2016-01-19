@@ -121,7 +121,7 @@
 }
 
 /* ticket */
-.page-node-6 #edit-product-id{
+.page-node-6 .form-radios{
   clear: both;
   padding-left: 15px;
 } 
