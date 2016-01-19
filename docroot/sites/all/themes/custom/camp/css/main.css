@@ -107,6 +107,10 @@ a:focus {
   margin: 0;
 }
 
+.feed-icon {
+  display: none;
+}
+
 .not-front .region-content p{
   line-height: 1.8;
   font-size: 18px;
