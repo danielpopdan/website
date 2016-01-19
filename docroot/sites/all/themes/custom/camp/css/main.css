@@ -76,6 +76,14 @@ a:focus {
 }
 
 /***** Content *****/
+
+#content ul,
+#content ol {
+  list-style-position: inside;
+  padding-left: 10px;
+}
+
+
 #content ul li{
   list-style-type: disc;
 }

@@ -414,6 +414,11 @@
   margin-top: 20px;
 }
 
+#homepage-sst a:hover {
+  text-decoration: none;
+  background: #162A4C;
+}
+
 .logged-in #homepage-sst a.anon,
 .not-logged-in #homepage-sst a.logged {
   display: none;
