@@ -22,7 +22,9 @@ function rx3_form_user_register_form_alter(&$form, &$form_state) {
  * Implements hook_user_insert().
  */
 function rx3_user_insert(&$edit, $account, $category) {
+  
   if (isset($_SESSION["rx3"])) {
+    dpm('5'. $_SESSION["rx3"]);
     unset($_SESSION["rx3"]);
   }
 }
