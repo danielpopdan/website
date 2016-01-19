@@ -1,0 +1,20 @@
+This module is an extension of Drupal Commerce [1] that provides a display
+ formatter (based on the original) for the Commerce Product reference field.
+
+Features:
+ * Line-item type by Product type.
+ * Product selection widget:
+    - Select List
+    - Radio buttons
+    - Table select
+ * Possibility to add fields rendering of the product in the rows of the
+ table select. Ideal to show the color of the product with the help of the
+ module: Field Extractor. [2]
+ * Ajax setting for progress type and message.
+
+
+I will be adding new features, suggestions are accepted.
+
+
+[1] http://drupal.org/project/commerce
+[2] http://drupal.org/project/field_extractor
