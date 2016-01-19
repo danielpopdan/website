@@ -92,6 +92,15 @@
   display: block;
 }
 
+/* Program */
+
+@media screen and (min-width: 1024px) {
+  .page-program .pane-form{
+    width: 70%;
+    margin: auto;
+  }
+}
+
 .page-program .view-proposed-sessions #edit-field-type-tid-wrapper .description{
   display: none;
 }
