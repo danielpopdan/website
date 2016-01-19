@@ -45,10 +45,6 @@
 
 }
 
-.page-user #block-system-main {
-  padding-top: 70px;
-}
-
 .page-user .profile .field-name-field-user-image img{
   width: 200px;
   height: auto;
@@ -92,11 +88,18 @@
   display: block;
 }
 
+@media screen and(max-width: 767px) {
+  .page-sponsors table,
+  .page-sponsors .table-title {
+    display: none;
+  }
+}
+
 /* Program */
 
 @media screen and (min-width: 1024px) {
   .page-program .pane-form{
-    width: 70%;
+    width: 60%;
     margin: auto;
   }
 }
@@ -107,4 +110,8 @@
 
 .page-program .view-proposed-sessions #edit-submit-proposed-sessions {
   margin-top: 22px;
+}
+
+.page-program .filter-guidelines {
+  display: none;
 }
