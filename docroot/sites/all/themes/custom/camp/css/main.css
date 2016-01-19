@@ -175,11 +175,11 @@ ul.tabs li.active a:focus{
 
 ul.tabs li.active{
   margin-bottom: -1px;
-  color: #333;
+  color: #333 !important;
 }
 
 ul.tabs li.active a{
-  color: #333;
+  color: #333 !important;
 }
 
 /***** Footer *****/
