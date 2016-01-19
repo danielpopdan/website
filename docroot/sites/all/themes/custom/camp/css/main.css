@@ -153,7 +153,7 @@ ul.tabs li a{
   display: block;
   background: #243F6D;
   border: 1px solid #556581;
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
