@@ -91,3 +91,11 @@
 .page-taxonomy-term #content .term-listing-heading p{
   display: block;
 }
+
+.page-program .view-proposed-sessions #edit-field-type-tid-wrapper .description{
+  display: none;
+}
+
+.page-program .view-proposed-sessions #edit-submit-proposed-sessions {
+  margin-top: 22px;
+}
