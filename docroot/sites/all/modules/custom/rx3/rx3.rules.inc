@@ -29,8 +29,8 @@ function rx3_rules_condition_referrer($rx3) {
 //    return TRUE;
 //  }
   dpm('1'. $rx3);
-  if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] === 'session') {
-    dpm('2'. $_SESSION["rx3"]);
+  if (isset($_SESSION['rx3']) && $_SESSION['rx3'] == 'session') {
+    dpm('2'. $_SESSION['rx3']);
     return TRUE;
   }
 }

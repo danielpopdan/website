@@ -12,7 +12,9 @@ module_load_include('inc', 'rx3', 'rx3.rules');
  */
 function rx3_form_user_register_form_alter(&$form, &$form_state) {
   if (isset($_GET['rx3'])) {
+    dpm('3' . $_GET['rx3']);
     $_SESSION["rx3"] = $_GET['rx3'];
+    dpm('4' . $_SESSION["rx3"]);
   }
 }
 
