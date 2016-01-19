@@ -269,7 +269,7 @@ input[type="submit"],
 button[type="submit"] {
   border-radius: 5px;
   line-height: 35px;
-  display: block;
+  display: inline-block;
   padding: 0 10px;
   background: #243F6D;
   border: 1px solid #556581;
@@ -283,6 +283,10 @@ button[type="submit"]:hover,
 input[type="submit"]:focus,
 button[type="submit"]:focus {
   background: #162A4C;
+}
+
+.button-operator {
+  margin: 0 10px;
 }
 
 /***** TABLES *****/

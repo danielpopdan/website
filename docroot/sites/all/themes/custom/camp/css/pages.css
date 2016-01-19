@@ -11,6 +11,10 @@
   margin-bottom: 70px;
 }
 
+.page-news .views-field-field-image img {
+  border: 2px solid #ccc;
+}
+
 .page-news .views-field-title {
   font-size: 25px;
   font-weight: 700;
