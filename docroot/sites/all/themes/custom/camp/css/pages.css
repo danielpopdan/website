@@ -93,6 +93,10 @@
   .page-sponsors .table-title {
     display: none;
   }
+
+  .page-sponsors .pane-contact {
+    width: auto;
+  } 
 }
 
 /* Program */

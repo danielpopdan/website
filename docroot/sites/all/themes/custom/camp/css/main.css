@@ -182,6 +182,20 @@ ul.tabs li.active a{
   color: #333 !important;
 }
 
+@media screen and (max-width: 767px){
+  ul.tabs li {
+    display: block;
+    float: none;
+    margin-bottom: 10px !important;
+    border-radius: 5px;
+  }
+
+  ul.tabs li a{
+    border-radius: 5px;
+    border: 1px solid #ccc !important;
+  }
+}
+
 /***** Footer *****/
 #footer {
   background: url("../images/footer_bg.png") no-repeat top center;
