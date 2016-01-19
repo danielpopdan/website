@@ -119,3 +119,28 @@
 .page-program .filter-guidelines {
   display: none;
 }
+
+/* ticket */
+.page-node-6 #edit-product-id{
+  clear: both;
+  padding-left: 15px;
+} 
+
+.page-node-6 #edit-product-id .form-type-radio label {
+  font-size: 18px;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices {
+  border: 0;
+  margin-left: -10px;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices tr{
+  border: 0;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices td{
+  border: 0;
+  background: 0;
+  font-size: 30px;
+}
