@@ -136,6 +136,14 @@ a:focus {
   margin-bottom: 20px;
 }
 
+.password-strength,
+.password-confirm {
+  display: none;
+}
+
+.password-confirm.form-text {
+  display: block;
+}
 
 /* Tabs */
 
