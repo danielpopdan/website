@@ -83,6 +83,7 @@ a:focus {
 #content ul,
 #content ol {
   list-style-position: inside;
+  font-size: 18px;
   padding-left: 10px;
 }
 
