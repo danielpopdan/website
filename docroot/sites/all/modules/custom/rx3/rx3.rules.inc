@@ -11,7 +11,7 @@ function rx3_rules_condition_info() {
       'parameter' => array(
         'rx3' => array(
           'type' => 'text',
-          'label' => t('RX3 - Referrer'),
+          'label' => t('RX3 - Session Referrer'),
         ),
       ),
       'module' => 'rx3',
@@ -22,7 +22,7 @@ function rx3_rules_condition_info() {
       'parameter' => array(
         'rx3' => array(
           'type' => 'text',
-          'label' => t('RX3 - Referrer'),
+          'label' => t('RX3 -Ticket Referrer'),
         ),
       ),
       'module' => 'rx3',
