@@ -1,0 +1,6 @@
+name = Commerce Customizable Add to Cart
+description = Customizable shopping cart.
+package = Commerce (contrib)
+core = 7.x
+
+dependencies[] = commerce_cart

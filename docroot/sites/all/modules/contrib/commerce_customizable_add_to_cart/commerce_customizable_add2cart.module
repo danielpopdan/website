@@ -1,0 +1,1210 @@
+<?php
+
+/**
+ * @file
+ * Customizable shopping cart.
+ *
+ */
+
+/**
+ * Builds an appropriate cart form ID based on the products on the form.
+ *
+ * @see commerce_customizable_add2cart_forms().
+ */
+function commerce_customizable_add2cart_add_to_cart_form_id($product_ids, $qty = 0) {
+  // Make sure the length of the form id is limited.
+  $data = implode('_', $product_ids);
+
+  if (strlen($data) > 50) {
+    $data = drupal_hash_base64($data);
+  }
+
+  return 'commerce_customizable_add2cart_add_to_cart_form_' . $data;
+}
+
+/**
+ * Implements hook_forms().
+ *
+ * To provide distinct form IDs for add to cart forms, the product IDs
+ * referenced by the form are appended to the base ID,
+ * commerce_customizable_add2cart_add_to_cart_form. When such a form is built or submitted, this
+ * function will return the proper callback function to use for the given form.
+ */
+function commerce_customizable_add2cart_forms($form_id, $args) {
+  $forms = array();
+
+  // Construct a valid cart form ID from the arguments.
+  if (strpos($form_id, 'commerce_customizable_add2cart_add_to_cart_form_') === 0) {
+    $forms[$form_id] = array(
+      'callback' => 'commerce_customizable_add2cart_add_to_cart_form',
+    );
+  }
+
+  return $forms;
+}
+
+/**
+ * Builds an Add to Cart form for a set of products.
+ *
+ * @param $line_item
+ *   A fully formed product line item whose data will be used in the following
+ *   ways by the form:
+ *   - $line_item->data['context']['product_ids']: an array of product IDs to
+ *     include on the form.
+ *   - $line_item->quantity: the default value for the quantity widget if
+ *     included (determined by the $show_quantity parameter).
+ *   - $line_item->commerce_product: the value of this field will be used as the
+ *     default product ID when the form is built for multiple products.
+ *   The line item's data array will be used on submit to set the data array of
+ *   the product line item created by the form.
+ * @param $show_quantity
+ *   Boolean indicating whether or not to show the quantity widget; defaults to
+ *   FALSE resulting in a hidden field holding the quantity.
+ * @param $product_widget
+ *   Product selection widget, values are:
+ *   - select: Select List (default)
+ *   - radios: Radio buttons
+ *   - tableselect: Table select
+ * @param $ajax
+ *   An array for ajax setting that containing the following keys:
+ *   - type: String. Possible values: 'throbber' (default), 'bar', 'NULL'.
+ *   - message: String. An optional message to the user. Default: 'Please wait...'
+ * @param $context
+ *   Information on the context of the form's placement, allowing it to update
+ *   product fields on the page based on the currently selected default product.
+ *   Should be an associative array containing the following keys:
+ *   - class_prefix: a prefix used to target HTML containers for replacement
+ *     with rendered fields as the default product is updated. For example,
+ *     nodes display product fields in their context wrapped in spans with the
+ *     class node-#-product-field_name.  The class_prefix for the add to cart
+ *     form displayed on a node would be node-# with this form's AJAX refresh
+ *     adding the suffix -product-field_name.
+ *   - view_mode: a product view mode that tells the AJAX refresh how to render
+ *     the replacement fields.
+ *   If no context is specified, AJAX replacement of rendered fields will not
+ *   happen. This parameter only affects forms containing multiple products.
+ *
+ * @return
+ *   The form array.
+ */
+function commerce_customizable_add2cart_add_to_cart_form($form, &$form_state, $line_item, $settings = array(), $context = array()) {
+  global $user;
+  global $language;
+
+  // Store the context in the form state for use during AJAX refreshes.
+  $form_state['context'] = $context;
+
+  // Store the line item passed to the form builder for reference on submit.
+  $form_state['line_item'] = $line_item;
+  $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+  $default_quantity = $line_item->quantity;
+
+  // Retrieve the array of product IDs from the line item's context data array.
+  $product_ids = array();
+
+  // If the product IDs setting tells us to use entity values...
+  if ($line_item->data['context']['product_ids'] == 'entity' &&
+    is_array($line_item->data['context']['entity'])) {
+    $entity_data = $line_item->data['context']['entity'];
+
+    // Load the specified entity.
+    $entity = entity_load_single($entity_data['entity_type'], $entity_data['entity_id']);
+
+    // Extract the product IDs from the specified product reference field.
+    if (!empty($entity->{$entity_data['product_reference_field_name']})) {
+      $product_ids = entity_metadata_wrapper($entity_data['entity_type'], $entity)->{$entity_data['product_reference_field_name']}->raw();
+    }
+  }
+  elseif (is_array($line_item->data['context']['product_ids'])) {
+    $product_ids = $line_item->data['context']['product_ids'];
+  }
+
+  // If we don't have a list of products to load, just bail out early.
+  // There is nothing we can or have to do in that case.
+  if (empty($product_ids)) {
+    return array();
+  }
+
+  // Add a generic class ID.
+  $form['#attributes']['class'][] = drupal_html_class('commerce-add-to-cart');
+
+  // Store the form ID as a class of the form to avoid the incrementing form ID
+  // from causing the AJAX refresh not to work.
+  $form['#attributes']['class'][] = drupal_html_class(commerce_customizable_add2cart_add_to_cart_form_id($product_ids, $default_quantity));
+
+  // Store the customer uid in the form so other modules can override with a
+  // selection widget if necessary.
+  $form['uid'] = array(
+    '#type' => 'value',
+    '#value' => $user->uid,
+  );
+
+  // Load all the active products intended for sale on this form.
+  $products = commerce_product_load_multiple($product_ids, array('status' => 1));
+
+  // If no products were returned...
+  if (count($products) == 0) {
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Product not available'),
+      '#weight' => 15,
+      // Do not set #disabled in order not to prevent submission.
+      '#attributes' => array('disabled' => 'disabled'),
+      '#validate' => array('commerce_customizable_add2cart_add_to_cart_form_disabled_validate'),
+    );
+  }
+  else {
+    // If the form is for a single product and displaying attributes on a single
+    // product Add to Cart form is disabled in the form context, store the
+    // product_id in a hidden form field for use by the submit handler.
+    if (count($products) == 1 && empty($line_item->data['context']['show_single_product_attributes'])) {
+      $form_state['default_product'] = reset($products);
+
+      $form['product_id'] = array(
+        '#type' => 'hidden',
+        '#value' => key($products),
+      );
+    }
+    else {
+      // However, if more than one products are represented on it, attempt to
+      // use smart select boxes for the product selection. If the products are
+      // all of the same type and there are qualifying fields on that product
+      // type, display their options for customer selection.
+      $qualifying_fields = array();
+      $same_type = TRUE;
+      $type = '';
+
+      // Find the default product so we know how to set default options on the
+      // various Add to Cart form widgets and an array of any matching product
+      // based on attribute selections so we can add a selection widget.
+      $matching_products = array();
+      $default_product = NULL;
+      $attribute_names = array();
+      $unchanged_attributes = array();
+
+      foreach ($products as $product_id => $product) {
+        $product_wrapper = entity_metadata_wrapper('commerce_product', $product);
+
+        // Store the first product type.
+        if (empty($type)) {
+          $type = $product->type;
+        }
+
+        // If the current product type is different from the first, we are not
+        // dealing with a set of same typed products.
+        if ($product->type != $type) {
+          $same_type = FALSE;
+        }
+
+        // If the form state contains a set of attribute data, use it to try
+        // and determine the default product.
+        $changed_attribute = NULL;
+
+        if (!empty($form_state['values']['attributes'])) {
+          $match = TRUE;
+
+          // Set an array of checked attributes for later comparison against the
+          // default matching product.
+          if (empty($attribute_names)) {
+            $attribute_names = (array) array_diff_key($form_state['values']['attributes'], array('product_select' => ''));
+            $unchanged_attributes = $form_state['values']['unchanged_attributes'];
+          }
+
+          foreach ($attribute_names as $key => $value) {
+            // If this is the attribute widget that was changed...
+            if ($value != $unchanged_attributes[$key]) {
+              // Store the field name.
+              $changed_attribute = $key;
+
+              // Clear the input for the "Select a product" widget now if it
+              // exists on the form since we know an attribute was changed.
+              unset($form_state['input']['attributes']['product_select']);
+            }
+
+            // If a field name has been stored and we've moved past it to
+            // compare the next attribute field...
+            if (!empty($changed_attribute) && $changed_attribute != $key) {
+              // Wipe subsequent values from the form state so the attribute
+              // widgets can use the default values from the new default product.
+              unset($form_state['input']['attributes'][$key]);
+
+              // Don't accept this as a matching product.
+              continue;
+            }
+
+            if ($product_wrapper->{$key}->raw() != $value) {
+              $match = FALSE;
+            }
+          }
+
+          // If the changed field name has already been stored, only accept the
+          // first matching product by ignoring the rest that would match. An
+          // exception is granted for additional matching products that share
+          // the exact same attribute values as the first.
+          if ($match && !empty($changed_attribute) && !empty($matching_products)) {
+            reset($matching_products);
+            $matching_product = $matching_products[key($matching_products)];
+            $matching_product_wrapper = entity_metadata_wrapper('commerce_product', $matching_product);
+
+            foreach ($attribute_names as $key => $value) {
+              if ($product_wrapper->{$key}->raw() != $matching_product_wrapper->{$key}->raw()) {
+                $match = FALSE;
+              }
+            }
+          }
+
+          if ($match) {
+            $matching_products[$product_id] = $product;
+          }
+        }
+      }
+
+      // Set the default product now if it isn't already set.
+      if (empty($matching_products)) {
+        // If a product ID value was passed in, use that product if it exists.
+        if (!empty($form_state['values']['product_id']) &&
+          !empty($products[$form_state['values']['product_id']])) {
+          $default_product = $products[$form_state['values']['product_id']];
+        }
+        elseif (empty($form_state['values']) &&
+          !empty($line_item_wrapper->commerce_product) &&
+          !empty($products[$line_item_wrapper->commerce_product->raw()])) {
+          // If this is the first time the form is built, attempt to use the
+          // product specified by the line item.
+          $default_product = $products[$line_item_wrapper->commerce_product->raw()];
+        }
+        else {
+          reset($products);
+          $default_product = $products[key($products)];
+        }
+      }
+      else {
+        // If the product selector has a value, use that.
+        if (!empty($form_state['values']['attributes']['product_select']) &&
+            !empty($products[$form_state['values']['attributes']['product_select']]) &&
+            in_array($products[$form_state['values']['attributes']['product_select']], $matching_products)) {
+          $default_product = $products[$form_state['values']['attributes']['product_select']];
+        }
+        else {
+          reset($matching_products);
+          $default_product = $matching_products[key($matching_products)];
+        }
+      }
+
+      // Wrap the default product for later use.
+      $default_product_wrapper = entity_metadata_wrapper('commerce_product', $default_product);
+
+      $form_state['default_product'] = $default_product;
+
+      // Refresh line item type if necessary
+      if ($form_state['line_item']->type != $settings[$default_product->type]['line_item_type']) {
+        $form_state['line_item']->type = $settings[$default_product->type]['line_item_type'];
+        $form_state['line_item']->quantity = $settings[$default_product->type]['default_quantity'];
+        $form_state['line_item']->data['context']['add_to_cart_combine'] = $settings[$default_product->type]['combine'];
+        $form_state['line_item']->data['context']['show_single_product_attributes'] = $settings[$default_product->type]['show_single_product_attributes'];
+      }
+
+      // If all the products are of the same type...
+      if ($same_type) {
+        // Loop through all the field instances on that product type.
+        foreach (field_info_instances('commerce_product', $type) as $name => $instance) {
+          // A field qualifies if it is single value, required and uses a widget
+          // with a definite set of options. For the sake of simplicity, this is
+          // currently restricted to fields defined by the options module.
+          $field = field_info_field($instance['field_name']);
+
+          // Get the array of Cart settings pertaining to this instance.
+          $commerce_customizable_add2cart_settings = commerce_cart_field_instance_attribute_settings($instance);
+
+          // If the instance is of a field type that is eligible to function as
+          // a product attribute field and if its attribute field settings
+          // specify that this functionality is enabled...
+          if (commerce_cart_field_attribute_eligible($field) && $commerce_customizable_add2cart_settings['attribute_field']) {
+            // Get the options properties from the options module and store the
+            // options for the instance in select list format in the array of
+            // qualifying fields.
+            $properties = _options_properties('select', FALSE, TRUE, TRUE);
+
+            // Try to fetch localized names.
+            $allowed_values = NULL;
+
+            // Prepare translated options if using the i18n_field module.
+            if (module_exists('i18n_field')) {
+              if (($translate = i18n_field_type_info($field['type'], 'translate_options'))) {
+                $allowed_values = $translate($field);
+                _options_prepare_options($allowed_values, $properties);
+              }
+
+              // Translate the field title if set.
+              if (!empty($instance['label'])) {
+                $instance['label'] = i18n_field_translate_property($instance, 'label');
+              }
+            }
+
+            // Otherwise just use the base language values.
+            if (empty($allowed_values)) {
+              $allowed_values = _options_get_options($field, $instance, $properties, 'commerce_product', $default_product);
+            }
+
+            // Only consider this field a qualifying attribute field if we could
+            // derive a set of options for it.
+            if (!empty($allowed_values)) {
+              $qualifying_fields[$name] = array(
+                'field' => $field,
+                'instance' => $instance,
+                'commerce_customizable_add2cart_settings' => $commerce_customizable_add2cart_settings,
+                'options' => $allowed_values,
+                'weight' => $instance['widget']['weight'],
+                'required' => $instance['required'],
+              );
+            }
+          }
+        }
+      }
+
+      // Otherwise for products of varying types, display a simple select list
+      // by product title.
+      if (!empty($qualifying_fields)) {
+        $used_options = array();
+        $field_has_options = array();
+
+        // Sort the fields by weight.
+        uasort($qualifying_fields, 'drupal_sort_weight');
+
+        foreach ($qualifying_fields as $field_name => $data) {
+          // Build an options array of widget options used by referenced products.
+          foreach ($products as $product_id => $product) {
+            $product_wrapper = entity_metadata_wrapper('commerce_product', $product);
+
+            // Only add options to the present array that appear on products that
+            // match the default value of the previously added attribute widgets.
+            foreach ($used_options as $used_field_name => $unused) {
+              // Don't apply this check for the current field being evaluated.
+              if ($used_field_name == $field_name) {
+                continue;
+              }
+
+              if (isset($form['attributes'][$used_field_name]['#default_value'])) {
+                if ($product_wrapper->{$used_field_name}->raw() != $form['attributes'][$used_field_name]['#default_value']) {
+                  continue 2;
+                }
+              }
+            }
+
+            // With our hard dependency on widgets provided by the Options
+            // module, we can make assumptions about where the data is stored.
+            if ($product_wrapper->{$field_name}->raw() != NULL) {
+              $field_has_options[$field_name] = TRUE;
+            }
+            $used_options[$field_name][] = $product_wrapper->{$field_name}->raw();
+          }
+
+          // If for some reason no options for this field are used, remove it
+          // from the qualifying fields array.
+          if (empty($field_has_options[$field_name]) || empty($used_options[$field_name])) {
+            unset($qualifying_fields[$field_name]);
+          }
+          else {
+            $form['attributes'][$field_name] = array(
+              '#type' => $data['commerce_customizable_add2cart_settings']['attribute_widget'],
+              '#title' => check_plain($data['instance']['label']),
+              '#options' => array_intersect_key($data['options'], drupal_map_assoc($used_options[$field_name])),
+              '#default_value' => $default_product_wrapper->{$field_name}->raw(),
+              '#weight' => $data['instance']['widget']['weight'],
+              '#ajax' => array(
+                'callback' => 'commerce_customizable_add2cart_add_to_cart_form_attributes_refresh',
+                'progress' => array(
+                  'type' => $settings['ajax_progress_type'],
+                  'message' => t($settings['ajax_progress_message']),
+                ),
+              ),
+            );
+
+            // Add the empty value if the field is not required and products on
+            // the form include the empty value.
+            if (!$data['required'] && in_array('', $used_options[$field_name])) {
+              $form['attributes'][$field_name]['#empty_value'] = '';
+            }
+
+            $form['unchanged_attributes'][$field_name] = array(
+              '#type' => 'value',
+              '#value' => $default_product_wrapper->{$field_name}->raw(),
+            );
+          }
+        }
+
+        if (!empty($form['attributes'])) {
+          $form['attributes'] += array(
+            '#tree' => 'TRUE',
+            '#prefix' => '<div class="attribute-widgets">',
+            '#suffix' => '</div>',
+            '#weight' => 0,
+          );
+          $form['unchanged_attributes'] += array(
+            '#tree' => 'TRUE',
+          );
+
+          // If the matching products array is empty, it means this is the first
+          // time the form is being built. We should populate it now with
+          // products that match the default attribute options.
+          if (empty($matching_products)) {
+            foreach ($products as $product_id => $product) {
+              $product_wrapper = entity_metadata_wrapper('commerce_product', $product);
+              $match = TRUE;
+
+              foreach (element_children($form['attributes']) as $field_name) {
+                if ($product_wrapper->{$field_name}->raw() != $form['attributes'][$field_name]['#default_value']) {
+                  $match = FALSE;
+                }
+              }
+
+              if ($match) {
+                $matching_products[$product_id] = $product;
+              }
+            }
+          }
+
+
+          if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+            $fields = array_merge(field_info_extra_fields('commerce_product', current($matching_products)->type, 'display'), field_info_instances('commerce_product', current($matching_products)->type));
+            $header = array();
+            foreach ($fields as $name => $field) {
+              if ((isset($field['display']['add_to_cart_form']['type']) && $field['display']['add_to_cart_form']['type'] != 'hidden')
+                  || (isset($field['display']['add_to_cart_form']['visible']) && $field['display']['add_to_cart_form']['visible'])) {
+
+                // Translate the field title if set.
+                if (module_exists('i18n_field')) {
+                  if (!empty($field['label']) && isset($field['bundle'])) {
+                    $field['label'] = i18n_field_translate_property($field, 'label');
+                  }
+                }
+                $header[$field['display']['add_to_cart_form']['weight']] = array( $name => array('data' => $field['label'], 'class' => $name));
+              }
+            }
+            ksort($header);
+            $table_header = array();
+            foreach ($header as $data) {
+              $table_header[key($data)] = current($data);
+            }
+          }
+
+          // If there were more than one matching products for the current
+          // attribute selection, add a product selection widget.
+          if (count($matching_products) > 1 || $settings[$default_product->type]['product_widget'] == 'tableselect') {
+            $options = array();
+
+            foreach ($matching_products as $product_id => $product) {
+              if ($settings[$default_product->type]['product_widget'] == 'radios') {
+                $options[check_plain($product_id)] = check_plain($product->title);
+              }
+              else if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+                $row = array();
+                foreach ($table_header as $name => $field) {
+                  if (isset($fields[$name]['entity_type'])) {
+                    $field_data = $product->$name;
+                    $output = field_view_value('commerce_product', $product, $name, $field_data[isset($field_data[$language->language])?$language->language:LANGUAGE_NONE][0], 'add_to_cart_form');
+                    $row[$name] = array(
+                      'data' => render($output),
+                    );
+                  }
+                  else {
+                    $row[$name] = array(
+                      'data' => theme($fields[$name]['theme'], array($name => $product->$name, 'label' => NULL, 'product' => $product)),
+                    );
+                  }
+                }
+                $options[check_plain($product_id)] = $row;
+              }
+              else {
+                $options[$product_id] = $product->title;
+              }
+            }
+
+            // Note that this element by default is a select list, so its
+            // #options are not sanitized here. Sanitization will occur in a
+            // check_plain() in the function form_select_options(). If you alter
+            // this element to another #type, such as 'radios', you are also
+            // responsible for looping over its #options array and sanitizing
+            // the values.
+            $form['attributes']['product_select'] = array(
+              '#type' => $settings[$default_product->type]['product_widget'],
+              '#title' => t('Select a product'),
+              '#options' => $options,
+              '#default_value' => $default_product->product_id,
+              '#weight' => 40,
+              '#ajax' => array(
+                'callback' => 'commerce_customizable_add2cart_add_to_cart_form_attributes_refresh',
+                'progress' => array(
+                  'type' => $settings['ajax_progress_type'],
+                  'message' => t($settings['ajax_progress_message']),
+                ),
+              ),
+            );
+            if ($settings[$default_product->type]['product_widget'] == 'radios') {
+              $form['attributes']['product_select']['#default_value'] = check_plain($default_product->product_id);
+            }
+            else if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+              $form['attributes']['product_select']['#header'] = $table_header;
+              $form['attributes']['product_select']['#multiple'] = FALSE;
+              $form['attributes']['product_select']['#default_value'] = check_plain($default_product->product_id);
+            }
+          }
+
+          $form['product_id'] = array(
+            '#type' => 'hidden',
+            '#value' => $default_product->product_id,
+          );
+        }
+      }
+
+      // If the products referenced were of different types or did not posess
+      // any qualifying attribute fields...
+      if (!$same_type || empty($qualifying_fields)) {
+        // For a single product form, just add the hidden product_id field.
+        if (count($products) == 1 && $settings[$default_product->type]['product_widget'] != 'tableselect') {
+          $form['product_id'] = array(
+            '#type' => 'hidden',
+            '#value' => $default_product->product_id,
+          );
+        }
+        else {
+          if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+            $fields = array_merge(field_info_extra_fields('commerce_product', current($products)->type, 'display'), field_info_instances('commerce_product', current($products)->type));
+            $header = array();
+            foreach ($fields as $name => $field) {
+              if ((isset($field['display']['add_to_cart_form']['type']) && $field['display']['add_to_cart_form']['type'] != 'hidden')
+                  || (isset($field['display']['add_to_cart_form']['visible']) && $field['display']['add_to_cart_form']['visible'])) {
+
+                // Translate the field title if set.
+                if (module_exists('i18n_field')) {
+                  if (!empty($field['label']) && isset($field['bundle'])) {
+                    $field['label'] = i18n_field_translate_property($field, 'label');
+                  }
+                }
+                $header[$field['display']['add_to_cart_form']['weight']] = array( $name => array('data' => $field['label'], 'class' => $name));
+              }
+            }
+            ksort($header);
+            $table_header = array();
+            foreach ($header as $data) {
+              $table_header[key($data)] = current($data);
+            }
+          }
+
+          // Otherwise add a product selection widget.
+          $options = array();
+
+          foreach ($products as $product_id => $product) {
+            if ($settings[$default_product->type]['product_widget'] == 'radios') {
+              $options[check_plain($product_id)] = check_plain($product->title);
+            }
+            else if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+                $row = array();
+                foreach ($table_header as $name => $field) {
+                  if (isset($fields[$name]['entity_type'])) {
+                    $field_data = $product->$name;
+                    $output = field_view_value('commerce_product', $product, $name, $field_data[isset($field_data[$language->language])?$language->language:LANGUAGE_NONE][0], 'add_to_cart_form');
+                    $row[$name] = array(
+                      'data' => render($output),
+                    );
+                  }
+                  else {
+                    $row[$name] = array(
+                      'data' => theme($fields[$name]['theme'], array($name => $product->$name, 'label' => NULL, 'product' => $product)),
+                    );
+                  }
+                }
+                $options[check_plain($product_id)] = $row;
+            }
+            else {
+              $options[$product_id] = $product->title;
+            }
+          }
+
+          // Note that this element by default is a select list, so its #options
+          // are not sanitized here. Sanitization will occur in a check_plain() in
+          // the function form_select_options(). If you alter this element to
+          // another #type, such as 'radios', you are also responsible for looping
+          // over its #options array and sanitizing the values.
+          $form['product_id'] = array(
+            '#type' => $settings[$default_product->type]['product_widget'],
+            '#options' => $options,
+            '#default_value' => $default_product->product_id,
+            '#weight' => 0,
+            '#ajax' => array(
+              'callback' => 'commerce_customizable_add2cart_add_to_cart_form_attributes_refresh',
+              'progress' => array(
+                'type' => $settings['ajax_progress_type'],
+                'message' => t($settings['ajax_progress_message']),
+              ),
+            ),
+          );
+          if ($settings[$default_product->type]['product_widget'] == 'radios') {
+            $form['attributes']['product_select']['#default_value'] = check_plain($default_product->product_id);
+          }
+          else if ($settings[$default_product->type]['product_widget'] == 'tableselect') {
+            $form['product_id']['#header'] = $table_header;
+            $form['product_id']['#multiple'] = FALSE;
+            $form['product_id']['#default_value'] = check_plain($default_product->product_id);
+          }
+        }
+      }
+    }
+
+    // Render the quantity field as either a textfield if shown or a hidden
+    // field if not.
+    if ($settings[$default_product->type]['show_quantity']) {
+      $form['quantity'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Quantity'),
+        '#default_value' => $settings[$default_product->type]['default_quantity'],
+        '#datatype' => 'integer',
+        '#size' => 5,
+        '#weight' => 45,
+      );
+    }
+    else {
+      $form['quantity'] = array(
+        '#type' => 'hidden',
+        '#value' => $settings[$default_product->type]['default_quantity'],
+        '#datatype' => 'integer',
+        '#weight' => 45,
+      );
+    }
+
+    // Add the line item's fields to a container on the form.
+    $form['line_item_fields'] = array(
+      '#type' => 'container',
+      '#parents' => array('line_item_fields'),
+      '#weight' => 10,
+      '#tree' => TRUE,
+    );
+
+    field_attach_form('commerce_line_item', $form_state['line_item'], $form['line_item_fields'], $form_state);
+
+    // Loop over the fields we just added and remove any that haven't been
+    // marked for inclusion on this form. We do this instead of just setting
+    // '#access' => FALSE to avoid specifying empty values for hidden fields.
+    foreach (element_children($form['line_item_fields']) as $field_name) {
+      $info = field_info_instance('commerce_line_item', $field_name, $form_state['line_item']->type);
+      $form['line_item_fields'][$field_name]['#commerce_customizable_add2cart_settings'] = commerce_cart_field_instance_attribute_settings($info);
+
+      if (empty($form['line_item_fields'][$field_name]['#commerce_customizable_add2cart_settings']['field_access'])) {
+        $form['line_item_fields'][$field_name]['#access'] = FALSE;
+      }
+    }
+
+    // Do not allow products without a price to be purchased.
+    if (is_null(commerce_product_calculate_sell_price($form_state['default_product']))) {
+      $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Product not available'),
+        '#prefix' => '<div class="submit-add-to-cart">',
+        '#suffix' => '</div>',
+        '#weight' => 50,
+        // Do not set #disabled in order not to prevent submission.
+        '#attributes' => array('disabled' => 'disabled'),
+        '#validate' => array('commerce_customizable_add2cart_add_to_cart_form_disabled_validate'),
+      );
+    }
+    else {
+      $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Add to cart'),
+        '#prefix' => '<div class="submit-add-to-cart">',
+        '#suffix' => '</div>',
+        '#weight' => 50,
+      );
+    }
+  }
+
+  // Add the handlers manually since we're using hook_forms() to associate this
+  // form with form IDs based on the $product_ids.
+  $form['#validate'][] = 'commerce_customizable_add2cart_add_to_cart_form_validate';
+  $form['#submit'][] = 'commerce_customizable_add2cart_add_to_cart_form_submit';
+
+  return $form;
+}
+
+/**
+ * Validation callback that prevents submission if the product is not available.
+ */
+function commerce_customizable_add2cart_add_to_cart_form_disabled_validate($form, &$form_state) {
+  form_set_error('submit', t('This product is no longer available.'));
+}
+
+/**
+ * Form validate handler: validate the product and quantity to add to the cart.
+ */
+function commerce_customizable_add2cart_add_to_cart_form_validate($form, &$form_state) {
+  // Check to ensure the quantity is valid.
+  if (!is_numeric($form_state['values']['quantity']) || $form_state['values']['quantity'] <= 0) {
+    form_set_error('quantity', t('You must specify a valid quantity to add to the cart.'));
+  }
+
+  // If the custom data type attribute of the quantity element is integer,
+  // ensure we only accept whole number values.
+  if ($form['quantity']['#datatype'] == 'integer' &&
+    (int) $form_state['values']['quantity'] != $form_state['values']['quantity']) {
+    form_set_error('quantity', t('You must specify a whole number for the quantity.'));
+  }
+
+  // If the attributes matching product selector was used, set the value of the
+  // product_id field to match; this will be fixed on rebuild when the actual
+  // default product will be selected based on the product selector value.
+  if (!empty($form_state['values']['attributes']['product_select'])) {
+    form_set_value($form['product_id'], $form_state['values']['attributes']['product_select'], $form_state);
+  }
+
+  // Validate any line item fields that may have been included on the form.
+  field_attach_form_validate('commerce_line_item', $form_state['line_item'], $form['line_item_fields'], $form_state);
+}
+
+/**
+ * Ajax callback: returns AJAX commands when an attribute widget is changed.
+ */
+function commerce_customizable_add2cart_add_to_cart_form_attributes_refresh($form, $form_state) {
+  $commands = array();
+
+  // Render the form afresh to capture any changes to the available widgets
+  // based on the latest selection.
+  $commands[] = ajax_command_replace('.' . drupal_html_class($form['#form_id']), drupal_render($form));
+
+  // Then render and return the various product fields that might need to be
+  // updated on the page.
+  if (!empty($form_state['context'])) {
+    $product = $form_state['default_product'];
+    $product->display_context = $form_state['context'];
+
+    // First render the actual fields attached to the referenced product.
+    foreach (field_info_instances('commerce_product', $product->type) as $product_field_name => $product_field) {
+      // Rebuild the same array of classes used when the field was first rendered.
+      $replacement_class = drupal_html_class(implode('-', array($form_state['context']['class_prefix'], 'product', $product_field_name)));
+
+      $classes = array(
+        'commerce-product-field',
+        drupal_html_class('commerce-product-field-' . $product_field_name),
+        drupal_html_class('field-' . $product_field_name),
+        $replacement_class,
+      );
+
+      $element = field_view_field('commerce_product', $product, $product_field_name, $form_state['context']['view_mode']);
+      $element += array(
+        '#prefix' => '<div class="' . implode(' ', $classes) . '">',
+        '#suffix' => '</div>',
+      );
+
+      $commands[] = ajax_command_replace('.' . $replacement_class, drupal_render($element));
+    }
+
+    // Then render the extra fields defined for the referenced product.
+    foreach (field_info_extra_fields('commerce_product', $product->type, 'display') as $product_extra_field_name => $product_extra_field) {
+      $display = field_extra_fields_get_display('commerce_product', $product->type, $form_state['context']['view_mode']);
+
+      // Only include extra fields that specify a theme function and that
+      // are visible on the current view mode.
+      if (!empty($product_extra_field['theme']) &&
+        !empty($display[$product_extra_field_name]['visible'])) {
+        // Rebuild the same array of classes used when the field was first rendered.
+        $replacement_class = drupal_html_class(implode('-', array($form_state['context']['class_prefix'], 'product', $product_extra_field_name)));
+
+        $classes = array(
+          'commerce-product-extra-field',
+          drupal_html_class('commerce-product-extra-field-' . $product_extra_field_name),
+          $replacement_class,
+        );
+
+        // Theme the product extra field to $element.
+        $variables = array(
+          $product_extra_field_name => $product->{$product_extra_field_name},
+          'label' => $product_extra_field['label'] . ':',
+          'product' => $product,
+        );
+
+        $element = array(
+          '#markup' => theme($product_extra_field['theme'], $variables),
+          '#attached' => array(
+            'css' => array(drupal_get_path('module', 'commerce_product') . '/theme/commerce_product.theme.css'),
+          ),
+          '#prefix' => '<div class="' . implode(' ', $classes) . '">',
+          '#suffix' => '</div>',
+        );
+
+        $commands[] = ajax_command_replace('.' . $replacement_class, drupal_render($element));
+      }
+    }
+  }
+
+  // Allow other modules to add arbitrary AJAX commands on the refresh.
+  drupal_alter('commerce_customizable_add2cart_attributes_refresh', $commands, $form, $form_state);
+
+  return array('#type' => 'ajax', '#commands' => $commands);
+}
+
+/**
+ * Form submit handler: add the selected product to the cart.
+ */
+function commerce_customizable_add2cart_add_to_cart_form_submit($form, &$form_state) {
+  $product_id = $form_state['values']['product_id'];
+  $product = commerce_product_load($product_id);
+
+  // If the line item passed to the function is new...
+  if (empty($form_state['line_item']->line_item_id)) {
+    // Create the new product line item of the same type.
+    $line_item = commerce_product_line_item_new($product, $form_state['values']['quantity'], 0, $form_state['line_item']->data, $form_state['line_item']->type);
+
+    // Allow modules to prepare this as necessary. This hook is defined by the
+    // Product Pricing module.
+    drupal_alter('commerce_product_calculate_sell_price_line_item', $line_item);
+
+    // Remove line item field values the user didn't have access to modify.
+    foreach ($form_state['values']['line_item_fields'] as $field_name => $value) {
+      // Note that we're checking the Commerce Cart settings that we inserted
+      // into this form element array back when we built the form. This means a
+      // module wanting to alter a line item field widget to be available must
+      // update both its form element's #access value and the field_access value
+      // of the #commerce_customizable_add2cart_settings array.
+      if (empty($form['line_item_fields'][$field_name]['#commerce_customizable_add2cart_settings']['field_access'])) {
+        unset($form_state['values']['line_item_fields'][$field_name]);
+      }
+    }
+
+    // Unset the line item field values array if it is now empty.
+    if (empty($form_state['values']['line_item_fields'])) {
+      unset($form_state['values']['line_item_fields']);
+    }
+
+    // Add field data to the line item.
+    field_attach_submit('commerce_line_item', $line_item, $form['line_item_fields'], $form_state);
+
+    // Process the unit price through Rules so it reflects the user's actual
+    // purchase price.
+    rules_invoke_event('commerce_product_calculate_sell_price', $line_item);
+
+    // Only attempt an Add to Cart if the line item has a valid unit price.
+    $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+
+    if (!is_null($line_item_wrapper->commerce_unit_price->value())) {
+      // Add the product to the specified shopping cart.
+      $form_state['line_item'] = commerce_cart_product_add(
+        $form_state['values']['uid'],
+        $line_item,
+        isset($line_item->data['context']['add_to_cart_combine']) ? $line_item->data['context']['add_to_cart_combine'] : TRUE
+      );
+    }
+    else {
+      drupal_set_message(t('%title could not be added to your cart.', array('%title' => $product->title)), 'error');
+    }
+  }
+
+  // Ensure that page redirects back to its original URL without losing query parameters, such as pagers.
+  // @todo Remove when http://drupal.org/node/171267 is fixed.
+  $form_state['redirect'] = array(current_path(), array('query' => drupal_get_query_parameters()));
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function commerce_customizable_add2cart_field_formatter_info() {
+  $formatter = array(
+    'commerce_customizable_add2cart_add_to_cart_form' => array(
+      'label' => t('Customizable Add to Cart form'),
+      'description' => t('Display a Customizable Add to Cart form for the referenced product.'),
+      'field types' => array('commerce_product_reference'),
+      'settings' => array(
+        'ajax_progress_type' => 'throbber',
+        'ajax_progress_message' => 'Please wait...',
+      ),
+    ),
+  );
+
+  foreach (commerce_product_type_get_name() as $key => $type) {
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['show_quantity'] = TRUE;
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['default_quantity'] = 1;
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['combine'] = TRUE;
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['show_single_product_attributes'] = TRUE;
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['line_item_type'] = 'product';
+    $formatter['commerce_customizable_add2cart_add_to_cart_form']['settings'][$key]['product_widget'] = 'select';
+  }
+
+  return $formatter;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function commerce_customizable_add2cart_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = array_merge(field_info_formatter_settings($display['type']), $display['settings']);
+
+  $element = array();
+
+  if ($display['type'] == 'commerce_customizable_add2cart_add_to_cart_form') {
+    $referenceable_types = $instance['referenceable_types'];
+
+    $element['ajax_progress_type'] = array(
+      '#type' => 'select',
+      '#title' => t('Ajax progress type'),
+      '#options' => array(
+        'NULL' => t('None'),
+        'throbber' => t('Throbber'),
+        'bar' => t('Bar'),
+      ),
+      '#default_value' => $settings['ajax_progress_type'],
+    );
+    $element['ajax_progress_message'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Ajax progress message'),
+      '#description' => t('Leave blank to disable it.'),
+      '#default_value' => $settings['ajax_progress_message'],
+      '#size' => 20,
+    );
+
+    // Add a conditionally visible line item type element.
+    $line_item_types = commerce_product_line_item_types();
+    $product_types = _commerce_customizable_add2cart_referenceable_types($referenceable_types);
+
+    foreach ($product_types as $key => $type) {
+      $element[$key] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Settings for product type: @type', array('@type' => $type)),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+      );
+      $element[$key]['show_quantity'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Display a textfield quantity widget on the add to cart form.'),
+        '#default_value' => $settings[$key]['show_quantity'],
+      );
+      $element[$key]['default_quantity'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Default quantity'),
+        '#default_value' => $settings[$key]['default_quantity'] <= 0 ? 1 : $settings[$key]['default_quantity'],
+        '#element_validate' => array('commerce_customizable_add2cart_field_formatter_settings_form_quantity_validate'),
+        '#size' => 16,
+      );
+      $element[$key]['combine'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Attempt to combine like products on the same line item in the cart.'),
+        '#description' => t('The line item type, referenced product, and data from fields exposed on the Add to Cart form must all match to combine.'),
+        '#default_value' => $settings[$key]['combine'],
+      );
+      $element[$key]['show_single_product_attributes'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Show attribute widgets even if the Add to Cart form only represents one product.'),
+        '#description' => t('If enabled, attribute widgets will be shown on the form with the only available options selected.'),
+        '#default_value' => $settings[$key]['show_single_product_attributes'],
+      );
+      $element[$key]['product_widget'] = array(
+        '#type' => 'radios',
+        '#title' => t('Product selection widget'),
+        '#description' => t('The type of element used to select a product on an Add to Cart form.'),
+        '#options' => array(
+          'select' => t('Select list'),
+          'radios' => t('Radio buttons'),
+          'tableselect' => t('Table select'),
+        ),
+        '#default_value' => $settings[$key]['product_widget'],
+      );
+      $element[$key]['product_fields'] = array(
+        '#type' => 'container',
+        '#states' => array(
+          'visible' => array(
+            ':input[name="fields[field_referenced_products][settings_edit_form][settings][' . $key . '][product_widget]"]' => array('value' => 'tableselect'),
+          ),
+        ),
+      );
+      $element[$key]['product_fields']['config'] = array(
+        '#markup' => t('Modify the settings on the ') . l(t('product type "manage display" configuration'), 'admin/commerce/products/types/' . $key . '/display/add_to_cart_form') . '.',
+      );
+      $element[$key]['line_item_type'] = array(
+        '#type' => 'select',
+        '#title' => t('Add to Cart line item type'),
+        '#options' => array_intersect_key(commerce_line_item_type_get_name(), drupal_map_assoc($line_item_types)),
+        '#default_value' => $settings[$key]['line_item_type'],
+      );
+    }
+  }
+
+  return $element;
+}
+
+/**
+ * Element validate callback: ensure a valid quantity is entered.
+ */
+function commerce_customizable_add2cart_field_formatter_settings_form_quantity_validate($element, &$form_state, $form) {
+  if (!is_numeric($element['#value']) || $element['#value'] <= 0) {
+    form_set_error(implode('][', $element['#parents']), t('You must enter a positive numeric default quantity value.'));
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function commerce_customizable_add2cart_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = array_merge(field_info_formatter_settings($display['type']), $display['settings']);
+
+  $summary = array();
+
+  if ($display['type'] == 'commerce_customizable_add2cart_add_to_cart_form') {
+    $referenceable_types = $instance['settings']['referenceable_types'];
+
+    $line_item_types = commerce_product_line_item_types();
+    $product_types = _commerce_customizable_add2cart_referenceable_types($referenceable_types);
+
+    if ($settings['ajax_progress_type'] == 'throbber') {
+      $progress_type = t('Throbber');
+    }
+    else if ($settings['ajax_progress_type'] == 'bar') {
+      $progress_type = t('Bar');
+    }
+    else {
+      $progress_type = t('None');
+    }
+
+    $summary[] = t('Ajax progress type: @type', array('@type' => $progress_type));
+    $summary[] = t('Ajax progress message: !message', array('!message' => $settings['ajax_progress_message']));
+
+    foreach ($product_types as $key => $type) {
+      $summary[] = t('Settings for product type: @type', array('@type' => $type));
+      $summary[] = '- ' . t('Quantity widget: !status', array('!status' => $settings[$key]['show_quantity'] ? t('Enabled') : t('Disabled')));
+      $summary[] = '- ' . t('Default quantity: @quantity', array('@quantity' => $settings[$key]['default_quantity']));
+      $summary[] = '- ' . t('Combine like items: !status', array('!status' => $settings[$key]['combine'] ? t('Enabled') : t('Disabled')));
+      $summary[] = '- ' . t('!visibility attributes on single product forms.', array('!visibility' => $settings[$key]['show_single_product_attributes'] ? t('Showing') : t('Hiding')));
+      $summary[] = '- ' . t('Add to Cart line item type: @line_item', array('@line_item' => commerce_line_item_type_get_name($settings[$key]['line_item_type'])));
+      $summary[] = '- ' . t('Product selection widget: @widget', array('@widget' => $settings[$key]['product_widget']));
+    }
+
+    $summary = implode('<br />', $summary);
+  }
+
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function commerce_customizable_add2cart_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $settings = array_merge(field_info_formatter_settings($display['type']), $display['settings']);
+  $result = array();
+
+  if ($display['type'] == 'commerce_customizable_add2cart_add_to_cart_form') {
+    // Collect the list of product IDs.
+    $product_ids = array();
+
+    foreach ($items as $delta => $item) {
+      $product_ids[] = $item['product_id'];
+    }
+
+    // Load the referenced products.
+    $products = commerce_product_load_multiple($product_ids);
+
+    // Check to ensure products are referenced, before returning results.
+    if (!empty($products)) {
+      // Check the first product and assume that the rest are the same type.
+      $product_type = reset($products)->type;
+      $type = !empty($settings[$product_type]['line_item_type']) ? $settings[$product_type]['line_item_type'] : 'product';
+      $line_item = commerce_product_line_item_new(reset($products), $settings[$product_type]['default_quantity'], 0, array(), $type);
+      $line_item->data['context']['product_ids'] = array_keys($products);
+      $line_item->data['context']['add_to_cart_combine'] = $settings[$product_type]['combine'];
+      $line_item->data['context']['show_single_product_attributes'] = $settings[$product_type]['show_single_product_attributes'];
+
+      $result[] = array(
+        '#arguments' => array(
+          'form_id' => commerce_customizable_add2cart_add_to_cart_form_id($product_ids),
+          'line_item' => $line_item,
+          'settings' => $settings,
+        ),
+      );
+    }
+  }
+
+  return $result;
+}
+
+function _commerce_customizable_add2cart_referenceable_types($types) {
+  $product_types = commerce_product_type_get_name();
+  $all = TRUE;
+  $referenceable = array();
+
+  foreach ($product_types as $key => $type) {
+    if (isset($types[$key]) && $types[$key] != '0') {
+      $referenceable[$key] = $type;
+      $all = FALSE;
+    }
+  }
+
+  if ($all) {
+    return $product_types;
+  }
+  else {
+    return $referenceable;
+  }
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * When a field is formatted for display, the display formatter does not know
+ * what view mode it is being displayed for. Unfortunately, the Add to Cart form
+ * display formatter needs this information when displaying product reference
+ * fields on nodes to provide adequate context for product field replacement on
+ * multi-value product reference fields. This hook is used to transform a set of
+ * arguments into a form using the arguments and the extra context information
+ * gleaned from the parameters passed into this function.
+ */
+function commerce_customizable_add2cart_field_attach_view_alter(&$output, $context) {
+  // Loop through the fields passed in looking for any product reference fields
+  // formatted with the Add to Cart form display formatter.
+  foreach ($output as $field_name => $element) {
+    if (!empty($element['#formatter']) && $element['#formatter'] == 'commerce_customizable_add2cart_add_to_cart_form') {
+      // Prepare the context information needed by the cart form.
+      $cart_context = $context;
+
+      // Add the context for displaying product fields in the context of an entity
+      // that references the product by looking at the entity this product
+      // reference field is attached to.
+      list($entity_id, $vid, $bundle) = entity_extract_ids($context['entity_type'], $context['entity']);
+      $cart_context['class_prefix'] = $context['entity_type'] . '-' . $entity_id;
+      $cart_context['view_mode'] = $context['entity_type'] . '_' . $element['#view_mode'];
+
+      $entity_uri = entity_uri($context['entity_type'], $element['#object']);
+
+      foreach (element_children($element) as $key) {
+        // Extract the drupal_get_form() arguments array from the element.
+        $arguments = $element[$key]['#arguments'];
+
+        // Add the display path and referencing entity data to the line item.
+        $arguments['line_item']->data['context']['display_path'] = $entity_uri['path'];
+
+        $arguments['line_item']->data['context']['entity'] = array(
+          'entity_type' => $context['entity_type'],
+          'entity_id' => $entity_id,
+          'product_reference_field_name' => $field_name,
+        );
+
+        // Update the product_ids variable to point to the entity data if we're
+        // referencing multiple products.
+        if (count($arguments['line_item']->data['context']['product_ids']) > 1) {
+          $arguments['line_item']->data['context']['product_ids'] = 'entity';
+        }
+
+        // Replace the array containing the arguments with the return value of
+        // drupal_get_form(). It will be rendered when the rest of the object is
+        // rendered for display.
+        $output[$field_name][$key] = drupal_get_form($arguments['form_id'], $arguments['line_item'], $arguments['settings'], $cart_context);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function commerce_customizable_add2cart_entity_info_alter(&$entity_info) {
+  $entity_info['commerce_product']['view modes']['add_to_cart_form'] = array(
+    'label' => t('Add to Cart form - Product Reference'),
+    'custom settings' => TRUE,
+  );
+}
