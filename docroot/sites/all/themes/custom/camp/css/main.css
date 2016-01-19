@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
+  color: #6F6F6D;
 }
 
 a,
@@ -75,6 +76,14 @@ a:focus {
 }
 
 /***** Content *****/
+
+#content ul,
+#content ol {
+  list-style-position: inside;
+  padding-left: 10px;
+}
+
+
 #content ul li{
   list-style-type: disc;
 }
@@ -85,10 +94,37 @@ a:focus {
 
 #page-title {
   width: 100%;
+  color: #243F6D;
   background: #EDEEF0;
   padding: 30px 0;
   margin: 0;
 }
+
+.not-front .region-content p{
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.not-front .region-content h1 {
+  font-size: 34px;
+}
+
+.not-front .region-content h3 {
+  font-size: 30px;
+}
+
+.not-front .region-content h3 {
+  font-size: 26px;
+}
+
+.not-front .region-content h1,
+.not-front .region-content h2,
+.not-front .region-content h3,
+.not-front .region-content h4 {
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
 
 /* Tabs */
 
@@ -107,11 +143,24 @@ ul.tabs li{
 
 ul.tabs li a{
   border-radius: 5px 5px 0 0 ;
-  line-height: 30px;
+  line-height: 35px;
   display: block;
-  background: #337ab7;
+  background: #243F6D;
+  border: 1px solid #556581;
   color: #fff;
+  font-size: 17px;
 }
+
+ul.tabs li a:hover,
+ul.tabs li a:focus{
+  background: #162A4C;
+}
+
+ul.tabs li.active a:hover,
+ul.tabs li.active a:focus{
+  background: transparent;
+}
+
 
 ul.tabs li.active{
   margin-bottom: -1px;
@@ -121,10 +170,6 @@ ul.tabs li.active{
 ul.tabs li.active a{
   color: #333;
 }
-
-
-
-
 
 /***** Footer *****/
 #footer {
@@ -182,4 +227,179 @@ ul.tabs li.active a{
 .paragraphs-item-image-and-description .field-name-field-community-subtitle {
   font-size: 30px;
   margin-bottom: 10px;
+}
+
+/***** Forms *****/
+form label {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.grippie {
+  display: none !important;
+}
+
+.form-item, 
+.form-actions {
+  margin: 25px 0;
+}
+
+.form-item .description {
+  margin-top: 3px;
+}
+
+input:not([type=submit]):not([type=checkbox]):not([type=radio]) {
+  height: 35px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+input[type=file] {
+  display: inline-block;
+}
+
+select {
+  height: 35px;
+  line-height: 35px;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-top: -1px;
+  margin-right: 2px;
+}
+
+input:not([type=submit]):not([type=file]):focus,
+textarea:focus; {
+  box-shadow: 0 0 5px rgba(117, 197, 240, 0.8);
+}
+
+textarea {
+  border-radius: 5px;
+  padding: 5px;
+  resize: vertical;
+}
+
+input[type="submit"],
+button[type="submit"],
+.button {
+  border-radius: 5px;
+  line-height: 35px;
+  display: inline-block;
+  padding: 0 10px;
+  background: #243F6D;
+  border: 1px solid #556581;
+  box-shadow: 0 0 1px rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 17px;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+input[type="submit"]:focus,
+button[type="submit"]:focus,
+.button:hover,
+.button:focus {
+  background: #162A4C;
+}
+
+.button-operator {
+  margin: 0 10px;
+}
+
+/***** TABLES *****/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 40px 0;
+  font-size: 18px;
+}
+
+table th, 
+table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+table th {
+  text-align: center;
+  background: #4C5663;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+table th:first-child {
+  border-radius: 5px 0 0 0 ;
+}
+
+table td:nth-of-type(odd) {
+  background: #f0f0f0;
+}
+
+table th:last-child {
+  border-radius: 0 5px 0 0 ;
+}
+
+@media screen and (max-width: 1023px){
+  #nav .region-nav {
+    position: absolute;
+    left: 0;
+    top: 70px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 30px 0;
+    display: none;
+  }
+
+  #nav .region-nav .block-menu{
+    float: none;
+    text-align: center;
+  }
+
+  #nav .region-nav .block-menu li{
+    float: none;
+    margin: 0;
+    width: 100%;
+    line-height: 3;
+    text-align: center;
+  }
+
+  #nav .region-nav .block-menu li a{
+    display: block;
+  }
+
+  #nav #menu-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: url("../images/hamburger.png") no-repeat center;
+    background-size: 100px 50px;
+  }
+
+}
+
+@media screen and (max-width: 767px){
+  #nav {
+    padding: 0;
+  }
+
+  #logo img {
+    width: 200px;
+    height: auto;
+    margin: 0;
+  }
+
+  input,
+  img {
+    max-width: 100%;
+  }
 }

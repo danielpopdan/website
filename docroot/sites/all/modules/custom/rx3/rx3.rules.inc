@@ -20,15 +20,18 @@ function rx3_rules_condition_info() {
 }
 
 /**
- * Condition: Verify if RX3 parameter exists.
+ * Condition: Verify if RX3 session parameter exists.
  */
 function rx3_rules_condition_referrer($rx3) {
-//  error_log(print_r($_SESSION, true));
-//  error_log('test : ' . $_SESSION['rx3']);
-//  if ($rx3 == 'session') {
-//    return TRUE;
-//  }
-  if (isset($_SESSION["rx3"]) && $_SESSION["rx3"] == 'session') {
+  
+  $_SESSION['rx3'] = $rx3;
+  if (isset($_SESSION['rx3']) && $_SESSION['rx3'] == 'session') {
     return TRUE;
+  }
+  elseif (isset($_SESSION['rx3']) && $_SESSION['rx3'] == 'ticket') {
+    return TRUE;
+  }
+  else {
+    return FALSE;
   }
 }
