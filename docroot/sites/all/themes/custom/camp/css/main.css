@@ -331,8 +331,9 @@ button[type="submit"],
   font-size: 17px;
 }
 
-input#edit-cancel {
-  color: #243F6D;
+input#edit-cancel,
+input#edit-back {
+  color: #243F6D !important;
 }
 
 input[type="submit"]:hover,
