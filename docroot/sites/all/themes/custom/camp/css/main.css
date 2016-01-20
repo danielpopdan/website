@@ -331,6 +331,10 @@ button[type="submit"],
   font-size: 17px;
 }
 
+input#edit-cancel {
+  color: #243F6D;
+}
+
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 input[type="submit"]:focus,
