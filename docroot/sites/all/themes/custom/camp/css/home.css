@@ -189,6 +189,7 @@
 @media screen and (max-width: 640px){
   #block-map img{
     width: 200%;
+    max-width: 200%;
     margin-left: -50%;
   }
 }

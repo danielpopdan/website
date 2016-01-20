@@ -76,13 +76,20 @@ a:focus {
 }
 
 /***** Content *****/
+#content a {
+  color: #1C56B7;
+}
 
 #content ul,
 #content ol {
   list-style-position: inside;
+  font-size: 18px;
   padding-left: 10px;
 }
 
+#content .filter-help {
+  display: none;
+}
 
 #content ul li{
   list-style-type: disc;
@@ -98,6 +105,10 @@ a:focus {
   background: #EDEEF0;
   padding: 30px 0;
   margin: 0;
+}
+
+.feed-icon {
+  display: none;
 }
 
 .not-front .region-content p{
@@ -125,6 +136,14 @@ a:focus {
   margin-bottom: 20px;
 }
 
+.password-strength,
+.password-confirm {
+  display: none;
+}
+
+.password-confirm.form-text {
+  display: block;
+}
 
 /* Tabs */
 
@@ -147,7 +166,7 @@ ul.tabs li a{
   display: block;
   background: #243F6D;
   border: 1px solid #556581;
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
@@ -164,11 +183,25 @@ ul.tabs li.active a:focus{
 
 ul.tabs li.active{
   margin-bottom: -1px;
-  color: #333;
+  color: #333 !important;
 }
 
 ul.tabs li.active a{
-  color: #333;
+  color: #333 !important;
+}
+
+@media screen and (max-width: 767px){
+  ul.tabs li {
+    display: block;
+    float: none;
+    margin-bottom: 10px !important;
+    border-radius: 5px;
+  }
+
+  ul.tabs li a{
+    border-radius: 5px;
+    border: 1px solid #ccc !important;
+  }
 }
 
 /***** Footer *****/
@@ -257,6 +290,7 @@ input:not([type=submit]):not([type=checkbox]):not([type=radio]) {
 
 input[type=file] {
   display: inline-block;
+  padding-top: 6px !important;
 }
 
 select {
@@ -293,7 +327,7 @@ button[type="submit"],
   background: #243F6D;
   border: 1px solid #556581;
   box-shadow: 0 0 1px rgba(0,0,0,0.8);
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
