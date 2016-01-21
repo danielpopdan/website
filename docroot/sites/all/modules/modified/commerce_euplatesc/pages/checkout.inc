@@ -13,7 +13,7 @@ function commerce_euplatesc_order_form($form, &$form_state, $order, $settings) {
   $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
 
   // Order description.
-  $order_desc = '';
+  $order_desc = 'Order #' . $order->order_id . ': ';
 
   // Get all products.
   $products = array();
