@@ -76,13 +76,20 @@ a:focus {
 }
 
 /***** Content *****/
+#content a {
+  color: #243f6d;
+}
 
 #content ul,
 #content ol {
   list-style-position: inside;
+  font-size: 18px;
   padding-left: 10px;
 }
 
+#content .filter-help {
+  display: none;
+}
 
 #content ul li{
   list-style-type: disc;
@@ -94,13 +101,31 @@ a:focus {
 
 #page-title {
   width: 100%;
+  color: #243F6D;
   background: #EDEEF0;
   padding: 30px 0;
   margin: 0;
 }
 
+.feed-icon {
+  display: none;
+}
+
 .not-front .region-content p{
   line-height: 1.8;
+  font-size: 18px;
+}
+
+.not-front .region-content h1 {
+  font-size: 34px;
+}
+
+.not-front .region-content h3 {
+  font-size: 30px;
+}
+
+.not-front .region-content h3 {
+  font-size: 26px;
 }
 
 .not-front .region-content h1,
@@ -111,6 +136,14 @@ a:focus {
   margin-bottom: 20px;
 }
 
+.password-strength,
+.password-confirm {
+  display: none;
+}
+
+.password-confirm.form-text {
+  display: block;
+}
 
 /* Tabs */
 
@@ -133,7 +166,7 @@ ul.tabs li a{
   display: block;
   background: #243F6D;
   border: 1px solid #556581;
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
@@ -150,11 +183,25 @@ ul.tabs li.active a:focus{
 
 ul.tabs li.active{
   margin-bottom: -1px;
-  color: #333;
+  color: #333 !important;
 }
 
 ul.tabs li.active a{
-  color: #333;
+  color: #333 !important;
+}
+
+@media screen and (max-width: 767px){
+  ul.tabs li {
+    display: block;
+    float: none;
+    margin-bottom: 10px !important;
+    border-radius: 5px;
+  }
+
+  ul.tabs li a{
+    border-radius: 5px;
+    border: 1px solid #ccc !important;
+  }
 }
 
 /***** Footer *****/
@@ -235,10 +282,15 @@ form label {
   margin-top: 3px;
 }
 
-input:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]) {
+input:not([type=submit]):not([type=checkbox]):not([type=radio]) {
   height: 35px;
   padding: 0 10px;
   border-radius: 5px;
+}
+
+input[type=file] {
+  display: inline-block;
+  padding-top: 6px !important;
 }
 
 select {
@@ -266,23 +318,35 @@ textarea {
 }
 
 input[type="submit"],
-button[type="submit"] {
+button[type="submit"],
+.button {
   border-radius: 5px;
   line-height: 35px;
-  display: block;
+  display: inline-block;
   padding: 0 10px;
   background: #243F6D;
   border: 1px solid #556581;
-  box-shadow: 0 0 1px rgba(0,0,0,0.8);
-  color: #fff;
+  /*box-shadow: 0 0 1px rgba(0,0,0,0.8);*/
+  color: #fff !important;
   font-size: 17px;
+}
+
+input#edit-cancel,
+input#edit-back {
+  color: #243F6D !important;
 }
 
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 input[type="submit"]:focus,
-button[type="submit"]:focus {
+button[type="submit"]:focus,
+.button:hover,
+.button:focus {
   background: #162A4C;
+}
+
+.button-operator {
+  margin: 0 10px;
 }
 
 /***** TABLES *****/
@@ -290,6 +354,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 40px 0;
+  font-size: 18px;
 }
 
 table th, 
@@ -302,15 +367,78 @@ table th {
   text-align: center;
   background: #4C5663;
   color: #fff;
-  font-size: 17px;
+  font-size: 20px;
   border: none;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 table th:first-child {
   border-radius: 5px 0 0 0 ;
 }
 
+table td:nth-of-type(odd) {
+  background: #f0f0f0;
+}
+
 table th:last-child {
   border-radius: 0 5px 0 0 ;
+}
+
+@media screen and (max-width: 1023px){
+  #nav .region-nav {
+    position: absolute;
+    left: 0;
+    top: 70px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 30px 0;
+    display: none;
+  }
+
+  #nav .region-nav .block-menu{
+    float: none;
+    text-align: center;
+  }
+
+  #nav .region-nav .block-menu li{
+    float: none;
+    margin: 0;
+    width: 100%;
+    line-height: 3;
+    text-align: center;
+  }
+
+  #nav .region-nav .block-menu li a{
+    display: block;
+  }
+
+  #nav #menu-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: url("../images/hamburger.png") no-repeat center;
+    background-size: 100px 50px;
+  }
+
+}
+
+@media screen and (max-width: 767px){
+  #nav {
+    padding: 0;
+  }
+
+  #logo img {
+    width: 200px;
+    height: auto;
+    margin: 0;
+  }
+
+  input,
+  img {
+    max-width: 100%;
+  }
 }

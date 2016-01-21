@@ -1,14 +1,14 @@
-/* News Page */
-.page-news {
-
-}
-
-.page-news #block-system-main {
+.not-front .region-content {
   padding-top: 70px;
 }
 
+/* News Page */
 .page-news .views-row {
   margin-bottom: 70px;
+}
+
+.page-news .views-field-field-image img {
+  border: 2px solid #ccc;
 }
 
 .page-news .views-field-title {
@@ -30,7 +30,7 @@
   background: #243F6D;
   border: 1px solid #556581;
   box-shadow: 0 0 1px rgba(0,0,0,0.8);
-  color: #fff;
+  color: #fff !important;
   font-size: 17px;
 }
 
@@ -45,10 +45,6 @@
 
 }
 
-.page-user #block-system-main {
-  padding-top: 70px;
-}
-
 .page-user .profile .field-name-field-user-image img{
   width: 200px;
   height: auto;
@@ -56,4 +52,109 @@
 
 .page-user .field {
   margin-bottom: 10px;
+}
+
+/* Page Sponsorssss */
+.page-sponsors table td {
+  background: #fff;
+}
+
+.page-sponsors table td:nth-of-type(2) {
+  background: #FFF0F0;
+}
+
+.page-sponsors table td:nth-of-type(3) {
+  background: #F1F1F1;
+}
+
+.page-sponsors table td:nth-of-type(4) {
+  background: #FFF9E9;
+}
+
+.page-sponsors table td:nth-of-type(5) {
+  background: #F0F7FF;
+}
+
+.page-sponsors .pane-contact {
+  width: 400px;
+  margin: auto;
+}
+
+.page-taxonomy-term #content p{
+  display: none;
+}
+
+.page-taxonomy-term #content .term-listing-heading p{
+  display: block;
+}
+
+.page-taxonomy-term .field-name-field-logo img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and(max-width: 767px) {
+  .page-sponsors table,
+  .page-sponsors .table-title {
+    display: none;
+  }
+
+  .page-sponsors .pane-contact {
+    width: auto;
+  } 
+}
+
+/* Program */
+
+@media screen and (min-width: 1024px) {
+  .page-program .pane-form{
+    width: 60%;
+    margin: auto;
+  }
+}
+
+.page-program .view-proposed-sessions #edit-field-type-tid-wrapper .description{
+  display: none;
+}
+
+.page-program .view-proposed-sessions #edit-submit-proposed-sessions {
+  margin-top: 22px;
+}
+
+.page-program .filter-guidelines {
+  display: none;
+}
+
+/* ticket */
+.page-node-6 .form-radios{
+  clear: both;
+  padding-left: 15px;
+} 
+
+.page-node-6 .form-radios .form-type-radio label {
+  font-size: 18px;
+}
+
+.page-node-6 .form-radios .form-type-radio {
+  margin-bottom: 20px;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices {
+  border: 0;
+  margin-left: -10px;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices tr{
+  border: 0;
+}
+
+.page-node-6 .commerce-price-savings-formatter-prices td{
+  border: 0;
+  background: 0;
+  font-size: 30px;
+}
+
+.page-node-6 .submit-add-to-cart {
+  padding-left: 10px;
+  padding-top: 30px;
 }
