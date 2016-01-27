@@ -55,23 +55,23 @@
 }
 
 /* Page Sponsorssss */
-.page-sponsors .desktop-package td {
+.page-sponsors .desktop-packages td {
   background: #fff;
 }
 
-.page-sponsors .desktop-package td:nth-of-type(2) {
+.page-sponsors .desktop-packages td:nth-of-type(2) {
   background: #FFF0F0;
 }
 
-.page-sponsors .desktop-package td:nth-of-type(3) {
+.page-sponsors .desktop-packages td:nth-of-type(3) {
   background: #F1F1F1;
 }
 
-.page-sponsors .desktop-package td:nth-of-type(4) {
+.page-sponsors .desktop-packages td:nth-of-type(4) {
   background: #FFF9E9;
 }
 
-.page-sponsors .desktop-package td:nth-of-type(5) {
+.page-sponsors .desktop-packages td:nth-of-type(5) {
   background: #F0F7FF;
 }
 
