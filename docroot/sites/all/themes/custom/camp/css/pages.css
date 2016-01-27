@@ -96,11 +96,15 @@
 .page-sponsors .mobile-packages {
   display: none;
 }
-
-@media screen and(max-width: 767px) {
+ 
+@media screen and (max-width: 767px) {
 
   .page-sponsors .desktop-packages {
     display: none;
+  }
+
+  .page-sponsors .mobile-packages {
+    display: table;
   }
 
   .page-sponsors .pane-contact {
