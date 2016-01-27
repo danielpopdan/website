@@ -93,9 +93,13 @@
   height: auto;
 }
 
+.page-sponsors .mobile-packages {
+  display: none;
+}
+
 @media screen and(max-width: 767px) {
-  .page-sponsors table,
-  .page-sponsors .table-title {
+
+  .page-sponsors .desktop-packages {
     display: none;
   }
 
