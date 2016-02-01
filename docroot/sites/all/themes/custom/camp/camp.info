@@ -22,6 +22,5 @@ stylesheets[all][] = css/home.css
 stylesheets[all][] = css/pages.css
 stylesheets[all][] = css/better_messages.css
 
-scripts[] = js/libs/jquery-2.2.0.min.js
 scripts[] = js/libs/owl.carousel.min.js
 scripts[] = js/scripts.js
