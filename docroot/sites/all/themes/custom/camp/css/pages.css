@@ -187,8 +187,8 @@
 
 .page-attendees .views-row {
   text-align: center;
-  height: 200px;
-  margin-bottom: 30px;
+  height: 250px;
+  margin-bottom: 20px;
 }
 
 .page-attendees .views-field-field-user-image img{
@@ -198,6 +198,12 @@
   border: 3px solid #dedede;
 }
 
-.page-attendees .views-field-name{
+.page-attendees .views-field-name {
   font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.page-attendees .views-field-field-country-country,
+.page-attendees .views-field-field-country-locality {
+  font-size: 13px;
 }
