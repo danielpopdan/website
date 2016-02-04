@@ -297,12 +297,12 @@
 
 
 
-#block-dctransylvania-aboutus {
+#homepage-crew {
   padding: 40px 0;
   color: #6F6F6D;
 }
 
-#block-dctransylvania-aboutus .description{
+#homepage-crew .view-header{
   width: 70%;
   margin: auto;
   font-size: 24px;
@@ -310,13 +310,13 @@
 }
 
 
-#block-dctransylvania-aboutus h2{
+#homepage-crew h2{
  font-size: 40px;
   margin-bottom: 20px;
   font-weight: 400;
 }
 
-#block-dctransylvania-aboutus .user-image{
+#homepage-crew .views-field-field-user-image{
   display: block;
   width: 260px;
   height: 160px;
@@ -324,33 +324,31 @@
   background: url("../images/wings.png") no-repeat center 20px;
 }
 
-#block-dctransylvania-aboutus .col-xs-12:nth-child(2n+0) .user-image {
+#homepage-crew .col-xs-12:nth-child(2n+0) .views-field-field-user-image {
   -ms-transform: rotate(7deg); /* IE 9 */
   -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
   transform: rotate(7deg);
 }
 
-#block-dctransylvania-aboutus .col-xs-12:nth-child(2n+0) .user-image img{
+#homepage-crew .col-xs-12:nth-child(2n+0) .views-field-field-user-image img{
   -ms-transform: rotate(-7deg); /* IE 9 */
   -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
   transform: rotate(-7deg);
 }
 
-#block-dctransylvania-aboutus .col-xs-12:nth-child(3n+0) .user-image {
+#homepage-crew .col-xs-12:nth-child(3n+0) .views-field-field-user-image {
   -ms-transform: rotate(-10deg); /* IE 9 */
   -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
   transform: rotate(-10deg);
 }
 
-#block-dctransylvania-aboutus .col-xs-12:nth-child(3n+0) .user-image img{
+#homepage-crew .col-xs-12:nth-child(3n+0) .views-field-field-user-image img{
   -ms-transform: rotate(10deg); /* IE 9 */
   -webkit-transform: rotate(10deg); /* Chrome, Safari, Opera */
   transform: rotate(10deg);
 }
 
-
-
-#block-dctransylvania-aboutus .user-image img{
+#homepage-crew .views-field-field-user-image img{
   width: 140px;
   height: 140px;
   border-radius: 50%;
@@ -358,12 +356,12 @@
 }
 
 
-#block-dctransylvania-aboutus .user-name {
+#homepage-crew .views-field-name {
   font-size: 28px;
   margin-bottom: 0
 }
 
-#block-dctransylvania-aboutus .col-xs-12{
+#homepage-crew .col-xs-12{
   margin-bottom: 40px;
 }
 
