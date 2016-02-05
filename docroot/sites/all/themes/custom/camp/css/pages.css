@@ -132,6 +132,16 @@
   margin: 0;
 }
 
+
+#program-tables:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
 @media screen and (min-width: 1024px) {
   .page-program .pane-form{
     width: 60%;
