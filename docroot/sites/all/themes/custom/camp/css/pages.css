@@ -121,6 +121,17 @@
 
 /* Program */
 
+.page-program table {
+  width: 30%;
+  margin-right: 5%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.page-program #program-table-sunday {
+  margin: 0;
+}
+
 @media screen and (min-width: 1024px) {
   .page-program .pane-form{
     width: 60%;
