@@ -54,6 +54,7 @@ a:focus {
   padding: 0;
   margin-left: 40px;
   font-size: 20px;
+  position: relative;
 }
 
 #nav .block-menu li a:hover,
@@ -66,6 +67,22 @@ a:focus {
 #nav .block-menu li a.active,
 #nav .block-menu li a.active-trail {
   color: #75C5F0;
+}
+
+#nav .expanded .menu {
+  position: absolute;
+  left: -30px;
+  top: 70px;
+  background: rgba(0,0,0,0.7);
+  display: none;
+}
+
+#nav .expanded .menu li{
+  margin: 0 30px;
+}
+
+#nav .expanded:hover .menu {
+  display: block;
 }
 
 
