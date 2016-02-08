@@ -366,6 +366,10 @@
 
 #homepage-crew .col-xs-12 {
   margin-bottom: 40px;
+  display: inline-block;
+  vertical-align: top;
+  float: none !important;
+  margin: 0 -3px;
 }
 
 
