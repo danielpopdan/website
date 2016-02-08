@@ -228,3 +228,27 @@
 .page-attendees .views-field-field-country-locality {
   font-size: 13px;
 }
+
+/* Proposed sessions */
+
+.page-proposed-session {
+
+}
+
+.page-proposed-session .views-exposed-form {
+  margin-bottom: 80px;
+}
+
+.page-proposed-session .views-exposed-form .description {
+  display: none;
+}
+
+.page-proposed-session .views-exposed-widget .form-submit {
+  margin-top: 22px;
+}
+
+.page-proposed-session .view-proposed-sessions .views-row {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ddd;
+}
