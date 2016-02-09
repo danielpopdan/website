@@ -81,6 +81,10 @@ a:focus {
   margin: 0 30px;
 }
 
+#nav .expanded .menu li a{
+  white-space: nowrap;
+}
+
 #nav .expanded:hover .menu {
   display: block;
 }
