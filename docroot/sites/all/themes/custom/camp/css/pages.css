@@ -244,14 +244,17 @@
 
 }
 
+.page-sessions .views-exposed-form,
 .page-proposed-session .views-exposed-form {
   margin-bottom: 80px;
 }
 
+.page-sessions .views-exposed-form .description,
 .page-proposed-session .views-exposed-form .description {
   display: none;
 }
 
+.page-sessions .views-exposed-widget .form-submit,
 .page-proposed-session .views-exposed-widget .form-submit {
   margin-top: 22px;
 }

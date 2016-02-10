@@ -53,7 +53,7 @@ a:focus {
   margin: 0;
   padding: 0;
   margin-left: 40px;
-  font-size: 20px;
+  font-size: 18px;
   position: relative;
 }
 
@@ -75,6 +75,7 @@ a:focus {
   top: 70px;
   background: rgba(0,0,0,0.7);
   display: none;
+  line-height: 50px
 }
 
 #nav .expanded .menu li{
@@ -427,19 +428,41 @@ table th:last-child {
     float: none;
     margin: 0;
     width: 100%;
-    line-height: 3;
+    font-size: 22px;
+    line-height: 55px;
     text-align: center;
   }
 
   #nav .region-nav .block-menu li a{
-    display: block;
+    display: inline;
+  }
+
+  #nav .expanded {
+    position: relative;
+  }
+
+  #nav .expanded:after {
+    content: ">";
+    display: inline-block;
+    width: 40px;
+    margin-left: 30px;
+    font-size: 30px;
+    position: absolute;
+    right: 20px;
+    top: 0;
   }
 
   #nav .expanded .menu {
     position: static;
     background: transparent;
-    display: block;
+    display: none;
   }
+
+  #nav .expanded .menu li{
+    font-size: 18px;
+    color: #999;
+  }
+
 
   #nav #menu-button {
     display: block;
