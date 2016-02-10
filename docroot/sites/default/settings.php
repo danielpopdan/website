@@ -602,3 +602,6 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/transylvania/transylvania-settings.inc');
 }
 
+
+// Fuck you Varnish cache!
+drupal_add_http_header('Cache-Control', 'public, max-age=0');
