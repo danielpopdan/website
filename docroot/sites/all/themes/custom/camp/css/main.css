@@ -435,6 +435,12 @@ table th:last-child {
     display: block;
   }
 
+  #nav .expanded .menu {
+    position: static;
+    background: transparent;
+    display: block;
+  }
+
   #nav #menu-button {
     display: block;
     width: 40px;
