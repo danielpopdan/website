@@ -5,7 +5,9 @@
       $(".region-nav").toggle(0);
     });
     $("#nav li.expanded").on('touchstart', function(event) {
-      $(this).find(".menu").toggle(0);
+      if (event.target == this) {
+        $(this).find(".menu").toggle(0);
+      }
     });
   }); 
 }) (jQuery);
