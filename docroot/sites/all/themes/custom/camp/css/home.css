@@ -523,3 +523,19 @@
   float: none;
   display: inline-block;
 }
+
+.homepage-sponsors .views-row img {
+  height: auto;
+}
+
+.homepage-sponsors .sponsor-171 img {
+  width: 200px;
+}
+
+.homepage-sponsors .sponsor-176 img {
+  width: 240px;
+}
+
+.homepage-sponsors .sponsor-151 img {
+  width: 100px;
+}
