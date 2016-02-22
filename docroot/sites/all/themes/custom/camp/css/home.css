@@ -515,11 +515,13 @@
   padding: 40px 0;
 }
 
-#homepage-sponsors-diamond,
-#homepage-sponsors-gold,
-#homepage-sponsors-community {
-  clear: none;
-  height: 380px;
+@media screen and (min-width: 1024px) {
+  #homepage-sponsors-diamond,
+  #homepage-sponsors-gold,
+  #homepage-sponsors-community {
+    clear: none;
+    height: 380px;
+  }
 }
 
 .homepage-sponsors h2 {
