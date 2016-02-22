@@ -507,3 +507,19 @@
 #block-dctransylvania-aboutus .col-xs-12 {
   margin-bottom: 40px;
 }
+
+/* Sponsors */
+
+.homepage-sponsors {
+  background: #ddd;
+  padding: 40px 0;
+}
+
+.homepage-sponsors h2 {
+  margin-bottom: 30px;
+}
+
+.homepage-sponsors .views-row {
+  float: none;
+  display: inline-block;
+}
