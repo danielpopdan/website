@@ -17,6 +17,7 @@ regions[sidebar_second] = Sidebar Second
 stylesheets[all][] = css/libs/css_reset.css
 stylesheets[all][] = css/libs/bootstrap.min.css
 stylesheets[all][] = css/libs/owl.carousel.css
+stylesheets[all][] = css/libs/font-awesome.css
 stylesheets[all][] = css/main.css
 stylesheets[all][] = css/home.css
 stylesheets[all][] = css/pages.css

@@ -226,6 +226,32 @@
   width: 120px;
   height: 120px;
   border: 3px solid #dedede;
+  position: relative;
+}
+
+.page-attendees .views-field-field-user-image:after{
+  position: absolute;
+  top: 0;
+  right: 30px;
+  font-family: "FontAwesome";
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  line-height: 1;
+  text-align: center;
+  z-index: 100;
+}
+
+.page-attendees .user-organizer:after {
+  content: "\f013";
+  color: #006D92;
+}
+
+
+.page-attendees .user-individual-sponsor:after {
+  content: "\f153";
+  color: #FF8B0B;
 }
 
 .page-attendees .views-field-name {
