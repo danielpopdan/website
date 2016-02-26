@@ -515,6 +515,14 @@
   padding: 40px 0;
 }
 
+.homepage-sponsors .views-row {
+    margin: 0 25px;
+}
+
+#homepage-sponsors-individual .homepage-sponsors .views-row {
+    margin: 0x;
+}
+
 @media screen and (min-width: 1024px) {
   #homepage-sponsors-community,
   #homepage-sponsors-gold,
@@ -555,6 +563,11 @@
 /* Kalamuna */
 .homepage-sponsors .sponsor-151 img {
   width: 100px;
+}
+
+/* Acquia */
+.homepage-sponsors .sponsor-211 img {
+  width: 220px;
 }
 
 #homepage-sponsors-individual .views-row {
