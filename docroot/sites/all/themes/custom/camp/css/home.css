@@ -518,7 +518,7 @@
 @media screen and (min-width: 1024px) {
   #homepage-sponsors-diamond,
   #homepage-sponsors-gold,
-  #homepage-sponsors-community {
+  #homepage-sponsors-individual {
     clear: none;
     height: 380px;
   }
