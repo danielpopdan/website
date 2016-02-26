@@ -537,14 +537,22 @@
   height: auto;
 }
 
-.homepage-sponsors .sponsor-171 img {
-  width: 200px;
+/* Digi */
+.homepage-sponsors .sponsor-196 img {
+  width: 340px;
 }
 
+/* Softescu */
+.homepage-sponsors .sponsor-201 img {
+  width: 420px;
+}
+
+/* Amplexor */
 .homepage-sponsors .sponsor-176 img {
   width: 240px;
 }
 
+/* Kalamuna */
 .homepage-sponsors .sponsor-151 img {
   width: 100px;
 }
