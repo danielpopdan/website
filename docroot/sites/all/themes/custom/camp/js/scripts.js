@@ -9,5 +9,10 @@
         $(this).find(".menu").toggle(0);
       }
     });
+
+    if ($("#sponsor-gauge").length > 0) {
+      var percent = (parseInt($("#gauge-meter").data("value")) * 100) / parseInt($("#sponsor-gauge").data("value"));
+      $("#gauge-meter").width(percent+'%');
+     }
   }); 
 }) (jQuery);

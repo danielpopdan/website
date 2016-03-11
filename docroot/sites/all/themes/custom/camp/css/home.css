@@ -508,6 +508,7 @@
   margin-bottom: 40px;
 }
 
+
 /* Sponsors */
 
 .homepage-sponsors {
@@ -516,11 +517,11 @@
 }
 
 .homepage-sponsors .views-row {
-    margin: 0 25px;
+  margin: 0 25px;
 }
 
 #homepage-sponsors-individual .homepage-sponsors .views-row {
-    margin: 0x;
+  margin: 0x;
 }
 
 @media screen and (min-width: 1024px) {
@@ -539,33 +540,51 @@
 .homepage-sponsors .views-row {
   float: none;
   display: inline-block;
+  margin-bottom: 30px;
 }
 
 .homepage-sponsors .views-row img {
   height: auto;
 }
 
+
 /* Digi */
+
 .homepage-sponsors .sponsor-196 img {
   width: 340px;
 }
 
+
 /* Softescu */
+
 .homepage-sponsors .sponsor-201 img {
   width: 420px;
 }
 
+
 /* Amplexor */
+
 .homepage-sponsors .sponsor-176 img {
   width: 240px;
 }
 
+
+/* Pitech++ */
+
+.homepage-sponsors .sponsor-106 img {
+  width: 255px;
+}
+
+
 /* Kalamuna */
+
 .homepage-sponsors .sponsor-151 img {
   width: 100px;
 }
 
+
 /* Acquia */
+
 .homepage-sponsors .sponsor-211 img {
   width: 220px;
 }
@@ -586,3 +605,84 @@
   margin: 10px 0;
   font-size: 18px;
 }
+
+
+/* Sponsor Gauge */
+
+#sponsor-gauge {
+  margin-top: 40px;
+  position: relative;
+  border: 2px solid #AFAFAF;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 25px;
+  background: #D2D2D2;
+  color: #fff;
+}
+
+#sponsor-gauge:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+#gauge-mandatory {
+  width: 57%;
+  height: 25px;
+  border-right: 2px solid #AFAFAF;
+  float: left;
+  position: relative;
+  position: relative;
+  z-index: 20;
+}
+
+#gauge-nice {
+  width: 22%;
+  height: 25px;
+  border-right: 2px solid #AFAFAF;
+  position: relative;
+  float: left;
+  position: relative;
+  z-index: 20;
+}
+
+#gauge-cool {
+  width: 21%;
+  height: 25px;
+  position: relative;
+  float: left;
+  z-index: 20;
+}
+
+#gauge-meter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/survey_bg.png") no-repeat left center;
+  z-index: 10;
+  height: 25px;
+  width: 0%;
+  -webkit-transition: width 3s;
+  -o-transition: width 3s;
+  transition: width 3s;
+  -webkit-transition-delay: 2s;
+  border-right: 2px solid #fff;
+  -o-transition-delay: 2s;
+  transition-delay: 2s;
+  border-radius: 10px 0 0 10px;
+}
+
+/*#sponsor-gauge span {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -27px;
+  line-height: 1;
+  font-weight: 200;
+  font-size: 16px;
+}
+*/
