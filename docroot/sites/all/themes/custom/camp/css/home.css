@@ -529,7 +529,7 @@
   #homepage-sponsors-gold,
   #homepage-sponsors-individual {
     clear: none;
-    height: 380px;
+    height: 450px;
   }
 }
 
@@ -582,6 +582,11 @@
   width: 100px;
 }
 
+/* Intellix */
+
+.homepage-sponsors .sponsor-316 img {
+  width: 210px;
+}
 
 /* Acquia */
 
