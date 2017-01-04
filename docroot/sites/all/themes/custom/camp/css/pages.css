@@ -188,8 +188,8 @@
 
 .page-node-6 .commerce-price-savings-formatter-prices,
 .page-node-151 .commerce-price-savings-formatter-prices {
-  border: 0;
-  margin-left: -10px;
+  border: 0;  
+  margin: 0 0 0 -10px;
 }
 
 .page-node-6 .commerce-price-savings-formatter-prices tr,
@@ -221,7 +221,13 @@
   font-size: 30px;
   padding-left: 15px;
 }
-
+.page-node-151 .commerce-product-field-commerce-price {
+    display: none;
+}
+.page-node-151 .commerce-add-to-cart .field-name-commerce-price {
+    padding-left: 15px;
+    margin-top: -10px;
+}
 /* Attendees page */
 .page-attendees {
 
