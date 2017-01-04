@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * 
+ * Commerce related functionalities.
+ */
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function dctransylvania_commerce_form_alter(&$form, &$form_state, $form_id) {
+
+  if ((strpos($form_id, 'commerce_cart_add_to_cart_form_') === 0)) {    
+    $form['attributes']['product_select']['#title'] = t('Ticket type');
+    $form['attributes']['product_select']['#weight'] = -15;
+    $form['attributes']['field_lunch']['#weight'] = -5;
+
+    $product = $form_state['default_product'];
+    $view_mode = $form_state['context']['view_mode'];
+    $form['price'] = field_view_field('commerce_product', $product, 'commerce_price', $view_mode);
+  }
+}
