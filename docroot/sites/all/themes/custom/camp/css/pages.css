@@ -171,18 +171,20 @@
 }
 
 /* ticket */
-.page-node-6 .form-radios, .page-node-151 .form-radios{
+.page-node-6 .form-radios, .page-node-151 .form-radios, .page-node-151 .form-select{
   clear: both;
   padding-left: 15px;
 } 
 
 .page-node-6 .form-radios .form-type-radio label,
-.page-node-151 .form-radios .form-type-radio label {
+.page-node-151 .form-radios .form-type-radio label,
+.page-node-151 .form-type-select .form-select {
   font-size: 18px;
 }
 
 .page-node-6 .form-radios .form-type-radio,
-.page-node-151 .form-radios .form-type-radio {
+.page-node-151 .form-radios .form-type-radio,
+.page-node-151 .form-type-select .form-select {
   margin-bottom: 20px;
 }
 
@@ -216,7 +218,8 @@
   line-height: 20px;
   margin-top: 30px;
 }
-.page-node-151 .form-type-radios label:first-child{
+.page-node-151 .form-type-radios label:first-child,
+.page-node-151 .form-type-select label:first-child {
   clear: both;
   font-size: 30px;
   padding-left: 15px;
