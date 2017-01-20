@@ -16,8 +16,12 @@ function dctransylvania_commerce_form_alter(&$form, &$form_state, $form_id) {
     $form['attributes']['product_select']['#title'] = t('Ticket type');
     $form['attributes']['product_select']['#weight'] = -15;    
 
+    // Put the line item fields before the price field.
+    $form['line_item_fields']['#weight'] = 10;
+
     $product = $form_state['default_product'];
     $view_mode = $form_state['context']['view_mode'];
     $form['price'] = field_view_field('commerce_product', $product, 'commerce_price', $view_mode);
+    $form['price']['#weight'] = 11;
   }
 }
