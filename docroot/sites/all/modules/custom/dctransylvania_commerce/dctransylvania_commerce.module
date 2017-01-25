@@ -24,4 +24,13 @@ function dctransylvania_commerce_form_alter(&$form, &$form_state, $form_id) {
     $form['price'] = field_view_field('commerce_product', $product, 'commerce_price', $view_mode);
     $form['price']['#weight'] = 11;
   }
+  // Disable quantity field and remove update cart button on cart page.
+  if ($form_id === 'views_form_commerce_cart_form_default') {    
+    $form['actions']['submit']['#access'] = FALSE;
+    foreach($form['edit_quantity'] as &$quantity) {
+      if (is_array($quantity)) {
+        $quantity['#disabled'] = TRUE;
+      }
+    }
+  }
 }
