@@ -558,7 +558,7 @@
 /* Softescu */
 
 .homepage-sponsors .sponsor-201 img {
-  width: 420px;
+  width: 320px;
 }
 
 
@@ -572,7 +572,7 @@
 /* Pitech++ */
 
 .homepage-sponsors .sponsor-106 img {
-  width: 255px;
+  width: 320px;
 }
 
 
@@ -592,6 +592,12 @@
 
 .homepage-sponsors .sponsor-211 img {
   width: 220px;
+}
+
+/* Reea */
+
+.homepage-sponsors .sponsor-211 img {
+  width: 320px;
 }
 
 #homepage-sponsors-individual .views-row {
