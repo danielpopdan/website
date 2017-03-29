@@ -31,7 +31,7 @@ class CommerceEuPlatescHooks {
       'file' => 'pages/checkout.inc',
       'type' => MENU_CALLBACK,
     );
-
+//https://secure.euplatesc.ro/tdsprocess/replyd.php
     return $items;
   }
 
