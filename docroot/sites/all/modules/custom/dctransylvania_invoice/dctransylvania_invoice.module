@@ -82,7 +82,7 @@ function dctransylvania_invoice_generate_tokens($variables) {
 
   $uid = $variables['elements']['#entity']->uid;
   $user = user_load($uid);
-
+watchdog('dct', '<pre>' . print_r($variables['elements']['#entity'], true));
   $billing_data = dctransylvania_invoice_get_billing($variables['elements']['#entity']->commerce_customer_billing['und'][0]['profile_id']);
   $billing_address = $billing_data->commerce_customer_address[LANGUAGE_NONE][0];
   $payment_method = explode('|', $variables['elements']['#entity']->data['payment_method']);
@@ -133,7 +133,6 @@ function dctransylvania_invoice_get_billing($pid) {
   }
   // Billing address.
   $billing = entity_load('commerce_customer_profile', array($pid));
-watchdog('dct', '<pre>' . print_r($billing, true));
   return reset($billing);//->commerce_customer_address[LANGUAGE_NONE][0];
 }
 
