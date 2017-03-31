@@ -95,9 +95,16 @@ html{
   border: 1px solid black;
 }
 .line-items-table .views-table th, .line-items-table .views-table td {
-  text-align: center;
-  border-collapse: collapse;
-  border: 1px solid black;
+  text-align: center;  
+}
+.line-items-table .views-table .b-b {
+    border-bottom: 1px solid black;
+}
+.line-items-table .views-table .r-b {
+    border-right: 1px solid black;
+}
+.line-items-table .views-table .l-b {
+    border-left: 1px solid black;
 }
 /* FOOTER*/
 .footer{
