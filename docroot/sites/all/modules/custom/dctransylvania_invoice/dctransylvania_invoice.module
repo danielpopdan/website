@@ -92,10 +92,14 @@ function dctransylvania_invoice_generate_tokens($variables) {
   $order_total = $order_wrapper->commerce_order_total->value();
   $total_ex_vat = commerce_price_component_total($order_total, 'base_price');
   $total_vat = commerce_price_component_total($order_total, 'tax|tva_24');
-
+watchdog('dct', '<pre>' . print_r($billing_address, true));
   return array(
     'cumparator_name' => $billing_address['name_line'],
-    'adresa_facturare' => $billing_address['thoroughfare'] . '<br/>' . $billing_address['locality'] . ' ' . $billing_address['postal_code'],
+    'adresa_facturare' => $billing_address['thoroughfare']
+    . '<br/>' . $billing_address['locality'] . ' ' . $billing_address['postal_code'],
+//    . '<br/> ' . $billing_address['country'],
+//    . '<br/> ' . $billing_address['cif'],
+//    . '<br/> ' . $billing_address['cif'],
     'telefon' => '-',
     'nr_comanda' => $variables['elements']['#entity']->order_number,
     'modalitate_plata' => $payment_method['title'],
