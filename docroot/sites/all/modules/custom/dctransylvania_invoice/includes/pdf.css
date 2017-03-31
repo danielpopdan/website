@@ -90,7 +90,15 @@ html{
 .line-items .views-table .denumire-produs{
   width: 200px;  
 }
-
+.line-items-table {
+  border: 1px solid black;
+}
+.line-items-table .views-table{  
+  width: 100%;  
+}
+.line-items-table th, line-items-table td {
+  text-align: center;
+}
 /* FOOTER*/
 .footer{
   position: absolute;
