@@ -1,6 +1,5 @@
 <div class="invoice-invoiced">  
-  <div class="header">
-    <img src="<?php print $content['invoice_logo']['#value']; ?>"/>
+  <div class="header">    
     <div class="invoice-header"><?php print render($content['invoice_header']); ?></div>
   </div>
   <div class="invoice-text"><?php print render($content['invoice_text']); ?></div>
