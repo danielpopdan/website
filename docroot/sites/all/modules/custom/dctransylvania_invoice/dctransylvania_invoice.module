@@ -111,6 +111,7 @@ watchdog('dct', '<pre>' . print_r($variables['elements']['#entity'], true));
     'nr_comanda' => $variables['elements']['#entity']->order_number,
     'modalitate_plata' => $payment_method['title'],
     'data_facturii' => date('d.m.Y', $variables['elements']['#entity']->created),
+    'data_incasarii' => date('d.m.Y', $variables['elements']['#entity']->field_commerce_billy_i_date[LANGUAGE_NONE][0]['value']),
     'valoare_total_fara_tva' => commerce_currency_format(($order_total['amount'] - $total_vat['amount']), $order_total['currency_code']),
     'valoare_tva' => commerce_currency_format($total_vat['amount'], $order_total['currency_code']),
     'total_factura' => commerce_currency_format($order_total['amount'], $order_total['currency_code']),
