@@ -90,13 +90,11 @@ html{
 .line-items .views-table .denumire-produs{
   width: 200px;  
 }
-.line-items-table {
-  border: 1px solid black;
-}
 .line-items-table .views-table{  
   width: 100%;  
+  border: 1px solid black;
 }
-.line-items-table th, line-items-table td {
+.line-items-table .views-table th, .line-items-table .views-table td {
   text-align: center;
 }
 /* FOOTER*/
