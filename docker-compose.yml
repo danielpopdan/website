@@ -23,7 +23,7 @@ services:
       PHP_XDEBUG_DEFAULT_ENABLE: 1
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
     volumes:
-      - web:/var/www/
+      - ./:/var/www/html
 
   nginx:
     image: wodby/drupal-nginx:8-1.13-2.4.2
@@ -33,9 +33,9 @@ services:
       NGINX_STATIC_CONTENT_OPEN_FILE_CACHE: "off"
       NGINX_ERROR_LOG_LEVEL: debug
       NGINX_BACKEND_HOST: php
-      NGINX_SERVER_ROOT: /var/www/html/web
+      NGINX_SERVER_ROOT: /var/www/html/docroot
     volumes:
-      - web:/var/www/html
+      - ./:/var/www/html
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
@@ -92,5 +92,4 @@ services:
       - 'traefik.frontend.rule=Host:mailhog.dct.localhost'
 
 volumes:
-  web:
-.gitignore
+  docroot:
