@@ -51,7 +51,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('styles', function() {
-	return gulp.src(['style/css/main.css'])
+	gulp.src(['css/main.css'])
 		.pipe(gulp.dest(cssDest))
 		.pipe(cssmin())
 		.pipe(rename({suffix: '.min'}))

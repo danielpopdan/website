@@ -47,3 +47,7 @@ table {
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
+
+.l-footer {
+  -webkit-transform: translate(20%);
+          transform: translate(20%); }
