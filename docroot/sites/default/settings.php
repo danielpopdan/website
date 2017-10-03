@@ -729,7 +729,7 @@ $settings['site_uuid'] = '720b286c-a749-11e7-abc4-cec278b6b50a';
 # Set the installation profile, this must be done to eliminate configuration
 # conflicts with other modules.
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'config/sync';
+$config_directories['sync'] = DRUPAL_ROOT . '/config/sync';
 // Fix for issue: https://github.com/acquia/blt/issues/40
 $settings['cache']['default'] = 'cache.backend.database';
 
