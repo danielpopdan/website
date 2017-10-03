@@ -1,0 +1,20 @@
+{
+  "name": "drupaltransylvania-drupalcamp",
+  "version": "1.0.0",
+  "description": "Drupal Transylvania - Drupal Camp theme",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.4",
+    "jshint": "^2.9.5"
+  }
+}
