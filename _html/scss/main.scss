@@ -2,9 +2,11 @@
 @import 'base/reset';
 @import 'base/fonts';
 @import 'base/variables';
+@import 'base/mixins';
 @import 'base/elements';
 
 // LAYOUT
+@import 'layout/grid';
 @import 'layout/footer';
 @import 'layout/header';
 

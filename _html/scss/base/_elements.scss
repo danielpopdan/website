@@ -1,6 +1,15 @@
+html {
+    font-size: 100%;
+}
+
 body {
     background-color: $white;
     font-family:      $font-main;
     font-size:        $global-font-size;
     line-height:      $global-line-height;
+}
+
+a {
+    @include disable-outline;
+    text-decoration: none;
 }
