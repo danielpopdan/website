@@ -7,6 +7,7 @@ var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var sassLint = require('gulp-sass-lint');
 var autoprefixer = require('gulp-autoprefixer');
+var sourcemaps = require('gulp-sourcemaps');
 
 var scssFiles = 'scss/**/*.scss';
 var cssDest = 'css/';
@@ -44,14 +45,15 @@ gulp.task('sass', function() {
 			files: {ignore: 'scss/base/_reset.scss'}	
 		}))
 		.pipe(sassLint.format())
-		.pipe(sassLint.failOnError())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer())
+		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(sourcemaps.write())
+		.pipe(autoprefixer())
 		.pipe(gulp.dest(cssDest));
 });
 
 gulp.task('styles', function() {
-	gulp.src(['css/main.css'])
+	return gulp.src(['css/main.css'])
 		.pipe(gulp.dest(cssDest))
 		.pipe(cssmin())
 		.pipe(rename({suffix: '.min'}))
@@ -62,7 +64,7 @@ gulp.task('watch', function () {
 	gulp.watch('scripts/*.js', ['scripts-lint']);
 	gulp.watch('scripts/*.js', ['scripts']);
 	gulp.watch(scssFiles, ['sass']);
-	gulp.watch(cssDest, ['styles']);
+	gulp.watch('css/main.css', ['styles']);
 });
 
-gulp.task('default', ['scripts', 'scripts-lint', 'sass', 'styles']);
+gulp.task('default', ['scripts', 'scripts-lint', 'sass', 'styles', 'watch']);
