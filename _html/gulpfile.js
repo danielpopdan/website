@@ -40,7 +40,8 @@ gulp.task('sass', function() {
 				'property-sort-order': ['1', {'order': 'smacss'}],
 				'no-ids': '0',
 				'no-url-domains': '0',
-				'no-url-protocols': '0'
+				'no-url-protocols': '0',
+				'mixins-before-declarations': '0'
 			},
 			files: {ignore: 'scss/base/_reset.scss'}	
 		}))

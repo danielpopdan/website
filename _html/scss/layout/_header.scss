@@ -1,2 +1,58 @@
-.l-header {
+.header {
+    @include clearfix;
+    position:   fixed;
+    top:        0;
+    right:      0;
+    left:       0;
+    height:     4.5rem;
+    padding:    0 1.5rem;
+    background: $primary-color;
+    opacity:    .8;
+
+    @include tablet {
+        height:  7rem;
+        padding: 0 3.25rem;
+    }
+
+    &-logo {
+        @include vertical-center;
+        left:   1.5rem;
+
+        @include tablet {
+            left: 3.25rem;
+        }
+
+        a {
+            display:         inline-block;
+            width:           3rem;
+            height:          3.75rem;
+            background:      url($logos-path + 'vampire-logo.png') no-repeat;
+            background-size: 3rem;
+
+            @include tablet {
+                width:           34rem;
+                height:          3.875rem;
+                background:      url($logos-path + 'header-logo.png') no-repeat;
+                background-size: 34rem;
+            }
+        }
+    }
+
+    &-login {
+        @include vertical-center;
+        right: 1.5rem;
+
+        @include tablet {
+            right: 3.25rem;
+        }
+
+        a {
+            color: $white;
+            font-size: $global-font-size * 1.5;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
 }

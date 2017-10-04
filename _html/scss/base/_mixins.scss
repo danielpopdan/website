@@ -1,0 +1,43 @@
+@mixin vertical-center {
+    position:            absolute;
+    top:                 50%;
+    transform:           translate3d(0, -50%, 0);
+    backface-visibility: hidden;
+}
+
+@mixin horizontal-center {
+    position:            absolute;
+    left:                50%;
+    transform:           translate3d(-50%, 0, 0);
+    backface-visibility: hidden;
+}
+
+@mixin clearfix {
+    &::before,
+    &::after {
+        display: table;
+        content: '';
+    }
+
+    &::after {
+        clear: both;
+    }
+}
+
+@mixin disable-outline {
+    &:focus {
+        outline: 0;
+    }
+}
+
+@mixin tablet {
+    @media all and (min-width: #{$tablet-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media all and (min-width: #{$desktop-breakpoint}) {
+        @content;
+    }
+}
