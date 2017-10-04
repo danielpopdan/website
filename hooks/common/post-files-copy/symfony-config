@@ -1,0 +1,89 @@
+#!/usr/bin/env php
+<?php
+if (!empty($argv[1])) {
+  // create folder and files.
+  create_ff();
+  $project_folder = $argv[1];
+  if (!empty($argv[2]) && $argv[2] != 'prod') {
+    $project_folder .= $argv[2];
+  }
+  $db_config_file = '/var/www/site-php/' . $project_folder . '/config.json';
+  if (file_exists($db_config_file)) {
+    $db_config = json_decode(file_get_contents($db_config_file), TRUE);
+    if (is_array($db_config) && !empty($db_config['databases']['symfony'])) {
+      if (count($db_config['databases']['symfony']['db_url_ha']) >= 1) {
+        $first = TRUE;
+        foreach ($db_config['databases']['symfony']['db_url_ha'] as $id => $db_url_ha) {
+          if ($first) {
+            $first = FALSE;
+            config('all', $db_url_ha);
+          }
+          config($id, $db_url_ha);
+        }
+        cache_clear();
+      }
+    }
+  }
+}
+function config($env, $url) {
+  $url = parse_url($url);
+  // Decode url-encoded information in the db connection string
+  $url['user'] = urldecode($url['user']);
+  // Test if database url has a password.
+  $url['pass'] = isset($url['pass']) ? urldecode($url['pass']) : '';
+  $url['host'] = urldecode($url['host']);
+  $url['path'] = urldecode($url['path']);
+  if (!isset($url['port'])) {
+    $url['port'] = NULL;
+  }
+  $mysql = 'mysql:host=' . $url['host'] .
+           ';dbname=' . substr($url['path'], 1) .
+           ($url['port'] ? ';port=' . $url['port'] : '');
+  $cmd = 'php ' . dirname(__FILE__) . '/../../../crm/symfony configure:database --class=sfDoctrineDatabase --name=doctrine' .
+         ' --env=' . $env .
+         ' "' . $mysql . '" ' .
+         $url['user'] . ' ' . $url['pass'];
+  shell_exec($cmd);
+}
+
+function cache_clear() {
+  $cmd = 'php ' . dirname(__FILE__) . '/../../../crm/symfony cache:clear --env=all';
+  shell_exec($cmd);
+}
+
+/**
+ * Create folders and files.
+ */
+function create_ff() {
+  $base = dirname(__FILE__) . '/../../../crm/';
+  $folders = array(
+    $base . 'cache',
+    $base . 'log',
+    $base . 'data',
+  );
+  foreach ($folders as $folder) {
+    $newdir = readlink($folder);
+    $dir = $base . $newdir;
+    if (!file_exists($folder)) {
+      mkdir($dir, 0755, TRUE);
+    }
+  }
+  // export folder
+  $folder = $base . 'data';
+  $newdir = readlink($folder);
+  $dir = $base . $newdir . '/export';
+  if (!file_exists($dir)) {
+    mkdir($dir, 0755, TRUE);
+  }
+  // config file
+  $file = $base . 'config/databases.yml';
+  $newfile = readlink($file);
+  $new_file = $base . 'config/' . $newfile;
+  $new_file_dir = dirname($new_file);
+  if (!file_exists($new_file_dir)) {
+    mkdir($new_file_dir, 0755, TRUE);
+  }
+  // Empty database config file.
+  $fh = fopen($new_file, 'w');
+  fclose($fh);
+}
