@@ -3,13 +3,30 @@ html {
 }
 
 body {
+    padding:          4.5rem 0 0;
     background-color: $white;
+    color:            $primary-color;
     font-family:      $font-main;
     font-size:        $global-font-size;
     line-height:      $global-line-height;
+
+    @include tablet {
+        padding: 7rem 0 0;
+    }
 }
 
 a {
     @include disable-outline;
     text-decoration: none;
+}
+
+img {
+    display: block;
+    width:   100%;
+}
+
+p {
+    font-size:   $global-font-size;
+    line-height: $global-line-height;
+    margin:      0 0 $global-margin;
 }

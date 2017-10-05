@@ -1,0 +1,37 @@
+.footer {
+    position: relative;
+
+    &-sponsor {
+        @include horizontal-center;
+        bottom:     .75rem;
+        text-align: center;
+
+        @include tablet {
+            bottom: 4rem;
+        }
+
+        @include desktop {
+            bottom: 7.5rem;
+        }
+
+        &-intro {
+            margin:    0 0 .5rem;
+            color:     $white;
+            font-size: $global-font-size * .75;
+
+            @include tablet {
+                margin:    0 0 2rem;
+                font-size: $global-font-size * 1.15;
+            }
+        }
+
+        &-image {
+            width:  65%;
+            margin: 0 auto;
+
+            @include tablet {
+                margin:    auto;
+            }
+        }
+    }
+}
