@@ -3,16 +3,11 @@ html {
 }
 
 body {
-    padding:          4.5rem 0 0;
     background-color: $white;
     color:            $primary-color;
     font-family:      $font-main;
     font-size:        $global-font-size;
     line-height:      $global-line-height;
-
-    @include tablet {
-        padding: 7rem 0 0;
-    }
 }
 
 a {

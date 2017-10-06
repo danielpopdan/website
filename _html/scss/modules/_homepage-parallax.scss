@@ -1,0 +1,45 @@
+.homepage-parallax {
+    position: relative;
+    padding:  0 0 150%;
+    overflow: hidden;
+
+    @include desktop {
+        padding:  0 0 102%;
+    }
+
+    &--item {
+        @include position(absolute, 0, -25%, 0, -25%);
+        padding:         0 0 150%;
+        background-size: cover;
+
+        @include desktop {
+            @include position(absolute, 0, 0, 0, 0);
+            padding:  0 0 102%;
+        }
+
+        &.item-0 {
+            background-image: url($homepage-path + 'parallax-0.png');
+        }
+
+        &.item-1 {
+            background-image: url($homepage-path + 'parallax-1.png');
+        }
+
+        &.item-2 {
+            background-image: url($homepage-path + 'parallax-2.png');
+        }
+
+        &.item-3 {
+            background-image: url($homepage-path + 'parallax-3.png');
+        }
+
+        &.item-4 {
+            background-image: url($homepage-path + 'parallax-4.png');
+        }
+
+        &.item-5 {
+            transform:        translate3d(0, -8%, 0);
+            background-image: url($homepage-path + 'parallax-5.png');
+        }
+    }
+}

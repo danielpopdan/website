@@ -1,12 +1,9 @@
 .header {
     @include clearfix;
-    position:   fixed;
-    top:        0;
-    right:      0;
-    left:       0;
+    @include position(fixed, 0, 0, auto, 0);
     height:     4.5rem;
     padding:    0 $global-padding * 1.5;
-    background: $primary-color;
+    background: $header-color;
     opacity:    .8;
     z-index:    1;
 

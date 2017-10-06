@@ -41,3 +41,28 @@
         @content;
     }
 }
+
+@mixin on-events($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top:      $top;
+    right:    $right;
+    bottom:   $bottom;
+    left:     $left;
+}
