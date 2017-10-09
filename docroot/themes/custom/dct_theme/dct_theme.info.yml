@@ -1,0 +1,13 @@
+name: Drupal Camp Theme
+type: theme
+base theme: classy
+description: Drupal Camp custom theme
+package: dct
+core: 8.x
+libraries:
+  - ex_theme/global
+
+regions:
+  header: Header
+  content: Content
+  footer: Footer
