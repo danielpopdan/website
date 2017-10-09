@@ -14,6 +14,22 @@
      */
     function parallaxModule(element) {
         /**
+         * Create universal requestAnimationFrame() function that works in all browsers. setTimeout() as last fallback.
+         */
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(f) {return setTimeout(f, 1000/60);};
+        
+        /**
+         * Create universal cancelAnimationFrame() function that works in all browsers. clearTimeout() as last fallback. 
+         */
+        window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || function(requestID) {clearTimeout(requestID);};
+
+        /* Store latest window scrollY value. By default at page load it will be 0.*/
+        var latestScrollY = 0;
+        
+        /* With this flag we make sure that we don't request another animation frame if one is already requested. */
+        var readyToAnimate = false;
+
+        /**
          * Throttle function for limiting hom many times we call event heavy functions.\
          * @param {Function} callback - function to call
          * @param {Number} limit - number of miliseconds
@@ -31,34 +47,24 @@
             };
         }
 
-        /** 
-         * Set X, Y, Z translate values for element with prefixes using jQuery css() method. The values can't be in percentage.
-         * @param {Object} element - jQuery object for which we add CSS translate values
-         * @param {Number} translateX - number of pixels for X axis of translate
-         * @param {Number} translateY - number of pixels for Y axis of translate
-         * @param {Number} translateZ - number of pixels for Z axis of translate
+        /**
+         * Check if object is a jQuery instance and that it is not empty.
+         * @param {Qbject} element - object to check.
          */
-        function setTranslate(element, translateX, translateY, translateZ) {
-            element.css({
-                "-webkit-transform": "translate3d(" + translateX + "px, " + translateY + "px, " + translateZ + "px)",
-                "-ms-transform": "translate3d(" + translateX + "px, " + translateY + "px, " + translateZ + "px)",
-                "-moz-transform": "translate3d(" + translateX + "px, " + translateY + "px, " + translateZ + "px)",
-                "-o-transform": "translate3d(" + translateX + "px, " + translateY + "px, " + translateZ + "px)",
-                "transform": "translate3d(" + translateX + "px, " + translateY + "px, " + translateZ + "px)"
-            });
+        function isJQuery(element) {
+            return (typeof jQuery === 'function' && element instanceof jQuery && element.length);
         }
-        
+
         /** 
-         * Set CSS transition for CSS translate property for element with prefixes using jQuery css() method.
-         * @param {Object} element - jQuery object for which we add CSS translate transition
-         * @param {Number} transitionDuration - number of seconds for the transition duration property 
+         * Change element's top and bottom CSS properties using jQuery css() method. Only works for values in pixels.
+         * @param {Object} element - jQuery object for which we change top and bottom
+         * @param {Number} top - number of pixels to change top
+         * @param {Number} bottom - number of pixels to change bottom
          */
-        function setTranslateTransition(element, transitionDuration) {
+        function setTopAndBottom(element, top, bottom) {
             element.css({
-                "-webkit-transition": "transform " + transitionDuration + "s ease-in-out",
-                "-moz-transition": "transform " + transitionDuration + "s ease-in-out",
-                "-o-transition": "transform " + transitionDuration + "s ease-in-out",
-                "transition": "transform " + transitionDuration + "s ease-in-out"
+                'top': top + 'px',
+                'bottom': bottom + 'px'
             });
         }
 
@@ -68,7 +74,6 @@
          */
         function attachScrollHandler(handler) {
             $(window).on('scroll', handler);
-            console.log('attached');
         }
 
         /**
@@ -85,7 +90,7 @@
          * @return {Boolean}
          */
         function isElementInViewport(element) {
-            if (typeof jQuery === "function" && el instanceof jQuery) {
+            if (typeof jQuery === 'function' && el instanceof jQuery) {
                 el = el[0];
             }
         
@@ -123,42 +128,73 @@
                 }
             };
         }
+        
+        /**
+         * Animation callback. It can be passed to requestAnimationFrame.
+         * Function changes top and bottom positions of global element with the specified distance at scroll event, based on scroll direction.
+         * @param {Number} distance - distance in pixels that element will travel.
+         * @param {Number} oldScrollY - old window scroll position.
+         * @param {Number} latestScrollY - current window scroll position.
+         */
+        function recalculateElementPosition(distance, oldScrollY, latestScrollY) {
+            var currentTop = parseInt(element.css('top'));
+            var currentBottom = parseInt(element.css('bottom'));
 
-        function recalculateElementPosition(distancePerScroll) {
-            console.log('recalculate');
+            if (oldScrollY < latestScrollY) {
+                setTopAndBottom(element, currentTop - distance, currentBottom + distance);
+            }
+            else {
+                setTopAndBottom(element, currentTop + distance, currentBottom - distance);
+            }
 
-            console.log(distancePerScroll);
+            /* This allows further requestAnimationFrames to be called */
+            readyToAnimate = false;
         }
 
         /**
          * Initialize module for the element.
          */
         function init(responsiveBreakpoint, distancePerScroll, animationStopPoint) {
-            //animateElement(distancePerScroll);
-            var handler = recalculateElementPosition(distancePerScroll);
-            
-            if (typeof jQuery !== "function" && el instanceof jQuery) {
-                if (element.length) {
-                    if ($(window).width() > responsiveBreakpoint) {
+            /* Call requestAnimationFrame if it's not called already. */
+            function startAnimation() {
+                var oldScrollY = latestScrollY;
+                latestScrollY = window.scrollY;
+
+                if (!readyToAnimate) {
+                    requestAnimationFrame(function () {
+                        recalculateElementPosition(distancePerScroll, oldScrollY, latestScrollY);
+                    });
+                }
+            }
+
+            /* Callback we'll pass to our scroll event. */
+            var handlerOnScroll = function() {
+                startAnimation();
+            };
+
+            if (isJQuery(element)) {
+                if ($(window).outerWidth() > responsiveBreakpoint) {
+                    attachScrollHandler(handlerOnScroll);
+                }
+
+                var oldWidth = $(window).outerWidth();
+                
+                /* Remove scroll event listener if window is resized to under the specified breakpoint. 
+                Re-add scroll event listener when resized to the specified breakpoint. */
+                $(window).on('resize', throttle(function() {
+                    var newWidth = $(window).outerWidth();
+
+                    if ($(window).outerWidth() < responsiveBreakpoint && oldWidth >= responsiveBreakpoint) {
+                        removeScrollHandler(handler);
+                    } 
+                    else if ($(window).outerWidth() >= responsiveBreakpoint && oldWidth < responsiveBreakpoint) {
                         attachScrollHandler(handler);
                     }
-
-                    var oldWidth = $(window).width();
-                    
-                    /* Handle resizing */
-                    $(window).on('resize', throttle(function() {
-                        console.log();
-                        var newWidth = $(window).width();
-                        if ($(window).width() <= responsiveBreakpoint && oldWidth > responsiveBreakpoint) {
-                            removeScrollHandler(handler);
-                        } else if ($(window).width() > responsiveBreakpoint && oldWidth <= responsiveBreakpoint) {
-                            attachScrollHandler(handler);
-                        }
-        
-                        oldWidth = newWidth;
-                    }, 100));
-                }
-            } else {
+    
+                    oldWidth = newWidth;
+                }, 100));
+            } 
+            else {
                 return;
             }
         }
@@ -174,6 +210,12 @@
     }
 
     $(document).ready(function() {
+        /* Force page to load at the top. */
+        $(this).scrollTop(0);
+        $(window).on('beforeunload', function() {
+            $(window).scrollTop(0);
+        });
+
         var $parallaxItems = $('.homepage-parallax--item');
         var prxLength = $parallaxItems.length;
         var distancePerScroll = 1;
