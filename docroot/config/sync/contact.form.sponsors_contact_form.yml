@@ -1,0 +1,21 @@
+uuid: c5fe7192-faa7-4b79-8b49-024350312af7
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    submit_text: 'Send message'
+    show_preview: true
+    disabled_form_message: 'This contact form has been disabled.'
+    maximum_submissions_user: 0
+    page_autoreply_format: plain_text
+id: sponsors_contact_form
+label: 'Sponsors contact form'
+recipients:
+  - contact@drupaltransylvania.camp
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''
