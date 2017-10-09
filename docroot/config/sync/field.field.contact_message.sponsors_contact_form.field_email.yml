@@ -1,0 +1,19 @@
+uuid: 7481431e-56b0-4b02-a207-1e23b5d07009
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sponsors_contact_form
+    - field.storage.contact_message.field_email
+id: contact_message.sponsors_contact_form.field_email
+field_name: field_email
+entity_type: contact_message
+bundle: sponsors_contact_form
+label: Email
+description: 'The email of the sponsor.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

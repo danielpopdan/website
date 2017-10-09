@@ -1,0 +1,54 @@
+uuid: c8231759-4399-4711-9bf2-ef56b8fc99c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sponsors_contact_form
+    - field.field.contact_message.sponsors_contact_form.field_email
+    - field.field.contact_message.sponsors_contact_form.field_message
+    - field.field.contact_message.sponsors_contact_form.field_name
+    - field.field.contact_message.sponsors_contact_form.field_subject
+id: contact_message.sponsors_contact_form.default
+targetEntityType: contact_message
+bundle: sponsors_contact_form
+mode: default
+content:
+  field_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_message:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_subject:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  message:
+    type: string
+    weight: 0
+    label: above
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 12939bb3-27e5-494c-a807-f5cb366b29fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sponsors_contact_form
+    - field.storage.contact_message.field_name
+id: contact_message.sponsors_contact_form.field_name
+field_name: field_name
+entity_type: contact_message
+bundle: sponsors_contact_form
+label: Name
+description: 'The name of the sponsor.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
