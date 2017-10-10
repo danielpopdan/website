@@ -1,0 +1,28 @@
+uuid: 3d2cd436-a865-4c31-8c3e-2af61f8c0ecf
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_newsletter
+    - user
+  theme:
+    - dct_theme
+id: newslettersubscription
+theme: dct_theme
+region: content
+weight: 0
+provider: null
+plugin: newsletter_subscription_block
+settings:
+  id: newsletter_subscription_block
+  label: 'Newsletter Subscription'
+  provider: dct_newsletter
+  label_display: visible
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
