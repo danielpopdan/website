@@ -5,9 +5,9 @@ target_env=$2
 drush_alias=$site'.'$target_env
 
 # Import configurations.
-drush @$drush_alias entup -y
-# Import configurations.
 drush @$drush_alias updb -y
+# Import configurations.
+drush @$drush_alias entup -y
 # Import configurations.
 drush @$drush_alias config-import sync -y
 # Clear the cache.
