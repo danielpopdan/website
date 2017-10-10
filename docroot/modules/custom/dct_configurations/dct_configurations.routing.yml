@@ -1,0 +1,13 @@
+dct_configurations.configurations:
+  defaults:
+    _title: 'DrupalCamp Transylvania'
+  requirements:
+    _permission: 'administer site configuration'
+
+dct_configurations.homepage_configurations:
+  path: '/admin/config/dct-configurations/homepage-configurations'
+  defaults:
+    _form: '\Drupal\dct_configurations\Form\HomepageConfigurationsForm'
+    _title: 'Homepage configurations'
+  requirements:
+    _permission: 'administer site configuration'
