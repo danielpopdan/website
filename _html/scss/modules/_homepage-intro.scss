@@ -1,0 +1,14 @@
+.homepage-intro {
+    @include horizontal-center;
+    top: 50%;
+
+    &--logos {
+        &--img {
+            width: 20%;
+        }
+
+        &--text {
+            width: 80%;
+        }
+    }
+}

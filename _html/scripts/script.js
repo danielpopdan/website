@@ -1,11 +1,5 @@
 (function($) {
     /**
-     * Responsive breakpoints. These are min-widths for the respective breakpoints. Min-width for mobile is 0;
-     */
-    var TABLET_WIDTH = 768;
-    var DESKTOP_WIDTH = 1024;
-    
-    /**
      * Module for animating an element based on scrolling the page. More specifically, 
      * the element will change its position when page is scrolled up and down, until a given part of the page is reached.
      * When creating different instances, which are displayed next to each other or on top of each other, changing their 
@@ -29,8 +23,11 @@
         /* With this flag we make sure that we don't request another animation frame if one is already requested. */
         var readyToAnimate = false;
 
+        /* Miliseconds to throttle resize events. */
+        var throttleTime = 100;
+
         /**
-         * Throttle function for limiting hom many times we call event heavy functions.\
+         * Throttle function for limiting hom many times we call event heavy functions.
          * @param {Function} callback - function to call
          * @param {Number} limit - number of miliseconds
          */
@@ -85,50 +82,36 @@
         }
 
         /**
-         * Check if element is in viewport.
-         * @param {Object} element 
-         * @return {Boolean}
+         * Remove handler on window resize event when a certain breakpoint is reached or add it back when resizing in the opposite direction.
+         * @param {Number} responsiveBreakpoint - Breakpoint for which we remove or add back handler.
+         * @param {Function} handler - Handler to remove/add
          */
-        function isElementInViewport(element) {
-            if (typeof jQuery === 'function' && el instanceof jQuery) {
-                el = el[0];
-            }
-        
-            var rect     = el.getBoundingClientRect(),
-                vWidth   = window.innerWidth || doc.documentElement.clientWidth,
-                vHeight  = window.innerHeight || doc.documentElement.clientHeight,
-                efp      = function (x, y) { return document.elementFromPoint(x, y); };     
-        
-            /* Return false if it's not in the viewport. */
-            if (rect.right < 0 || rect.bottom < 0 || rect.left > vWidth || rect.top > vHeight) {
-                return false;
-            }
-
-            /* Return true if any of its four corners are visible. */
-            return (el.contains(efp(rect.left,  rect.top)) ||  el.contains(efp(rect.right, rect.top)) ||  el.contains(efp(rect.right, rect.bottom)) ||  el.contains(efp(rect.left,  rect.bottom)));
-        }
-
-        /**
-         * Execute callback when element has entered viewport.
-         * @param {Object} element - jQuery object which we check if it has entered the viewport.
-         * @param {Function} callback
-         */
-        function onVisibilityChange(element, callback) {
-            var oldVisible = false;
+        function removeHandlerOnResize(responsiveBreakpoint, handler) {
+            var oldWidth = $(window).outerWidth();
             
-            return function() {
-                var visible = isElementInViewport(element);
+            /* Remove scroll event listener if window is resized to under the specified breakpoint. 
+            Re-add scroll event listener when resized to the specified breakpoint. */
+            $(window).on('resize', throttle(function() {
+                var newWidth = $(window).outerWidth();
 
-                if (visible !== oldVisible) {
-                    oldVisible = visible;
+                if ($(window).outerWidth() < responsiveBreakpoint && oldWidth >= responsiveBreakpoint) {
+                    removeScrollHandler(handler);
+                    setTopAndBottom(element, 0, 0);
+                } 
+                else if ($(window).outerWidth() >= responsiveBreakpoint && oldWidth < responsiveBreakpoint) {
+                    /* Reset scroll to zero so when we start again the calculations are correct. */
+                    $(window).scrollTop(0);
+                    latestScrollY = 0;
 
-                    if (typeof callback === 'function') {
-                        callback();
+                    if (window.pageYOffset === 0) {
+                        attachScrollHandler(handler);
                     }
                 }
-            };
+
+                oldWidth = newWidth;
+            }, throttleTime));
         }
-        
+
         /**
          * Animation callback. It can be passed to requestAnimationFrame.
          * Function changes top and bottom positions of global element with the specified distance at scroll event, based on scroll direction.
@@ -136,16 +119,20 @@
          * @param {Number} oldScrollY - old window scroll position.
          * @param {Number} latestScrollY - current window scroll position.
          */
-        function recalculateElementPosition(distance, oldScrollY, latestScrollY) {
-            var currentTop = parseInt(element.css('top'));
-            var currentBottom = parseInt(element.css('bottom'));
+        function recalculateElementPosition(speed, oldScrollY, latestScrollY) {
+            var currentTop = parseFloat(element.css('top'));
+            var currentBottom = parseFloat(element.css('bottom'));
 
-            if (oldScrollY < latestScrollY) {
-                setTopAndBottom(element, currentTop - distance, currentBottom + distance);
-            }
-            else {
-                setTopAndBottom(element, currentTop + distance, currentBottom - distance);
-            }
+            /* Distance in pixels that was travelled in the current scroll. */
+            var scrollDistance = latestScrollY - oldScrollY;
+
+            /* Distance in pixels that element has to move, either up or down. */
+            var elementOffset = scrollDistance * speed;
+
+            var newTop = currentTop - elementOffset;
+            var newBottom = currentBottom + elementOffset;
+
+            setTopAndBottom(element, newTop, newBottom);
 
             /* This allows further requestAnimationFrames to be called */
             readyToAnimate = false;
@@ -153,16 +140,20 @@
 
         /**
          * Initialize module for the element.
+         * @param {Number} responsiveBreakpoint - minimum breakpoint for which module is initialized.
+         * @param {Number} speedPerScroll - multiplier for changing the distance element travels on one scroll event. Different speeds for elements gives the illusion of parallax.  
          */
-        function init(responsiveBreakpoint, distancePerScroll, animationStopPoint) {
+        function init(responsiveBreakpoint, speedPerScroll) {
             /* Call requestAnimationFrame if it's not called already. */
             function startAnimation() {
                 var oldScrollY = latestScrollY;
-                latestScrollY = window.scrollY;
+                latestScrollY = window.pageYOffset;
 
                 if (!readyToAnimate) {
+                    /* Call native browser requestAnimationFrame function which tells the browser we want to perform an 
+                    animation before the next repaint. */
                     requestAnimationFrame(function () {
-                        recalculateElementPosition(distancePerScroll, oldScrollY, latestScrollY);
+                        recalculateElementPosition(speedPerScroll, oldScrollY, latestScrollY);
                     });
                 }
             }
@@ -177,23 +168,8 @@
                     attachScrollHandler(handlerOnScroll);
                 }
 
-                var oldWidth = $(window).outerWidth();
-                
-                /* Remove scroll event listener if window is resized to under the specified breakpoint. 
-                Re-add scroll event listener when resized to the specified breakpoint. */
-                $(window).on('resize', throttle(function() {
-                    var newWidth = $(window).outerWidth();
-
-                    if ($(window).outerWidth() < responsiveBreakpoint && oldWidth >= responsiveBreakpoint) {
-                        removeScrollHandler(handler);
-                    } 
-                    else if ($(window).outerWidth() >= responsiveBreakpoint && oldWidth < responsiveBreakpoint) {
-                        attachScrollHandler(handler);
-                    }
-    
-                    oldWidth = newWidth;
-                }, 100));
-            } 
+                removeHandlerOnResize(responsiveBreakpoint, handlerOnScroll);
+            }
             else {
                 return;
             }
@@ -209,22 +185,43 @@
         return publicParallax;
     }
 
-    $(document).ready(function() {
+    /**
+     * Global object
+     */
+    var dCampTrans = {
+        /* Responsive breakpoints. These are min-widths for the respective breakpoints. Min-width for mobile is 0. */
+        TABLET_WIDTH: 768,
+        DESKTOP_WIDTH: 1024,
+
         /* Force page to load at the top. */
-        $(this).scrollTop(0);
-        $(window).on('beforeunload', function() {
-            $(window).scrollTop(0);
-        });
+        loadPageAtTop: function() {
+            $(document).scrollTop(0);
+            $(window).on('beforeunload', function() {
+                $(window).scrollTop(0);
+            });
+        },
 
-        var $parallaxItems = $('.homepage-parallax--item');
-        var prxLength = $parallaxItems.length;
-        var distancePerScroll = 1;
-        var $stopPoint = $('.footer');
+        /* Initialize parallax items on homepage */
+        homepageCreateParallax: function() {
+            var $parallaxItems = $('.homepage-parallax--item').not('.item-0');
+            var prxLength = $parallaxItems.length;
 
-        for (var i = 0; i < prxLength; i++) {
-            var parallaxItem = parallaxModule($parallaxItems.eq(i));
-
-            parallaxItem.init(DESKTOP_WIDTH, distancePerScroll, $stopPoint);
+            if (prxLength) {
+                var speedsPerScroll = [0.4, 0.6, 0.7, 1, 1.8];
+        
+                for (var i = 0; i < prxLength; i++) {
+                    var parallaxItem = new parallaxModule($parallaxItems.eq(i));
+                    parallaxItem.init(this.DESKTOP_WIDTH, speedsPerScroll[i]);
+                }
+            }
         }
+    };
+
+    /**
+     * Execute methods after DOM has loaded.
+     */
+    $(document).ready(function() {
+        dCampTrans.loadPageAtTop();
+        dCampTrans.homepageCreateParallax();
     });
 })(jQuery);

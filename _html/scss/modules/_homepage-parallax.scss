@@ -4,7 +4,7 @@
     overflow: hidden;
 
     @include desktop {
-        padding:  0 0 102%;
+        padding: 0 0 90%;
     }
 
     &--item {
@@ -14,11 +14,15 @@
 
         @include desktop {
             @include position(absolute, 0, 0, 0, 0);
-            padding:  0 0 102%;
+            padding: 0 0 102%;
         }
 
         &.item-0 {
             background-image: url($homepage-path + 'parallax-0.png');
+
+            @include desktop {
+                padding: 0 0 90%;
+            }
         }
 
         &.item-1 {
