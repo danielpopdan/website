@@ -1,0 +1,34 @@
+uuid: 980b3dbb-32bc-4172-b9f2-e855d4c68874
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news.field_description
+    - field.field.node.news.field_short_description
+    - node.type.news
+  module:
+    - text
+    - user
+id: node.news.default
+targetEntityType: node
+bundle: news
+mode: default
+content:
+  field_description:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_short_description:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

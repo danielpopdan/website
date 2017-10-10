@@ -1,0 +1,18 @@
+uuid: 1abca4ed-4d63-463a-a312-bc4b81a80b9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.news
+  module:
+    - user
+id: node.news.teaser
+targetEntityType: node
+bundle: news
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden: {  }
