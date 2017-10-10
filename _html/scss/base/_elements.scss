@@ -26,6 +26,16 @@ p {
     line-height: $global-line-height;
 }
 
+input {
+    @include disable-outline;
+    font-family: $font-main;
+
+    &[type='submit'] {
+        border: 0;
+        cursor: pointer;
+    }
+}
+
 main {
     position: relative;
 }

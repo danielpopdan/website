@@ -9,4 +9,14 @@
             </div>
         </div>
     </div>
+    <div class="homepage-intro--details">
+        <h2 class="homepage-intro--details--date">4-6 May 2018</h2>
+        <h3 class="homepage-intro--details--location">Cluj-Napoca, The Office</h3>
+    </div>
+    <div class="homepage-intro--interested-form">
+        <form action="#" method="POST">
+            <input type="email" name="contact-email" placeholder="Email address">
+            <input type="submit" value="I'm interested">
+        </form>
+    </div>
 </div>
