@@ -1,0 +1,18 @@
+uuid: 966fc2c9-5c4d-4e28-be50-02e7995c5701
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_float_number
+field_name: field_float_number
+entity_type: paragraph
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

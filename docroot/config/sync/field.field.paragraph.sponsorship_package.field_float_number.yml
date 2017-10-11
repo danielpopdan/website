@@ -1,0 +1,23 @@
+uuid: 096cad99-26ae-4868-83c7-fc34d6e1f169
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_float_number
+    - paragraphs.paragraphs_type.sponsorship_package
+id: paragraph.sponsorship_package.field_float_number
+field_name: field_float_number
+entity_type: paragraph
+bundle: sponsorship_package
+label: Price
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

@@ -1,0 +1,21 @@
+uuid: b468c8b1-50e5-4872-a0f5-3cc736b65c3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.sponsorship_package
+  module:
+    - text
+id: paragraph.sponsorship_package.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: sponsorship_package
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

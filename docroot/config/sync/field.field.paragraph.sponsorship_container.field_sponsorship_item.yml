@@ -1,0 +1,37 @@
+uuid: aca97a76-398f-469f-98e5-dce6998a119c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sponsorship_item
+    - paragraphs.paragraphs_type.sponsorship_container
+    - paragraphs.paragraphs_type.sponsorship_package
+  module:
+    - entity_reference_revisions
+id: paragraph.sponsorship_container.field_sponsorship_item
+field_name: field_sponsorship_item
+entity_type: paragraph
+bundle: sponsorship_container
+label: 'Sponsorship item'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      sponsorship_package: sponsorship_package
+    target_bundles_drag_drop:
+      sponsorship_container:
+        weight: 4
+        enabled: false
+      sponsorship_package:
+        enabled: true
+        weight: 5
+      text_paragraph:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

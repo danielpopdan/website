@@ -1,0 +1,9 @@
+uuid: 001c3a21-a239-41a1-be6b-76de054353f4
+langcode: en
+status: true
+dependencies: {  }
+id: sponsorship_package
+label: 'Sponsorship package'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
