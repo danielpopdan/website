@@ -1,7 +1,12 @@
 .homepage-intro {
     position: absolute;
-    top:      40%;
+    top:      35%;
     width:    100%;
+    padding:  0 $global-padding;
+
+    @include tablet {
+        top: 40%;
+    }
 
     &--logos {
         width:  75%;
@@ -17,39 +22,55 @@
         }
 
         @include tablet {
-            width:  50%;
+            width: 50%;
         }
 
         @include desktop {
-            width:  25rem;
+            width: 25rem;
         }
     }
 
     &--details {
-        margin:     $global-margin * 3.75 0 0;
+        margin:     $global-margin * 1.5 0 0;
         text-align: center;
+
+        @include tablet {
+            margin: $global-margin * 3.75 0 0;
+        }
 
         &--date {
             color:       $white;
-            font-size:   $global-font-size * 2.375;
-            font-weight: 800;
+            font-size:   $global-font-size * 1.6;
+            font-weight: $weight-black;
+
+            @include tablet {
+                font-size: $global-font-size * 2.375;
+            }
         }
 
         &--location {
-            position:    relative;
-            width:       31.25rem;
-            height:      5.635rem;
-            margin:      $global-margin * 1.25 auto 0;
-            background:  url($homepage-path + 'location-flag.png') no-repeat;
-            font-size:   $global-font-size * 2;
-            font-weight: 800;
-            line-height: 2.2;
+            position:        relative;
+            width:           18.125rem;
+            height:          3.5rem;
+            margin:          $global-margin * 1.25 auto 0;
+            background:      url($homepage-path + 'location-flag.png') no-repeat;
+            background-size: 18.125rem;
+            font-size:       $global-font-size * 1.2;
+            font-weight:     $weight-black;
+            line-height:     2.2;
+
+            @include tablet {
+                width:           31.25rem;
+                height:          5.635rem;
+                background-size: 31.25rem;
+                font-size:       $global-font-size * 2;
+            }
         }
     }
 
     &--interested-form {
-        width:  75%;
-        margin: 20% auto 0;
+        width:  100%;
+        margin: 25% auto 0;
 
         @include tablet {
             width:  40rem;
@@ -57,26 +78,74 @@
         }
 
         @include desktop {
+            width:  48rem;
             margin: 15% auto 0;
         }
 
-        input {
+        input,
+        button {
             display:   inline-block;
-            height:    3.75rem;
-            margin:    0 $global-margin * -.125;
-            padding:   $global-padding $global-padding * 1.25;
+            height:    3rem;
             color:     $white;
             font-size: $global-font-size * 1.25;
 
+            @include tablet {
+                height:  3.75rem;
+                margin:  0 $global-margin * (-.125);
+            }
+        }
+
+        input {
             &[type='email'] {
-                width:            65%;
+                width:            100%;
+                padding:          $global-padding * .5 $global-padding * 1.25;
                 border:           1px solid $white;
                 background-color: $primary-color;
-            }
 
+                @include tablet {
+                    width:   60%;
+                    padding: $global-padding $global-padding * 1.25;
+                }
+
+                @include desktop {
+                    width: 65%;
+                }
+            }
+        }
+
+        button {
             &[type='submit'] {
-                width:            35%;
-                background-color: $secondary-color;
+                position:         relative;
+                width:            100%;
+                margin:           $global-margin 0;
+                padding:          $global-padding * .5 $global-padding * 1.25;
+
+                &::before {
+                    @include         position(absolute, .5rem, auto, auto, 1.25rem);
+                    width:           3rem;
+                    height:          2rem;
+                    background:      url($logos-path + 'form-submit-logo.png') no-repeat;
+                    background-size: 3rem;
+                    content:         '';
+
+                    @include tablet {
+                        top:    .8rem;
+                        width:  3.75rem;
+                        height: 2.1875rem;
+                        background-size: 3.75rem;
+                    }
+                }
+
+                @include tablet {
+                    width:      40%;
+                    margin:     0 $global-margin * (-.125);
+                    padding:    $global-padding $global-padding * 1.25 $global-padding $global-padding * 6.25;
+                    text-align: left;
+                }
+
+                @include desktop {
+                    width: 35%;
+                }
             }
         }
     }

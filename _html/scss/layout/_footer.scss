@@ -2,7 +2,7 @@
     position: relative;
 
     &-sponsor {
-        @include horizontal-center;
+        @include    horizontal-center;
         bottom:     .75rem;
         text-align: center;
 

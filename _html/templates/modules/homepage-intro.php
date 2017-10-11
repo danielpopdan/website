@@ -16,7 +16,7 @@
     <div class="homepage-intro--interested-form">
         <form action="#" method="POST">
             <input type="email" name="contact-email" placeholder="Email address">
-            <input type="submit" value="I'm interested">
+            <button type="submit" name="contact-submit" value="I'm interested">I'm interested</button>
         </form>
     </div>
 </div>

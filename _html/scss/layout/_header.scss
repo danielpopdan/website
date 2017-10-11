@@ -1,6 +1,6 @@
 .header {
-    @include clearfix;
-    @include position(fixed, 0, 0, auto, 0);
+    @include    clearfix;
+    @include    position(fixed, 0, 0, auto, 0);
     height:     4.5rem;
     padding:    0 $global-padding * 1.5;
     background: $header-color;
@@ -19,7 +19,7 @@
 
     &-logo {
         @include vertical-center;
-        left:   1.5rem;
+        left:    1.5rem;
 
         @include tablet {
             left: 2rem;
@@ -53,7 +53,7 @@
 
     &-login {
         @include vertical-center;
-        right: 1.5rem;
+        right:   1.5rem;
 
         @include tablet {
             right: 2rem;

@@ -11,8 +11,13 @@ body {
 }
 
 a {
-    @include disable-outline;
+    @include         disable-outline;
+    color:           $primary-color;
     text-decoration: none;
+
+    @include on-events {
+        color: $secondary-color;
+    }
 }
 
 img {
@@ -26,13 +31,20 @@ p {
     line-height: $global-line-height;
 }
 
-input {
-    @include disable-outline;
+input,
+button {
+    @include     disable-outline;
     font-family: $font-main;
+}
 
-    &[type='submit'] {
-        border: 0;
-        cursor: pointer;
+button {
+    border:           0;
+    background-color: $secondary-color;
+    color:            $white;
+    cursor:           pointer;
+
+    @include on-events {
+        background-color: $third-color;
     }
 }
 
