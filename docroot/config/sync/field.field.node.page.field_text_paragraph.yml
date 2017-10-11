@@ -1,0 +1,31 @@
+uuid: efff55bc-5430-4de9-840f-3b03f50d2867
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_paragraph
+    - node.type.page
+    - paragraphs.paragraphs_type.text_paragraph
+  module:
+    - entity_reference_revisions
+id: node.page.field_text_paragraph
+field_name: field_text_paragraph
+entity_type: node
+bundle: page
+label: 'Text paragraph'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      text_paragraph: text_paragraph
+    target_bundles_drag_drop:
+      text_paragraph:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions
