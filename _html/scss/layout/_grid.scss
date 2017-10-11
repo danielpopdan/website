@@ -1,4 +1,5 @@
 .l-row {
+    @include clearfix;
     max-width: 64rem;
 
     &.l-column {
@@ -14,10 +15,10 @@
     }
 }
 
-.l-columns {
-    width:         100%;
-    padding:       0 .625rem;
-    float:         left;
+.l-column {
+    width:   100%;
+    padding: 0 .625rem;
+    float:   left;
 }
 
 .l-col-3 {
