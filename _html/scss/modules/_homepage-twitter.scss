@@ -1,0 +1,95 @@
+.homepage-twitter {
+    @include horizontal-center;
+    bottom:  -15%;
+    z-index: 2;
+
+    @include tablet {
+        bottom: -30%;
+    }
+
+    &-action  {
+        color:       $secondary-color;
+        font-size:   $global-font-size * 1.6;
+        font-weight: $weight-bold;
+        text-align:  center;
+
+        @include tablet {
+            max-width: 75%;
+            margin:    0 auto $global-margin * 2;
+            font-size: $global-font-size * 2;
+        }
+
+        @include desktop {
+            max-width: 50%;
+            margin:    0 auto $global-margin * 3;
+            font-size: $global-font-size * 2.375;
+        }
+    }
+
+    &-links {
+        margin:     0 auto;
+        text-align: center;
+
+        @include tablet {
+            width: 36rem;
+        }
+
+        @include desktop {
+            width: 60rem;
+        }
+
+        &-link {
+            @include desktop {
+                display:        inline-block;
+                vertical-align: middle;
+            }
+
+            .twitter-link {
+                color:       $third-color;
+                font-size:   $global-font-size * 1.6;
+                font-weight: $weight-black;
+
+                @include on-events {
+                    color: $secondary-color;
+                }
+
+                @include tablet {
+                    font-size: $global-font-size * 2;
+                }
+
+                @include desktop {
+                    font-size: $global-font-size * 2.375;
+                }
+            }
+
+            .twitter-prefix {
+                margin-right: $global-margin * (-.3);
+                color:        $secondary-color;
+
+                @include tablet {
+                    margin-right: $global-margin * (-.625);
+                }
+            }
+        }
+
+        &-logo {
+            width:           3rem;
+            height:          3rem;
+            margin:          $global-margin auto;
+            background:      url($logos-path + 'twitter-logo.png') no-repeat;
+            background-size: 3rem;
+
+            @include tablet {
+                width:           7.5rem;
+                height:          7.5rem;
+                background-size: 7.5rem;
+            }
+
+            @include desktop {
+                display:        inline-block;
+                margin:         0 $global-margin * 3;
+                vertical-align: middle;
+            }
+        }
+    }
+}

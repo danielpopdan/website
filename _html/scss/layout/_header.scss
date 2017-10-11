@@ -1,24 +1,31 @@
 .header {
-    @include clearfix;
-    position:   fixed;
-    top:        0;
-    right:      0;
-    left:       0;
+    @include    clearfix;
+    @include    position(fixed, 0, 0, auto, 0);
     height:     4.5rem;
-    padding:    0 1.5rem;
-    background: $primary-color;
+    padding:    0 $global-padding * 1.5;
+    background: $header-color;
     opacity:    .8;
+    z-index:    1;
 
     @include tablet {
+        height:  5.5rem;
+        padding: 0 $global-padding * 2;
+    }
+
+    @include desktop {
         height:  7rem;
-        padding: 0 3.25rem;
+        padding: 0 $global-padding * 3.25;
     }
 
     &-logo {
         @include vertical-center;
-        left:   1.5rem;
+        left:    1.5rem;
 
         @include tablet {
+            left: 2rem;
+        }
+
+        @include desktop {
             left: 3.25rem;
         }
 
@@ -30,9 +37,15 @@
             background-size: 3rem;
 
             @include tablet {
+                width:           20rem;
+                height:          2.3rem;
+                background:      url($logos-path + 'header-logo.png') no-repeat;
+                background-size: 20rem;
+            }
+
+            @include desktop {
                 width:           34rem;
                 height:          3.875rem;
-                background:      url($logos-path + 'header-logo.png') no-repeat;
                 background-size: 34rem;
             }
         }
@@ -40,9 +53,13 @@
 
     &-login {
         @include vertical-center;
-        right: 1.5rem;
+        right:   1.5rem;
 
         @include tablet {
+            right: 2rem;
+        }
+
+        @include desktop {
             right: 3.25rem;
         }
 
