@@ -26,9 +26,21 @@ img {
 }
 
 p {
-    margin:      0 0 $global-margin;
-    font-size:   $global-font-size;
+    margin:      0 0 $global-margin * 1.4;
+    color:       $white;
+    font-size:   $global-font-size * .75;
     line-height: $global-line-height * 1.4;
+}
+
+h1 {
+    color:     $white;
+    font-size: $global-font-size * 1.5;
+}
+
+h2 {
+    color:       $secondary-color;
+    font-size:   $global-font-size * .875;
+    font-weight: $weight-bold;
 }
 
 input,
