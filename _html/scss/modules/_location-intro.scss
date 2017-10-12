@@ -1,6 +1,6 @@
 .location-intro {
     position: relative;
-    padding:  0 0 150%;
+    padding:  $global-padding * 4.5 0 0;
     overflow: hidden;
 
     @include tablet {
@@ -26,15 +26,12 @@
     }
 
     &-text {
-        @include             position(absolute, 50%, 0, auto, 0);
-        padding:             0 $global-padding * 1.5;
-        transform:           translate3d(0, -50%, 0);
-        backface-visibility: hidden;
+        position: relative;
+        padding: $global-padding * 2.5 $global-padding * 1.5 $global-padding * 1.5;
 
         @include tablet {
-            top:       auto;
-            bottom:    20%;
-            transform: none;
+            @include position(absolute, auto, 0, 20%, 0);
+            padding: 0 $global-padding * 1.5;
         }
     }
 

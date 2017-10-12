@@ -1,34 +1,44 @@
 .l-row {
     @include clearfix;
-    max-width: 64rem;
+    margin:  0 auto;
+    padding: 0 $global-padding * 1.5;
 
-    &.l-column {
-        margin: 0 auto;
+    @include tablet {
+        max-width: 52rem;
+        padding:   0 $global-padding * 2;
+    }
+
+    @include desktop {
+        max-width: 70.5rem;
+        padding:   0 $global-padding * 3.25;
     }
 
     .l-row {
-        margin: 0 .625rem;
+        margin: 0 $global-margin * .625;
 
         @include tablet {
-            margin: 0 .9375rem;
+            margin: 0 $global-margin * .9375;
         }
     }
 }
 
-.l-column {
+.l-col-custom {
     width:   100%;
-    padding: 0 .625rem;
+    padding: 0 $global-padding * .625;
     float:   left;
 }
 
 .l-col-3 {
     width: 100%;
+    float: left;
 }
 
 .l-col-2 {
     width: 50%;
+    float: left;
 }
 
 .l-col-1 {
     width: 33.3333%;
+    float: left;
 }
