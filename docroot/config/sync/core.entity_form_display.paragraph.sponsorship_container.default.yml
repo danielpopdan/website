@@ -1,0 +1,30 @@
+uuid: 714745a0-3363-413d-8745-af4d004c40be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsorship_container.field_sponsorship_item
+    - paragraphs.paragraphs_type.sponsorship_container
+  module:
+    - paragraphs
+id: paragraph.sponsorship_container.default
+targetEntityType: paragraph
+bundle: sponsorship_container
+mode: default
+content:
+  field_sponsorship_item:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

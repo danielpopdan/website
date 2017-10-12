@@ -1,0 +1,9 @@
+uuid: 18ce8326-b58b-45d8-847d-ac0552fb224c
+langcode: en
+status: true
+dependencies: {  }
+id: sponsorship_container
+label: 'Sponsorship Container'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

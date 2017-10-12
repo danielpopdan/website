@@ -3,21 +3,21 @@ html {
 }
 
 body {
-    padding:          4.5rem 0 0;
     background-color: $white;
     color:            $primary-color;
     font-family:      $font-main;
     font-size:        $global-font-size;
     line-height:      $global-line-height;
-
-    @include tablet {
-        padding: 7rem 0 0;
-    }
 }
 
 a {
-    @include disable-outline;
+    @include         disable-outline;
+    color:           $primary-color;
     text-decoration: none;
+
+    @include on-events {
+        color: $secondary-color;
+    }
 }
 
 img {
@@ -26,7 +26,28 @@ img {
 }
 
 p {
+    margin:      0 0 $global-margin;
     font-size:   $global-font-size;
     line-height: $global-line-height;
-    margin:      0 0 $global-margin;
+}
+
+input,
+button {
+    @include     disable-outline;
+    font-family: $font-main;
+}
+
+button {
+    border:           0;
+    background-color: $secondary-color;
+    color:            $white;
+    cursor:           pointer;
+
+    @include on-events {
+        background-color: $third-color;
+    }
+}
+
+main {
+    position: relative;
 }

@@ -1,0 +1,11 @@
+dct_configurations.admin.structure.settings:
+  title: 'DrupalCamp Transylvania'
+  route_name: dct_configurations.configurations
+  description: 'Manages DCT configurations.'
+  parent: system.admin_config
+
+dct_homepage_configuration.admin.structure.settings:
+  title: 'Homepage configurations'
+  route_name: dct_configurations.homepage_configurations
+  description: 'Manages homepage configurations.'
+  parent: dct_configurations.admin.structure.settings
