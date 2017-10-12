@@ -1,0 +1,24 @@
+uuid: ad7b27e0-bc1f-432f-b246-263a2b5bdfe9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsorship_container.field_sponsorship_item
+    - paragraphs.paragraphs_type.sponsorship_container
+  module:
+    - entity_reference_revisions
+id: paragraph.sponsorship_container.default
+targetEntityType: paragraph
+bundle: sponsorship_container
+mode: default
+content:
+  field_sponsorship_item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }
