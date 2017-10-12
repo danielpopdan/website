@@ -34,17 +34,17 @@ class HomepageConfigurationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('state')
-    );
+  public function getFormId() {
+    return 'dct_homepage_configurations';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
-    return 'dct_homepage_configurations';
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('state')
+    );
   }
 
   /**
@@ -89,6 +89,8 @@ class HomepageConfigurationsForm extends FormBase {
     $this->state->set('dct_homepage.date', $form_state->getValue('date'));
     $this->state->set('dct_homepage.location', $form_state->getValue('location'));
     $this->state->set('dct_homepage.description', $form_state->getValue('description'));
+
+    drupal_set_message($this->t('The settings have been successfully saved'));
   }
 
 }

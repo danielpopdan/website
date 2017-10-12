@@ -13,3 +13,11 @@ dct_configurations.homepage_configurations:
     _title: 'Homepage configurations'
   requirements:
     _permission: 'administer camp settings'
+
+dct_configurations.welcome_section_config:
+  path: '/admin/config/camp-transylvania/welcome-section'
+  defaults:
+    _form: '\Drupal\dct_configurations\Form\WelcomeSectionConfigurationForm'
+    _title: 'Welcome to Cluj Napoca section'
+  requirements:
+    _permission: 'administer camp settings'
