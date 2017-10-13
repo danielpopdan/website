@@ -1,7 +1,8 @@
 .l-container {
     @include clearfix;
-    margin:  0 auto;
-    padding: 0 $global-padding;
+    position: relative;
+    margin:   0 auto;
+    padding:  0 $global-padding;
 
     @include tablet {
         width:   45rem;
@@ -27,7 +28,7 @@
     float:   left;
 }
 
-.l-col-3 {
+.l-col-1 {
     width: 100%;
 }
 
@@ -39,7 +40,7 @@
     }
 }
 
-.l-col-1 {
+.l-col-3 {
     width: 100%;
 
     @include tablet {

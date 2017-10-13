@@ -11,7 +11,7 @@
         padding: 0 0 64%;
     }
 
-    &-background {
+    &--background {
         @include         position(absolute, 0, -50%, 0, -50%);
         background:      url($backgrounds-path + 'location-intro.png') no-repeat;
         background-size: cover;
@@ -25,7 +25,7 @@
         }
     }
 
-    &-text {
+    &--text {
         position: relative;
         padding: $global-padding * 2.5 $global-padding * 1.5 $global-padding * 3.5;
 
@@ -35,11 +35,11 @@
         }
     }
 
-    &-title {
+    &--title {
         text-align: center;
     }
 
-    &-details {
+    &--details {
         margin: 0 auto;
 
         @include tablet {
@@ -50,7 +50,7 @@
             font-size: $global-font-size * .875;
         }
 
-        &-highlight {
+        &--highlight {
             color: $secondary-color;
         }
     }

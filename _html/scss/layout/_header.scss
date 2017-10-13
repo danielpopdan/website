@@ -21,7 +21,7 @@
         padding: 0 $global-padding * 2.5;
     }
 
-    &-logo {
+    &--logo {
         @include vertical-center;
         left:    1rem;
 
@@ -59,7 +59,7 @@
         }
     }
 
-    &-login {
+    &--login {
         @include vertical-center;
         right:   1rem;
 

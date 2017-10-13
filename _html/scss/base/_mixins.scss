@@ -73,3 +73,11 @@
     bottom:   $bottom;
     left:     $left;
 }
+
+@mixin box-shadow($left, $top, $blur, $color, $inset: false) {
+    @if $inset {
+        box-shadow: inset $left $top $blur $color;
+    } @else {
+        box-shadow: $left $top $blur $color;
+    }
+}

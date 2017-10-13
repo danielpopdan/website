@@ -5,7 +5,7 @@
         margin-bottom: -$global-margin * 5;
     }
 
-    &-action  {
+    &--action  {
         margin:      0 auto $global-margin * 2;
         color:       $secondary-color;
         font-size:   $global-font-size * 1.6;
@@ -24,7 +24,7 @@
         }
     }
 
-    &-links {
+    &--links {
         margin:     0 auto;
         text-align: center;
 
@@ -36,7 +36,7 @@
             width: 60rem;
         }
 
-        &-link {
+        &--link {
             @include medium-desktop {
                 display:        inline-block;
                 vertical-align: middle;
@@ -70,7 +70,7 @@
             }
         }
 
-        &-logo {
+        &--logo {
             width:           3rem;
             height:          3rem;
             margin:          $global-margin auto;
