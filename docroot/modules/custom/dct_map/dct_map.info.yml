@@ -1,0 +1,7 @@
+name: DCT Map
+type: module
+description: Provides DCT flight connections map
+package: DCT
+core: 8.x
+dependencies:
+  - dct_airport_connections

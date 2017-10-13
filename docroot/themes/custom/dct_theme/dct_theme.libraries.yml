@@ -4,3 +4,13 @@ global:
   css:
     theme:
       css/styles.css: {}
+
+connections-map:
+  version: 1.x
+  css:
+    theme:
+      css/connections-map.css: {}
+  js:
+    js/connections-map.js: {}
+  dependencies:
+    - core/jquery
