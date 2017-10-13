@@ -1,0 +1,65 @@
+.location-intro {
+    position: relative;
+    padding:  $global-padding * 4.5 0 0;
+    overflow: hidden;
+
+    @include tablet {
+        padding: 0 0 100%;
+    }
+
+    @include desktop {
+        padding: 0 0 64%;
+    }
+
+    &-background {
+        @include         position(absolute, 0, -50%, 0, -50%);
+        background:      url($backgrounds-path + 'location-intro.png') no-repeat;
+        background-size: cover;
+
+        @include tablet {
+            @include position(absolute, 0, -25%, 0, -25%);
+        }
+
+        @include desktop {
+            @include position(absolute, 0, 0, 0, 0);
+        }
+    }
+
+    &-text {
+        position: relative;
+        padding: $global-padding * 2.5 $global-padding * 1.5 $global-padding * 1.5;
+
+        @include tablet {
+            @include position(absolute, auto, 0, 20%, 0);
+            padding: 0 $global-padding * 1.5;
+        }
+    }
+
+    &-title {
+        width:           9.375rem;
+        height:          6rem;
+        margin:          0 auto $global-margin * 3.25;
+        background:      url($logos-path + 'the-office-logo.png') no-repeat;
+        background-size: 9.375rem;
+        font-size:       0;
+
+        @include tablet {
+            width:           9.375rem;
+            height:          6rem;
+            background-size: 9.375rem;
+        }
+    }
+
+    &-details {
+        margin: 0 auto;
+
+        @include tablet {
+            width: 60%;
+        }
+
+        p {
+            color:     $white;
+            font-size: $global-font-size * .75;
+        }
+    }
+}

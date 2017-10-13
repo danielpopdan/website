@@ -28,7 +28,7 @@ img {
 p {
     margin:      0 0 $global-margin;
     font-size:   $global-font-size;
-    line-height: $global-line-height;
+    line-height: $global-line-height * 1.4;
 }
 
 input,
@@ -38,6 +38,7 @@ button {
 }
 
 button {
+    padding:          0;
     border:           0;
     background-color: $secondary-color;
     color:            $white;
@@ -50,4 +51,5 @@ button {
 
 main {
     position: relative;
+    z-index:  1;
 }

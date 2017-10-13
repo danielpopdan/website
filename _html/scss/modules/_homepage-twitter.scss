@@ -1,13 +1,13 @@
 .homepage-twitter {
-    @include horizontal-center;
-    bottom:  -15%;
-    z-index: 2;
+    margin:  $global-margin * 5 0 (-$global-margin * 10);
+    padding: 0 $global-padding * 1.5;
 
     @include tablet {
-        bottom: -30%;
+        margin-bottom: -$global-margin * 5;
     }
 
     &-action  {
+        margin:      0 auto $global-margin * 2;
         color:       $secondary-color;
         font-size:   $global-font-size * 1.6;
         font-weight: $weight-bold;
@@ -15,12 +15,11 @@
 
         @include tablet {
             max-width: 75%;
-            margin:    0 auto $global-margin * 2;
             font-size: $global-font-size * 2;
         }
 
         @include desktop {
-            max-width: 50%;
+            max-width: 30%;
             margin:    0 auto $global-margin * 3;
             font-size: $global-font-size * 2.375;
         }

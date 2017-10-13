@@ -1,0 +1,11 @@
+.location-map {
+    margin: 0 0 $global-margin * (-5);
+
+    @include desktop {
+        margin: 0;
+    }
+
+    &-container {
+        height: 30rem;
+    }
+}

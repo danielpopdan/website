@@ -1,11 +1,15 @@
 .homepage-intro {
     position: absolute;
-    top:      35%;
+    top:      27%;
     width:    100%;
-    padding:  0 $global-padding;
+    padding:  0 $global-padding * 1.5;
 
     @include tablet {
-        top: 40%;
+        top: 30%;
+    }
+
+    @include desktop {
+        top: 35%;
     }
 
     &--logos {
@@ -57,7 +61,7 @@
             background-size: 18.125rem;
             font-size:       $global-font-size * 1.2;
             font-weight:     $weight-black;
-            line-height:     2.2;
+            line-height:     $global-line-height * 2.2;
 
             @include tablet {
                 width:           31.25rem;
@@ -70,16 +74,16 @@
 
     &--interested-form {
         width:  100%;
-        margin: 25% auto 0;
+        margin: 28% auto 0;
 
         @include tablet {
             width:  40rem;
-            margin: 35% auto 0;
+            margin: 40% auto 0;
         }
 
         @include desktop {
             width:  48rem;
-            margin: 15% auto 0;
+            margin: 10% auto 0;
         }
 
         input,
