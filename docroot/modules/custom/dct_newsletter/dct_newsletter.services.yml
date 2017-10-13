@@ -1,0 +1,4 @@
+services:
+  dct_newsletter.mailchimp_service:
+    class: Drupal\dct_newsletter\Controller\MailchimpController
+    arguments: []
