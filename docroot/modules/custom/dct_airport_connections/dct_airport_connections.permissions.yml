@@ -1,0 +1,11 @@
+view airport_connections entity:
+  title: 'View Airport connections entity'
+add airport_connections entity:
+  title: 'Add Airport connections entity'
+edit airport_connections entity:
+  title: 'Edit Airport connections entity'
+delete airport_connections entity:
+  title: 'Delete Airport connections entity'
+administer airport_connections entity:
+  title:  'Administer Airport connections entity'
+  restrict access: TRUE

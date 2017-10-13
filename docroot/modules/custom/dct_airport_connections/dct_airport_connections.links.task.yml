@@ -1,0 +1,25 @@
+airport_connections.settings_tab:
+  route_name: airport_connections.settings
+  base_route: airport_connections.settings
+  title: 'Settings'
+
+airport_connections.view:
+  route_name: entity.airport_connections.canonical
+  base_route: entity.airport_connections.canonical
+  title: 'View'
+
+ariport_connections.page_edit:
+  route_name: entity.airport_connections.edit_form
+  base_route: entity.airport_connections.canonical
+  title: 'Edit'
+
+ariport_connections.delete_confirm:
+  route_name: entity.airport_connections.delete_form
+  base_route: entity.airport_connections.canonical
+  title: 'Delete'
+  weight: 10
+
+ariport_connections.collection:
+  route_name: entity.airport_connections.collection
+  base_route: system.admin_content
+  title: 'Airport connections'
