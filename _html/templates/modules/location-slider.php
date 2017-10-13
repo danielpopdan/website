@@ -1,5 +1,5 @@
 <div class="location-slider">
-    <div class="l-row">
+    <div class="l-container">
         <div id="location-slider">
             <div class="location-slider-slide">
                 <img src="../images/location/location-slide-1.png" alt="Location image 1">

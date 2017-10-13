@@ -36,11 +36,18 @@
     }
 }
 
-@mixin desktop {
-    @media all and (min-width: #{$desktop-breakpoint}) {
+@mixin medium-desktop {
+    @media all and (min-width: #{$medium-desktop-breakpoint}) {
         @content;
     }
 }
+
+@mixin large-desktop {
+    @media all and (min-width: #{$large-desktop-breakpoint}) {
+        @content;
+    }
+}
+
 
 @mixin on-events($self: false) {
     @if $self {

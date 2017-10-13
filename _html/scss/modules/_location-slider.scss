@@ -1,6 +1,6 @@
 .location-slider {
     @include disable-outline;
-    margin:  $global-margin * 2 0 $global-margin * 2;
+    margin:  $global-margin * (-2) 0 $global-margin * 2;
 
     @include tablet {
         margin: $global-margin * (-3) 0 $global-margin * 2.375;
@@ -17,13 +17,15 @@
     }
 
     .slick-slider {
-        margin:  0 $global-margin * (-1);
+        @include large-desktop {
+            margin:  0 (-$global-margin);
+        }
     }
 
     .slick-list {
         padding: 0 $global-padding * .9;
 
-        @include desktop {
+        @include medium-desktop {
             padding: 0;
         }
     }
@@ -52,8 +54,8 @@
             left: -.5rem;
         }
 
-        @include desktop {
-            left: -1.625rem;
+        @include medium-desktop {
+            left: -1.5%;
         }
     }
 
@@ -65,8 +67,8 @@
             right: -.5rem;
         }
 
-        @include desktop {
-            right: -1.625rem;
+        @include medium-desktop {
+            right: -1.5%;
         }
     }
 }

@@ -1,5 +1,5 @@
 <div class="location-map">
-    <div class="l-row">
+    <div class="l-container">
         <div id="location-map" class="location-map-container"></div>
     </div>
 </div>

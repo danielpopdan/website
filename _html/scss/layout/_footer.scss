@@ -7,7 +7,7 @@
         padding: 0 0 100%;
     }
 
-    @include desktop {
+    @include medium-desktop {
         padding: 0 0 56%;
     }
 
@@ -20,21 +20,21 @@
             @include position(absolute, 0, -25%, 0, -25%);
         }
 
-        @include desktop {
+        @include medium-desktop {
             @include position(absolute, 0, 0, 0, 0);
         }
     }
 
     &-sponsor {
         @include    horizontal-center;
-        bottom:     1.5rem;
+        bottom:     2rem;
         text-align: center;
 
         @include tablet {
             bottom: 4rem;
         }
 
-        @include desktop {
+        @include medium-desktop {
             bottom: 7.5rem;
         }
 

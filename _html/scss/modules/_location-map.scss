@@ -1,7 +1,7 @@
 .location-map {
     margin: 0 0 $global-margin * (-5);
 
-    @include desktop {
+    @include medium-desktop {
         margin: 0;
     }
 

@@ -1,6 +1,5 @@
 .homepage-twitter {
     margin:  $global-margin * 5 0 (-$global-margin * 10);
-    padding: 0 $global-padding * 1.5;
 
     @include tablet {
         margin-bottom: -$global-margin * 5;
@@ -18,8 +17,8 @@
             font-size: $global-font-size * 2;
         }
 
-        @include desktop {
-            max-width: 30%;
+        @include medium-desktop {
+            max-width: 40%;
             margin:    0 auto $global-margin * 3;
             font-size: $global-font-size * 2.375;
         }
@@ -33,12 +32,12 @@
             width: 36rem;
         }
 
-        @include desktop {
+        @include medium-desktop {
             width: 60rem;
         }
 
         &-link {
-            @include desktop {
+            @include medium-desktop {
                 display:        inline-block;
                 vertical-align: middle;
             }
@@ -56,7 +55,7 @@
                     font-size: $global-font-size * 2;
                 }
 
-                @include desktop {
+                @include medium-desktop {
                     font-size: $global-font-size * 2.375;
                 }
             }
@@ -84,7 +83,7 @@
                 background-size: 7.5rem;
             }
 
-            @include desktop {
+            @include medium-desktop {
                 display:        inline-block;
                 margin:         0 $global-margin * 3;
                 vertical-align: middle;
