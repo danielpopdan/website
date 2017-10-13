@@ -5,6 +5,9 @@
 @import 'base/mixins';
 @import 'base/elements';
 
+// VENDOR
+@import 'vendor/slick-slider';
+
 // LAYOUT
 @import 'layout/grid';
 @import 'layout/footer';
@@ -14,3 +17,6 @@
 @import 'modules/homepage-intro';
 @import 'modules/homepage-parallax';
 @import 'modules/homepage-twitter';
+@import 'modules/location-intro';
+@import 'modules/location-map';
+@import 'modules/location-slider';

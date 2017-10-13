@@ -43,7 +43,7 @@ gulp.task('sass', function() {
 				'no-url-domains': 0,
 				'no-url-protocols': 0
 			},
-			files: {ignore: 'scss/base/_reset.scss'}	
+			files: {ignore: ['scss/base/_reset.scss', 'scss/vendor/_slick-slider.scss']}	
 		}))
 		.pipe(sassLint.format())
 		.pipe(sourcemaps.init())

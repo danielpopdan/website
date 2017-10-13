@@ -214,6 +214,52 @@
                     parallaxItem.init(this.DESKTOP_WIDTH, speedsPerScroll[i]);
                 }
             }
+        },
+
+        locationCreateSlider: function() {
+            var $slider = $('#location-slider');
+            var sliderOptions = {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: this.DESKTOP_WIDTH,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: this.TABLET_WIDTH,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            };
+
+            if ($slider.length) {
+                $slider.slick(sliderOptions);
+            }
+        },
+
+        locationMap: function() {
+            var $locationMap = $('.location-map');
+
+            if ($locationMap.length) {
+                var center = {lat: 46.7764, lng: 23.6036};
+    
+                var map = new google.maps.Map(document.getElementById('location-map'), {
+                    zoom: 17,
+                    center: center
+                });
+
+                var marker = new google.maps.Marker({
+                    position: center,
+                    map: map
+                });
+            }
         }
     };
 
@@ -223,5 +269,7 @@
     $(document).ready(function() {
         dCampTrans.loadPageAtTop();
         dCampTrans.homepageCreateParallax();
+        dCampTrans.locationCreateSlider();
+        dCampTrans.locationMap();
     });
 })(jQuery);

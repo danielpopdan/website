@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\dct_newsletter\Controller\MailchimpController;
 use Egulias\EmailValidator\EmailValidatorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -28,16 +29,26 @@ class NewsletterSubscriptionForm extends FormBase {
   protected $emailValidator;
 
   /**
+   * The mailchimp service.
+   *
+   * @var \Drupal\dct_newsletter\Controller\MailchimpController
+   */
+  protected $mailchimpService;
+
+  /**
    * Constructs a NewsletterForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Egulias\EmailValidator\EmailValidatorInterface $email_validator
    *   The email validator.
+   * @param \Drupal\dct_newsletter\Controller\MailchimpController $mailchimp_service
+   *   The mailchimp service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator, MailchimpController $mailchimp_service) {
     $this->entityTypeManager = $entity_type_manager;
     $this->emailValidator = $email_validator;
+    $this->mailchimpService = $mailchimp_service;
   }
 
   /**
@@ -46,7 +57,8 @@ class NewsletterSubscriptionForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('email.validator')
+      $container->get('email.validator'),
+      $container->get('dct_newsletter.mailchimp_service')
     );
   }
 
@@ -166,6 +178,9 @@ class NewsletterSubscriptionForm extends FormBase {
 
         $html = render($html);
         $command = new ReplaceCommand('#dct-newsletter-form', $html);
+
+        // Adds the user to the 'Target Audience' list in mailchimp.
+        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
       }
       else {
         $html = [
