@@ -7,8 +7,12 @@ use Drupal\dct_airport_connections\DataProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\dct_airport_connections;
 
+/**
+ * Class ConnectionsMapController.
+ *
+ * @package Drupal\dct_map\Controller
+ */
 class ConnectionsMapController extends ControllerBase {
-
 
   /**
    * Data provider the for airport connections.
@@ -39,8 +43,6 @@ class ConnectionsMapController extends ControllerBase {
    * @return array
    */
   public function getMap() {
-
-
     return[
       '#theme' => 'dct_map_connections_map',
       '#attached' => [
