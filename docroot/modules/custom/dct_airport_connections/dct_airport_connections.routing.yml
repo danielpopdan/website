@@ -1,0 +1,47 @@
+entity.airport_connections.canonical:
+  path: '/admin/airport-connections/{airport_connections}'
+  defaults:
+    _entity_view: 'airport_connections'
+    _title: 'Airport connections'
+  requirements:
+    _entity_access: 'airport_connections.view'
+
+entity.airport_connections.collection:
+  path: '/admin/airport-connections/list'
+  defaults:
+    _entity_list: 'airport_connections'
+    _title: 'Airport connections list'
+  requirements:
+    _permission: 'administer airport_connections entity'
+
+entity.airport_connections.add_form:
+  path: '/admin/airport-connections/add'
+  defaults:
+    _entity_form: airport_connections.add
+    _title: 'Add airport connection'
+  requirements:
+    _entity_create_access: 'airport_connections'
+
+entity.airport_connections.edit_form:
+  path: '/admin/airport-connections/{airport_connections}/edit'
+  defaults:
+    _entity_form: airport_connections.edit
+    _title: 'Edit airport connection'
+  requirements:
+    _entity_access: 'airport_connections.edit'
+
+entity.airport_connections.delete_form:
+  path: '/admin/airport-connections/{airport_connections}/delete'
+  defaults:
+    _entity_form: airport_connections.delete
+    _title: 'Delete airport connections'
+  requirements:
+    _entity_access: 'airport_connections.delete'
+
+airport_connections.settings:
+  path: '/admin/structure/airport-connections-settings'
+  defaults:
+    _form: '\Drupal\dct_airport_connections\Form\AirportConnectionsSettingsForm'
+    _title: 'Airport connections Settings'
+  requirements:
+    _permission: 'administer airport_connections entity'
