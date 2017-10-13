@@ -1,0 +1,15 @@
+dct_configurations.configurations:
+  path: '/admin/config/camp-transylvania'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'DrupalCamp Transylvania'
+  requirements:
+    _permission: 'administer camp settings'
+
+dct_configurations.homepage_configurations:
+  path: '/admin/config/camp-transylvania/homepage'
+  defaults:
+    _form: '\Drupal\dct_configurations\Form\HomepageConfigurationsForm'
+    _title: 'Homepage configurations'
+  requirements:
+    _permission: 'administer camp settings'

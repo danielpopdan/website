@@ -1,0 +1,21 @@
+uuid: ede9f057-9945-4077-b122-8a32c30e3b52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.sponsorship_package
+  module:
+    - text
+id: paragraph.sponsorship_package.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: sponsorship_package
+label: 'Other details'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

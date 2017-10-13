@@ -105,7 +105,7 @@ class NewsletterSubscriptionForm extends FormBase {
     if (empty($form_state->getValue('email'))) {
       $html = [
         '#prefix' => '<span class="error-message">',
-        '#markup' => $this->t('This email field is required.'),
+        '#markup' => $this->t('The email field is required.'),
         '#suffix' => '</span>',
       ];
       $error = TRUE;
@@ -130,7 +130,7 @@ class NewsletterSubscriptionForm extends FormBase {
         if ($subscribed_user) {
           $html = [
             '#prefix' => '<span class="error-message">',
-            '#markup' => $this->t('This email address is already used.'),
+            '#markup' => $this->t('This email address is already subscribed to the newsletter.'),
             '#suffix' => '</span>',
           ];
           $error = TRUE;
