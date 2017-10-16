@@ -12,6 +12,7 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  dct_airport_connections: 0
   dct_configurations: 0
   dct_newsletter: 0
   dynamic_page_cache: 0

@@ -31,7 +31,6 @@ use Drupal\user\UserInterface;
  *     "id" = "id"
  *   },
  *   links = {
- *     "canonical" = "/admin/airport-connections/{airport_connections}",
  *     "add-form" = "/admin/airport-connections/add",
  *     "edit-form" = "/admin/airport-connections/{airport_connections}/edit",
  *     "delete-form" = "/admin/airport-connections/{airport_connections}/delete",

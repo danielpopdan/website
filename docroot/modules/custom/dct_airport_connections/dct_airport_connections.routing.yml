@@ -1,11 +1,3 @@
-entity.airport_connections.canonical:
-  path: '/admin/airport-connections/{airport_connections}'
-  defaults:
-    _entity_view: 'airport_connections'
-    _title: 'Airport connections'
-  requirements:
-    _entity_access: 'airport_connections.view'
-
 entity.airport_connections.collection:
   path: '/admin/airport-connections/list'
   defaults:
