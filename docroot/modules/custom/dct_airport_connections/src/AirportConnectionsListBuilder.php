@@ -6,7 +6,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 
 /**
- * Class AirportConnectionsListBuilder
+ * Class AirportConnectionsListBuilder.
  *
  * @package Drupal\dct_airport_connections
  */

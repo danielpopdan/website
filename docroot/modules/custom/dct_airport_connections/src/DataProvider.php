@@ -5,7 +5,7 @@ namespace Drupal\dct_airport_connections;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
- * Class DataProvider
+ * Class DataProvider.
  *
  * @package Drupal\dct_airport_connections
  */
@@ -29,6 +29,7 @@ class DataProvider implements DataProviderInterface {
    * DataProvider constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity_type.manager service.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager) {
 
@@ -43,9 +44,7 @@ class DataProvider implements DataProviderInterface {
   }
 
   /**
-   * Returns an array containing the plots with the airport connections.
-   *
-   * @return array
+   * {@inheritdoc}
    */
   public function getPlots() {
     $plots = [];
@@ -67,9 +66,7 @@ class DataProvider implements DataProviderInterface {
   }
 
   /**
-   * Returns an array containing the links between the home city and the connections.
-   *
-   * @return array
+   * {@inheritdoc}
    */
   public function getLinks() {
     $plots = $this->getPlots();
@@ -94,7 +91,7 @@ class DataProvider implements DataProviderInterface {
         ],
       ];
     }
-
     return $links;
   }
+
 }

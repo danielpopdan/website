@@ -6,7 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class AirportConnectionsSettingsForm
+ * Class AirportConnectionsSettingsForm.
  *
  * @package Drupal\dct_airport_connections\Form
  */

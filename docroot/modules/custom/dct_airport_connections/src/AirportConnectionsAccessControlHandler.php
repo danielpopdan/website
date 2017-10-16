@@ -8,7 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Class AirportConnectionsAccessControlHandler
+ * Class AirportConnectionsAccessControlHandler.
  *
  * @package Drupal\dct_airport_connections
  */

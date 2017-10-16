@@ -43,7 +43,7 @@ use Drupal\user\UserInterface;
 class AirportConnections extends ContentEntityBase implements AirportConnectionsInterface {
 
   /**
-   * {@ingeritdoc}
+   * {@inheritdoc}
    */
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);
@@ -77,9 +77,9 @@ class AirportConnections extends ContentEntityBase implements AirportConnections
   /**
    * {@inheritdoc}
    */
-  public function getChangedTimeAcrossTranslations()  {
+  public function getChangedTimeAcrossTranslations() {
     $changed = $this->getUntranslated()->getChangedTime();
-    foreach ($this->getTranslationLanguages(FALSE) as $language)    {
+    foreach ($this->getTranslationLanguages(FALSE) as $language) {
       $translation_changed = $this->getTranslation($language->getId())->getChangedTime();
       $changed = max($translation_changed, $changed);
     }
@@ -129,7 +129,7 @@ class AirportConnections extends ContentEntityBase implements AirportConnections
       ->setLabel(t('Title'))
       ->setDescription(t('The title of the entity.'));
 
-    $fields['latitude']  = BaseFieldDefinition::create('string')
+    $fields['latitude'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Latitude'))
       ->setDescription(t('The latitude.'));
 

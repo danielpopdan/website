@@ -6,7 +6,7 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class AirportConnectionsForm
+ * Class AirportConnectionsForm.
  *
  * @package Drupal\dct_airport_connections\Form
  */
@@ -16,27 +16,27 @@ class AirportConnectionsForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $titleDefault = ($this->entity->title->getValue()) ? $this->entity->title->getValue()[0] : '' ;
-    $latDefault = ($this->entity->latitude->getValue()) ? $this->entity->latitude->getValue()[0] : '' ;
-    $longDefault = ($this->entity->longitude->getValue()) ? $this->entity->longitude->getValue()[0] : '' ;
+    $titleDefault = ($this->entity->title->getValue()) ? $this->entity->title->getValue()[0] : '';
+    $latDefault = ($this->entity->latitude->getValue()) ? $this->entity->latitude->getValue()[0] : '';
+    $longDefault = ($this->entity->longitude->getValue()) ? $this->entity->longitude->getValue()[0] : '';
 
     $form['title'] = [
       '#type' => 'textfield',
-      '#required' => true,
+      '#required' => TRUE,
       '#title' => $this->t('Title'),
       '#default_value' => $titleDefault
     ];
 
     $form['latitude'] = [
       '#type' => 'textfield',
-      '#required' => true,
+      '#required' => TRUE,
       '#title' => $this->t('Latitude'),
       '#default_value' => $latDefault
     ];
 
     $form['longitude'] = [
       '#type' => 'textfield',
-      '#required' => true,
+      '#required' => TRUE,
       '#title' => $this->t('Longitude'),
       '#default_value' => $longDefault
     ];
