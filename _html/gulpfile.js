@@ -38,7 +38,8 @@ gulp.task('sass', function() {
 			rules: {
 				'indentation': [1, {'size': '4'}],
 				'property-sort-order': [1, {'order': 'smacss'}],
-				'mixins-before-declarations': [1, {'exclude': ['tablet', 'desktop', 'on-events']}],
+				'mixins-before-declarations': [1, {'exclude': ['tablet', 'medium-desktop', 'large-desktop', 'on-events']}],
+				'nesting-depth': 0,
 				'no-ids': 0,
 				'no-url-domains': 0,
 				'no-url-protocols': 0

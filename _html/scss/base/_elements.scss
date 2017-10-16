@@ -13,6 +13,7 @@ body {
 a {
     @include         disable-outline;
     color:           $primary-color;
+    font-weight:     $weight-medium;
     text-decoration: none;
 
     @include on-events {
@@ -26,26 +27,81 @@ img {
 }
 
 p {
-    margin:      0 0 $global-margin;
-    font-size:   $global-font-size;
+    margin:      0 0 $global-margin * 1.4;
+    color:       $white;
+    font-size:   $global-font-size * .75;
+    font-weight: $weight-medium;
     line-height: $global-line-height * 1.4;
 }
 
+h1 {
+    margin:      0 auto $global-margin * 2;
+    color:       $white;
+    font-size:   $global-font-size * 1.5;
+    font-weight: $weight-medium;
+    line-height: $global-line-height * 1.2;
+
+    @include tablet {
+        margin: 0 auto $global-margin * 3.25;
+    }
+}
+
+h2,
+h3 {
+    margin:      0 auto $global-margin * 1.5;
+    color:       $secondary-color;
+    font-weight: $weight-bold;
+    line-height: $global-line-height * 1.2;
+}
+
+h2 {
+    font-size:   $global-font-size;
+}
+
+h3 {
+    font-size:   $global-font-size * .875;
+}
+
 input,
-button {
+button,
+textarea,
+label {
     @include     disable-outline;
+    color:       $primary-color;
     font-family: $font-main;
+    font-weight: $weight-medium;
+}
+
+input,
+textarea {
+    padding: $global-padding * .4;
 }
 
 button {
-    padding:          0;
+    padding:          $global-padding * .75 $global-padding * 1.25;
     border:           0;
     background-color: $secondary-color;
     color:            $white;
+    font-size:        $global-font-size;
     cursor:           pointer;
 
     @include on-events {
         background-color: $third-color;
+    }
+}
+
+input {
+    &[type*='submit'] {
+        padding:          $global-padding * .75 $global-padding * 1.25;
+        border:           0;
+        background-color: $secondary-color;
+        color:            $white;
+        font-size:        $global-font-size;
+        cursor:           pointer;
+
+        @include on-events {
+            background-color: $third-color;
+        }
     }
 }
 
