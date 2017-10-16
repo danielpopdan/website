@@ -42,6 +42,6 @@ script:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$TRAVIS_PULL_REQUEST, BRANCH=$BRANCH"
   # Run for each changed file the code sniffer.
-  - if [[ "$TRAVIS_PULL_REQUEST" != "false" && -s changed_existing_files.txt ] && "$BRANCH" != "master" && "$BRANCH" != "develop" ]] ; then
+  - if [[ "$TRAVIS_PULL_REQUEST" != "false" && -s changed_existing_files.txt && "$BRANCH" != "master" && "$BRANCH" != "develop" ]] ; then
       ./vendor/bin/phpcs --file-list=changed_existing_files.txt;
     fi;
