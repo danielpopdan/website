@@ -8,6 +8,7 @@
     &--category {
         @include          box-shadow(.125rem, .125rem, .25rem, $box-shadow);
         position:         relative;
+        margin:           0 0 $global-margin * 2.75;
         padding:          $global-padding;
         border-width:     .125rem;
         border-style:     solid;
@@ -17,35 +18,47 @@
             padding: $global-padding * 1.5;
         }
 
-        &.diamond {
-            border-color: $secondary-color-faded;
+        &.has-extras {
+            padding-bottom: $global-padding * 7;
 
             @include tablet {
-                margin: 0 $global-margin * 2.5 $global-margin * 2.75 0;
+                padding-bottom: $global-padding * 5;
+            }
+        }
+
+        &.diamond {
+            margin-right:  $global-margin * .25;
+            border-color: $secondary-color-faded;
+
+            @include medium-desktop {
+                margin-right: $global-margin * 2.5;
             }
         }
 
         &.gold {
+            margin-left:  $global-margin * .25;
             border-color: $third-color-faded;
 
-            @include tablet {
-                margin: 0 0 $global-margin * 2.75 $global-margin * 2.5;
+            @include medium-desktop {
+                margin-left: $global-margin * 2.5;
             }
         }
 
         &.silver {
+            margin-right:  $global-margin * .25;
             border-color: $fourth-color-faded;
 
-            @include tablet {
-                margin: 0 $global-margin * 2.5 $global-margin * 2.75 0;
+            @include medium-desktop {
+                margin-right: $global-margin * 2.5;
             }
         }
 
         &.unlimited {
+            margin-left:  $global-margin * .25;
             border-color: $primary-color-faded;
 
-            @include tablet {
-                margin: 0 0 $global-margin * 2.75 $global-margin * 2.5;
+            @include medium-desktop {
+                margin-left: $global-margin * 2.5;
             }
         }
 
@@ -92,8 +105,10 @@
         }
 
         &--benefits {
+            padding: $global-padding * 9 $global-padding $global-padding;
+
             @include tablet {
-                padding: $global-padding * 2 $global-padding * 2 $global-padding * 2 $global-padding * 7;
+                padding: $global-padding * 2 $global-padding * 2 $global-padding $global-padding * 7;
             }
 
             li {
@@ -120,11 +135,14 @@
         }
 
         &--extras {
+            @include    position(absolute, auto, 0, 1.5rem, 0);
+            padding:    0 $global-padding;
             text-align: center;
 
             span {
-                font-size:   $global-font-size * .75;
+                font-size:   $global-font-size * .8125;
                 font-weight: $weight-medium;
+                line-height: $global-line-height * 1.4;
             }
         }
     }
@@ -150,6 +168,12 @@
                     span {
                         color: $secondary-color;
                     }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $secondary-color;
                 }
             }
         }
@@ -178,6 +202,16 @@
                     }
                 }
             }
+
+            &--extras {
+                @include tablet {
+                    padding: 0 $global-padding * 2;
+                }
+
+                .plus-sign {
+                    color: $third-color;
+                }
+            }
         }
     }
 }
@@ -204,6 +238,12 @@
                     }
                 }
             }
+
+            &--extras {
+                .plus-sign {
+                    color: $fourth-color;
+                }
+            }
         }
     }
 }
@@ -228,6 +268,12 @@
                     span {
                         color: $primary-color;
                     }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $primary-color;
                 }
             }
         }
