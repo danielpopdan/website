@@ -12,11 +12,19 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 class DataProvider implements DataProviderInterface {
 
   /**
-   * Array containing the latitude and the longitude of the 'home' city. (Cluj)
-   *
-   * @var array
+   * Latitude of the origin city.
    */
-  protected $home;
+  const ORIGIN_LATITUDE = 46.770439;
+
+  /**
+   * Longitude of the origin city.
+   */
+  const ORIGIN_LONGITUDE = 23.591423;
+
+  /**
+   * Name of the origin city.
+   */
+  const ORIGIN_NAME = 'Cluj';
 
   /**
    * The entity_type.manager service.
@@ -32,14 +40,6 @@ class DataProvider implements DataProviderInterface {
    *   The entity_type.manager service.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager) {
-
-    // Sets the latitude of the host city a.k.a. 'home'.
-    $this->home = [
-      'title' => 'Cluj',
-      'latitude' => 46.770439,
-      'longitude' => 23.591423,
-    ];
-
     $this->entityTypeManager = $entityTypeManager;
   }
 
@@ -50,6 +50,7 @@ class DataProvider implements DataProviderInterface {
     $plots = [];
     $connections = $this->entityTypeManager->getStorage('airport_connections')->loadByProperties();
 
+    // Creates associative array containing the locations.
     foreach ($connections as $connection) {
       $plots[$connection->get('title')->first()->value] = [
         'latitude' => $connection->get('latitude')->first()->value,
@@ -57,9 +58,9 @@ class DataProvider implements DataProviderInterface {
       ];
     }
 
-    $plots[$this->home['title']] = [
-      'latitude' => $this->home['latitude'],
-      'longitude' => $this->home['longitude'],
+    $plots[self::ORIGIN_NAME] = [
+      'latitude' => self::ORIGIN_LATITUDE,
+      'longitude' => self::ORIGIN_LONGITUDE,
     ];
 
     return $plots;
@@ -72,12 +73,13 @@ class DataProvider implements DataProviderInterface {
     $plots = $this->getPlots();
     $links = [];
 
+    // Creates associative array containing the links between locations.
     foreach ($plots as $title => $plot) {
-      $links[$this->home['title'] . $title] = [
+      $links[self::ORIGIN_NAME . $title] = [
         'between' => [
           [
-            'latitude' => $this->home['latitude'],
-            'longitude' => $this->home['longitude']
+            'latitude' => self::ORIGIN_LATITUDE,
+            'longitude' => self::ORIGIN_LONGITUDE,
           ],
           [
             'latitude' => floatval($plot['latitude']),

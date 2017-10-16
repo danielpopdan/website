@@ -11,6 +11,6 @@ use Drupal\user\EntityOwnerInterface;
  *
  * @package Drupal\dct_airport_connections\Entity
  */
-interface AirportConnectionsInterface extends ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
+interface AirportConnectionsInterface extends ContentEntityInterface, EntityOwnerInterface {
 
 }

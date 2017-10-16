@@ -18,7 +18,7 @@ interface DataProviderInterface {
   public function getPlots();
 
   /**
-   * Returns an array containing the links between the home city and the connections.
+   * Returns an array containing the links between origin and the connections.
    *
    * @return array
    *   Array containing the links between the home city and the connections.

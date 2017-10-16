@@ -15,7 +15,6 @@ use Drupal\user\UserInterface;
  *   id = "airport_connections",
  *   label = @Translation("Airport connections entity"),
  *   handlers = {
- *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\dct_airport_connections\AirportConnectionsListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "form" = {
@@ -46,9 +45,6 @@ class AirportConnections extends ContentEntityBase implements AirportConnections
    */
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);
-    $values += [
-      'user_id' => \Drupal::currentUser()->id(),
-    ];
   }
 
   /**
@@ -56,13 +52,6 @@ class AirportConnections extends ContentEntityBase implements AirportConnections
    */
   public function getCreatedTime() {
     return $this->get('created')->value;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getChangedTime() {
-    return $this->get('changed')->value;
   }
 
   /**
