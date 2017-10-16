@@ -260,6 +260,12 @@
                     map: map
                 });
             }
+        },
+
+        sponsorsMatchHeight: function() {
+            var sponsorCategory = $('.sponsors-categories--category');
+
+            sponsorCategory.matchHeight();
         }
     };
 
@@ -271,5 +277,6 @@
         dCampTrans.homepageCreateParallax();
         dCampTrans.locationCreateSlider();
         dCampTrans.locationMap();
+        dCampTrans.sponsorsMatchHeight();
     });
 })(jQuery);

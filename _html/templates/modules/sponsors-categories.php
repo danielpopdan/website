@@ -2,7 +2,7 @@
     <div class="l-container">
         <div class="l-row">
             <div class="l-col l-col-2">
-                <div class="sponsors-categories--category diamond">
+                <div class="sponsors-categories--category diamond has-extras">
                     <div class="sponsors-categories--category--header">
                         <h2 class="sponsors-categories--category--title">
                             <span class="name">Diamond</span>
@@ -23,13 +23,17 @@
                     </ul>
                     <div class="sponsors-categories--category--extras">
                         <span>Saturday evening party (1 sponsor)</span>
+                        <span>&nbsp;|&nbsp;</span>
                         <span>Friday evening activities (1 sponsor)</span>
-                        <span>sprint room/ workshop room will be named after your company</span>
+                        <div class="super-extra">
+                            <span class="plus-sign">+</span>
+                            <span>sprint room/ workshop room will be named after your company</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="l-col l-col-2">
-                <div class="sponsors-categories--category gold">
+                <div class="sponsors-categories--category gold has-extras">
                     <div class="sponsors-categories--category--header">
                         <h2 class="sponsors-categories--category--title">
                             <span class="name">Gold</span>
@@ -49,8 +53,11 @@
                     </ul>
                     <div class="sponsors-categories--category--extras">
                         <span>Coffee (1 sponsor)</span>
+                        <span>&nbsp;|&nbsp;</span>
                         <span>Cookies (1 sponsor)</span>
+                        <span>&nbsp;|&nbsp;</span>
                         <span>Snacks (1 sponsor)</span>
+                        <span>&nbsp;|&nbsp;</span>
                         <span>Beer (1 sponsor)</span>
                     </div>
                 </div>
