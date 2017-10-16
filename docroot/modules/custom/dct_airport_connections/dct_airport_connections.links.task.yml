@@ -3,11 +3,6 @@ airport_connections.settings_tab:
   base_route: airport_connections.settings
   title: 'Settings'
 
-airport_connections.view:
-  route_name: entity.airport_connections.canonical
-  base_route: entity.airport_connections.canonical
-  title: 'View'
-
 ariport_connections.page_edit:
   route_name: entity.airport_connections.edit_form
   base_route: entity.airport_connections.canonical

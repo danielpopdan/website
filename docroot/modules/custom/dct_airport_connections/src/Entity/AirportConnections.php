@@ -15,8 +15,8 @@ use Drupal\user\UserInterface;
  *   id = "airport_connections",
  *   label = @Translation("Airport connections entity"),
  *   handlers = {
- *     "view_builder" = "Drupal\core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\dct_airport_connections\Entity\Controller\AirportConnectionsListBuilder",
+ *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
+ *     "list_builder" = "Drupal\dct_airport_connections\AirportConnectionsListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "form" = {
  *       "add" = "Drupal\dct_airport_connections\Form\AirportConnectionsForm",
@@ -129,7 +129,7 @@ class AirportConnections extends ContentEntityBase implements AirportConnections
       ->setLabel(t('Title'))
       ->setDescription(t('The title of the entity.'));
 
-    $fields['latitude']  =BaseFieldDefinition::create('string')
+    $fields['latitude']  = BaseFieldDefinition::create('string')
       ->setLabel(t('Latitude'))
       ->setDescription(t('The latitude.'));
 

@@ -16,7 +16,8 @@ class AirportConnectionsListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['id'] = $this->t('ID');
+    $header['id'] = $this->t('CID');
+    $header['title'] = $this->t('Title');
 
     return $header + parent::buildHeader();
   }
@@ -26,6 +27,7 @@ class AirportConnectionsListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     $row['id'] = $entity->id();
+    $row['title'] = $entity->get('title')->first()->getValue()['value'];
 
     return $row + parent::buildRow($entity);
   }
