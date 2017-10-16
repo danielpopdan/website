@@ -2,14 +2,13 @@
     position: absolute;
     top:      27%;
     width:    100%;
-    padding:  0 $global-padding * 1.5;
 
     @include tablet {
         top: 30%;
     }
 
-    @include desktop {
-        top: 35%;
+    @include large-desktop {
+        top: 40%;
     }
 
     &--logos {
@@ -29,7 +28,7 @@
             width: 50%;
         }
 
-        @include desktop {
+        @include medium-desktop {
             width: 25rem;
         }
     }
@@ -59,6 +58,7 @@
             margin:          $global-margin * 1.25 auto 0;
             background:      url($homepage-path + 'location-flag.png') no-repeat;
             background-size: 18.125rem;
+            color:           $primary-color;
             font-size:       $global-font-size * 1.2;
             font-weight:     $weight-black;
             line-height:     $global-line-height * 2.2;
@@ -73,17 +73,15 @@
     }
 
     &--interested-form {
-        width:  100%;
-        margin: 28% auto 0;
+        margin: 26% auto 0;
 
         @include tablet {
-            width:  40rem;
             margin: 40% auto 0;
         }
 
-        @include desktop {
-            width:  48rem;
-            margin: 10% auto 0;
+        @include medium-desktop {
+            width:  80%;
+            margin: 15% auto 0;
         }
 
         input,
@@ -111,7 +109,7 @@
                     padding: $global-padding $global-padding * 1.25;
                 }
 
-                @include desktop {
+                @include medium-desktop {
                     width: 65%;
                 }
             }
@@ -147,7 +145,7 @@
                     text-align: left;
                 }
 
-                @include desktop {
+                @include medium-desktop {
                     width: 35%;
                 }
             }

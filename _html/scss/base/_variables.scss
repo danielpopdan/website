@@ -3,6 +3,7 @@ $font-main: 'Roboto', sans-serif;
 $global-font-size: 1rem;
 $global-line-height: 1;
 $weight-regular: 400;
+$weight-medium: 500;
 $weight-bold: 700;
 $weight-black: 900;
 
@@ -12,8 +13,13 @@ $white: #fff;
 $primary-color: #200f17;
 $secondary-color: #fcb02a;
 $third-color: #9f1a46;
-$fourth-sponsor: #720d34;
+$fourth-color: #720d34;
 $header-color: #0f0308;
+$box-shadow: #e2e2e2;
+$primary-color-faded: rgba($primary-color, .2);
+$secondary-color-faded: rgba($secondary-color, .2);
+$third-color-faded: rgba($third-color, .2);
+$fourth-color-faded: rgba($fourth-color, .2);
 
 // Layout
 $global-margin: 1rem;
@@ -21,7 +27,8 @@ $global-padding: 1rem;
 
 // Breakpoints
 $tablet-breakpoint: 48em;
-$desktop-breakpoint: 64em;
+$medium-desktop-breakpoint: 64em;
+$large-desktop-breakpoint: 75em;
 
 // Paths
 $icons-path: '../images/icons/';

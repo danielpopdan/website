@@ -7,7 +7,7 @@
         padding: 0 0 150%;
     }
 
-    @include desktop {
+    @include medium-desktop {
         padding: 0 0 90%;
     }
 
@@ -21,7 +21,7 @@
             padding: 0 0 150%;
         }
 
-        @include desktop {
+        @include medium-desktop {
             @include position(absolute, 0, 0, 0, 0);
             padding: 0 0 102%;
         }
@@ -33,7 +33,7 @@
                 padding: 0 0 150%;
             }
 
-            @include desktop {
+            @include medium-desktop {
                 padding: 0 0 90%;
             }
         }
