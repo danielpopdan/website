@@ -1,0 +1,7 @@
+dct_map.configurations:
+  path: '/connections-map'
+  defaults:
+    _controller: '\Drupal\dct_map\Controller\ConnectionsMapController::getMap'
+    _title: 'DrupalCamp Transylvania Flight Connections Map'
+  requirements:
+    _permission: 'access content'
