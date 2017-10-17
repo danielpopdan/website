@@ -6,11 +6,26 @@
     }
 
     &--action  {
+        position:    relative;
         margin:      0 auto $global-margin * 2;
         color:       $secondary-color;
         font-size:   $global-font-size * 1.6;
         font-weight: $weight-bold;
         text-align:  center;
+
+        &::before {
+            @include         position(absolute, -5%, auto, auto, -20%);
+            width:           12.5rem;
+            height:          5.5rem;
+            background:      url($homepage-path + 'bat.png') no-repeat;
+            background-size: 12.5rem;
+            content:         '';
+            z-index:         -1;
+
+            @include tablet {
+                left: -25%;
+            }
+        }
 
         @include tablet {
             max-width: 75%;
