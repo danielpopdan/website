@@ -1,24 +1,27 @@
 .header {
-    @include    clearfix;
-    @include    position(fixed, 0, 0, auto, 0);
-    height:     4.5rem;
-    padding:    0 $global-padding;
-    background: $header-color;
-    opacity:    .8;
-    z-index:    2;
+    @include position(fixed, 0, 0, auto, 0);
+    height:  4rem;
+    padding: 0 $global-padding;
+    z-index: 2;
 
     @include tablet {
-        height:  5.5rem;
         padding: 0 $global-padding * 1.5;
     }
 
     @include medium-desktop {
-        height:  7rem;
+        height:  5rem;
         padding: 0 $global-padding * 2;
     }
 
     @include large-desktop {
         padding: 0 $global-padding * 2.5;
+    }
+
+    &::before {
+        @include    position(absolute, 0, 0, 0, 0);
+        background: $header-color;
+        content:    '';
+        opacity:    .8;
     }
 
     &--logo {
@@ -40,9 +43,9 @@
         a {
             display:         inline-block;
             width:           3rem;
-            height:          3.75rem;
+            height:          3rem;
             background:      url($logos-path + 'vampire-logo.png') no-repeat;
-            background-size: 3rem;
+            background-size: 2.4rem;
 
             @include tablet {
                 width:           20rem;
@@ -52,9 +55,9 @@
             }
 
             @include medium-desktop {
-                width:           34rem;
-                height:          3.875rem;
-                background-size: 34rem;
+                width:           22rem;
+                height:          2.5rem;
+                background-size: 22rem;
             }
         }
     }
