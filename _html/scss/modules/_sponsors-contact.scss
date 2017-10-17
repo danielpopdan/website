@@ -41,7 +41,8 @@
     }
 
     .contact-form {
-        margin: 0 auto;
+        margin:     0 auto;
+        text-align: left;
 
         @include tablet {
             max-width: 75%;
@@ -52,10 +53,17 @@
         }
 
         label {
-            display:    block;
+            display:    inline-block;
+            position:   relative;
             padding:    0 0 $global-padding * .2;
             font-size:  $global-font-size * .875;
-            text-align: left;
+
+            &.form-required {
+                &::after {
+                    @include position(absolute, 0, -.5rem, auto, auto);
+                    content:  '*';
+                }
+            }
         }
 
         input,
@@ -81,6 +89,7 @@
 
         .form-actions {
             margin-top: $global-margin * 2.75;
+            text-align: center;
         }
 
         .description {

@@ -64,16 +64,25 @@
 
         &--header {
             @include   position(absolute, -.5rem, auto, auto, .5rem);
-            max-width: 6.5rem;
+
+            @include tablet {
+                max-width: 6.5rem;
+            }
         }
 
         &--title {
+            display:     inline-block;
             margin:      0 0 $global-margin * .5;
-            padding:     $global-padding 0;
+            padding:     $global-padding $global-padding * .5;
             color:       $white;
             font-size:   $global-font-size * 1.125;
             font-weight: $weight-medium;
             text-align:  center;
+
+            @include tablet {
+                display: block;
+                padding: $global-padding 0;
+            }
 
             .name,
             .quantity {
@@ -87,8 +96,15 @@
         }
 
         &--price {
+            display:     inline-block;
+            padding:     $global-padding $global-padding * .5;
             font-size:   $global-font-size * 1.125;
             font-weight: $weight-medium;
+
+            @include tablet {
+                display: block;
+                padding: 0;
+            }
 
             span {
                 display: block;
@@ -105,7 +121,7 @@
         }
 
         &--benefits {
-            padding: $global-padding * 9 $global-padding $global-padding;
+            padding: $global-padding * 6 $global-padding $global-padding;
 
             @include tablet {
                 padding: $global-padding * 2 $global-padding * 2 $global-padding $global-padding * 7;
