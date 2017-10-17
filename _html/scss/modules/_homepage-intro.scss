@@ -4,11 +4,11 @@
     width:    100%;
 
     @include tablet {
-        top: 30%;
+        top: 25%;
     }
 
     @include large-desktop {
-        top: 40%;
+        top: 27%;
     }
 
     &--logos {
@@ -29,7 +29,7 @@
         }
 
         @include medium-desktop {
-            width: 25rem;
+            width: 23rem;
         }
     }
 
@@ -38,7 +38,7 @@
         text-align: center;
 
         @include tablet {
-            margin: $global-margin * 3.75 0 0;
+            margin: $global-margin * 3 0 0;
         }
 
         &--date {
@@ -73,15 +73,15 @@
     }
 
     &--interested-form {
-        margin: 26% auto 0;
-
-        @include tablet {
-            margin: 40% auto 0;
-        }
+        margin: 25% auto 0;
 
         @include medium-desktop {
             width:  80%;
-            margin: 15% auto 0;
+            margin: 10% auto 0;
+        }
+
+        @include large-desktop {
+            margin: 18% auto 0;
         }
 
         input,
