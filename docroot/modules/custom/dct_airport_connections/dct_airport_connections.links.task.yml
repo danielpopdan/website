@@ -1,0 +1,9 @@
+airport_connections.settings_tab:
+  route_name: airport_connections.settings
+  base_route: airport_connections.settings
+  title: 'Settings'
+
+ariport_connections.collection:
+  route_name: entity.airport_connections.collection
+  base_route: system.admin_content
+  title: 'Airport connections'
