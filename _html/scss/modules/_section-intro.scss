@@ -1,0 +1,57 @@
+.section-intro {
+    position: relative;
+    padding:  $global-padding * 4.5 0 0;
+    overflow: hidden;
+
+    @include tablet {
+        padding: 0 0 100%;
+    }
+
+    @include medium-desktop {
+        padding: 0 0 64%;
+    }
+
+    &--background {
+        @include         position(absolute, 0, -50%, 0, -50%);
+        background:      url($backgrounds-path + 'location-intro.png') no-repeat;
+        background-size: cover;
+
+        @include tablet {
+            @include position(absolute, 0, -25%, 0, -25%);
+        }
+
+        @include medium-desktop {
+            @include position(absolute, 0, 0, 0, 0);
+        }
+    }
+
+    &--text {
+        position: relative;
+        padding: $global-padding * 2.5 $global-padding * 1.5 $global-padding * 3.5;
+
+        @include tablet {
+            @include position(absolute, auto, 0, 20%, 0);
+            padding: 0 $global-padding * 1.5;
+        }
+    }
+
+    &--title {
+        text-align: center;
+    }
+
+    &--details {
+        margin: 0 auto;
+
+        @include tablet {
+            width: 60%;
+        }
+
+        h2 {
+            font-size: $global-font-size * .875;
+        }
+
+        &--highlight {
+            color: $secondary-color;
+        }
+    }
+}

@@ -29,3 +29,5 @@ if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
     exit;
   }
 }
+
+$config['acquia_connector.settings']['subscription_data']['active'] = TRUE;

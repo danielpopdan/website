@@ -1,0 +1,99 @@
+.sponsors-contact {
+    margin:           $global-margin * 2 0 $global-margin * (-10);
+    text-align:       center;
+
+    @include tablet {
+        margin: $global-margin * 3.5 0 $global-margin * (-15);
+    }
+
+    &--title,
+    &--form-title {
+        margin:      0 0 $global-margin * 1.5;
+        color:       $primary-color;
+        font-size:   $global-font-size * 1.5;
+        font-weight: $weight-medium;
+        line-height: $global-line-height * 1.2;
+
+        @include tablet {
+            margin: 0 0 $global-margin * 2.75;
+        }
+    }
+
+    &--title {
+        padding:          $global-padding * 1.5 0 0;
+        border-top: 1px solid $light-border;
+
+        @include tablet {
+            padding: $global-padding * 3 0 0;
+        }
+    }
+
+    &--intro {
+        margin:      0 0 $global-margin * 2.5;
+        color:       $primary-color;
+        font-size:   $global-font-size * .875;
+        text-align:  left;
+
+        @include tablet {
+            max-width: 75%;
+            margin:    0 auto $global-margin * 4;
+        }
+    }
+
+    .contact-form {
+        margin:     0 auto;
+        text-align: left;
+
+        @include tablet {
+            max-width: 75%;
+        }
+
+        @include medium-desktop {
+            max-width: 40%;
+        }
+
+        label {
+            display:    inline-block;
+            position:   relative;
+            padding:    0 0 $global-padding * .2;
+            font-size:  $global-font-size * .875;
+
+            &.form-required {
+                &::after {
+                    @include position(absolute, 0, -.5rem, auto, auto);
+                    content:  '*';
+                }
+            }
+        }
+
+        input,
+        textarea {
+            width: 100%;
+        }
+
+        input {
+            &[type*='submit'] {
+                @include tablet {
+                    width:   65%;
+                }
+            }
+
+            &[data-drupal-selector*='edit-preview'] {
+                display: none;
+            }
+        }
+
+        .form-wrapper {
+            margin: 0 0 $global-margin * 1.5;
+        }
+
+        .form-actions {
+            margin-top: $global-margin * 2.75;
+            text-align: center;
+        }
+
+        .description {
+            display: none;
+        }
+    }
+}
