@@ -807,5 +807,3 @@ if (file_exists('./modules/contrib/fast404/fast404.inc')) {
   include_once './modules/contrib/fast404/fast404.inc';
   fast404_preboot($settings);
 }
-
-$config['acquia_connector.settings']['subscription_data']['active'] = FALSE;

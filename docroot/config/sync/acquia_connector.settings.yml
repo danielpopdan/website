@@ -1,6 +1,6 @@
 cloud_migration: {  }
 subscription_data:
-  active: true
+  active: false
   href: 'https://insight.acquia.com/node/uuid/487ab096-d27e-4935-93f0-994990dbdc31/dashboard'
   uuid: 487ab096-d27e-4935-93f0-994990dbdc31
   subscription_name: 'Drupal Camp Free Hosting - transylvania'
