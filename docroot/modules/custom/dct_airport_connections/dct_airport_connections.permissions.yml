@@ -1,5 +1,3 @@
-view airport_connections entity:
-  title: 'View Airport connections entity'
 add airport_connections entity:
   title: 'Add Airport connections entity'
 edit airport_connections entity:

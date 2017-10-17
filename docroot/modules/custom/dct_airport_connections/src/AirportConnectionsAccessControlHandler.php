@@ -19,9 +19,6 @@ class AirportConnectionsAccessControlHandler extends EntityAccessControlHandler 
    */
   public function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     switch ($operation) {
-      case 'view':
-        return AccessResult::allowedIfHasPermission($account, 'view airport_connections entity');
-
       case 'edit':
         return AccessResult::allowedIfHasPermission($account, 'edit airport_connections entity');
 
