@@ -1,0 +1,281 @@
+.sponsors-categories {
+    margin:  $global-margin * (-2) 0 $global-margin * 2;
+
+    @include tablet {
+        margin: $global-margin * (-3) 0 $global-margin * 2.375;
+    }
+
+    &--category {
+        @include          box-shadow(.125rem, .125rem, .25rem, $box-shadow);
+        position:         relative;
+        margin:           0 0 $global-margin * 2.75;
+        padding:          $global-padding;
+        border-width:     .125rem;
+        border-style:     solid;
+        background-color: $white;
+
+        @include tablet {
+            padding: $global-padding * 1.5;
+        }
+
+        &.has-extras {
+            padding-bottom: $global-padding * 7;
+
+            @include tablet {
+                padding-bottom: $global-padding * 5;
+            }
+        }
+
+        &.diamond {
+            margin-right:  $global-margin * .25;
+            border-color: $secondary-color-faded;
+
+            @include medium-desktop {
+                margin-right: $global-margin * 2.5;
+            }
+        }
+
+        &.gold {
+            margin-left:  $global-margin * .25;
+            border-color: $third-color-faded;
+
+            @include medium-desktop {
+                margin-left: $global-margin * 2.5;
+            }
+        }
+
+        &.silver {
+            margin-right:  $global-margin * .25;
+            border-color: $fourth-color-faded;
+
+            @include medium-desktop {
+                margin-right: $global-margin * 2.5;
+            }
+        }
+
+        &.unlimited {
+            margin-left:  $global-margin * .25;
+            border-color: $primary-color-faded;
+
+            @include medium-desktop {
+                margin-left: $global-margin * 2.5;
+            }
+        }
+
+        &--header {
+            @include   position(absolute, -.5rem, auto, auto, .5rem);
+            max-width: 6.5rem;
+        }
+
+        &--title {
+            margin:      0 0 $global-margin * .5;
+            padding:     $global-padding 0;
+            color:       $white;
+            font-size:   $global-font-size * 1.125;
+            font-weight: $weight-medium;
+            text-align:  center;
+
+            .name,
+            .quantity {
+                display: block;
+            }
+
+            .quantity {
+                margin:    $global-margin * .3 0 0;
+                font-size: $global-font-size;
+            }
+        }
+
+        &--price {
+            font-size:   $global-font-size * 1.125;
+            font-weight: $weight-medium;
+
+            span {
+                display: block;
+
+                &:first-of-type {
+                    margin:    0 0 $global-margin * .3;
+                    font-size: $global-font-size;
+                }
+
+                &:last-of-type {
+                    font-weight: $weight-bold;
+                }
+            }
+        }
+
+        &--benefits {
+            padding: $global-padding * 9 $global-padding $global-padding;
+
+            @include tablet {
+                padding: $global-padding * 2 $global-padding * 2 $global-padding $global-padding * 7;
+            }
+
+            li {
+                position:    relative;
+                margin:      0 0 $global-margin * 1.25;
+                padding:     0 0 0 $global-padding;
+                font-size:   $global-font-size * .8125;
+                font-weight: $weight-medium;
+                line-height: $global-line-height * 1.4;
+
+                &::before {
+                    @include          position(absolute, .3rem, auto, auto, 0);
+                    width:            .45rem;
+                    height:           .45rem;
+                    border-radius:    50%;
+                    content:          '';
+                }
+
+                span {
+                    font-size:   $global-font-size * .875;
+                    font-weight: $weight-bold;
+                }
+            }
+        }
+
+        &--extras {
+            @include    position(absolute, auto, 0, 1.5rem, 0);
+            padding:    0 $global-padding;
+            text-align: center;
+
+            span {
+                font-size:   $global-font-size * .8125;
+                font-weight: $weight-medium;
+                line-height: $global-line-height * 1.4;
+            }
+        }
+    }
+}
+
+.diamond {
+    .sponsors-categories {
+        &--category {
+            &--title {
+                background-color: $secondary-color;
+            }
+
+            &--price {
+                color: $secondary-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $secondary-color;
+                    }
+
+                    span {
+                        color: $secondary-color;
+                    }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+.gold {
+    .sponsors-categories {
+        &--category {
+            &--title {
+                background-color: $third-color;
+            }
+
+            &--price {
+                color: $third-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $third-color;
+                    }
+
+                    span {
+                        color: $third-color;
+                    }
+                }
+            }
+
+            &--extras {
+                @include tablet {
+                    padding: 0 $global-padding * 2;
+                }
+
+                .plus-sign {
+                    color: $third-color;
+                }
+            }
+        }
+    }
+}
+
+.silver {
+    .sponsors-categories {
+        &--category {
+            &--title {
+                background-color: $fourth-color;
+            }
+
+            &--price {
+                color: $fourth-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $fourth-color;
+                    }
+
+                    span {
+                        color: $fourth-color;
+                    }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $fourth-color;
+                }
+            }
+        }
+    }
+}
+
+.unlimited {
+    .sponsors-categories {
+        &--category {
+            &--title {
+                background-color: $primary-color;
+            }
+
+            &--price {
+                color: $primary-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $primary-color;
+                    }
+
+                    span {
+                        color: $primary-color;
+                    }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}

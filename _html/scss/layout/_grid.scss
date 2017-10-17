@@ -1,44 +1,49 @@
-.l-row {
+.l-container {
     @include clearfix;
-    margin:  0 auto;
-    padding: 0 $global-padding * 1.5;
+    position: relative;
+    margin:   0 auto;
+    padding:  0 $global-padding;
 
     @include tablet {
-        max-width: 52rem;
-        padding:   0 $global-padding * 2;
+        width:   45rem;
+        padding: 0;
     }
 
-    @include desktop {
-        max-width: 70.5rem;
-        padding:   0 $global-padding * 3.25;
+    @include medium-desktop {
+        width: 60rem;
     }
 
-    .l-row {
-        margin: 0 $global-margin * .625;
-
-        @include tablet {
-            margin: 0 $global-margin * .9375;
-        }
+    @include large-desktop {
+        width: 70rem;
     }
 }
 
-.l-col-custom {
-    width:   100%;
-    padding: 0 $global-padding * .625;
+.l-row {
+    @include clearfix;
+    margin:  0 (-$global-margin) * .5;
+}
+
+.l-col {
+    padding: 0 $global-padding * .5;
     float:   left;
+}
+
+.l-col-1 {
+    width: 100%;
+}
+
+.l-col-2 {
+    width: 100%;
+
+    @include tablet {
+        width: 50%;
+    }
 }
 
 .l-col-3 {
     width: 100%;
-    float: left;
-}
 
-.l-col-2 {
-    width: 50%;
-    float: left;
-}
-
-.l-col-1 {
-    width: 33.3333%;
-    float: left;
+    @include tablet {
+        width: 33.3333%;
+    }
 }

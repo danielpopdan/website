@@ -191,7 +191,7 @@
     var dCampTrans = {
         /* Responsive breakpoints. These are min-widths for the respective breakpoints. Min-width for mobile is 0. */
         TABLET_WIDTH: 768,
-        DESKTOP_WIDTH: 1024,
+        MEDIUM_DESKTOP_WIDTH: 1024,
 
         /* Force page to load at the top. */
         loadPageAtTop: function() {
@@ -207,11 +207,11 @@
             var prxLength = $parallaxItems.length;
 
             if (prxLength) {
-                var speedsPerScroll = [0.4, 0.6, 0.7, 1, 1.8];
+                var speedsPerScroll = [0.15, 0.3, 0.5, 0.75, 1.2];
         
                 for (var i = 0; i < prxLength; i++) {
                     var parallaxItem = new parallaxModule($parallaxItems.eq(i));
-                    parallaxItem.init(this.DESKTOP_WIDTH, speedsPerScroll[i]);
+                    parallaxItem.init(this.MEDIUM_DESKTOP_WIDTH, speedsPerScroll[i]);
                 }
             }
         },
@@ -223,7 +223,7 @@
                 slidesToScroll: 1,
                 responsive: [
                     {
-                        breakpoint: this.DESKTOP_WIDTH,
+                        breakpoint: this.MEDIUM_DESKTOP_WIDTH,
                         settings: {
                             slidesToShow: 2,
                             slidesToScroll: 1
@@ -260,6 +260,12 @@
                     map: map
                 });
             }
+        },
+
+        sponsorsMatchHeight: function() {
+            var sponsorCategory = $('.sponsors-categories--category');
+
+            sponsorCategory.matchHeight();
         }
     };
 
@@ -271,5 +277,6 @@
         dCampTrans.homepageCreateParallax();
         dCampTrans.locationCreateSlider();
         dCampTrans.locationMap();
+        dCampTrans.sponsorsMatchHeight();
     });
 })(jQuery);
