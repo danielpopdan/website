@@ -1,0 +1,4 @@
+services:
+  dct_airport_connections.data_provider:
+    class: Drupal\dct_airport_connections\DataProvider
+    arguments: ['@entity_type.manager']
