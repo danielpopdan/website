@@ -1,0 +1,5 @@
+connection.add:
+  route_name: entity.airport_connections.add_form
+  title: 'Add connection'
+  appears_on:
+    - entity.airport_connections.collection
