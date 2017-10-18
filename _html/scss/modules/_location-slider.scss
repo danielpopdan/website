@@ -73,3 +73,26 @@
         }
     }
 }
+
+// Handling slick slide when opening images with zoom plugin
+.zoom-overlay-open {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .location-slider {
+        .slick-list {
+            overflow: visible;
+            z-index:  12;
+        }
+
+        &--slide {
+            img {
+                opacity: 0;
+
+                &.zoom-img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
