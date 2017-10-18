@@ -1,18 +1,20 @@
-uuid: efff55bc-5430-4de9-840f-3b03f50d2867
+uuid: 00803c10-93e7-4183-ad94-d206e727b65d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_text_paragraph
+    - field.storage.node.field_paragraphs
     - node.type.page
+    - paragraphs.paragraphs_type.sponsorship_container
+    - paragraphs.paragraphs_type.sponsorship_package
     - paragraphs.paragraphs_type.text_paragraph
   module:
     - entity_reference_revisions
-id: node.page.field_text_paragraph
-field_name: field_text_paragraph
+id: node.page.field_paragraphs
+field_name: field_paragraphs
 entity_type: node
 bundle: page
-label: 'Text paragraph'
+label: Paragraphs
 description: ''
 required: false
 translatable: false
@@ -23,9 +25,17 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
+      sponsorship_container: sponsorship_container
+      sponsorship_package: sponsorship_package
       text_paragraph: text_paragraph
     target_bundles_drag_drop:
+      sponsorship_container:
+        enabled: true
+        weight: 4
+      sponsorship_package:
+        enabled: true
+        weight: 5
       text_paragraph:
         enabled: true
-        weight: 2
+        weight: 6
 field_type: entity_reference_revisions
