@@ -6,7 +6,7 @@ node.isSticky() ? 'node--sticky',
 not node.isPublished() ? 'node--unpublished',
 view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 'section-intro',
-'sponsors-intro',
+'sponsors-intro'
 ] %}
 <div{{ attributes.addClass(classes) }}>
     <div class="section-intro--background"></div>
@@ -16,5 +16,12 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
             {{ content.field_description }}
         </div>
     </div>
-    {{ content|without('field_description') }}
+</div>
+
+<div class="sponsors-categories">
+    <div class="l-container">
+        <div class="l-row">
+            {{ content.field_paragraphs }}
+        </div>
+    </div>
 </div>

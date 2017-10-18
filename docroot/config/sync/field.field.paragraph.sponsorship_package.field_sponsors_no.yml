@@ -1,19 +1,19 @@
-uuid: aa246955-3938-4479-ac9d-479d643815bf
+uuid: 7de52783-a270-40cd-818e-1702dc735a7f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_subtitle
+    - field.storage.paragraph.field_sponsors_no
     - paragraphs.paragraphs_type.sponsorship_package
-id: paragraph.sponsorship_package.field_subtitle
-field_name: field_subtitle
+id: paragraph.sponsorship_package.field_sponsors_no
+field_name: field_sponsors_no
 entity_type: paragraph
 bundle: sponsorship_package
-label: 'No. sponsors'
+label: 'Number of sponsors'
 description: ''
 required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string_long
+field_type: string
