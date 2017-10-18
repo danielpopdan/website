@@ -13,17 +13,18 @@ var scssFiles = 'scss/**/*.scss';
 var cssDest = 'css/';
 
 gulp.task('scripts', function() {
-	return gulp.src(['scripts/script.js'])
+	return gulp.src(['scripts/*.js', '!**/*min.js'])
+		.pipe(concat('script.js'))
 		.pipe(minify({
 			ext: {
 				min:'.min.js'
 			}
 		}))
-		.pipe(gulp.dest('scripts'));
+		.pipe(gulp.dest('scripts/build'));
 });
 
 gulp.task('scripts-lint', function() {
-	return gulp.src(['scripts/*.js', '!**/*min.js'])
+	return gulp.src(['scripts/*.js', '!**/*min.js', '!**/zoom.js'])
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'));
 });
@@ -44,7 +45,7 @@ gulp.task('sass', function() {
 				'no-url-domains': 0,
 				'no-url-protocols': 0
 			},
-			files: {ignore: ['scss/base/_reset.scss', 'scss/vendor/_slick-slider.scss']}	
+			files: {ignore: ['scss/base/_reset.scss', 'scss/vendor/_slick-slider.scss', 'scss/vendor/_zoom.scss']}	
 		}))
 		.pipe(sassLint.format())
 		.pipe(sourcemaps.init())
