@@ -10,5 +10,6 @@
     <exclude-pattern>./docroot/modules/contrib/*</exclude-pattern>
     <exclude-pattern>./docroot/core/*</exclude-pattern>
     <exclude-pattern>./docroot/sites/*</exclude-pattern>
+    <exclude-pattern>./_html/*</exclude-pattern>
 
 </ruleset>
