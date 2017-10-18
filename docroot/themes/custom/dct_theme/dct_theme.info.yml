@@ -5,7 +5,7 @@ description: Drupal Camp custom theme
 package: dct
 core: 8.x
 libraries:
-  - ex_theme/global
+  - dct_theme/global
 
 regions:
   header: Header
