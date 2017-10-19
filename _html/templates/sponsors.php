@@ -1,6 +1,6 @@
 <?php 
 /** 
-* Homepage template.
+* Sponsors template.
 */
 
 include "inc/header.inc.php";
