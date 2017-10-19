@@ -14,3 +14,12 @@ connections-map:
     js/connections-map.js: {}
   dependencies:
     - core/jquery
+
+matchHeight:
+  version: 1.x
+  js:
+    js/matchHeight.js: {}
+    node_modules/jquery-match-height/jquery.matchHeight.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

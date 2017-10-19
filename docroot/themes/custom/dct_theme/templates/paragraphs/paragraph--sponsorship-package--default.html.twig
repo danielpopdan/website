@@ -43,16 +43,9 @@
 'paragraph--type--' ~ paragraph.bundle|clean_class,
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 'sponsors-categories--category',
-'diamond',
-'has-extras'
+attributes.category,
+attributes.hasExtras
 ] %}
-{#{% block paragraph %}#}
-    {#<div{{ attributes.addClass(classes) }}>#}
-        {#{% block content %}#}
-            {#{{ content }}#}
-        {#{% endblock %}#}
-    {#</div>#}
-{#{% endblock paragraph %}#}
 <div class="l-col l-col-2">
     <div{{ attributes.addClass(classes) }}>
         <div class="sponsors-categories--category--header">
@@ -68,8 +61,11 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
         <ul class="sponsors-categories--category--benefits">
             {{ content.field_description }}
         </ul>
-        <div class="sponsors-categories--category--extras">
-            {{ content.field_text }}
-        </div>
+
+        {% if attributes.hasExtras %}
+            <div class="sponsors-categories--category--extras">
+                {{ content.field_text }}
+            </div>
+        {% endif %}
     </div>
 </div>
