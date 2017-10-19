@@ -1,0 +1,9 @@
+<div class="header--logo">
+    <a href="{{ path('<front>') }}" title="Homepage"></a>
+</div>
+
+{% if content %}
+    <div{{ attributes }}>
+        {{ content }}
+    </div>
+{% endif %}
