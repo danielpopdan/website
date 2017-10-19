@@ -32,10 +32,16 @@ settings:
       sponsorship_container:
         enabled: true
         weight: 4
+      image_paragraph:
+        weight: 5
+        enabled: false
       sponsorship_package:
         enabled: true
         weight: 5
       text_paragraph:
         enabled: true
         weight: 6
+      map_pagagraph:
+        weight: 7
+        enabled: false
 field_type: entity_reference_revisions

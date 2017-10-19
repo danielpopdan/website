@@ -1,0 +1,9 @@
+uuid: 32fd4708-7d02-47db-a8ab-3011c3bca6d5
+langcode: en
+status: true
+dependencies: {  }
+id: google_map_paragraph
+label: 'Google map paragraph'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

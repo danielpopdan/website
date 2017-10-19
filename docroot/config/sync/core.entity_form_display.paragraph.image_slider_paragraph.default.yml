@@ -1,0 +1,27 @@
+uuid: f17af3ac-6a0d-426a-9dfe-4a76724c9158
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_slider_paragraph.field_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.image_slider_paragraph
+  module:
+    - image
+id: paragraph.image_slider_paragraph.default
+targetEntityType: paragraph
+bundle: image_slider_paragraph
+mode: default
+content:
+  field_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

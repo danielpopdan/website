@@ -1,0 +1,24 @@
+uuid: e65c0072-01a9-4910-88be-0e8cf9d72844
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.google_map_paragraph.field_google_map
+    - paragraphs.paragraphs_type.google_map_paragraph
+  module:
+    - google_map_field
+id: paragraph.google_map_paragraph.default
+targetEntityType: paragraph
+bundle: google_map_paragraph
+mode: default
+content:
+  field_google_map:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: google_map_field_default
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
