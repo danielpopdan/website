@@ -1,0 +1,21 @@
+raphael:
+  js:
+    js/lib/raphael.min.js: {}
+  dependencies:
+    - drupal/jquery
+
+mapael:
+  version: 2.1.0
+  js:
+    js/lib/jquery.mapael.min.js: {}
+  dependencies:
+    - drupal/jquery
+    - dct_map/raphael
+
+maps_eu:
+  version: 1.x
+  css:
+  js:
+    js/maps/european_union.js: {}
+  dependencies:
+    - core/jquery
