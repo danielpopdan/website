@@ -53,7 +53,7 @@
             }
         }
 
-        &.unlimited {
+        &.community {
             margin-left:  $global-margin * .25;
             border-color: $primary-color-faded;
 
@@ -264,7 +264,7 @@
     }
 }
 
-.unlimited {
+.community {
     .sponsors-categories {
         &--category {
             &--title {
