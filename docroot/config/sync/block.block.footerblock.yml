@@ -1,0 +1,20 @@
+uuid: 954a7b1f-32c0-40a0-a5f5-b2fc73fdab34
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_configurations
+  theme:
+    - dct_theme
+id: footerblock
+theme: dct_theme
+region: footer
+weight: 0
+provider: null
+plugin: footer_block
+settings:
+  id: footer_block
+  label: 'Footer Block'
+  provider: dct_configurations
+  label_display: '0'
+visibility: {  }
