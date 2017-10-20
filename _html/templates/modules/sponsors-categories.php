@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="l-col l-col-2">
-                <div class="sponsors-categories--category unlimited">
+                <div class="sponsors-categories--category community">
                     <div class="sponsors-categories--category--header">
                         <h2 class="sponsors-categories--category--title">
                             <span class="name">Community</span>
