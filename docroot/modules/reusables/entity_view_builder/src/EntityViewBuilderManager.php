@@ -17,7 +17,7 @@ class EntityViewBuilderManager extends DefaultPluginManager {
    * {@inheritdoc}
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
-    parent::__construct('Plugin/ViewBuilder', $namespaces, $module_handler, 'Drupal\eentity_view_builder\EntityViewBuilderBase', 'Drupal\entity_view_builder\Annotation\EntityViewBuilder');
+    parent::__construct('Plugin/ViewBuilder', $namespaces, $module_handler, 'Drupal\entity_view_builder\EntityViewBuilderBase', 'Drupal\entity_view_builder\Annotation\EntityViewBuilder');
     $this->setCacheBackend($cache_backend, 'entity_view_builder_delegates');
   }
 

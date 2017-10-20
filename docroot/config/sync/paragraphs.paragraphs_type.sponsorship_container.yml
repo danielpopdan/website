@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: sponsorship_container
-label: 'Sponsorship Container'
+label: 'Sponsors packages'
 icon_uuid: null
 description: ''
 behavior_plugins: {  }

@@ -1,0 +1,7 @@
+name: DCT Paragraphs
+type: module
+description: Provides configurations for paragraphs.
+package: DCT
+core: 8.x
+dependencies:
+  - entity_view_builder
