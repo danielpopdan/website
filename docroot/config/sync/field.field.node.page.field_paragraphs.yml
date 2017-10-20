@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.field_paragraphs
     - node.type.page
     - paragraphs.paragraphs_type.sponsorship_container
-    - paragraphs.paragraphs_type.sponsorship_package
     - paragraphs.paragraphs_type.text_paragraph
   module:
     - entity_reference_revisions
@@ -26,7 +25,6 @@ settings:
     negate: 0
     target_bundles:
       sponsorship_container: sponsorship_container
-      sponsorship_package: sponsorship_package
       text_paragraph: text_paragraph
     target_bundles_drag_drop:
       sponsorship_container:
@@ -36,8 +34,8 @@ settings:
         weight: 5
         enabled: false
       sponsorship_package:
-        enabled: true
         weight: 5
+        enabled: false
       text_paragraph:
         enabled: true
         weight: 6

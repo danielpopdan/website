@@ -1,14 +1,16 @@
-uuid: c89f2e67-9e3e-4d44-8cb6-397410f7ce9a
+uuid: b440c74a-8b80-4e9b-a9c7-f706ada3a7c4
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_subtitle
-field_name: field_subtitle
+id: paragraph.field_sponsors_no
+field_name: field_sponsors_no
 entity_type: paragraph
-type: string_long
+type: string
 settings:
+  max_length: 255
+  is_ascii: false
   case_sensitive: false
 module: core
 locked: false
