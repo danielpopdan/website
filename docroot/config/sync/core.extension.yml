@@ -15,14 +15,18 @@ module:
   dblog: 0
   dct_airport_connections: 0
   dct_configurations: 0
+  dct_map: 0
   dct_newsletter: 0
+  dct_paragraphs: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
+  entity_view_builder: 0
   field: 0
   field_ui: 0
   file: 0
   filter: 0
+  google_map_field: 0
   help: 0
   history: 0
   image: 0

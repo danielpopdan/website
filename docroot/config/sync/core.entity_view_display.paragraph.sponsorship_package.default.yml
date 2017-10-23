@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.sponsorship_package.field_description
     - field.field.paragraph.sponsorship_package.field_float_number
-    - field.field.paragraph.sponsorship_package.field_subtitle
+    - field.field.paragraph.sponsorship_package.field_sponsors_no
     - field.field.paragraph.sponsorship_package.field_text
     - field.field.paragraph.sponsorship_package.field_title
     - paragraphs.paragraphs_type.sponsorship_package
@@ -18,39 +18,40 @@ mode: default
 content:
   field_description:
     weight: 4
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_float_number:
     weight: 2
-    label: above
+    label: hidden
     settings:
-      thousand_separator: ''
-      decimal_separator: .
-      scale: 2
+      thousand_separator: ','
+      decimal_separator: ','
+      scale: 0
       prefix_suffix: true
     third_party_settings: {  }
     type: number_decimal
     region: content
-  field_subtitle:
-    weight: 1
-    label: above
-    settings: {  }
+  field_sponsors_no:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: basic_string
+    type: string
     region: content
   field_text:
     weight: 3
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_title:
     weight: 0
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

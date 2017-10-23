@@ -1,0 +1,34 @@
+uuid: f94ee9ca-916b-40fd-8f45-e61529f4b4a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_google_map
+    - paragraphs.paragraphs_type.google_map_paragraph
+  module:
+    - google_map_field
+id: paragraph.google_map_paragraph.field_google_map
+field_name: field_google_map
+entity_type: paragraph
+bundle: google_map_paragraph
+label: 'Google map'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    preview: ''
+    actions: {  }
+    lat: '46.7765819'
+    name: ''
+    lon: '23.603960'
+    zoom: '17'
+    type: roadmap
+    width: 100%
+    height: 450px
+    marker: '1'
+    controls: '1'
+    infowindow: ''
+default_value_callback: ''
+settings: {  }
+field_type: google_map_field

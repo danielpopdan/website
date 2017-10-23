@@ -1,0 +1,9 @@
+uuid: 1ba7ff79-cb15-40ae-bdce-be42f9d365f8
+langcode: en
+status: true
+dependencies: {  }
+id: image_slider_paragraph
+label: 'Image slider paragraph'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
