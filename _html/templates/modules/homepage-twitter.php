@@ -17,5 +17,6 @@
             </div>
         </div>
         <h3 class="homepage-twitter--action">...and spread the word!</h3>
+        <?php include "modules/share-links.php"?>
     </div>
 </div>

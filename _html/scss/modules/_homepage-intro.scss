@@ -1,18 +1,18 @@
 .homepage-intro {
     position: absolute;
-    top:      16%;
+    top:      14%;
     width:    100%;
 
     @include tablet {
-        top: 25%;
+        top: 21%;
     }
 
     @include medium-desktop {
-        top: 18%;
+        top: 17%;
     }
 
     @include extra-large-desktop {
-        top: 27%;
+        top: 22%;
     }
 
     &--logos {

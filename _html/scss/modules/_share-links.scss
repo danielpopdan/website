@@ -1,0 +1,68 @@
+.share-links {
+    position:   relative;
+    margin:     $global-margin auto;
+    text-align: center;
+    z-index:    1;
+
+    @include tablet {
+        margin: $global-margin * 1.5 0;
+    }
+
+    li {
+        display: inline-block;
+        padding: 0 $global-padding * .4;
+    }
+
+    &--link {
+        display:    block;
+        background: url($logos-path + 'share-sprites.png') no-repeat;
+
+        &.facebook {
+            width:               44px;
+            height:              44px;
+            background-position: -1px 0;
+
+            @include on-events {
+                width:               44px;
+                height:              44px;
+                background-position: 0 -47px;
+            }
+        }
+
+        &.google-plus {
+            width:               45px;
+            height:              44px;
+            background-position: -49px 0;
+
+            @include on-events {
+                width:               45px;
+                height:              44px;
+                background-position: -47px -48px;
+            }
+        }
+
+        &.twitter {
+            width:               44px;
+            height:              43px;
+            background-position: -99px -1px;
+
+            @include on-events {
+                width:               44px;
+                height:              43px;
+                background-position: -99px -48px;
+            }
+        }
+
+        &.linkedin {
+            width:               44px;
+            height:              44px;
+            background-position: -150px 0;
+
+            @include on-events {
+                width:               44px;
+                height:              44px;
+                background-position: -150px -47px;
+            }
+        }
+    }
+}

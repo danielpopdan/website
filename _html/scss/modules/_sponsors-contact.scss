@@ -1,9 +1,9 @@
 .sponsors-contact {
-    margin:           $global-margin * 2 0 $global-margin * (-10);
-    text-align:       center;
+    margin:     0 0 $global-margin * (-10);
+    text-align: center;
 
     @include tablet {
-        margin: $global-margin * 3.5 0 $global-margin * (-15);
+        margin: 0 0 $global-margin * (-15);
     }
 
     &--title,

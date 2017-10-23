@@ -1,7 +1,7 @@
 .homepage-twitter {
     margin: $global-margin * 3 0 (-$global-margin * 10);
 
-    @include tablet {
+    @include medium-desktop {
         margin: $global-margin * 6 0 (-$global-margin * 5);
     }
 
