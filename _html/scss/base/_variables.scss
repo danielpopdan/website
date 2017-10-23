@@ -27,9 +27,11 @@ $global-margin: 1rem;
 $global-padding: 1rem;
 
 // Breakpoints
+$large-mobile-breakpoint: 30em;
 $tablet-breakpoint: 48em;
 $medium-desktop-breakpoint: 64em;
 $large-desktop-breakpoint: 75em;
+$extra-large-desktop-breakpoint: 100em;
 
 // Paths
 $icons-path: '../images/icons/';

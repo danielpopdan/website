@@ -1,14 +1,18 @@
 .homepage-intro {
     position: absolute;
-    top:      27%;
+    top:      14%;
     width:    100%;
 
     @include tablet {
-        top: 25%;
+        top: 21%;
     }
 
-    @include large-desktop {
-        top: 27%;
+    @include medium-desktop {
+        top: 17%;
+    }
+
+    @include extra-large-desktop {
+        top: 22%;
     }
 
     &--logos {
@@ -73,15 +77,15 @@
     }
 
     &--interested-form {
-        margin: 25% auto 0;
+        margin: 10% auto 0;
 
         @include medium-desktop {
             width:  80%;
-            margin: 10% auto 0;
+            margin: 5% auto 0;
         }
 
         @include large-desktop {
-            margin: 20% auto 0;
+            margin: 10% auto 0;
         }
 
         input,

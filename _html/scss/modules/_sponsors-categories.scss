@@ -1,8 +1,8 @@
 .sponsors-categories {
-    margin:  $global-margin * (-2) 0 $global-margin * 2;
+    margin:  $global-margin * (-2) 0 0;
 
     @include tablet {
-        margin: $global-margin * (-3) 0 $global-margin * 2.375;
+        margin: $global-margin * (-3) 0 0;
     }
 
     &--category {

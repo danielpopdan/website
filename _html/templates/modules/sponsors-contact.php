@@ -1,5 +1,6 @@
 <div class="sponsors-contact">
     <div class="l-container">
+        <?php include "modules/share-links.php"?>
         <h2 class="sponsors-contact--title">Media Partnership</h2>
         <p class="sponsors-contact--intro">You can also become our media partner! Help us reach a broader audience and spread the word to your followers! In exchange, your logo will be featured on the website.</p>
         <h2 class="sponsors-contact--form-title">Contact Us</h2>

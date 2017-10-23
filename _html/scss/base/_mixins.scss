@@ -30,6 +30,12 @@
     }
 }
 
+@mixin large-mobile {
+    @media all and (min-width: #{$large-mobile-breakpoint}) {
+        @content;
+    }
+}
+
 @mixin tablet {
     @media all and (min-width: #{$tablet-breakpoint}) {
         @content;
@@ -44,6 +50,12 @@
 
 @mixin large-desktop {
     @media all and (min-width: #{$large-desktop-breakpoint}) {
+        @content;
+    }
+}
+
+@mixin extra-large-desktop {
+    @media all and (min-width: #{$extra-large-desktop-breakpoint}) {
         @content;
     }
 }
