@@ -1,0 +1,9 @@
+uuid: 03aa431e-97bb-4755-9854-4d1d4e353d85
+langcode: en
+status: true
+dependencies: {  }
+id: sponsors_extras
+label: 'Sponsors Extras'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

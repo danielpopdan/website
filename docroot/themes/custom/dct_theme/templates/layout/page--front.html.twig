@@ -6,7 +6,10 @@
             <a href="{{ path('<front>') }}" title="Homepage"></a>
         </div>
 
-        {{ page.header }}
+        <div class="header--login">
+            {{ page.header }}
+        </div>
+
     </header>
 
     <main class="clearfix" role="main">
@@ -18,6 +21,26 @@
             <div class="homepage-parallax--item item-4"></div>
             <div class="homepage-parallax--item item-5"></div>
         </div>
+
+        <div class="homepage-intro">
+            <div class="l-container">
+                <div class="homepage-intro--logos">
+                    <div class="l-row">
+                        <div class="l-col homepage-intro--logos--img">
+                            <img src="{{ base_path ~ directory }}/images/logos/vampire-logo.png"
+                                 alt="Drupal Camp Transilvania logo">
+                        </div>
+                        <div class="l-col homepage-intro--logos--text">
+                            <img src="{{ base_path ~ directory }}/images/logos/intro-logo.png"
+                                 alt="Drupal Camp Transilvania logo">
+                        </div>
+                    </div>
+                </div>
+                {{ page.content.homepageinformationblock }}
+                {{ page.content.newslettersubscription }}
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer">

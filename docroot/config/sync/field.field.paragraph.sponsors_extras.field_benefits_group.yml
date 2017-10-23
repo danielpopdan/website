@@ -1,0 +1,52 @@
+uuid: 75584716-4e5c-4129-9b6a-38a51698f993
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_benefits_group
+    - paragraphs.paragraphs_type.benefits_group
+    - paragraphs.paragraphs_type.sponsors_extras
+  module:
+    - entity_reference_revisions
+id: paragraph.sponsors_extras.field_benefits_group
+field_name: field_benefits_group
+entity_type: paragraph
+bundle: sponsors_extras
+label: 'Benefits Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      benefits_group: benefits_group
+    target_bundles_drag_drop:
+      sponsors_extras:
+        weight: 9
+        enabled: false
+      benefits_group:
+        enabled: true
+        weight: 10
+      google_map_paragraph:
+        weight: 11
+        enabled: false
+      image_slider_paragraph:
+        weight: 12
+        enabled: false
+      sponsor_contact_form:
+        weight: 13
+        enabled: false
+      sponsorship_container:
+        weight: 14
+        enabled: false
+      sponsorship_package:
+        weight: 15
+        enabled: false
+      text_paragraph:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

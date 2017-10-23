@@ -44,7 +44,6 @@
 view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 'sponsors-categories--category',
 attributes.category,
-attributes.hasExtras
 ] %}
 <div class="l-col l-col-2">
     <div{{ attributes.addClass(classes) }}>
@@ -58,13 +57,15 @@ attributes.hasExtras
                 <span>{{ content.field_float_number }}</span>
             </div>
         </div>
-        <ul class="sponsors-categories--category--benefits">
-            {{ content.field_description }}
-        </ul>
+        <div class="sponsors-categories--category--benefits">
+            <ul>
+                {{ content.field_description }}
+            </ul>
+        </div>
 
-        {% if attributes.hasExtras %}
+        {% if content.field_extras %}
             <div class="sponsors-categories--category--extras">
-                {{ content.field_text }}
+                {{ content.field_extras }}
             </div>
         {% endif %}
     </div>
