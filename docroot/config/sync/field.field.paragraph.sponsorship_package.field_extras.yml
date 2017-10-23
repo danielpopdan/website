@@ -1,0 +1,52 @@
+uuid: 4abbb334-f1b0-4eaa-8c7c-2858fa65edbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_extras
+    - paragraphs.paragraphs_type.sponsors_extras
+    - paragraphs.paragraphs_type.sponsorship_package
+  module:
+    - entity_reference_revisions
+id: paragraph.sponsorship_package.field_extras
+field_name: field_extras
+entity_type: paragraph
+bundle: sponsorship_package
+label: Extras
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      sponsors_extras: sponsors_extras
+    target_bundles_drag_drop:
+      sponsors_extras:
+        enabled: true
+        weight: 9
+      benefits_group:
+        weight: 10
+        enabled: false
+      google_map_paragraph:
+        weight: 11
+        enabled: false
+      image_slider_paragraph:
+        weight: 12
+        enabled: false
+      sponsor_contact_form:
+        weight: 13
+        enabled: false
+      sponsorship_container:
+        weight: 14
+        enabled: false
+      sponsorship_package:
+        weight: 15
+        enabled: false
+      text_paragraph:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

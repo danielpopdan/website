@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_paragraphs
     - node.type.page
+    - paragraphs.paragraphs_type.sponsor_contact_form
     - paragraphs.paragraphs_type.sponsorship_container
     - paragraphs.paragraphs_type.text_paragraph
   module:
@@ -26,20 +27,24 @@ settings:
     target_bundles:
       sponsorship_container: sponsorship_container
       text_paragraph: text_paragraph
+      sponsor_contact_form: sponsor_contact_form
     target_bundles_drag_drop:
       sponsorship_container:
         enabled: true
         weight: 4
-      image_paragraph:
-        weight: 5
-        enabled: false
       sponsorship_package:
         weight: 5
         enabled: false
       text_paragraph:
         enabled: true
         weight: 6
-      map_pagagraph:
+      sponsor_contact_form:
+        enabled: true
         weight: 7
+      google_map_paragraph:
+        weight: 8
+        enabled: false
+      image_slider_paragraph:
+        weight: 9
         enabled: false
 field_type: entity_reference_revisions

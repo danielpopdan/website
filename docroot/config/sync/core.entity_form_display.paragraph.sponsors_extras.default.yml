@@ -1,0 +1,30 @@
+uuid: 1f3cc1ef-c083-4af1-af59-aadf7cc7ba66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsors_extras.field_benefits_group
+    - paragraphs.paragraphs_type.sponsors_extras
+  module:
+    - paragraphs
+id: paragraph.sponsors_extras.default
+targetEntityType: paragraph
+bundle: sponsors_extras
+mode: default
+content:
+  field_benefits_group:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
