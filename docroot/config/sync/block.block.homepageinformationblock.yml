@@ -1,0 +1,26 @@
+uuid: a69880d1-d859-4678-9276-f10f337d6a09
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_configurations
+    - system
+  theme:
+    - dct_theme
+id: homepageinformationblock
+theme: dct_theme
+region: content
+weight: 0
+provider: null
+plugin: homepage_information_block
+settings:
+  id: homepage_information_block
+  label: 'Homepage Information Block'
+  provider: dct_configurations
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
