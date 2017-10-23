@@ -4,12 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.sponsorship_package.field_description
+    - field.field.paragraph.sponsorship_package.field_extras
     - field.field.paragraph.sponsorship_package.field_float_number
     - field.field.paragraph.sponsorship_package.field_sponsors_no
-    - field.field.paragraph.sponsorship_package.field_text
     - field.field.paragraph.sponsorship_package.field_title
     - paragraphs.paragraphs_type.sponsorship_package
   module:
+    - entity_reference_revisions
     - text
 id: paragraph.sponsorship_package.default
 targetEntityType: paragraph
@@ -22,6 +23,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_extras:
+    type: entity_reference_revisions_entity_view
+    weight: 6
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   field_float_number:
     weight: 2
@@ -41,13 +51,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  field_text:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
     region: content
   field_title:
     weight: 0

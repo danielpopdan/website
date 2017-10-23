@@ -18,16 +18,12 @@ class SponsorshipPackageViewBuilder extends EntityViewBuilderBase {
    * {@inheritdoc}
    */
   public function build(array &$build) {
-    $paragraph = $this->getEntity();
-    $extraText = ($paragraph->get('field_text')->first()) ? $paragraph->get('field_text')->first()->value : NULL;
 
     // Add attributes for sponsorship category.
     $build['#attributes']['category'] = $this->getClassFromPackageTitle();
 
-    if ($extraText) {
-      // If the extra information field is completed, we add an attribute.
-      $build['#attributes']['hasExtras'] = 'has-extras';
-      $build['field_text'] = $build['field_text'][0];
+    if (isset($build['field_extras'][0])) {
+      $build['field_extras'] = $build['field_extras'][0];
     }
 
   }
