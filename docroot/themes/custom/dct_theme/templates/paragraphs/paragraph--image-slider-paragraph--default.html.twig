@@ -1,0 +1,11 @@
+<div class="location-slider">
+    <div class="l-container">
+        <div id="location-slider">
+            {%  for image in content.field_image['#items'] %}
+                <div class="location-slider--slide">
+                    <img src="{{ file_url(image.entity.uri.value) }}" alt="{{ image.alt }}" data-action="zoom">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

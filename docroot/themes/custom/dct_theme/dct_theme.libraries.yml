@@ -30,3 +30,27 @@ parallax:
     js/parallax.js: {}
   dependencies:
     - core/jquery
+
+slick:
+  version: 1.x
+  js:
+    js/lib/slick.min.js: {}
+  dependencies:
+    - core/jquery
+
+image-slider:
+  version: 1.x
+  js:
+    js/image-slider.js: {}
+  dependencies:
+    - core/jquery
+    - dct_theme/slick
+    - core/drupal
+
+zoom:
+  version: 1.x
+  js:
+    js/zoom.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
