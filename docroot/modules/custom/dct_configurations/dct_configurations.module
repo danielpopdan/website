@@ -14,6 +14,13 @@ function dct_configurations_theme() {
       'variables' => [
         'link' => 'https://www.acquia.com',
       ]
-    ]
+    ],
+    'dct_homepage_block' => [
+      'variables' => [
+        'date' => NULL,
+        'location' => NULL,
+        'description' => NULL,
+      ],
+    ],
   ];
 }
