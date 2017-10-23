@@ -23,3 +23,10 @@ matchHeight:
   dependencies:
     - core/drupal
     - core/jquery
+
+parallax:
+  version: 1.x
+  js:
+    js/parallax.js: {}
+  dependencies:
+    - core/jquery
