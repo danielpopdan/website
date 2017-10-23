@@ -1,0 +1,9 @@
+uuid: cdf677d6-a254-40ee-b299-36be1ccbef53
+langcode: en
+status: true
+dependencies: {  }
+id: benefits_group
+label: 'Benefits Group'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

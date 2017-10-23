@@ -1,0 +1,21 @@
+uuid: 56829272-635a-478b-80c9-ab18c7e0483c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.benefits_group.field_benefit
+    - paragraphs.paragraphs_type.benefits_group
+id: paragraph.benefits_group.default
+targetEntityType: paragraph
+bundle: benefits_group
+mode: default
+content:
+  field_benefit:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

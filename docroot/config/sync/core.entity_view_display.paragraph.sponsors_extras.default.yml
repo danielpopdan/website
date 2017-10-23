@@ -1,0 +1,24 @@
+uuid: a63e59ef-3083-4823-ac30-6809d2f61d18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsors_extras.field_benefits_group
+    - paragraphs.paragraphs_type.sponsors_extras
+  module:
+    - entity_reference_revisions
+id: paragraph.sponsors_extras.default
+targetEntityType: paragraph
+bundle: sponsors_extras
+mode: default
+content:
+  field_benefits_group:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }
