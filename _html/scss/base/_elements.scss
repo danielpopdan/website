@@ -71,7 +71,8 @@ h3 {
 input,
 button,
 textarea,
-label {
+label,
+.button {
     @include     disable-outline;
     color:       $primary-color;
     font-family: $font-main;
@@ -83,7 +84,8 @@ textarea {
     padding: $global-padding * .4;
 }
 
-button {
+button,
+.button {
     padding:          $global-padding * .75 $global-padding * 1.25;
     border:           0;
     background-color: $secondary-color;
@@ -93,6 +95,16 @@ button {
 
     @include on-events {
         background-color: $third-color;
+    }
+}
+
+.button {
+    display:   inline-block;
+    padding:   1.25rem;
+    font-size: $global-font-size * 1.25;
+
+    @include on-events {
+        color: $white;
     }
 }
 
