@@ -1,25 +1,26 @@
 .homepage-parallax {
-    position: relative;
-    padding:  0 0 200%;
-    overflow: hidden;
+    position:         relative;
+    padding:          0 0 240%;
+    background-color: $primary-color;
+    overflow:         hidden;
 
-    @include tablet {
-        padding: 0 0 120%;
+    @include large-mobile {
+        padding: 0 0 160%;
     }
 
     @include medium-desktop {
+        padding: 0 0 100%;
+    }
+
+    @include extra-large-desktop {
         padding: 0 0 80%;
     }
 
     &--item {
         @include         position(absolute, 0, -50%, auto, -50%);
+        height:          0;
         padding:         0 0 160%;
         background-size: cover;
-
-        @include tablet {
-            @include position(absolute, 0, -25%, 0, -25%);
-            padding: 0 0 120%;
-        }
 
         @include medium-desktop {
             @include position(absolute, 0, 0, 0, 0);
@@ -27,17 +28,16 @@
         }
 
         &.item-0 {
-            @include          position(absolute, 0, -73%, auto, -73%);
-            padding:          0 0 200%;
+            @include          position(absolute, 0, -50%, auto, -50%);
+            padding:          0 0 160%;
             background-image: url($homepage-path + 'parallax-0.png');
-
-            @include tablet {
-                @include position(absolute, 0, -25%, 0, -25%);
-                padding: 0 0 120%;
-            }
 
             @include medium-desktop {
                 @include position(absolute, 0, 0, 0, 0);
+                padding: 0 0 100%;
+            }
+
+            @include extra-large-desktop {
                 padding: 0 0 80%;
             }
         }

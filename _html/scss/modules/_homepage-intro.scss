@@ -1,13 +1,17 @@
 .homepage-intro {
     position: absolute;
-    top:      27%;
+    top:      18%;
     width:    100%;
 
     @include tablet {
         top: 25%;
     }
 
-    @include large-desktop {
+    @include medium-desktop {
+        top: 22%;
+    }
+
+    @include extra-large-desktop {
         top: 27%;
     }
 
@@ -73,15 +77,74 @@
     }
 
     &--interested-form {
-        margin: 25% auto 0;
+        margin: 18% auto 0;
 
-        @include medium-desktop {
-            width:  80%;
+        @include tablet {
             margin: 10% auto 0;
         }
 
+        @include medium-desktop {
+            width:  80%;
+            margin: 5% auto 0;
+        }
+
         @include large-desktop {
-            margin: 20% auto 0;
+            margin: 10% auto 0;
+        }
+
+        @include extra-large-desktop {
+            margin: 15% auto 0;
+        }
+
+        &--intro {
+            margin:     0 0 $global-margin * 1.5;
+            text-align: center;
+
+            @include tablet {
+                margin:  0 0 5%;
+                padding: 0 $global-padding * 2.5;
+            }
+
+            h2 {
+                position:  relative;
+                margin:    0 auto $global-margin * 2;
+                font-size: $global-font-size * 1.6;
+
+                @include tablet {
+                    width:     50%;
+                    margin:    0 auto $global-margin * 3.75;
+                    font-size: $global-font-size * 2.375;
+                }
+
+                @include medium-desktop {
+                    width: 50%;
+                }
+
+                @include large-desktop {
+                    width: 45%;
+                }
+
+                &::after {
+                    @include       position(absolute, auto, 38%, -1rem, 38%);
+                    border-bottom: .25rem solid $secondary-color;
+                    content:       '';
+
+                    @include tablet {
+                        bottom:       -1.5rem;
+                        border-width: .5rem;
+                    }
+                }
+            }
+
+            p {
+                margin:    0;
+                font-size: $global-font-size * .875;
+
+                @include tablet {
+                    font-size:   $global-font-size;
+                    line-height: $global-line-height * 1.8;
+                }
+            }
         }
 
         input,
