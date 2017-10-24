@@ -41,10 +41,47 @@
             </div>
         </div>
 
+        <div class="homepage-spread-word">
+            <div class="l-container">
+                <div class="homepage-spread-word--intro title-block">
+                    <h2>{{ 'Spread the word!'|t }}</h2>
+                    <p>{{ 'Tell your friends about DrupalCamp Transylvania!'|t }}</p>
+                </div>
+                <div class="homepage-spread-word--read-more">
+                    <a href="javascript:void(0)" class="button">{{ 'Read more about DrupalCamp'|t }} ></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="homepage-twitter">
+            <div class="l-container">
+                <div class="homepage-twitter--links">
+                    <h3 class="homepage-twitter--links--action">{{ 'Follow us on'|t }}</h3>
+                    <div class="homepage-twitter--links--logo-wrap">
+                        <div class="homepage-twitter--links--logo"></div>
+                    </div>
+                    <div class="homepage-twitter--links--link">
+                        <a href="https://twitter.com/DCTransylvania" class="twitter-link" target="_blank">
+                            <span class="twitter-prefix">&num;</span>
+                            <span>{{ 'DCTransylvania' }}</span>
+                        </a>
+                        <a href="https://twitter.com/DCTransylvania" class="twitter-link" target="_blank">
+                            <span class="twitter-prefix">&commat;</span>
+                            <span>{{ 'DCTransylvania' }}</span>
+                        </a>
+                    </div>
+                </div>
+                <h3 class="homepage-twitter--action">{{ '...and spread the word!'|t }}</h3>
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer">
-        {{ page.footer }}
+        <div class="footer--background"></div>
+        <div class="footer--sponsor">
+            {{ page.footer }}
+        </div>
     </footer>
 
 </div>{# /.layout-container #}
