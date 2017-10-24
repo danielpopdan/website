@@ -1,4 +1,4 @@
-dct_configurations.configurations:
+dct_homepage.configurations:
   path: '/admin/config/camp-transylvania'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
@@ -6,18 +6,26 @@ dct_configurations.configurations:
   requirements:
     _permission: 'administer camp settings'
 
-dct_configurations.homepage_configurations:
+dct_homepage.homepage_configurations:
   path: '/admin/config/camp-transylvania/homepage'
   defaults:
-    _form: '\Drupal\dct_configurations\Form\HomepageConfigurationsForm'
+    _form: '\Drupal\dct_homepage\Form\HomepageConfigurationsForm'
     _title: 'Homepage configurations'
   requirements:
     _permission: 'administer camp settings'
 
-dct_configurations.welcome_section_config:
+dct_homepage.welcome_section_config:
   path: '/admin/config/camp-transylvania/welcome-section'
   defaults:
-    _form: '\Drupal\dct_configurations\Form\WelcomeSectionConfigurationForm'
+    _form: '\Drupal\dct_homepage\Form\WelcomeSectionConfigurationForm'
     _title: 'Welcome to Cluj Napoca section'
   requirements:
     _permission: 'administer camp settings'
+
+dct_homepage.front:
+  path: '/node'
+  defaults:
+    _controller: '\Drupal\dct_homepage\Controller\FrontPageController::content'
+    _title: 'DrupalCamp Transylvania'
+  requirements:
+    _permission: 'access content'

@@ -1,9 +1,9 @@
-uuid: a69880d1-d859-4678-9276-f10f337d6a09
+uuid: 54a59c08-d0c6-4f1e-b3ca-9d966c6f4ac4
 langcode: en
 status: true
 dependencies:
   module:
-    - dct_configurations
+    - dct_homepage
     - system
   theme:
     - dct_theme
@@ -16,7 +16,7 @@ plugin: homepage_information_block
 settings:
   id: homepage_information_block
   label: 'Homepage Information Block'
-  provider: dct_configurations
+  provider: dct_homepage
   label_display: '0'
 visibility:
   request_path:

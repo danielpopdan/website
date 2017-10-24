@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dct_configurations\Form;
+namespace Drupal\dct_homepage\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,9 +8,9 @@ use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class HomepageConfigurationsForm
+ * Class HomepageConfigurationsForm.
  *
- * @package Drupal\dct_configurations\Form
+ * @package Drupal\dct_homepage\Form
  */
 class HomepageConfigurationsForm extends FormBase {
 
@@ -69,7 +69,7 @@ class HomepageConfigurationsForm extends FormBase {
 
     $form['description'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Short description'),
+      '#title' => $this->t('Newsletter description'),
       '#description' => $this->t('A short description about the event.'),
       '#default_value' => $this->state->get('dct_homepage.description'),
     ];

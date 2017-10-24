@@ -1,14 +1,18 @@
 <?php
 
-namespace Drupal\dct_configurations\Form;
-
+namespace Drupal\dct_homepage\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class WelcomeSectionConfigurationForm extends FormBase{
+/**
+ * Class WelcomeSectionConfigurationForm.
+ *
+ * @package Drupal\dct_homepage\Form
+ */
+class WelcomeSectionConfigurationForm extends FormBase {
 
   /**
    * The state service.
@@ -86,4 +90,5 @@ class WelcomeSectionConfigurationForm extends FormBase{
 
     drupal_set_message($this->t('The settings have been successfully saved'));
   }
+
 }

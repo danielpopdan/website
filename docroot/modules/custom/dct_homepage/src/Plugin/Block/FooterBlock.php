@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dct_configurations\Plugin\Block;
+namespace Drupal\dct_homepage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;

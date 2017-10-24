@@ -1,17 +1,17 @@
-dct_configurations.admin.structure.settings:
+dct_homepage.admin.structure.settings:
   title: 'DrupalCamp Transylvania'
-  route_name: dct_configurations.configurations
+  route_name: dct_homepage.configurations
   description: 'Manages DCT configurations.'
   parent: system.admin_config
 
 dct_homepage_configuration.admin.structure.settings:
   title: 'Homepage configurations'
-  route_name: dct_configurations.homepage_configurations
+  route_name: dct_homepage.homepage_configurations
   description: 'Manages homepage configurations.'
-  parent: dct_configurations.admin.structure.settings
+  parent: dct_homepage.admin.structure.settings
 
 dct_welcome_section_configuration.admin.structure.settings:
   title: 'Welcome section'
-  route_name: dct_configurations.welcome_section_config
+  route_name: dct_homepage.welcome_section_config
   description: 'Manages Welcome section configurations.'
-  parent: dct_configurations.admin.structure.settings
+  parent: dct_homepage.admin.structure.settings

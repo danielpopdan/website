@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dct_newsletter_theme() {
+  return [
+    'dct_newsletter_block' => [
+      'variables' => [
+        'description' => NULL,
+        'form' => NULL,
+      ],
+    ],
+  ];
+}

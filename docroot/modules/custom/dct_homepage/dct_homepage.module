@@ -8,7 +8,7 @@
 /**
  * Implements hook_theme().
  */
-function dct_configurations_theme() {
+function dct_homepage_theme() {
   return [
     'footerblock' => [
       'variables' => [
@@ -19,7 +19,6 @@ function dct_configurations_theme() {
       'variables' => [
         'date' => NULL,
         'location' => NULL,
-        'description' => NULL,
       ],
     ],
   ];
