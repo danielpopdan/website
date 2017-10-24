@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_paragraphs
     - node.type.page
+    - paragraphs.paragraphs_type.google_map_paragraph
+    - paragraphs.paragraphs_type.image_slider_paragraph
     - paragraphs.paragraphs_type.sponsor_contact_form
     - paragraphs.paragraphs_type.sponsorship_container
     - paragraphs.paragraphs_type.text_paragraph
@@ -28,6 +30,8 @@ settings:
       sponsorship_container: sponsorship_container
       text_paragraph: text_paragraph
       sponsor_contact_form: sponsor_contact_form
+      google_map_paragraph: google_map_paragraph
+      image_slider_paragraph: image_slider_paragraph
     target_bundles_drag_drop:
       sponsorship_container:
         enabled: true
@@ -42,9 +46,15 @@ settings:
         enabled: true
         weight: 7
       google_map_paragraph:
+        enabled: true
         weight: 8
+      benefits_group:
+        weight: 9
         enabled: false
       image_slider_paragraph:
+        enabled: true
         weight: 9
+      sponsors_extras:
+        weight: 16
         enabled: false
 field_type: entity_reference_revisions

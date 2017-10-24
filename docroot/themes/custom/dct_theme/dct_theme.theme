@@ -21,6 +21,5 @@ function dct_theme_preprocess_paragraph(&$variables) {
   if ($variables['elements']['#paragraph']->type->getValue()[0]['target_id'] == 'image_slider_paragraph') {
     $variables['#attached']['library'][] = 'dct_theme/image-slider';
     $variables['#attached']['library'][] = 'dct_theme/zoom';
-
   }
 }

@@ -31,20 +31,13 @@ parallax:
   dependencies:
     - core/jquery
 
-slick:
-  version: 1.x
-  js:
-    js/lib/slick.min.js: {}
-  dependencies:
-    - core/jquery
-
 image-slider:
   version: 1.x
   js:
     js/image-slider.js: {}
+    node_modules/slick-carousel/slick/slick.min.js: {}
   dependencies:
     - core/jquery
-    - dct_theme/slick
     - core/drupal
 
 zoom:
