@@ -62,7 +62,7 @@
         }
     }
 
-    &--login {
+    &--menu {
         @include vertical-center;
         right:   1rem;
 
@@ -78,9 +78,27 @@
             right: 2.5rem;
         }
 
+        ul {
+            &.menu {
+                margin: 0;
+            }
+        }
+
+        li {
+            &.menu-item {
+                display: inline-block;
+                padding: 0 0 0 $global-padding;
+
+                @include tablet {
+                    padding: 0 0 0 $global-padding * 1.5;
+                }
+            }
+        }
+
         a {
-            color: $white;
-            font-size: $global-font-size * 1.5;
+            color:       $white;
+            font-size:   $global-font-size * 1.125;
+            font-weight: $weight-regular;
 
             &:hover {
                 color: $secondary-color;

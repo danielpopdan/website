@@ -1,10 +1,11 @@
 <div class="sponsors-contact">
     <div class="l-container">
         <?php include "modules/share-links.php"?>
-        <h2 class="sponsors-contact--title">Media Partnership</h2>
-        <p class="sponsors-contact--intro">You can also become our media partner! Help us reach a broader audience and spread the word to your followers! In exchange, your logo will be featured on the website.</p>
+        <div class="small-title-block">
+            <h2 class="small-title-block--title">Media Partnership</h2>
+            <p class="small-title-block--text">You can also become our media partner! Help us reach a broader audience and spread the word to your followers! In exchange, your logo will be featured on the website.</p>
+        </div>
         <h2 class="sponsors-contact--form-title">Contact Us</h2>
-    
         <form class="contact-message-sponsors-contact-form-form contact-message-form contact-form" data-drupal-selector="contact-message-sponsors-contact-form-form" action="/contact/sponsors_contact_form" method="post" id="contact-message-sponsors-contact-form-form" accept-charset="UTF-8">
             <div class="field--type-string field--name-field-name field--widget-string-textfield js-form-wrapper form-wrapper" data-drupal-selector="edit-field-name-wrapper" id="edit-field-name-wrapper">
                 <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-field-name-0-value form-item-field-name-0-value">
