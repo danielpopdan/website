@@ -5,10 +5,7 @@
         <div class="header--logo">
             <a href="{{ path('<front>') }}" title="Homepage"></a>
         </div>
-
-        <div class="header--login">
-            {{ page.header }}
-        </div>
+        {{ page.header }}
 
     </header>
 
@@ -36,8 +33,7 @@
                         </div>
                     </div>
                 </div>
-                {{ page.content.homepageinformationblock }}
-                {{ page.content.newslettersubscription }}
+                {{ page.content }}
             </div>
         </div>
 

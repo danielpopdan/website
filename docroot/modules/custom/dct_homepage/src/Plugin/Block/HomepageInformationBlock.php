@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dct_configurations\Plugin\Block;
+namespace Drupal\dct_homepage\Plugin\Block;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Block\BlockBase;
@@ -59,13 +59,11 @@ class HomepageInformationBlock extends BlockBase implements ContainerFactoryPlug
   public function build() {
     $date = $this->state->get('dct_homepage.date');
     $location = $this->state->get('dct_homepage.location');
-    $description = $this->state->get('dct_homepage.description');
 
     return [
       '#theme' => 'dct_homepage_block',
       '#date' => $date,
       '#location' => $location,
-      '#description' => $description,
     ];
   }
 

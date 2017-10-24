@@ -16,9 +16,9 @@ provider: null
 plugin: newsletter_subscription_block
 settings:
   id: newsletter_subscription_block
-  label: 'Newsletter Subscription'
+  label: 'Subscribe to our Newsletter'
   provider: dct_newsletter
-  label_display: visible
+  label_display: '0'
 visibility:
   user_role:
     id: user_role

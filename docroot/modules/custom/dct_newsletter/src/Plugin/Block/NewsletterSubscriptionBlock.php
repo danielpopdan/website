@@ -5,6 +5,7 @@ namespace Drupal\dct_newsletter\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,6 +17,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class NewsletterSubscriptionBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * The state service.
+   *
+   * @var \Drupal\Core\State\StateInterface
+   */
+  protected $state;
 
   /**
    * The form builder.
@@ -35,10 +43,14 @@ class NewsletterSubscriptionBlock extends BlockBase implements ContainerFactoryP
    *   The plugin implementation definition.
    * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
    *   The form builder.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, FormBuilderInterface $form_builder) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, FormBuilderInterface $form_builder, StateInterface $state) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->formBuilder = $form_builder;
+    $this->state = $state;
+
   }
 
   /**
@@ -49,7 +61,9 @@ class NewsletterSubscriptionBlock extends BlockBase implements ContainerFactoryP
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('form_builder')
+      $container->get('form_builder'),
+      $container->get('state')
+
     );
   }
 
@@ -57,7 +71,12 @@ class NewsletterSubscriptionBlock extends BlockBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function build() {
-    return $this->formBuilder->getForm('\Drupal\dct_newsletter\Form\NewsletterSubscriptionForm');
+    $description = $this->state->get('dct_homepage.description');
+    return [
+      '#theme' => 'dct_newsletter_block',
+      '#form' => $this->formBuilder->getForm('\Drupal\dct_newsletter\Form\NewsletterSubscriptionForm'),
+      '#description' => $description,
+    ];
   }
 
 }
