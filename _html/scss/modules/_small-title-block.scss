@@ -1,0 +1,28 @@
+.small-title-block {
+    &--title {
+        margin:      0 0 $global-margin * 1.5;
+        padding:     $global-padding * 1.5 0 0;
+        border-top:  1px solid $light-border;
+        color:       $primary-color;
+        font-size:   $global-font-size * 1.5;
+        font-weight: $weight-medium;
+        line-height: $global-line-height * 1.2;
+
+        @include tablet {
+            margin:  0 0 $global-margin * 2.75;
+            padding: $global-padding * 3 0 0;
+        }
+    }
+
+    &--text {
+        margin:      0 0 $global-margin * 2.5;
+        color:       $primary-color;
+        font-size:   $global-font-size * .875;
+        text-align:  left;
+
+        @include tablet {
+            max-width: 75%;
+            margin:    0 auto $global-margin * 4;
+        }
+    }
+}
