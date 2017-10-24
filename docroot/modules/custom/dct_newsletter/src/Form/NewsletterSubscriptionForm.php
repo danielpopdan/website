@@ -12,6 +12,9 @@ use Drupal\dct_newsletter\Controller\MailchimpController;
 use Egulias\EmailValidator\EmailValidatorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Manages the mailchimp service.
+ */
 class NewsletterSubscriptionForm extends FormBase {
 
   /**
@@ -107,7 +110,8 @@ class NewsletterSubscriptionForm extends FormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   Storage for the state of the form.
    *
-   * @return \Drupal\Core\Ajax\AjaxResponse $response
+   * @return \Drupal\Core\Ajax\AjaxResponse
+   *   The result after submitting the form.
    */
   public function saveSubscription(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
@@ -180,7 +184,7 @@ class NewsletterSubscriptionForm extends FormBase {
         $command = new ReplaceCommand('#dct-newsletter-form', $html);
 
         // Adds the user to the 'Target Audience' list in mailchimp.
-        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
+        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Test');
       }
       else {
         $html = [
