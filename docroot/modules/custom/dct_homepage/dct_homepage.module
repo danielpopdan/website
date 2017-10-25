@@ -21,5 +21,11 @@ function dct_homepage_theme() {
         'location' => NULL,
       ],
     ],
+    'dct_spread_the_word_block' => [
+      'variables' => [
+        'description' => NULL,
+        'link' => NULL,
+      ],
+    ],
   ];
 }

@@ -9,5 +9,6 @@ libraries:
 
 regions:
   header: Header
+  intro: Intro
   content: Content
   footer: Footer
