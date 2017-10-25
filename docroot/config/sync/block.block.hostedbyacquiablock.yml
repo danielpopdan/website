@@ -1,0 +1,26 @@
+uuid: e9574e00-6817-4c76-97af-075675f0d922
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_homepage
+    - system
+  theme:
+    - dct_theme
+id: hostedbyacquiablock
+theme: dct_theme
+region: footer
+weight: 0
+provider: null
+plugin: hosted_by_acquia
+settings:
+  id: hosted_by_acquia
+  label: 'Hosted by Acquia Block'
+  provider: dct_homepage
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
