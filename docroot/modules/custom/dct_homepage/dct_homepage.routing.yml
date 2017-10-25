@@ -23,7 +23,7 @@ dct_homepage.welcome_section_config:
     _permission: 'administer camp settings'
 
 dct_homepage.spread_the_word_config:
-  path: '/admin/config/camp-transylvania/spread_the_word'
+  path: '/admin/config/camp-transylvania/spread-the-word'
   defaults:
     _form: '\Drupal\dct_homepage\Form\SpreadTheWordConfigurationForm'
     _title: 'Spread the word'

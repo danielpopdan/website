@@ -10,7 +10,7 @@
  */
 function dct_homepage_theme() {
   return [
-    'footerblock' => [
+    'hosted_by_acquia_block' => [
       'variables' => [
         'link' => 'https://www.acquia.com',
       ]
