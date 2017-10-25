@@ -10,7 +10,7 @@ dependencies:
     - dct_theme
 id: newslettersubscription
 theme: dct_theme
-region: content
+region: intro
 weight: 0
 provider: null
 plugin: newsletter_subscription_block

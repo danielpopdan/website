@@ -15,3 +15,9 @@ dct_welcome_section_configuration.admin.structure.settings:
   route_name: dct_homepage.welcome_section_config
   description: 'Manages Welcome section configurations.'
   parent: dct_homepage.admin.structure.settings
+
+dct_spread_the_word_configuration.admin.structure.settings:
+  title: 'Spread the word'
+  route_name: dct_homepage.spread_the_word_config
+  description: 'Manages Spread the word configurations.'
+  parent: dct_homepage.admin.structure.settings

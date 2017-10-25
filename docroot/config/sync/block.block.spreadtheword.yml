@@ -1,4 +1,4 @@
-uuid: 54a59c08-d0c6-4f1e-b3ca-9d966c6f4ac4
+uuid: 51f72896-bee3-4b76-b9d2-bc9b38d68d4d
 langcode: en
 status: true
 dependencies:
@@ -7,15 +7,15 @@ dependencies:
     - system
   theme:
     - dct_theme
-id: homepageinformationblock
+id: spreadtheword
 theme: dct_theme
-region: intro
+region: content
 weight: -1
 provider: null
-plugin: homepage_information_block
+plugin: spread_the_word_block
 settings:
-  id: homepage_information_block
-  label: 'Homepage Information Block'
+  id: spread_the_word_block
+  label: 'Spread the word'
   provider: dct_homepage
   label_display: '0'
 visibility:
