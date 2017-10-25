@@ -4,7 +4,6 @@ status: true
 dependencies:
   module:
     - dct_homepage
-    - system
   theme:
     - dct_theme
 id: hostedbyacquiablock
@@ -18,9 +17,4 @@ settings:
   label: 'Hosted by Acquia Block'
   provider: dct_homepage
   label_display: '0'
-visibility:
-  request_path:
-    id: request_path
-    pages: '<front>'
-    negate: false
-    context_mapping: {  }
+visibility: {  }
