@@ -123,3 +123,13 @@ input {
     }
 }
 
+.error-message {
+    color:       $secondary-color;
+    font-family: $font-main;
+    font-size:   $global-font-size * .875;
+    font-weight: $weight-medium;
+
+    @include tablet {
+        font-size: $global-font-size;
+    }
+}
