@@ -1,4 +1,10 @@
 .small-title-block {
+    padding: 0 $global-padding;
+
+    @include tablet {
+        padding: 0;
+    }
+
     &--title {
         margin:      0 0 $global-margin * 1.5;
         padding:     $global-padding * 1.5 0 0;
@@ -7,6 +13,7 @@
         font-size:   $global-font-size * 1.5;
         font-weight: $weight-medium;
         line-height: $global-line-height * 1.2;
+        text-align:  center;
 
         @include tablet {
             margin:  0 0 $global-margin * 2.75;
@@ -15,14 +22,16 @@
     }
 
     &--text {
-        margin:      0 0 $global-margin * 2.5;
-        color:       $primary-color;
-        font-size:   $global-font-size * .875;
-        text-align:  left;
+        p {
+            margin:      0 0 $global-margin * 2.5;
+            color:       $primary-color;
+            font-size:   $global-font-size * .875;
+            text-align:  left;
 
-        @include tablet {
-            max-width: 75%;
-            margin:    0 auto $global-margin * 4;
+            @include tablet {
+                max-width: 75%;
+                margin:    0 auto $global-margin * 4;
+            }
         }
     }
 }
