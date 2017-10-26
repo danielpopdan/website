@@ -81,6 +81,12 @@
         ul {
             &.menu {
                 margin: 0;
+
+                a {
+                    &.is-active {
+                        color: $secondary-color;
+                    }
+                }
             }
         }
 
