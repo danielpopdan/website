@@ -18,6 +18,7 @@ module:
   dct_map: 0
   dct_newsletter: 0
   dct_paragraphs: 0
+  dct_seo: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
