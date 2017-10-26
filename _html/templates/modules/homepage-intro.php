@@ -23,9 +23,9 @@
                 <div class="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email form-no-label">
                     <input type="email" id="edit-email" name="email" size="60" max-length="60" placeholder="Email" class="form-email required" required="required" aria-required="true">
                 </div>
-                <!--<div class="newsletter-error-container">
+                <div class="newsletter-error-container">
                     <span class="error-message">This email address is not valid</span>
-                </div>-->
+                </div>
                 <input type="submit" id="edit-submit" name="op" value="Subscribe" class="button button--primary js-form-submit form-submit">
             </form>
         </div>

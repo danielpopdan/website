@@ -76,6 +76,18 @@
         }
     }
 
+    &--interested-form--intro {
+        &.large-title-block {
+            margin-bottom:  0;
+            padding-bottom: $global-padding * 2;
+
+            @include tablet {
+                margin-bottom:  0;
+                padding-bottom: $global-padding * 2.5;
+            }
+        }
+    }
+
     &--interested-form {
         margin: 10% auto 0;
 
@@ -88,11 +100,22 @@
             margin: 10% auto 0;
         }
 
+        form {
+            position: relative;
+        }
+
         .form-type-email,
-        .form-submit,
-        .newsletter-error-container {
+        .form-submit {
             display: inline-block;
             width:   100%;
+        }
+
+        .newsletter-error-container {
+            @include position(absolute, -1rem, auto, auto, 0);
+
+            @include tablet {
+                top: -1.5rem;
+            }
         }
 
         .form-type-email {
