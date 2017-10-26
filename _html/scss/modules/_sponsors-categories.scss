@@ -18,17 +18,14 @@
             padding: $global-padding * 1.5;
         }
 
-        &.has-extras {
+        &.diamond {
+            margin-right:   $global-margin * .25;
             padding-bottom: $global-padding * 7;
+            border-color:   $diamond-color-faded;
 
             @include tablet {
                 padding-bottom: $global-padding * 5;
             }
-        }
-
-        &.diamond {
-            margin-right:  $global-margin * .25;
-            border-color: $secondary-color-faded;
 
             @include medium-desktop {
                 margin-right: $global-margin * 2.5;
@@ -36,8 +33,13 @@
         }
 
         &.gold {
-            margin-left:  $global-margin * .25;
-            border-color: $third-color-faded;
+            margin-left:    $global-margin * .25;
+            padding-bottom: $global-padding * 7;
+            border-color:   $secondary-color-faded;
+
+            @include tablet {
+                padding-bottom: $global-padding * 5;
+            }
 
             @include medium-desktop {
                 margin-left: $global-margin * 2.5;
@@ -45,8 +47,8 @@
         }
 
         &.silver {
-            margin-right:  $global-margin * .25;
-            border-color: $fourth-color-faded;
+            margin-right: $global-margin * .25;
+            border-color: $primary-color-faded;
 
             @include medium-desktop {
                 margin-right: $global-margin * 2.5;
@@ -55,7 +57,7 @@
 
         &.community {
             margin-left:  $global-margin * .25;
-            border-color: $primary-color-faded;
+            border-color: $third-color-faded;
 
             @include medium-desktop {
                 margin-left: $global-margin * 2.5;
@@ -168,6 +170,38 @@
     .sponsors-categories {
         &--category {
             &--title {
+                background-color: $diamond-color;
+            }
+
+            &--price {
+                color: $diamond-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $diamond-color;
+                    }
+
+                    span {
+                        color: $diamond-color;
+                    }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $diamond-color;
+                }
+            }
+        }
+    }
+}
+
+.gold {
+    .sponsors-categories {
+        &--category {
+            &--title {
                 background-color: $secondary-color;
             }
 
@@ -188,6 +222,10 @@
             }
 
             &--extras {
+                @include tablet {
+                    padding: 0 $global-padding * 2;
+                }
+
                 .plus-sign {
                     color: $secondary-color;
                 }
@@ -196,75 +234,7 @@
     }
 }
 
-.gold {
-    .sponsors-categories {
-        &--category {
-            &--title {
-                background-color: $third-color;
-            }
-
-            &--price {
-                color: $third-color;
-            }
-
-            &--benefits {
-                li {
-                    &::before {
-                        background-color: $third-color;
-                    }
-
-                    span {
-                        color: $third-color;
-                    }
-                }
-            }
-
-            &--extras {
-                @include tablet {
-                    padding: 0 $global-padding * 2;
-                }
-
-                .plus-sign {
-                    color: $third-color;
-                }
-            }
-        }
-    }
-}
-
 .silver {
-    .sponsors-categories {
-        &--category {
-            &--title {
-                background-color: $fourth-color;
-            }
-
-            &--price {
-                color: $fourth-color;
-            }
-
-            &--benefits {
-                li {
-                    &::before {
-                        background-color: $fourth-color;
-                    }
-
-                    span {
-                        color: $fourth-color;
-                    }
-                }
-            }
-
-            &--extras {
-                .plus-sign {
-                    color: $fourth-color;
-                }
-            }
-        }
-    }
-}
-
-.community {
     .sponsors-categories {
         &--category {
             &--title {
@@ -290,6 +260,38 @@
             &--extras {
                 .plus-sign {
                     color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.community {
+    .sponsors-categories {
+        &--category {
+            &--title {
+                background-color: $third-color;
+            }
+
+            &--price {
+                color: $third-color;
+            }
+
+            &--benefits {
+                li {
+                    &::before {
+                        background-color: $third-color;
+                    }
+
+                    span {
+                        color: $third-color;
+                    }
+                }
+            }
+
+            &--extras {
+                .plus-sign {
+                    color: $third-color;
                 }
             }
         }
