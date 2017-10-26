@@ -28,4 +28,4 @@ if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] == $usernam
   exit;
 }
 
-$config['acquia_connector.settings']['subscription_data']['active'] = TRUE;
+$config['acquia_connector.settings']['subscription_data']['active'] = 'true';
