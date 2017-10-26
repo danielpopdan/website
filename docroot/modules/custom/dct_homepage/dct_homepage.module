@@ -25,6 +25,7 @@ function dct_homepage_theme() {
       'variables' => [
         'description' => NULL,
         'link' => NULL,
+        'share' => NULL,
       ],
     ],
   ];

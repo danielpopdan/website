@@ -15,3 +15,8 @@ function dct_seo_theme() {
     ],
   ];
 }
+
+
+//function dct_seo_preprocess_addtoany_standard(&$variables) {
+//  kint($variables); die;
+//}

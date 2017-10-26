@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_description
+    - field.field.node.page.field_paragraphs
+    - field.field.node.page.field_short_description
+    - field.field.node.page.field_subtitle
     - node.type.page
   module:
     - user
@@ -14,9 +18,17 @@ targetEntityType: node
 bundle: page
 mode: teaser
 content:
+  addtoany:
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 101
     region: content
 hidden:
+  field_description: true
+  field_paragraphs: true
   field_short_description: true
+  field_subtitle: true
   field_text_paragraph: true
