@@ -59,10 +59,12 @@ class SpreadTheWordBlock extends BlockBase implements ContainerFactoryPluginInte
    */
   public function build() {
     $description = !empty($this->state->get('dct_spread_the_word.description')['value']) ? $this->state->get('dct_spread_the_word.description')['value'] : '';
+    $uri = $this->state->get('dct_spread_the_word.link_url');
+
     $link = [
       '#type' => 'link',
       '#title' => $this->state->get('dct_spread_the_word.link_title'),
-      '#url' => Url::fromUri($this->state->get('dct_spread_the_word.link_url')),
+      '#url' => ($uri) ? Url::fromUri($uri) : Url::fromRoute('<front>'),
       '#attributes' => [
         'class' => [
           'button',
