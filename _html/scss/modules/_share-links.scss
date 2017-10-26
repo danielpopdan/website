@@ -17,6 +17,10 @@
         display:    block;
         background: url($logos-path + 'share-sprites.png') no-repeat;
 
+        span {
+            display: none;
+        }
+
         &.facebook {
             width:               44px;
             height:              44px;
