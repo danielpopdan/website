@@ -123,7 +123,8 @@ input {
     }
 }
 
-.error-message {
+.error-message,
+.success-message {
     color:       $secondary-color;
     font-family: $font-main;
     font-size:   $global-font-size * .875;

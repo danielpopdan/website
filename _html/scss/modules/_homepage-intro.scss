@@ -118,6 +118,11 @@
             }
         }
 
+        .success-message {
+            display:    block;
+            text-align: center;
+        }
+
         .form-type-email {
             @include tablet {
                 width:  60%;

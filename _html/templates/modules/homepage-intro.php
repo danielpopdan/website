@@ -28,6 +28,7 @@
                 </div>
                 <input type="submit" id="edit-submit" name="op" value="Subscribe" class="button button--primary js-form-submit form-submit">
             </form>
+            <!--<span class="success-message">You have successfully subscribed to our newsletter!</span>-->
         </div>
     </div>
 </div>
