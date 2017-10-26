@@ -20,8 +20,13 @@
                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
             </div>
             <form action="#" method="POST">
-                <input type="email" name="contact-email" placeholder="Email address">
-                <button type="submit" name="contact-submit" value="I'm interested">I'm interested</button>
+                <div class="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email form-no-label">
+                    <input type="email" id="edit-email" name="email" size="60" max-length="60" placeholder="Email" class="form-email required" required="required" aria-required="true">
+                </div>
+                <!--<div class="newsletter-error-container">
+                    <span class="error-message">This email address is not valid</span>
+                </div>-->
+                <input type="submit" id="edit-submit" name="op" value="Subscribe" class="button button--primary js-form-submit form-submit">
             </form>
         </div>
     </div>

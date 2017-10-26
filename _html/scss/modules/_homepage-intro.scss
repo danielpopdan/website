@@ -88,16 +88,45 @@
             margin: 10% auto 0;
         }
 
+        .form-type-email,
+        .form-submit,
+        .newsletter-error-container {
+            display: inline-block;
+            width:   100%;
+        }
+
+        .form-type-email {
+            @include tablet {
+                width:  60%;
+                margin: 0 $global-margin * (-.125);
+            }
+
+            @include medium-desktop {
+                width: 65%;
+            }
+        }
+
+        .form-submit {
+            margin: $global-margin 0;
+
+            @include tablet {
+                width:  40%;
+                margin: 0 $global-margin * (-.125);
+            }
+
+            @include medium-desktop {
+                width: 35%;
+            }
+        }
+
         input,
         button {
-            display:   inline-block;
             height:    3rem;
             color:     $white;
             font-size: $global-font-size * 1.25;
 
             @include tablet {
-                height:  3.75rem;
-                margin:  0 $global-margin * (-.125);
+                height: 3.75rem;
             }
         }
 
@@ -109,48 +138,26 @@
                 background-color: $primary-color;
 
                 @include tablet {
-                    width:   60%;
                     padding: $global-padding $global-padding * 1.25;
                 }
-
-                @include medium-desktop {
-                    width: 65%;
-                }
             }
-        }
 
-        button {
             &[type='submit'] {
-                position:         relative;
-                width:            100%;
-                margin:           $global-margin 0;
-                padding:          $global-padding * .5 $global-padding * 1.25;
+                position:            relative;
+                padding:             $global-padding * .5 $global-padding * 1.25;
+                background-image:    url($logos-path + 'form-submit-logo.png');
+                background-repeat:   no-repeat;
+                background-position: 1.25rem .5rem;
+                background-size:     3rem;
 
-                &::before {
-                    @include         position(absolute, .5rem, auto, auto, 1.25rem);
-                    width:           3rem;
-                    height:          2rem;
-                    background:      url($logos-path + 'form-submit-logo.png') no-repeat;
-                    background-size: 3rem;
-                    content:         '';
-
-                    @include tablet {
-                        top:    .8rem;
-                        width:  3.75rem;
-                        height: 2.1875rem;
-                        background-size: 3.75rem;
-                    }
+                @include tablet {
+                    background-position: 1.25rem .8rem;
+                    background-size:     3.75rem;
                 }
 
                 @include tablet {
-                    width:      40%;
-                    margin:     0 $global-margin * (-.125);
                     padding:    $global-padding $global-padding * 1.25 $global-padding $global-padding * 6.25;
                     text-align: left;
-                }
-
-                @include medium-desktop {
-                    width: 35%;
                 }
             }
         }
