@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.news.field_description
+    - field.field.node.news.field_meta_image
     - field.field.node.news.field_short_description
+    - image.style.thumbnail
     - node.type.news
   module:
+    - image
     - path
     - text
 id: node.news.default
@@ -27,6 +30,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_meta_image:
+    weight: 123
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_short_description:
     weight: 121

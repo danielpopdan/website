@@ -1,0 +1,17 @@
+uuid: 392465bc-5ae4-433b-9ec8-948a932c62f6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: 'Front page'
+tags:
+  title: 'Homepage | [site:name]'
+  image_src: '[site:homepage_share_image_url]'
+  shortlink: '[site:url]'
+  canonical_url: '[site:url]'
+  og_image: '[site:homepage_share_image_url]'
+  og_url: '[current-page:url]'
+  og_title: '[site:name]'
+  og_site_name: '[site:name]'

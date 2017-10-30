@@ -1,0 +1,17 @@
+uuid: c5274734-f07a-4dc5-95d2-93bc8043140e
+langcode: en
+status: true
+dependencies: {  }
+id: node__page
+label: 'Content: Basic page'
+tags:
+  title: '[node:title] | [site:name]'
+  image_src: '[node:field_meta_image]'
+  canonical_url: '[node:url]'
+  description: '[node:field_short_description]'
+  og_image: '[node:field_meta_image]'
+  og_description: '[node:field_short_description]'
+  og_url: '[current-page:url]'
+  og_title: '[node:title]'
+  og_type: '[node:content-type]'
+  og_site_name: '[site:name]'
