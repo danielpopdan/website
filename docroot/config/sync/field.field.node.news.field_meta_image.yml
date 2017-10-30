@@ -1,19 +1,17 @@
-uuid: 2190cf1e-67c0-46ce-9107-69e1e60416aa
+uuid: 36d2ccbf-f590-4d45-8a03-ee8d415a4ba0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
-    - node.type.article
+    - field.storage.node.field_meta_image
+    - node.type.news
   module:
     - image
-_core:
-  default_config_hash: tgJzhA7Swh4M_gWU5FwFe5lPxPj5rebpMbvhpdNrERs
-id: node.article.field_image
-field_name: field_image
+id: node.news.field_meta_image
+field_name: field_meta_image
 entity_type: node
-bundle: article
-label: Image
+bundle: news
+label: 'Meta - Image'
 description: ''
 required: false
 translatable: true
@@ -30,7 +28,7 @@ settings:
   title_field: false
   title_field_required: false
   default_image:
-    uuid: 31090600-5780-4558-9ff1-63578c38957e
+    uuid: e219c30c-0b83-4eb9-bc6c-bb150365eee8
     alt: 'Drupal Camp Transylvania'
     title: 'Drupal Camp Transylvania'
     width: 1000

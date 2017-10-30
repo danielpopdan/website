@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_description
+    - field.field.node.page.field_meta_image
     - field.field.node.page.field_paragraphs
     - field.field.node.page.field_short_description
     - field.field.node.page.field_subtitle
+    - image.style.thumbnail
     - node.type.page
   module:
+    - image
     - paragraphs
     - path
     - text
@@ -32,6 +35,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_meta_image:
+    weight: 26
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_paragraphs:
     type: entity_reference_paragraphs
