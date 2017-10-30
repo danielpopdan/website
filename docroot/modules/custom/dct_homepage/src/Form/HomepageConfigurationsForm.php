@@ -5,6 +5,8 @@ namespace Drupal\dct_homepage\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\State\StateInterface;
+use Drupal\file\Entity\File;
+use Drupal\file\Plugin\Field\FieldWidget\FileWidget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -74,6 +76,19 @@ class HomepageConfigurationsForm extends FormBase {
       '#default_value' => $this->state->get('dct_homepage.description'),
     ];
 
+    $form['image'] = [
+      '#type'          => 'managed_file',
+      '#title'         => t('Image'),
+      '#upload_location' => 'public://images/',
+      '#default_value' => [$this->state->get('dct_homepage.share_image')],
+      '#description'   => t('This image is used when sharing the homepage on social networks.'),
+      '#upload_validators'    => [
+        'file_validate_is_image' => [],
+        'file_validate_extensions' => ['gif png jpg jpeg'],
+        'file_validate_size' => [25600000]
+      ],
+    ];
+
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Save configurations'),
@@ -86,6 +101,19 @@ class HomepageConfigurationsForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $fid = $form_state->getValue('image');
+
+    if ($fid) {
+      $file = File::load($fid[0]);
+      $file->setPermanent();
+      $file->save();
+      $fid = $fid[0];
+    }
+    else {
+      $fid = NULL;
+    }
+
+    $this->state->set('dct_homepage.share_image', $fid);
     $this->state->set('dct_homepage.date', $form_state->getValue('date'));
     $this->state->set('dct_homepage.location', $form_state->getValue('location'));
     $this->state->set('dct_homepage.description', $form_state->getValue('description'));

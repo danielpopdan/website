@@ -5,6 +5,9 @@
  * Contains hook implementations.
  */
 
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\file\Entity\File;
+
 /**
  * Implements hook_theme().
  */
@@ -29,4 +32,47 @@ function dct_homepage_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dct_homepage_token_info() {
+  $site['homepage_share_image_url'] = [
+    'name' => t('Share Image URL'),
+    'description' => t('The unique url of an image for sharing')
+  ];
+
+  return [
+    'tokens' => ['site' => $site],
+  ];
+
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dct_homepage_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $token_service = \Drupal::token();
+
+  $replacements = [];
+
+  if ($type == 'site') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'homepage_share_image_url':
+          $url = '';
+          $image = \Drupal::state()->get('dct_homepage.share_image');
+          if ($image) {
+            $file = File::load($image[0]);
+            $url = file_create_url($file->getFileUri());
+          }
+
+          $replacements[$original] = $url;
+          break;
+      }
+    }
+  }
+  return $replacements;
+
 }
