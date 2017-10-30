@@ -7,6 +7,7 @@ dependencies:
     - node.type.page
     - paragraphs.paragraphs_type.google_map_paragraph
     - paragraphs.paragraphs_type.image_slider_paragraph
+    - paragraphs.paragraphs_type.social_share
     - paragraphs.paragraphs_type.sponsor_contact_form
     - paragraphs.paragraphs_type.sponsorship_container
     - paragraphs.paragraphs_type.text_paragraph
@@ -32,6 +33,7 @@ settings:
       sponsor_contact_form: sponsor_contact_form
       google_map_paragraph: google_map_paragraph
       image_slider_paragraph: image_slider_paragraph
+      social_share: social_share
     target_bundles_drag_drop:
       sponsorship_container:
         enabled: true
@@ -54,6 +56,9 @@ settings:
       image_slider_paragraph:
         enabled: true
         weight: 9
+      social_share:
+        enabled: true
+        weight: 13
       sponsors_extras:
         weight: 16
         enabled: false

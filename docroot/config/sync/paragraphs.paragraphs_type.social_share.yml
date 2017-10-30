@@ -1,0 +1,9 @@
+uuid: 8f135340-d7ee-4e1c-953b-f37cf318c450
+langcode: en
+status: true
+dependencies: {  }
+id: social_share
+label: 'Social share'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
