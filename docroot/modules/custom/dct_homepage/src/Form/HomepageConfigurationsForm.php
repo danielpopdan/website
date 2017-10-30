@@ -77,15 +77,15 @@ class HomepageConfigurationsForm extends FormBase {
     ];
 
     $form['image'] = [
-      '#type'          => 'managed_file',
-      '#title'         => t('Image'),
+      '#type' => 'managed_file',
+      '#title' => t('Image'),
       '#upload_location' => 'public://images/',
       '#default_value' => [$this->state->get('dct_homepage.share_image')],
-      '#description'   => t('This image is used when sharing the homepage on social networks.'),
-      '#upload_validators'    => [
+      '#description' => t('This image is used when sharing the homepage on social networks.'),
+      '#upload_validators' => [
         'file_validate_is_image' => [],
         'file_validate_extensions' => ['gif png jpg jpeg'],
-        'file_validate_size' => [25600000]
+        'file_validate_size' => [25600000],
       ],
     ];
 

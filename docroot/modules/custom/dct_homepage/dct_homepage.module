@@ -64,8 +64,10 @@ function dct_homepage_tokens($type, $tokens, array $data, array $options, Bubble
           $url = '';
           $image = \Drupal::state()->get('dct_homepage.share_image');
           if ($image) {
-            $file = File::load($image[0]);
-            $url = file_create_url($file->getFileUri());
+            $file = File::load($image);
+            if (!empty($file)) {
+              $url = file_create_url($file->getFileUri());
+            }
           }
 
           $replacements[$original] = $url;
