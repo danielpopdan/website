@@ -16,6 +16,7 @@ function dct_newsletter_theme() {
         'form' => NULL,
       ],
     ],
+    'dct_newsletter_subscription_confirmation' => [],
   ];
 }
 
@@ -25,9 +26,15 @@ function dct_newsletter_theme() {
 function dct_newsletter_mail($key, &$message, $params) {
   switch ($key) {
     case 'newsletter_subscription_confirmation':
-      $message['from'] = ' info@drupaltransylvania.camp';
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Content-Type'] = 'text/html';
       $message['subject'] = t('Newsletter subscription');
-      $message['body'][] = t('You have successfully subscribed to our newsletter!');
+      $body = [
+        '#theme' => 'dct_newsletter_subscription_confirmation',
+      ];
+      $message['body'][0] = render($body);
       break;
+
+    default:
   }
 }
