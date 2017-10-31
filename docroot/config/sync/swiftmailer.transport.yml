@@ -1,4 +1,4 @@
-transport: smtp
+transport: sendmail
 smtp_host: smtp.gmail.com
 smtp_port: null
 smtp_encryption: ssl
