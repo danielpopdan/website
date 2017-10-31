@@ -1018,7 +1018,7 @@ img.zoom-img {
   .share-links--link {
     display: block;
     background: url("../images/logos/share-sprites.png") no-repeat; }
-    .share-links--link span {
+    ul.share-links .share-links--link span {
       display: none; }
     .share-links--link.facebook {
       width: 44px;
