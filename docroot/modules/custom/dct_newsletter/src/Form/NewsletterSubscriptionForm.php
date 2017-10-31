@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\dct_newsletter\Controller\MailchimpController;
 use Egulias\EmailValidator\EmailValidatorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -39,6 +40,13 @@ class NewsletterSubscriptionForm extends FormBase {
   protected $mailchimpService;
 
   /**
+   * The email service.
+   *
+   * @var \Drupal\Core\Mail\MailManagerInterface
+   */
+  protected $mailManager;
+
+  /**
    * Constructs a NewsletterForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -47,11 +55,14 @@ class NewsletterSubscriptionForm extends FormBase {
    *   The email validator.
    * @param \Drupal\dct_newsletter\Controller\MailchimpController $mailchimp_service
    *   The mailchimp service.
+   * @param \Drupal\Core\Mail\MailManagerInterface $mail_manager
+   *   The mail service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator, MailchimpController $mailchimp_service) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator, MailchimpController $mailchimp_service, MailManagerInterface $mail_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->emailValidator = $email_validator;
     $this->mailchimpService = $mailchimp_service;
+    $this->mailManager = $mail_manager;
   }
 
   /**
@@ -61,7 +72,8 @@ class NewsletterSubscriptionForm extends FormBase {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('email.validator'),
-      $container->get('dct_newsletter.mailchimp_service')
+      $container->get('dct_newsletter.mailchimp_service'),
+      $container->get('plugin.manager.mail')
     );
   }
 
@@ -184,7 +196,21 @@ class NewsletterSubscriptionForm extends FormBase {
         $command = new ReplaceCommand('#dct-newsletter-form', $html);
 
         // Adds the user to the 'Target Audience' list in mailchimp.
-        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Test');
+        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
+
+        // Sends a confirmation email to the subscriber.
+        if (!$form_state->get('anyErrors')) {
+          $result = $this->mailManager->mail(
+            'dct_newsletter',
+            'newsletter_subscription_confirmation',
+            $form_state->getValue('email'),
+            $user->getPreferredLangcode(),
+            [],
+            NULL,
+            TRUE
+          );
+        }
+
       }
       else {
         $html = [

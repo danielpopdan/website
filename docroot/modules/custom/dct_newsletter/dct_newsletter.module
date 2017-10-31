@@ -18,3 +18,16 @@ function dct_newsletter_theme() {
     ],
   ];
 }
+
+/**
+ * Implements hook_mail().
+ */
+function dct_newsletter_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'newsletter_subscription_confirmation':
+      $message['from'] = ' info@drupaltransylvania.camp';
+      $message['subject'] = t('Newsletter subscription');
+      $message['body'][] = t('You have successfully subscribed to our newsletter!');
+      break;
+  }
+}
