@@ -40,6 +40,7 @@ module:
   mailchimp: 0
   mailchimp_campaign: 0
   mailchimp_lists: 0
+  mailsystem: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
@@ -55,6 +56,7 @@ module:
   rdf: 0
   search: 0
   shortcut: 0
+  swiftmailer: 0
   syslog: 0
   system: 0
   taxonomy: 0
