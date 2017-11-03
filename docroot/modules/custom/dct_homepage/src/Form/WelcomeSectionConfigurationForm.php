@@ -55,7 +55,7 @@ class WelcomeSectionConfigurationForm extends FormBase {
       '#title' => $this->t('Description'),
       '#required' => TRUE,
       '#default_value' => isset($state_values['description']) ? $state_values['description']['value'] : '',
-      '#format' => isset($state_values['description']) ? $state_values['description']['format'] : ''
+      '#format' => isset($state_values['description']) ? $state_values['description']['format'] : 'full_html',
     ];
 
     $form['youtube'] = [
@@ -70,7 +70,7 @@ class WelcomeSectionConfigurationForm extends FormBase {
       '#title' => $this->t('Airport Description'),
       '#required' => TRUE,
       '#default_value' => isset($state_values['airport_description']) ? $state_values['airport_description']['value'] : '',
-      '#format' => isset($state_values['airport_description']) ? $state_values['airport_description']['format'] : ''
+      '#format' => isset($state_values['airport_description']) ? $state_values['airport_description']['format'] : 'full_html'
     ];
 
     $form['submit'] = [
