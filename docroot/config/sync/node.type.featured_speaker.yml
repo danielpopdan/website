@@ -1,0 +1,18 @@
+uuid: 3601fbff-e996-4639-9502-cee219bd196b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Featured Speaker'
+type: featured_speaker
+description: 'Use featured speaker for creating pages that describe the speakers of the camp.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
