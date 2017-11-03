@@ -2,11 +2,11 @@
 
 namespace Drupal\dct_homepage\Form;
 
+use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\file\Entity\File;
-use Drupal\file\Plugin\Field\FieldWidget\FileWidget;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -24,13 +24,18 @@ class HomepageConfigurationsForm extends FormBase {
   protected $state;
 
   /**
-   * Constructs a HomepageConfigurationsForm object.
+   * The cache_tags.invalidator service.
    *
-   * @param \Drupal\Core\State\StateInterface $state
-   *   The state service.
+   * @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface
    */
-  public function __construct(StateInterface $state) {
+  protected $cacheInvalidator;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
     $this->state = $state;
+    $this->cacheInvalidator = $cacheInvalidator;
   }
 
   /**
@@ -45,7 +50,8 @@ class HomepageConfigurationsForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('state')
+      $container->get('state'),
+      $container->get('cache_tags.invalidator')
     );
   }
 
@@ -117,6 +123,9 @@ class HomepageConfigurationsForm extends FormBase {
     $this->state->set('dct_homepage.date', $form_state->getValue('date'));
     $this->state->set('dct_homepage.location', $form_state->getValue('location'));
     $this->state->set('dct_homepage.description', $form_state->getValue('description'));
+
+    // Invalidate the cache set on HomepageInformationBlock.
+    $this->cacheInvalidator->invalidateTags(['dct_homepage.homepage_information']);
 
     drupal_set_message($this->t('The settings have been successfully saved'));
   }
