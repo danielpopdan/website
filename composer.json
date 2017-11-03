@@ -37,6 +37,7 @@
         "drupal/simple_sitemap": "2.10.0",
         "drupal/swiftmailer": "1.0-beta1",
         "drush/drush": "~8.0",
+        "squizlabs/php_codesniffer": "3.1.1",
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3"
     },
