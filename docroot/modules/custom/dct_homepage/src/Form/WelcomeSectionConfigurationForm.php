@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_homepage\Form;
 
+use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\State\StateInterface;
@@ -22,19 +23,28 @@ class WelcomeSectionConfigurationForm extends FormBase {
   protected $state;
 
   /**
+   * The cache_tags.invalidator service.
+   *
+   * @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface
+   */
+  protected $cacheInvalidator;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('state')
+      $container->get('state'),
+      $container->get('cache_tags.invalidator')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(StateInterface $state) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
     $this->state = $state;
+    $this->cacheInvalidator = $cacheInvalidator;
   }
 
   /**
@@ -87,6 +97,9 @@ class WelcomeSectionConfigurationForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
     $this->state->set('dct_configuration.welcome_section', $values);
+
+    // Add this specific cache tag for welcome section block.
+    $this->cacheInvalidator->invalidateTags(['dct_homepage.welcome_section']);
 
     drupal_set_message($this->t('The settings have been successfully saved'));
   }
