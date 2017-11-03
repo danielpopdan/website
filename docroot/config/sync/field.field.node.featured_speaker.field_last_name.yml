@@ -1,0 +1,19 @@
+uuid: 583682cf-b532-4f3c-b580-862446f2e5ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_name
+    - node.type.featured_speaker
+id: node.featured_speaker.field_last_name
+field_name: field_last_name
+entity_type: node
+bundle: featured_speaker
+label: 'Last Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
