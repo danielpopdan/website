@@ -1,0 +1,15 @@
+uuid: c497e167-6b87-4af5-9fac-b32ed33f6d4c
+langcode: en
+status: true
+dependencies: {  }
+name: diamond_sponsors_logo
+label: 'Diamond Sponsors Logo'
+effects:
+  2ff4d03b-617e-48dc-a1c2-9c5b7f05934a:
+    uuid: 2ff4d03b-617e-48dc-a1c2-9c5b7f05934a
+    id: image_scale
+    weight: 1
+    data:
+      width: 64
+      height: 64
+      upscale: false
