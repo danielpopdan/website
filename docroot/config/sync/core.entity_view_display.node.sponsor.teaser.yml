@@ -1,9 +1,12 @@
 uuid: 1337e51a-3f6e-49e6-94ee-9c19c72fb951
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.sponsor.field_external_link
+    - field.field.node.sponsor.field_short_description
+    - field.field.node.sponsor.field_type
     - node.type.sponsor
   module:
     - user
@@ -17,3 +20,6 @@ content:
     region: content
 hidden:
   addtoany: true
+  field_external_link: true
+  field_short_description: true
+  field_type: true

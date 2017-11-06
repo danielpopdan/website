@@ -1,0 +1,14 @@
+uuid: 1802db8b-e6c8-4037-a69e-4adbdfc11091
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.sprint_mentor
+  module:
+    - user
+id: user_add_role_action.sprint_mentor
+label: 'Add the Sprint Mentor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: sprint_mentor
