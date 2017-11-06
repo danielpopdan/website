@@ -1,0 +1,10 @@
+uuid: 6cd9522d-4fc8-4597-916a-9e07a7e3c5bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.sponsors_image
+label: 'Sponsors Image'
+targetEntityType: node
+cache: true
