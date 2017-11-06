@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Manages the access to the detail pages.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeTypeInterface;
+
+/**
+ * Implements form_node_type_form_alter()
+ *
+ * Adds a tab for custom settings with  an option for disable/enable
+ * the access to details page.
+ */
+function dct_node_access_form_node_type_form_alter(&$form, &$form_state) {
+  $form['advanced'] = [
+    '#type' => 'details',
+    '#title' => t('Advanced settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 10,
+    '#group' => 'additional_settings',
+    '#tree' => TRUE,
+  ];
+
+  // Load the current node type configuration entity.
+  $node_type = $form_state->getFormObject()->getEntity();
+
+  $form['advanced']['hide_details'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Ascunde pagina de detalii'),
+    '#default_value' => $node_type->getThirdPartySetting('dct_node_access', 'hide_details', 0),
+  ];
+  $form['#entity_builders'][] = 'dct_node_access_form_node_type_form_builder';
+}
+
+/**
+ * Implements form_node_type_form_builder()
+ *
+ * Sets the custom settings to the entity's configuration.
+ */
+function dct_node_access_form_node_type_form_builder($entity_type, NodeTypeInterface $type, &$form, FormStateInterface $form_state) {
+  $advanced_settings = $form_state->getValue('advanced');
+  foreach ($advanced_settings as $key => $value) {
+    $type->setThirdPartySetting('dct_node_access', $key, $value);
+  }
+  $type->save();
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dct_node_access_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $build_info = $form_state->getBuildInfo();
+  $form_object = $build_info['callback_object'];
+  $bundle = $form_object->getEntity()->bundle();
+  $type = NodeType::load($bundle);
+
+  // If the content type doesn't have a details page.
+  if ($type->getThirdPartySetting('dct_node_access', 'hide_details')) {
+    // Hide the preview button.
+    $form['actions']['preview']['#access'] = FALSE;
+    // Set the form submit to redirect on admin content.
+    $form['actions']['publish']['#submit'][] = 'dct_node_access_admin_content_redirect';
+  }
+
+}
+
+/**
+ * Sets the form state to redirect to admin content.
+ *
+ * @param array $form
+ *   The form render array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function dct_node_access_admin_content_redirect(array &$form, FormStateInterface $form_state) {
+  $form_state->setRedirect('system.admin_content');
+}
