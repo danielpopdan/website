@@ -1,0 +1,11 @@
+dct_invisible_recaptcha_settings.admin.structure.settings:
+  title: 'Invisible reCaptcha'
+  route_name: 'dct_invisible_recaptcha.settings'
+  description: 'Manages invisible reCaptcha settings.'
+  parent: system.admin_config
+
+dct_invisible_recaptcha_configuration.admin.structure.settings:
+  title: 'Invisible reCaptcha configurations'
+  route_name: 'dct_invisible_recaptcha.configurations'
+  description: 'Manages invisible reCaptcha configurations.'
+  parent: dct_invisible_recaptcha_settings.admin.structure.settings

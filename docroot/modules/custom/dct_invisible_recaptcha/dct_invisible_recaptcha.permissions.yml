@@ -1,0 +1,4 @@
+configure invisible recaptcha settings:
+  title: 'Invisible recaptcha configurations'
+  description: 'Modify the invisible recaptcha configurations.'
+  restrict access: TRUE
