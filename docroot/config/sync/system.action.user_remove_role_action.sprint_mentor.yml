@@ -1,0 +1,14 @@
+uuid: 2070d0ef-3f1b-4acf-a289-78e54451d5f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.sprint_mentor
+  module:
+    - user
+id: user_remove_role_action.sprint_mentor
+label: 'Remove the Sprint Mentor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: sprint_mentor

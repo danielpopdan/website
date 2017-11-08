@@ -1,0 +1,21 @@
+uuid: 4ea89b05-39ae-4daf-a47d-31a06a2cf95d
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_node_access
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  dct_node_access:
+    hide_details: 1
+name: Sponsor
+type: sponsor
+description: 'Use Sponsor to increase the visibility of the sponsors.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

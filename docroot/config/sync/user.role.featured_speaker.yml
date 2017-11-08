@@ -1,0 +1,9 @@
+uuid: a0ee417a-de19-4d7c-b8f7-f84ab4b5152e
+langcode: en
+status: true
+dependencies: {  }
+id: featured_speaker
+label: 'Featured Speaker'
+weight: 3
+is_admin: null
+permissions: {  }

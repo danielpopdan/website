@@ -1,0 +1,35 @@
+uuid: db688308-6875-425c-87b0-597af710679a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.sponsors_image
+    - field.field.node.sponsor.field_external_link
+    - field.field.node.sponsor.field_image
+    - field.field.node.sponsor.field_short_description
+    - field.field.node.sponsor.field_type
+    - image.style.diamond_sponsors_logo
+    - node.type.sponsor
+  module:
+    - image
+    - user
+id: node.sponsor.sponsors_image
+targetEntityType: node
+bundle: sponsor
+mode: sponsors_image
+content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: diamond_sponsors_logo
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_external_link: true
+  field_short_description: true
+  field_type: true
+  links: true

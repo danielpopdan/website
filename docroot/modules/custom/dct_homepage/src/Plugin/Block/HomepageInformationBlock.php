@@ -64,6 +64,11 @@ class HomepageInformationBlock extends BlockBase implements ContainerFactoryPlug
       '#theme' => 'dct_homepage_block',
       '#date' => $date,
       '#location' => $location,
+      '#cache' => [
+        'tags' => [
+          'dct_homepage.homepage_information'
+        ]
+      ]
     ];
   }
 
