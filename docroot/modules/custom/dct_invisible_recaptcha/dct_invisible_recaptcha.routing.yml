@@ -1,0 +1,15 @@
+dct_invisible_recaptcha.settings:
+  path: '/admin/config/invisible-recaptcha'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Invisible reCaptcha'
+  requirements:
+    _permission: 'configure invisible recaptcha settings'
+
+dct_invisible_recaptcha.configurations:
+  path: '/admin/config/invisible-recaptcha/configurations'
+  defaults:
+    _form: '\Drupal\dct_invisible_recaptcha\Form\InvisibleRecaptchaConfigurationsForm'
+    _title: 'Invisible recaptcha configurations'
+  requirements:
+    _permission: 'configure invisible recaptcha settings'
