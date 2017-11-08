@@ -1,0 +1,7 @@
+invisible_recaptcha:
+  js:
+    js/invisible_recaptcha.js: {}
+    https://www.google.com/recaptcha/api.js: {type: external, attributes: { defer: true, async: true} }
+  dependencies:
+      - core/jquery
+      - core/drupal

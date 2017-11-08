@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Form\FormInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form().
+ */
+function dct_invisible_recaptcha_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Gets the ids for contact forms.
+  $contact_message_forms = array_keys(\Drupal::service('entity_type.bundle.info')
+    ->getBundleInfo('contact_message'));
+
+  // Gets the bundle for the current form.
+  $form_object = $form_state->getFormObject();
+  if ($form_object instanceof ContentEntityForm) {
+    $bundle = $form_object->getEntity()->bundle();
+  }
+
+  // Modifies the current form if it is a contact form.
+  if (in_array($bundle, $contact_message_forms)) {
+    $form['#attached']['library'][] = 'dct_invisible_recaptcha/invisible_recaptcha';
+    $form['#validate'][] = '_contact_form_validation';
+
+    // Adds a div for invisible recaptcha.
+    $form['recaptcha'] = [
+      '#markup' =>
+      '<div class="g-recaptcha"
+       data-sitekey="6Lfd6TYUAAAAAIj8mI4WfxIoYV7GcLzi90ynk4j8"
+       data-callback="recaptcha_callback"
+       data-size="invisible"
+       ></div>',
+    ];
+  }
+
+}
+
+/**
+ * Verifies if the recaptcha key is valid.
+ *
+ * @param array $data
+ *   The parameters for the api call.
+ *
+ * @return bool|string
+ *   The api result.
+ */
+function _validate_recaptcha(array $data) {
+  $url = 'https://www.google.com/recaptcha/api/siteverify?' . http_build_query($data);
+  $response = file_get_contents($url);
+
+  return $response;
+
+}
+
+/**
+ * Validates the recaptcha key.
+ *
+ * @param \Drupal\Core\Form\FormInterface $form
+ *   The current form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The state of the current form.
+ */
+function _contact_form_validation(FormInterface &$form, FormStateInterface $form_state) {
+  // Get the unique recaptcha key.
+  $recaptcha = $_POST['g-recaptcha-response'];
+
+  $recaptcha_validation = _validate_recaptcha(
+    [
+      'secret' => '6Lfd6TYUAAAAAF3_pZlMtDU-Mk3UKJqjJPplsUno',
+      'remoteip' => \Drupal::request()->getClientIp(),
+      'response' => $recaptcha,
+    ]
+  );
+
+  // Sets an error if the recaptcha validation fails.
+  if (!$recaptcha_validation["succes"]) {
+    $form_state->setErrorByName("recaptcha", "Captcha validation failed.");
+  }
+}

@@ -1,0 +1,5 @@
+services:
+  dct_node_aceess.route_subscriber:
+    class: Drupal\dct_node_access\Routing\RouteSubscriber
+    tags:
+      - {name: event_subscriber}

@@ -54,13 +54,17 @@ class DataProvider implements DataProviderInterface {
     foreach ($connections as $connection) {
       $plots[$connection->get('title')->first()->value] = [
         'latitude' => $connection->get('latitude')->first()->value,
-        'longitude' => $connection->get('longitude')->first()->value
+        'longitude' => $connection->get('longitude')->first()->value,
       ];
     }
 
     $plots[self::ORIGIN_NAME] = [
       'latitude' => self::ORIGIN_LATITUDE,
       'longitude' => self::ORIGIN_LONGITUDE,
+      'size' => 10,
+      'attrs' => [
+        'fill' => "white",
+      ],
     ];
 
     return $plots;
@@ -85,11 +89,6 @@ class DataProvider implements DataProviderInterface {
             'latitude' => floatval($plot['latitude']),
             'longitude' => floatval($plot['longitude'])
           ]
-        ],
-        // Visual customization of the link.
-        'factor' => 0.3,
-        'attrs' => [
-          'stroke-width' => 2,
         ],
       ];
     }
