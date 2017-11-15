@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_homepage\Form;
 
+use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\State\StateInterface;
@@ -22,13 +23,23 @@ class SpreadTheWordConfigurationForm extends FormBase {
   protected $state;
 
   /**
+   * The cache_tags.invalidator service.
+   *
+   * @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface
+   */
+  protected $cacheInvalidator;
+
+  /**
    * Constructs a SpreadTheWordConfigurationForm object.
    *
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
+   * @param \Drupal\Core\Cache\CacheTagsInvalidatorInterface $cacheInvalidator
+   *   The cache_tags.invalidator service.
    */
-  public function __construct(StateInterface $state) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
     $this->state = $state;
+    $this->cacheInvalidator = $cacheInvalidator;
   }
 
   /**
@@ -43,7 +54,8 @@ class SpreadTheWordConfigurationForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('state')
+      $container->get('state'),
+      $container->get('cache_tags.invalidator')
     );
   }
 
@@ -96,6 +108,8 @@ class SpreadTheWordConfigurationForm extends FormBase {
     $this->state->set('dct_spread_the_word.description', $form_state->getValue('description'));
     $this->state->set('dct_spread_the_word.link_title', $form_state->getValue('link_title'));
     $this->state->set('dct_spread_the_word.link_url', $form_state->getValue('link_url'));
+
+    $this->cacheInvalidator->invalidateTags(['dct_homepage.spread_word']);
 
     drupal_set_message($this->t('The settings have been successfully saved'));
   }
