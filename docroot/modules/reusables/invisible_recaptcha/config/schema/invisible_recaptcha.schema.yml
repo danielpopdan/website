@@ -1,0 +1,7 @@
+invisible_recaptcha.recaptcha_points:
+  type: config_object
+  label: 'Invisible recaptcha check'
+  mapping:
+    forms_ids:
+      type: array
+      label: 'The ids of the forms.'

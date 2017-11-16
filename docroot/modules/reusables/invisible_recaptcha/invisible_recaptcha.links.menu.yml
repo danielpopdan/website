@@ -1,0 +1,17 @@
+invisible_recaptcha_settings.admin.structure.settings:
+  title: 'Invisible reCaptcha'
+  route_name: 'invisible_recaptcha.settings'
+  description: 'Manages invisible reCaptcha settings.'
+  parent: system.admin_config
+
+invisible_recaptcha_configuration.admin.structure.settings:
+  title: 'Invisible reCaptcha configurations'
+  route_name: 'invisible_recaptcha.configurations'
+  description: 'Manages invisible reCaptcha configurations.'
+  parent: invisible_recaptcha_settings.admin.structure.settings
+
+invisible_recaptcha_checks.admin.structure.settings:
+  title: 'Invisible reCaptcha checks'
+  route_name: 'invisible_recaptcha_checks'
+  description: 'Manages invisible reCaptcha checks.'
+  parent: invisible_recaptcha_settings.admin.structure.settings
