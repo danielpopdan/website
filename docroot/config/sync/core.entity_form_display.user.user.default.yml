@@ -3,15 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_bio
+    - field.field.user.user.field_country
     - field.field.user.user.field_drupal_org_username
     - field.field.user.user.field_first_name
+    - field.field.user.user.field_gender
+    - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organization
+    - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - address
     - image
-    - path
+    - text
     - user
 _core:
   default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
@@ -21,13 +27,26 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
+    weight: 0
     region: content
-  contact:
-    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  field_bio:
+    weight: 6
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_country:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: address_country_default
     region: content
   field_drupal_org_username:
-    weight: 34
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -35,7 +54,21 @@ content:
     type: string_textfield
     region: content
   field_first_name:
-    weight: 33
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_gender:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_job_title:
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -43,7 +76,7 @@ content:
     type: string_textfield
     region: content
   field_last_name:
-    weight: 32
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -51,7 +84,7 @@ content:
     type: string_textfield
     region: content
   field_organization:
-    weight: 35
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -59,17 +92,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  language:
-    weight: 0
-    region: content
-  path:
-    type: path
-    weight: 30
-    region: content
+  field_shirt_size:
+    weight: 10
     settings: {  }
     third_party_settings: {  }
-  timezone:
-    weight: 6
+    type: options_select
     region: content
   user_picture:
     type: image_image
@@ -77,6 +104,10 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: -1
+    weight: 3
     region: content
-hidden: {  }
+hidden:
+  contact: true
+  language: true
+  path: true
+  timezone: true

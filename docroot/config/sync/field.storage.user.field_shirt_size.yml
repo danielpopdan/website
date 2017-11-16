@@ -1,0 +1,39 @@
+uuid: 4533ab84-c889-4590-a942-ed85e7a6aac0
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_shirt_size
+field_name: field_shirt_size
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: xs
+      label: XS
+    -
+      value: s
+      label: S
+    -
+      value: m
+      label: M
+    -
+      value: l
+      label: L
+    -
+      value: xl
+      label: XL
+    -
+      value: xxl
+      label: XXL
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
