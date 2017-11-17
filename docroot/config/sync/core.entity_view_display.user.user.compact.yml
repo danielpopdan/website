@@ -1,9 +1,18 @@
 uuid: 0ac4c45c-7128-47b3-a91a-59b51fb71181
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_bio
+    - field.field.user.user.field_country
+    - field.field.user.user.field_drupal_org_username
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_gender
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_organization
+    - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -26,4 +35,13 @@ content:
     third_party_settings: {  }
     label: hidden
 hidden:
+  field_bio: true
+  field_country: true
+  field_drupal_org_username: true
+  field_first_name: true
+  field_gender: true
+  field_job_title: true
+  field_last_name: true
+  field_organization: true
+  field_shirt_size: true
   member_for: true
