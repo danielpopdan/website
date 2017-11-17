@@ -1,0 +1,27 @@
+uuid: 2c20d362-1e48-4aea-a1d6-999c943dffc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_file_upload
+  module:
+    - file
+id: contact_message.session_proposal_form.field_file_upload
+field_name: field_file_upload
+entity_type: contact_message
+bundle: session_proposal_form
+label: Slides
+description: 'Upload your slides here as a PDF, or link to them from the description. (This is typically done after your session.)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt ppt pdf odt odp'
+  max_filesize: '10 MB'
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

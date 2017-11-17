@@ -1,0 +1,30 @@
+uuid: 4e975a15-7eea-4569-bd14-470d6b20c299
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_select
+field_name: field_select
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 7.x
+      label: 7.x
+    -
+      value: 8.x
+      label: 8.x
+    -
+      value: 8.5.x
+      label: 8.5.x
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

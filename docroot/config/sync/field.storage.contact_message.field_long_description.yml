@@ -1,0 +1,19 @@
+uuid: 5d87afe3-4daf-4cd2-bf50-bd8edbb4c93b
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_message.field_long_description
+field_name: field_long_description
+entity_type: contact_message
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

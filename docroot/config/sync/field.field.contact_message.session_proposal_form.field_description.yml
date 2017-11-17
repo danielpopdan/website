@@ -1,0 +1,19 @@
+uuid: 4ed3eb29-0c30-4ba1-91b6-d2ddd542a2f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_description
+id: contact_message.session_proposal_form.field_description
+field_name: field_description
+entity_type: contact_message
+bundle: session_proposal_form
+label: Description
+description: "Please give us a detailed overview of your session and why attendees will be excited to hear about it.\r\nEnsure that you let us know:\r\n   - What level of knowledge should attendees have before walking into your session\r\n   - What will your session accomplish and what will attendees walk away having learned"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
