@@ -1,0 +1,32 @@
+uuid: 443aa157-0343-4a81-ba3c-350d2e5346fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_user
+id: contact_message.session_proposal_form.field_user
+field_name: field_user
+entity_type: contact_message
+bundle: session_proposal_form
+label: Speakers
+description: 'Type the username of the speaker, and to add more speakers click "Add another".'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        featured_speaker: featured_speaker
+        administrator: '0'
+        sprint_mentor: '0'
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

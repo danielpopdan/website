@@ -1,0 +1,19 @@
+uuid: a5634f36-00be-41a0-80ff-196fb0e4c359
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_name
+id: contact_message.session_proposal_form.field_name
+field_name: field_name
+entity_type: contact_message
+bundle: session_proposal_form
+label: 'Session/workshop title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
