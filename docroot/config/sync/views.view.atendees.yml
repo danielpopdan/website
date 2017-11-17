@@ -1,0 +1,691 @@
+uuid: 4218c588-0138-42c9-ab52-680aa1b59ead
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.teaser
+    - user.role.atendee
+    - user.role.featured_speaker
+    - user.role.organizer
+    - user.role.sprint_mentor
+  module:
+    - address
+    - user
+id: atendees
+label: Atendees
+module: views
+description: ''
+tag: ''
+base_table: users_field_data
+base_field: uid
+core: 8.x
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'access user profiles'
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        type: mini
+        options:
+          items_per_page: 12
+          offset: 0
+          id: 0
+          total_pages: null
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      style:
+        type: default
+      row:
+        type: 'entity:user'
+        options:
+          relationship: none
+          view_mode: teaser
+      fields:
+        name:
+          id: name
+          table: users_field_data
+          field: name
+          entity_type: user
+          entity_field: name
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          plugin_id: field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exclude: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_alter_empty: true
+          click_sort_column: value
+          type: user_name
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: users_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
+          entity_type: user
+          entity_field: status
+        roles_target_id:
+          id: roles_target_id
+          table: user__roles
+          field: roles_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            featured_speaker: featured_speaker
+            sprint_mentor: sprint_mentor
+            organizer: organizer
+            atendee: atendee
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          entity_type: user
+          plugin_id: user_roles
+        name:
+          id: name
+          table: users_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: Username
+            description: ''
+            use_operator: false
+            operator: name_op
+            identifier: name
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              featured_speaker: '0'
+              sprint_mentor: '0'
+              organizer: '0'
+              atendee: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: user
+          entity_field: name
+          plugin_id: string
+        field_first_name_value:
+          id: field_first_name_value
+          table: user__field_first_name
+          field: field_first_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_first_name_value_op
+            label: 'First Name'
+            description: ''
+            use_operator: false
+            operator: field_first_name_value_op
+            identifier: field_first_name_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              featured_speaker: '0'
+              sprint_mentor: '0'
+              organizer: '0'
+              atendee: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        field_last_name_value:
+          id: field_last_name_value
+          table: user__field_last_name
+          field: field_last_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_last_name_value_op
+            label: 'Last Name'
+            description: ''
+            use_operator: false
+            operator: field_last_name_value_op
+            identifier: field_last_name_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              featured_speaker: '0'
+              sprint_mentor: '0'
+              organizer: '0'
+              atendee: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        field_country_value:
+          id: field_country_value
+          table: user__field_country
+          field: field_country_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            all: all
+            AF: AF
+            AX: AX
+            AL: AL
+            DZ: DZ
+            AS: AS
+            AD: AD
+            AO: AO
+            AI: AI
+            AQ: AQ
+            AG: AG
+            AR: AR
+            AM: AM
+            AW: AW
+            AC: AC
+            AU: AU
+            AT: AT
+            AZ: AZ
+            BS: BS
+            BH: BH
+            BD: BD
+            BB: BB
+            BY: BY
+            BE: BE
+            BZ: BZ
+            BJ: BJ
+            BM: BM
+            BT: BT
+            BO: BO
+            BA: BA
+            BW: BW
+            BR: BR
+            IO: IO
+            VG: VG
+            BN: BN
+            BG: BG
+            BF: BF
+            BI: BI
+            KH: KH
+            CM: CM
+            CA: CA
+            IC: IC
+            CV: CV
+            BQ: BQ
+            KY: KY
+            CF: CF
+            EA: EA
+            TD: TD
+            CL: CL
+            CN: CN
+            CX: CX
+            CC: CC
+            CO: CO
+            KM: KM
+            CG: CG
+            CD: CD
+            CK: CK
+            CR: CR
+            CI: CI
+            HR: HR
+            CU: CU
+            CW: CW
+            CY: CY
+            CZ: CZ
+            DK: DK
+            DG: DG
+            DJ: DJ
+            DM: DM
+            DO: DO
+            EC: EC
+            EG: EG
+            SV: SV
+            GQ: GQ
+            ER: ER
+            EE: EE
+            ET: ET
+            FK: FK
+            FO: FO
+            FJ: FJ
+            FI: FI
+            FR: FR
+            GF: GF
+            PF: PF
+            TF: TF
+            GA: GA
+            GM: GM
+            GE: GE
+            DE: DE
+            GH: GH
+            GI: GI
+            GR: GR
+            GL: GL
+            GD: GD
+            GP: GP
+            GU: GU
+            GT: GT
+            GG: GG
+            GN: GN
+            GW: GW
+            GY: GY
+            HT: HT
+            HN: HN
+            HK: HK
+            HU: HU
+            IS: IS
+            IN: IN
+            ID: ID
+            IR: IR
+            IQ: IQ
+            IE: IE
+            IM: IM
+            IL: IL
+            IT: IT
+            JM: JM
+            JP: JP
+            JE: JE
+            JO: JO
+            KZ: KZ
+            KE: KE
+            KI: KI
+            XK: XK
+            KW: KW
+            KG: KG
+            LA: LA
+            LV: LV
+            LB: LB
+            LS: LS
+            LR: LR
+            LY: LY
+            LI: LI
+            LT: LT
+            LU: LU
+            MO: MO
+            MK: MK
+            MG: MG
+            MW: MW
+            MY: MY
+            MV: MV
+            ML: ML
+            MT: MT
+            MH: MH
+            MQ: MQ
+            MR: MR
+            MU: MU
+            YT: YT
+            MX: MX
+            FM: FM
+            MD: MD
+            MC: MC
+            MN: MN
+            ME: ME
+            MS: MS
+            MA: MA
+            MZ: MZ
+            MM: MM
+            NA: NA
+            NR: NR
+            NP: NP
+            NL: NL
+            NC: NC
+            NZ: NZ
+            NI: NI
+            NE: NE
+            NG: NG
+            NU: NU
+            NF: NF
+            KP: KP
+            MP: MP
+            'NO': 'NO'
+            OM: OM
+            PK: PK
+            PW: PW
+            PS: PS
+            PA: PA
+            PG: PG
+            PY: PY
+            PE: PE
+            PH: PH
+            PN: PN
+            PL: PL
+            PT: PT
+            PR: PR
+            QA: QA
+            RE: RE
+            RO: RO
+            RU: RU
+            RW: RW
+            WS: WS
+            SM: SM
+            ST: ST
+            SA: SA
+            SN: SN
+            RS: RS
+            SC: SC
+            SL: SL
+            SG: SG
+            SX: SX
+            SK: SK
+            SI: SI
+            SB: SB
+            SO: SO
+            ZA: ZA
+            GS: GS
+            KR: KR
+            SS: SS
+            ES: ES
+            LK: LK
+            BL: BL
+            SH: SH
+            KN: KN
+            LC: LC
+            MF: MF
+            PM: PM
+            VC: VC
+            SD: SD
+            SR: SR
+            SJ: SJ
+            SZ: SZ
+            SE: SE
+            CH: CH
+            SY: SY
+            TW: TW
+            TJ: TJ
+            TZ: TZ
+            TH: TH
+            TL: TL
+            TG: TG
+            TK: TK
+            TO: TO
+            TT: TT
+            TA: TA
+            TN: TN
+            TR: TR
+            TM: TM
+            TC: TC
+            TV: TV
+            UM: UM
+            VI: VI
+            UG: UG
+            UA: UA
+            AE: AE
+            GB: GB
+            US: US
+            UY: UY
+            UZ: UZ
+            VU: VU
+            VA: VA
+            VE: VE
+            VN: VN
+            WF: WF
+            EH: EH
+            YE: YE
+            ZM: ZM
+            ZW: ZW
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_country_value_op
+            label: Country
+            description: ''
+            use_operator: false
+            operator: field_country_value_op
+            identifier: field_country_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              featured_speaker: '0'
+              sprint_mentor: '0'
+              organizer: '0'
+              atendee: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: 'Country (field_country)'
+            description: null
+            identifier: field_country_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          plugin_id: country_code
+      sorts:
+        created:
+          id: created
+          table: users_field_data
+          field: created
+          order: ASC
+          entity_type: user
+          entity_field: created
+          plugin_id: date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+      title: Atendees
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+          3: AND
+      use_ajax: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {  }
+  page:
+    display_plugin: page
+    id: page
+    display_title: Page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: atendees
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {  }
