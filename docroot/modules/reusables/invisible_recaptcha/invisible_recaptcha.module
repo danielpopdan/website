@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\invisible_recaptcha\InvisibleRecaptcha;
+
+/**
+ * Implements hook_form().
+ */
+function invisible_recaptcha_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $state = \Drupal::service('state');
+  $site_key = $state->get('invisible_recaptcha.site_key');
+
+  // Gets the form ids form the invisible recaptcha configurations.
+  $config = \Drupal::service('config.factory')
+    ->getEditable('invisible_recaptcha.recaptcha_points');
+  $forms_ids = $config->get('forms_ids');
+
+  // Modifies the current form if it is in the configurations.
+  if (in_array($form_id, $forms_ids)) {
+    $form['#attached']['library'][] = 'invisible_recaptcha/invisible_recaptcha';
+    $form['#validate'][] = '_contact_form_validation';
+
+    // Adds a div for invisible recaptcha client side integration.
+    $form['recaptcha-container'] = [
+      '#type' => 'container',
+      '#markup' => '',
+      '#attributes' => [
+        'class' => "g-recaptcha",
+        'data-sitekey' => $site_key,
+        'data-callback' => "recaptcha_callback",
+        'data-size' => "invisible",
+      ],
+
+    ];
+
+  }
+}
+
+/**
+ * Validates the recaptcha key.
+ *
+ * @param array $form
+ *   The structure of the form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ */
+function _contact_form_validation(array &$form, FormStateInterface $form_state) {
+  $state = \Drupal::service('state');
+  $invisible_recaptcha = new InvisibleRecaptcha($state);
+  $secret_key = $state->get('invisible_recaptcha.secret_key');
+  $recaptcha_validation = $invisible_recaptcha->validateInvisibleRecaptchaCode($secret_key);
+
+  // Sets an error if the recaptcha validation fails.
+  if (!$recaptcha_validation) {
+    $form_state->setErrorByName("recaptcha", "Captcha validation failed.");
+  }
+}
