@@ -23,11 +23,11 @@ module:
   dblog: 0
   dct_airport_connections: 0
   dct_homepage: 0
-  dct_invisible_recaptcha: 0
   dct_map: 0
   dct_newsletter: 0
   dct_node_access: 0
   dct_paragraphs: 0
+  dct_sessions: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0

@@ -1,0 +1,7 @@
+name: DCT Sessions
+type: module
+description: Provides actions for camp sessions.
+package: DCT
+core: 8.x
+dependencies:
+  - contact
