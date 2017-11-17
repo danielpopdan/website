@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="section-intro">
+    <div class="section-intro--background"></div>
+    <div class="section-intro--text">
+        <h1 class="section-intro--title">{{ 'Register'|trans }}</h1>
+    </div>
+</div>
+<div class="sponsors-contact">
+    <div class="l-container">
+        <div class="small-title-block">
+            <form{{ attributes }}>
+                {{ children }}
+            </form>
+        </div>
+    </div>
+</div>
