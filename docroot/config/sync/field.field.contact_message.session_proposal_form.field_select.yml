@@ -1,0 +1,21 @@
+uuid: dbcde90c-405f-48a0-8c6b-3f4cd0067198
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_select
+  module:
+    - options
+id: contact_message.session_proposal_form.field_select
+field_name: field_select
+entity_type: contact_message
+bundle: session_proposal_form
+label: 'Drupal version'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

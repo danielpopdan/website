@@ -1,0 +1,21 @@
+uuid: ffa3bec9-2558-46a2-8bc4-44a4a8251825
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_select_list
+  module:
+    - options
+id: contact_message.session_proposal_form.field_select_list
+field_name: field_select_list
+entity_type: contact_message
+bundle: session_proposal_form
+label: 'Session type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
