@@ -1,0 +1,39 @@
+uuid: 1aeff2a0-6e60-4080-828d-8effd21af3ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_shirt_size
+field_name: field_shirt_size
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: xs
+      label: XS
+    -
+      value: s
+      label: S
+    -
+      value: m
+      label: M
+    -
+      value: l
+      label: L
+    -
+      value: xl
+      label: XL
+    -
+      value: xxl
+      label: XXL
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

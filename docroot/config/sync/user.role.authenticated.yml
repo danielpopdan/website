@@ -16,5 +16,6 @@ permissions:
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'submit sprint mentorship'
   - 'use text format basic_html'
   - 'use text format mailchimp_campaign'

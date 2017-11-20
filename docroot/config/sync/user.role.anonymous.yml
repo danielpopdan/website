@@ -13,4 +13,5 @@ permissions:
   - 'access content'
   - 'access site-wide contact form'
   - 'search content'
+  - 'submit sprint mentorship'
   - 'use text format restricted_html'
