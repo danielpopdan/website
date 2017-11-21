@@ -1,0 +1,21 @@
+uuid: 74a5a14e-302c-49e0-a055-34a41df72eb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sprint_mentor_form
+    - field.storage.contact_message.field_shirt_size
+  module:
+    - options
+id: contact_message.sprint_mentor_form.field_shirt_size
+field_name: field_shirt_size
+entity_type: contact_message
+bundle: sprint_mentor_form
+label: 'Shirt Size'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

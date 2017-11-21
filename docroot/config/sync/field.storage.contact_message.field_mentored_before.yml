@@ -1,0 +1,27 @@
+uuid: 76d7dbdf-8bee-477b-900c-7eb8156c23e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_mentored_before
+field_name: field_mentored_before
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'y'
+      label: 'Yes'
+    -
+      value: 'n'
+      label: 'No'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

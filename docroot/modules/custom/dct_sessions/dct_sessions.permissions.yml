@@ -1,0 +1,4 @@
+submit sprint mentorship:
+  title: 'Submit sprint mentorship'
+  description: 'View and submit Be a sprint mentor form'
+  restrict access: true

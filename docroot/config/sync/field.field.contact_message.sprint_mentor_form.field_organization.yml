@@ -1,0 +1,29 @@
+uuid: 2af2f7e4-497d-4e64-8e55-601b20a8dbd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sprint_mentor_form
+    - field.storage.contact_message.field_organization
+    - taxonomy.vocabulary.organization
+id: contact_message.sprint_mentor_form.field_organization
+field_name: field_organization
+entity_type: contact_message
+bundle: sprint_mentor_form
+label: Organization
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      organization: organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
