@@ -1,0 +1,5 @@
+dct_sprint_mentor_configuration.admin.structure.settings:
+  title: 'Be a sprint mentor'
+  route_name: dct_sessions.sprint_mentor_config
+  description: 'Manages Be a sprint mentor page configuration'
+  parent: dct_homepage.admin.structure.settings

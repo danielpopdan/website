@@ -1,0 +1,19 @@
+uuid: b34f2564-b459-4d8d-9f69-f6c7b4e33ab4
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sprint_mentor_form
+    - field.storage.contact_message.field_message
+id: contact_message.sprint_mentor_form.field_message
+field_name: field_message
+entity_type: contact_message
+bundle: sprint_mentor_form
+label: Message
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
