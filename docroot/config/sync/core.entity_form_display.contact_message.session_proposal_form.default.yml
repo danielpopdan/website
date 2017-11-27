@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - contact.form.session_proposal_form
+    - field.field.contact_message.session_proposal_form.field_agree
     - field.field.contact_message.session_proposal_form.field_description
+    - field.field.contact_message.session_proposal_form.field_duration
     - field.field.contact_message.session_proposal_form.field_file_upload
     - field.field.contact_message.session_proposal_form.field_long_description
     - field.field.contact_message.session_proposal_form.field_name
@@ -12,7 +14,6 @@ dependencies:
     - field.field.contact_message.session_proposal_form.field_select
     - field.field.contact_message.session_proposal_form.field_select_list
     - field.field.contact_message.session_proposal_form.field_taxonomy_reference
-    - field.field.contact_message.session_proposal_form.field_text_list
     - field.field.contact_message.session_proposal_form.field_user
   module:
     - file
@@ -21,6 +22,13 @@ targetEntityType: contact_message
 bundle: session_proposal_form
 mode: default
 content:
+  field_agree:
+    weight: 10
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_description:
     weight: 2
     settings:
@@ -28,6 +36,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  field_duration:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   field_file_upload:
     weight: 5
@@ -37,7 +51,7 @@ content:
     type: file_generic
     region: content
   field_long_description:
-    weight: 4
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
@@ -53,7 +67,7 @@ content:
     type: string_textfield
     region: content
   field_radio_button:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -71,19 +85,13 @@ content:
     type: options_select
     region: content
   field_taxonomy_reference:
-    weight: 8
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_text_list:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
     region: content
   field_user:
     weight: 1

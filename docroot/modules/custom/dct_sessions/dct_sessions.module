@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 
@@ -43,4 +44,142 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
     $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
   }
 
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dct_sessions_form_contact_message_session_proposal_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Adds ajax callback on session type select list.
+  $form['field_select_list']['widget']['#ajax'] = [
+    'callback' => '_change_duration_options_callback',
+    'wrapper' => 'session-duration',
+    'event' => 'change',
+    'method' => 'replace',
+  ];
+
+  // Sets the container id for ajax callback.
+  $form['field_duration']['#attributes']['id'] = 'session-duration';
+
+  // Show only the duration options for sessions.
+  $form['field_duration']['widget']['#options'] = _modify_duration_options('Session');
+
+  $trigger = $form_state->getTriggeringElement();
+  if (!empty($trigger['#name']) && $trigger['#name'] == 'field_select_list') {
+    $selected_option = $form_state->getValue('field_select_list');
+
+    // Sets the options for duration field.
+    $duration_field_options = _modify_duration_options($selected_option[0]['value']);
+    $form['field_duration']['widget']['#options'] = $duration_field_options;
+
+    // Sets the default value for the duration field.
+    switch ($selected_option[0]['value']) {
+      case "Session":
+        $form['field_duration']['widget']['#default_value'] = '25';
+        $form_state->set(['values', 'field_duration', 0], '25');
+        break;
+
+      case "Workshop":
+        $form['field_duration']['widget']['#default_value'] = '90';
+        $form_state->set(['values', 'field_duration', 0], '90');
+
+        break;
+    }
+  }
+
+  $form['#validate'][] = '_session_proposal_form_validation';
+
+  // Checks if the current user is a Featured Speaker.
+  $current_user_roles = Drupal::currentUser()->getRoles();
+  if (in_array('featured_speaker', $current_user_roles)) {
+    $entity_manager = \Drupal::entityManager();
+    $entity = $entity_manager->getStorage('user')->load(Drupal::currentUser()
+      ->id());
+    // Sets the current user as the default value.
+    $form['field_user']['widget'][0]['target_id']['#default_value'] = $entity;
+  }
+}
+
+/**
+ * Changes the session duration based on the option from the select list.
+ *
+ * @param array $form
+ *   The structure of the form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ *
+ * @return mixed
+ *   The duration field.
+ */
+function _change_duration_options_callback(array &$form, FormStateInterface $form_state) {
+  return $form['field_duration'];
+}
+
+/**
+ * Custom validations for the form.
+ *
+ * @param array $form
+ *   The structure of the form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ */
+function _session_proposal_form_validation(array &$form, FormStateInterface $form_state) {
+  // Verifies if the triggering element is the submit button.
+  $trigger_element = $form_state->getTriggeringElement();
+  if ($trigger_element['#type'] == 'submit') {
+    $speakers = $form_state->getValue('field_user');
+    $ids = [];
+
+    // Gets the ids for all the Feature Speakers.
+    foreach ($speakers as $key => $speaker) {
+      if (is_numeric($key)) {
+        $ids[] = $speaker['target_id'];
+      }
+    }
+
+    if (Drupal::currentUser()->id() != 1) {
+      $current_user_id = Drupal::currentUser()->id();
+      // Verififes if the current user is in the list of speakers.
+      if (!in_array($current_user_id, $ids)) {
+        $form_state->setErrorByName('field_user', 'You must be on the speaker list!');
+      }
+    }
+
+    // Checks if the agree field is checked.
+    $agree_check = $form_state->getValue('field_agree');
+    if ($agree_check['value'] != 1) {
+      $form_state->setErrorByName('field_agree', 'You must read and agree to the terms outlined in the Speaker Agreement document.');
+    }
+  }
+}
+
+/**
+ * Modifies the options for the duration field.
+ *
+ * @param string $select_list_option
+ *   The type of the session.
+ *
+ * @return array
+ *   The new options for the duration field.
+ */
+function _modify_duration_options($select_list_option) {
+  // Gets the values for the suration field.
+  $entityManager = \Drupal::service('entity_field.manager');
+  $fields = $entityManager->getFieldStorageDefinitions('contact_message', 'session_proposal_form');
+  $options = options_allowed_values($fields['field_duration']);
+
+  // Verifies which type of session is selected.
+  switch ($select_list_option) {
+    case "Session":
+      unset($options[90]);
+      unset($options[180]);
+      break;
+
+    case "Workshop":
+      unset($options[25]);
+      unset($options[50]);
+      break;
+  }
+
+  return $options;
 }
