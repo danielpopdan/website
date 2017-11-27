@@ -14,6 +14,17 @@ module:
   ckeditor: 0
   color: 0
   comment: 0
+  commerce: 0
+  commerce_cart: 0
+  commerce_checkout: 0
+  commerce_log: 0
+  commerce_order: 0
+  commerce_payment: 0
+  commerce_price: 0
+  commerce_product: 0
+  commerce_promotion: 0
+  commerce_store: 0
+  commerce_tax: 0
   config: 0
   contact: 0
   contact_storage: 0
@@ -30,6 +41,7 @@ module:
   dct_sessions: 0
   dynamic_page_cache: 0
   editor: 0
+  entity: 0
   entity_reference_revisions: 0
   entity_view_builder: 0
   field: 0
@@ -40,6 +52,7 @@ module:
   help: 0
   history: 0
   image: 0
+  inline_entity_form: 0
   invisible_recaptcha: 0
   link: 0
   mailchimp: 0
@@ -57,11 +70,13 @@ module:
   options: 0
   page_cache: 0
   path: 0
+  profile: 0
   quickedit: 0
   rdf: 0
   search: 0
   shortcut: 0
   simple_sitemap: 0
+  state_machine: 0
   swiftmailer: 0
   syslog: 0
   system: 0
