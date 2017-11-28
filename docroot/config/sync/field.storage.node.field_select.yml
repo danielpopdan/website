@@ -1,0 +1,30 @@
+uuid: b10e5d0b-bb2c-4539-ad90-3b9f07a16efa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_select
+field_name: field_select
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 7.x
+      label: 7.x
+    -
+      value: 8.x
+      label: 8.x
+    -
+      value: 8.5.x
+      label: 8.5.x
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
