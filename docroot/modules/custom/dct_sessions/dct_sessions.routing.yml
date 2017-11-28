@@ -13,3 +13,23 @@ dct_sessions.sprint_mentor_config:
     _title: 'Be a sprint mentor'
   requirements:
     _permission: 'access content'
+
+dct_sessions.session_proposal_accept:
+  path: '/admin/structure/contact/session-proposal/{contact_message_id}/accept'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\SessionProposalController::content'
+    _title: 'Session proposal acceptance'
+  options:
+    parameters:
+      contact_message_id:
+        type: String
+  requirements:
+    _permission: 'access content'
+
+dct_sessions.confirm_session_proposal_accept:
+  path: '/admin/structure/contact/session-proposal/accept/confirmation'
+  defaults:
+    _title: 'Confirmation page'
+    _form: '\Drupal\dct_sessions\Form\ConfirmProposalForm'
+  requirements:
+    _permission: 'access content'
