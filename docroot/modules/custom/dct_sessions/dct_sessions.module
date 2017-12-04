@@ -51,15 +51,17 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
  * Implements hook_entity_operation_alter().
  */
 function dct_sessions_entity_operation_alter(array &$operations, EntityInterface $entity) {
-  // Verifies if the current message is already accepted.
-  $isAccepted = $entity->field_node_id->value;
-  if ($entity->getEntityTypeId() == 'contact_message' && $entity->bundle() == 'session_proposal_form' && empty($isAccepted)) {
-    // Adds a new operation for the current message.
-    $operations['accept'] = [
-      'title' => t('Accept'),
-      'weight' => 0,
-      'url' => Url::fromRoute('dct_sessions.session_proposal_accept', ['contact_message_id' => $entity->id()]),
-    ];
+  if ($entity->getEntityTypeId() == 'contact_message' && $entity->bundle() == 'session_proposal_form') {
+    // Verifies if the current message is already accepted.
+    $isAccepted = $entity->field_node_id->value;
+    if (empty($isAccepted)) {
+      // Adds a new operation for the current message.
+      $operations['accept'] = [
+        'title' => t('Accept'),
+        'weight' => 0,
+        'url' => Url::fromRoute('dct_sessions.session_proposal_accept', ['contact_message_id' => $entity->id()]),
+      ];
+    }
   }
 
 }
