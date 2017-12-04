@@ -1,0 +1,29 @@
+uuid: eacc9985-e4b6-42ec-9f68-5d2ec646503c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy_reference
+    - node.type.session
+    - taxonomy.vocabulary.session_track
+id: node.session.field_taxonomy_reference
+field_name: field_taxonomy_reference
+entity_type: node
+bundle: session
+label: 'Session track'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      session_track: session_track
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

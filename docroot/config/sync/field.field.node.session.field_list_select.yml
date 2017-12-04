@@ -1,0 +1,21 @@
+uuid: 7d32def8-0909-4bf1-9437-2d18dfbbaab2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_list_select
+    - node.type.session
+  module:
+    - options
+id: node.session.field_list_select
+field_name: field_list_select
+entity_type: node
+bundle: session
+label: Audience
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

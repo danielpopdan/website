@@ -10,6 +10,7 @@ dependencies:
     - field.field.contact_message.session_proposal_form.field_file_upload
     - field.field.contact_message.session_proposal_form.field_long_description
     - field.field.contact_message.session_proposal_form.field_name
+    - field.field.contact_message.session_proposal_form.field_node_id
     - field.field.contact_message.session_proposal_form.field_radio_button
     - field.field.contact_message.session_proposal_form.field_select
     - field.field.contact_message.session_proposal_form.field_select_list
@@ -66,6 +67,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_node_id:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_radio_button:
     weight: 8
     settings: {  }

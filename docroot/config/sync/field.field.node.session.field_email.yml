@@ -1,0 +1,19 @@
+uuid: 51f63432-d25a-41c4-bd65-ed4e87d9a352
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.session
+id: node.session.field_email
+field_name: field_email
+entity_type: node
+bundle: session
+label: 'Sender''s email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
