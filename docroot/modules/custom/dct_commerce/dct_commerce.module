@@ -151,3 +151,43 @@ function dct_commerce_create_promotion(EntityTypeManagerInterface $entityTypeMan
   }
 
 }
+
+/**
+ * Function used to configure the EuPlatesc payment gateway.
+ *
+ * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+ *   The entity_type.manager service.
+ */
+function dct_commerce_create_payment_gateway(EntityTypeManagerInterface $entityTypeManager) {
+  // Retrieve the commerce_payment_gateway storage.
+  $payment_gateway_storage = $entityTypeManager->getStorage('commerce_payment_gateway');
+
+  // Check to see if there is any implemented payment gateway.
+  if (!$payment_gateway_storage->loadMultiple()) {
+    $newPaymentGateway = $payment_gateway_storage->create([
+      'id' => 'euplatesc',
+      'label' => 'EuPlatesc'
+    ]);
+
+    $newPaymentGateway->setPluginId('euplatesc_checkout');
+    $newPaymentGateway->setPluginConfiguration([
+      'merchant_id' => 'merchantIdPlaceholder',
+      'secret_key' => 'secretKeyPlaceHolder',
+      'redirect_method' => 'post',
+      'display_label' => 'EuPlatesc',
+      'mode' => 'test',
+      'payment_method_types' => [
+        'credit_card'
+      ]
+    ]);
+
+    $newPaymentGateway->save();
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function dct_commerce_update_8401() {
+  dct_commerce_create_payment_gateway(\Drupal::entityTypeManager());
+}
