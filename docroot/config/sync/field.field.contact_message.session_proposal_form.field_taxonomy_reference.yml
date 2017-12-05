@@ -1,0 +1,29 @@
+uuid: c8edd78b-1737-4e3e-bc95-ea46d3706d44
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_taxonomy_reference
+    - taxonomy.vocabulary.session_track
+id: contact_message.session_proposal_form.field_taxonomy_reference
+field_name: field_taxonomy_reference
+entity_type: contact_message
+bundle: session_proposal_form
+label: 'Session track'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      session_track: session_track
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

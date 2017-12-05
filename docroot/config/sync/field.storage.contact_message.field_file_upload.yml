@@ -1,0 +1,23 @@
+uuid: a3121381-2990-4682-8342-88552c94e688
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - file
+id: contact_message.field_file_upload
+field_name: field_file_upload
+entity_type: contact_message
+type: file
+settings:
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

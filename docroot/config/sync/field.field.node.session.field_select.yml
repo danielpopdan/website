@@ -1,0 +1,21 @@
+uuid: 2852e41e-2890-4f13-9fc1-7eeb57684721
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_select
+    - node.type.session
+  module:
+    - options
+id: node.session.field_select
+field_name: field_select
+entity_type: node
+bundle: session
+label: 'Drupal version'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

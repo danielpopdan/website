@@ -1,0 +1,120 @@
+uuid: 9f067a83-46fd-47c9-b4f1-02d52630c563
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.field.contact_message.session_proposal_form.field_agree
+    - field.field.contact_message.session_proposal_form.field_description
+    - field.field.contact_message.session_proposal_form.field_duration
+    - field.field.contact_message.session_proposal_form.field_file_upload
+    - field.field.contact_message.session_proposal_form.field_long_description
+    - field.field.contact_message.session_proposal_form.field_name
+    - field.field.contact_message.session_proposal_form.field_node_id
+    - field.field.contact_message.session_proposal_form.field_radio_button
+    - field.field.contact_message.session_proposal_form.field_select
+    - field.field.contact_message.session_proposal_form.field_select_list
+    - field.field.contact_message.session_proposal_form.field_taxonomy_reference
+    - field.field.contact_message.session_proposal_form.field_user
+  module:
+    - file
+id: contact_message.session_proposal_form.default
+targetEntityType: contact_message
+bundle: session_proposal_form
+mode: default
+content:
+  field_agree:
+    weight: 10
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_duration:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_file_upload:
+    weight: 5
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_long_description:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_node_id:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_radio_button:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_select:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_select_list:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_taxonomy_reference:
+    weight: 9
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_user:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  copy: true
+  mail: true
+  message: true
+  name: true
+  preview: true
+  subject: true

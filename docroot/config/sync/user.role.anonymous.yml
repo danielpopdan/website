@@ -9,8 +9,12 @@ label: 'Anonymous user'
 weight: 0
 is_admin: false
 permissions:
+  - 'access cart'
+  - 'access checkout'
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
   - 'search content'
+  - 'submit sprint mentorship'
   - 'use text format restricted_html'
+  - 'view commerce_product'

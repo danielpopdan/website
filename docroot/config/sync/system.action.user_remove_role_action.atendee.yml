@@ -1,0 +1,14 @@
+uuid: 70314186-cbaf-44e8-8080-b8827b630775
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.atendee
+  module:
+    - user
+id: user_remove_role_action.atendee
+label: 'Remove the Atendee role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: atendee

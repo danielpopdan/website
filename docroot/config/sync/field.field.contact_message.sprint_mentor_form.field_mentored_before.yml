@@ -1,0 +1,21 @@
+uuid: fc00af22-0a7c-45d0-943b-7c88fbcd9eb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.sprint_mentor_form
+    - field.storage.contact_message.field_mentored_before
+  module:
+    - options
+id: contact_message.sprint_mentor_form.field_mentored_before
+field_name: field_mentored_before
+entity_type: contact_message
+bundle: sprint_mentor_form
+label: 'Have you ever mentored a Drupal sprint before ?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

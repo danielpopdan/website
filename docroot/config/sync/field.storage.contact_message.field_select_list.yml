@@ -1,0 +1,27 @@
+uuid: aeb1a1a8-bd13-425b-bb25-5746450fe8d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_select_list
+field_name: field_select_list
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Session
+      label: Session
+    -
+      value: Workshop
+      label: Workshop
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

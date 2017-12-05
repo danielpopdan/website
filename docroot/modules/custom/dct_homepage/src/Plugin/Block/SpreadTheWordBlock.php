@@ -83,6 +83,7 @@ class SpreadTheWordBlock extends BlockBase implements ContainerFactoryPluginInte
         '#addtoany_html' => addtoany_create_node_buttons(NULL),
         '#theme' => 'addtoany_standard',
         '#cache' => [
+          'tags' => ['dct_homepage.spread_word'],
           'contexts' => ['url'],
         ],
       ],

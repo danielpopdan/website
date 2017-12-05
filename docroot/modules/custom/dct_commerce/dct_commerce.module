@@ -1,0 +1,193 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+
+/**
+ * Creates a store, a product and a promotion for DCTransylvania commerce.
+ */
+function dct_commerce_initialize_commerce_data() {
+  // Retrieve the entity_type.manager service.
+  $entityTypeManager = \Drupal::entityTypeManager();
+
+  $store_id = dct_commerce_create_store($entityTypeManager);
+  $product_id = dct_commerce_create_product($entityTypeManager, $store_id);
+  dct_commerce_create_promotion($entityTypeManager, $product_id);
+}
+
+/**
+ * Function used to create a store entity if there is none created.
+ *
+ * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+ *   The entity_type.manager service.
+ *
+ * @return int|null|string
+ *   The id of the newly created store or NULL if there is already a store.
+ */
+function dct_commerce_create_store(EntityTypeManagerInterface $entityTypeManager) {
+  // Retrieves the commerce_store storage.
+  $commerce_store = $entityTypeManager->getStorage('commerce_store');
+
+  // Creates a Store object if there is none created.
+  if (!$commerce_store->loadMultiple()) {
+    $newStore = $commerce_store->create(['type' => 'online']);
+    $newStore->setName('DCTransylvania');
+    $newStore->setEmail('store@dct.ro');
+    $newStore->setDefaultCurrencyCode('EUR');
+
+    // Populate the address field.
+    $newStore->set('address', [
+      'country_code' => 'RO',
+      'administrative_area' => '',
+      'locality' => 'CityPlaceholder',
+      'dependent_locality' => '',
+      'postal_code' => '000000',
+      'sorting_code' => '',
+      'address_line1' => 'AddressPlaceholder',
+      'address_line2' => '',
+      'organization' => '',
+      'given_name' => '',
+      'additional_name' => '',
+      'family_name' => '',
+    ]);
+    $newStore->setBillingCountries(['_none']);
+    $newStore->setOwner($entityTypeManager->getStorage('user')->load(1));
+    $newStore->set('prices_include_tax', TRUE);
+    $newStore->set('tax_registrations', 'RO');
+    $newStore->save();
+
+    return $newStore->id();
+  }
+
+  return NULL;
+}
+
+/**
+ * Function used to create a Ticket product if there is none created.
+ *
+ * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+ *   The entity_type.manager service.
+ * @param int $store_id
+ *   The id of the store this products is attached to.
+ *
+ * @return int|null|string
+ *   The id of product if it was created or NULL otherwise.
+ */
+function dct_commerce_create_product(EntityTypeManagerInterface $entityTypeManager, $store_id) {
+  // Retrieves the commerce_product storage.
+  $product_storage = $entityTypeManager->getStorage('commerce_product');
+
+  if (!$product_storage->loadMultiple()) {
+    // Retrieves the product variation storage.
+    $variation_storage = $entityTypeManager->getStorage('commerce_product_variation');
+    $variation = $variation_storage->create(['type' => 'default']);
+    $variation->setSku('dct_ticket');
+    $variation->setActive(TRUE);
+    $variation->setTitle('DCT Ticket');
+    $variation->set('price', ['number' => '39.99', 'currency_code' => 'EUR']);
+    $variation->save();
+
+    // Populate the ticket entity.
+    $newProduct = $product_storage->create(['type' => 'default']);
+    $newProduct->setVariations([$variation->id()]);
+    $newProduct->setTitle('Ticket');
+    $newProduct->setPublished('true');
+
+    // If the store has been created, the product is assigned to the store.
+    if ($store_id) {
+      $newProduct->setStoreIds([$store_id]);
+    }
+
+    $newProduct->save();
+    return $newProduct->id();
+  }
+
+  return NULL;
+
+}
+
+/**
+ * Function used to create a promotion - Early Bird.
+ *
+ * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+ *   The entity_type.manager service.
+ * @param int $product_id
+ *   The id of the product the Promotion is attached to.
+ */
+function dct_commerce_create_promotion(EntityTypeManagerInterface $entityTypeManager, $product_id) {
+  // Retrieve the commerce_promotion storage.
+  $promotion_storage = $entityTypeManager->getStorage('commerce_promotion');
+
+  if (!$promotion_storage->loadMultiple()) {
+    $newPromotion = $promotion_storage->create();
+    $newPromotion->setName('Early Bird');
+    $newPromotion->setDescription('This promotion is available for people who buy the DrupalCampTransylvania 2018 ticket before 26 march 2018.');
+    $newPromotion->set('offer', [
+        'target_plugin_id' => 'order_item_fixed_amount_off',
+        'target_plugin_configuration' => 'a:1:{s:6:"amount";a:2:{s:6:"number";s:5:"10.00";s:13:"currency_code";s:3:"EUR";}}'
+      ]
+    );
+    $newPromotion->set('conditions', [
+      'target_plugin_id' => 'order_item_product',
+      'target_plugin_configuration' => [
+        'products' => [
+          0 => [
+            'product_id' => $product_id,
+          ]
+        ],
+      ],
+    ]);
+    $newPromotion->setConditionOperator('AND');
+    $newPromotion->set('start_date', '2018-02-05');
+    $newPromotion->set('end_date', '2018-04-02');
+    $newPromotion->set('compatibility', 'none');
+    $newPromotion->setEnabled('true');
+
+    $newPromotion->save();
+  }
+
+}
+
+/**
+ * Function used to configure the EuPlatesc payment gateway.
+ *
+ * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+ *   The entity_type.manager service.
+ */
+function dct_commerce_create_payment_gateway(EntityTypeManagerInterface $entityTypeManager) {
+  // Retrieve the commerce_payment_gateway storage.
+  $payment_gateway_storage = $entityTypeManager->getStorage('commerce_payment_gateway');
+
+  // Check to see if there is any implemented payment gateway.
+  if (!$payment_gateway_storage->loadMultiple()) {
+    $newPaymentGateway = $payment_gateway_storage->create([
+      'id' => 'euplatesc',
+      'label' => 'EuPlatesc'
+    ]);
+
+    $newPaymentGateway->setPluginId('euplatesc_checkout');
+    $newPaymentGateway->setPluginConfiguration([
+      'merchant_id' => 'merchantIdPlaceholder',
+      'secret_key' => 'secretKeyPlaceHolder',
+      'redirect_method' => 'post',
+      'display_label' => 'EuPlatesc',
+      'mode' => 'test',
+      'payment_method_types' => [
+        'credit_card'
+      ]
+    ]);
+
+    $newPaymentGateway->save();
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function dct_commerce_update_8401() {
+  dct_commerce_create_payment_gateway(\Drupal::entityTypeManager());
+}

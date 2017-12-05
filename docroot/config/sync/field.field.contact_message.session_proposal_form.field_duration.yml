@@ -1,0 +1,23 @@
+uuid: f6563d98-4322-49f3-9bf9-9792b651f254
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_duration
+  module:
+    - options
+id: contact_message.session_proposal_form.field_duration
+field_name: field_duration
+entity_type: contact_message
+bundle: session_proposal_form
+label: Duration
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '25'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

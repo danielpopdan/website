@@ -1,0 +1,21 @@
+uuid: ba00ae55-a567-416e-a1f1-9c35ee27832a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_shirt_size
+  module:
+    - options
+    - user
+id: user.user.field_shirt_size
+field_name: field_shirt_size
+entity_type: user
+bundle: user
+label: 'Shirt size'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: c09cc062-fabe-4090-be8e-1650e3ae6f6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.atendee
+  module:
+    - user
+id: user_add_role_action.atendee
+label: 'Add the Atendee role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: atendee

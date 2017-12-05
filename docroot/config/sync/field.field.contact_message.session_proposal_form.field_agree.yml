@@ -1,0 +1,23 @@
+uuid: 579e9ec1-fa98-446a-936e-da16d638b67f
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_agree
+id: contact_message.session_proposal_form.field_agree
+field_name: field_agree
+entity_type: contact_message
+bundle: session_proposal_form
+label: Agree
+description: 'By submitting this session I acknowledge that I have read and agree to the terms outlined in the Speaker Agreement document.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

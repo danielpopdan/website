@@ -1,0 +1,23 @@
+uuid: a234ce58-feb9-4be3-8d6a-5b143da36c63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_select_list
+    - node.type.session
+  module:
+    - options
+id: node.session.field_select_list
+field_name: field_select_list
+entity_type: node
+bundle: session
+label: Duration
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '25'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,19 @@
+uuid: 4fc40556-34d2-4b66-98ae-c294326660f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_long_description
+id: contact_message.session_proposal_form.field_long_description
+field_name: field_long_description
+entity_type: contact_message
+bundle: session_proposal_form
+label: 'Tell us about your experience as a speaker'
+description: 'Please list or describe your speaking experience, including any presentation recording links. This information will not be displayed publicly and will only be used for reference by the session selection team.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
