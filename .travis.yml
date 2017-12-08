@@ -45,3 +45,6 @@ script:
   - if [[ "$TRAVIS_PULL_REQUEST" != "false" && -s changed_existing_files.txt && "$BRANCH" != "master" && "$BRANCH" != "develop" ]] ; then
       ./vendor/bin/phpcs --file-list=changed_existing_files.txt;
     fi;
+  - curl http://drupalcamp-transylvania.dev.pitechplus.com/deploy_git.php;
+  - curl http://drupalcamp-transylvania.dev.pitechplus.com/deploy_composer.php;
+  - curl http://drupalcamp-transylvania.dev.pitechplus.com/deploy_drush.php;
