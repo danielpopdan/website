@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.session.field_date
     - field.field.node.session.field_email
     - field.field.node.session.field_files
     - field.field.node.session.field_list_select
@@ -16,12 +17,19 @@ dependencies:
     - field.field.node.session.field_taxonomy_reference
     - node.type.session
   module:
+    - datetime
     - file
 id: node.session.default
 targetEntityType: node
 bundle: session
 mode: default
 content:
+  field_date:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
   field_email:
     weight: 1
     settings:

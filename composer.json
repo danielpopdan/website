@@ -23,6 +23,7 @@
         "drupal/address": "~1.2",
         "drupal/addtoany": "1.8",
         "drupal/advagg": "3.4",
+        "drupal/calendar": "1.x-dev",
         "drupal/coder": "8.2.12",
         "drupal/commerce": "^2.1",
         "drupal/config_installer": "1.5",
@@ -91,6 +92,9 @@
       "patches": {
         "drupal/mailchimp": {
           "https://www.drupal.org/node/2918997": "https://www.drupal.org/files/issues/private_api_key.patch"
+        },
+        "drupal/calendar": {
+          "https://www.drupal.org/node/2929146": "https://www.drupal.org/files/issues/alter_view_template.patch"
         }
       }
     }
