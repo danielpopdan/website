@@ -27,7 +27,9 @@
         }
 
         &::after {
-            @include       position(absolute, auto, 38%, -1rem, 38%);
+            @include       position(absolute, auto, auto, -1rem, 50%);
+            width:         5.25rem;
+            transform: translateX(-50%);
             border-bottom: .25rem solid $secondary-color;
             content:       '';
 
