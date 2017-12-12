@@ -1,19 +1,7 @@
 .homepage-intro {
     position: absolute;
-    top:      14%;
+    bottom:   5%;
     width:    100%;
-
-    @include tablet {
-        top: 21%;
-    }
-
-    @include medium-desktop {
-        top: 17%;
-    }
-
-    @include extra-large-desktop {
-        top: 22%;
-    }
 
     &--logos {
         width:  75%;
@@ -57,7 +45,7 @@
 
         &--location {
             position:        relative;
-            width:           18.125rem;
+            width:           17.95rem;
             height:          3.5rem;
             margin:          $global-margin * 1.25 auto 0;
             background:      url($homepage-path + 'location-flag.png') no-repeat;
