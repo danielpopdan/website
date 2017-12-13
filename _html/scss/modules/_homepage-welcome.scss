@@ -1,0 +1,70 @@
+.homepage-welcome {
+    margin:           0;
+    padding:          $global-padding * 3 0;
+    background-color: $section-bg-color;
+
+    &.homepage-spread-word {
+        &::before {
+            top:     6rem;
+            z-index: -1;
+        }
+    }
+
+    @include tablet {
+        padding: $global-padding * 10 0;
+
+        &.homepage-spread-word {
+            &::before {
+                z-index: 0;
+            }
+        }
+    }
+
+    .large-title-block {
+        h2,
+        p {
+            color: $black;
+        }
+
+        h2 {
+            width: 100%;
+        }
+
+        @include tablet {
+            max-width: 60%;
+            margin:    0 auto $global-margin * 3;
+            padding:   0;
+        }
+    }
+
+    &--video {
+        iframe {
+            width: 100%;
+        }
+
+        @include tablet {
+            iframe {
+                width:      100%;
+                min-height: 440px;
+            }
+        }
+    }
+
+    &--map {
+        h3 {
+            color:     $black;
+            font-size: $global-font-size * 1.5;
+        }
+    }
+
+    &--video,
+    &--map {
+        max-width: 100%;
+        margin:    $global-margin * 3 0 0;
+
+        @include tablet {
+            max-width: 80%;
+            margin:    $global-margin * 5 auto 0;
+        }
+    }
+}

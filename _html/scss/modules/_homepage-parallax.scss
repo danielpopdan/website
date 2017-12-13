@@ -1,19 +1,19 @@
 .homepage-parallax {
     position:         relative;
-    padding:          0 0 240%;
+    padding:          0 0 250%;
     background-color: $primary-color;
     overflow:         hidden;
 
     @include large-mobile {
-        padding: 0 0 160%;
+        padding: 0 0 165%;
     }
 
     @include medium-desktop {
-        padding: 0 0 100%;
+        padding: 0 0 105%;
     }
 
     @include extra-large-desktop {
-        padding: 0 0 80%;
+        padding: 0 0 100%;
     }
 
     &--item {

@@ -46,8 +46,16 @@
         margin:     $global-margin * 1.5 0 0;
         text-align: center;
 
+        .button {
+            width: 100%;
+        }
+
         @include tablet {
             margin: $global-margin * 3 0 0;
+
+            .button {
+                width: auto;
+            }
         }
     }
 }
