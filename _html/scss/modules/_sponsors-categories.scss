@@ -297,3 +297,114 @@
         }
     }
 }
+
+.sponsors-display {
+    .sponsors-categories {
+        margin: $global-margin * (-10) 0 0;
+
+        .large-title-block {
+            h2 {
+                margin:    0 auto $global-margin * 6;
+                color:     $primary-color;
+                font-size: $global-font-size * 1.75;
+
+                &::after {
+                    width: 6.25rem;
+                }
+            }
+        }
+
+        &--category {
+            padding:    $global-padding * 2.5 $global-padding * 1.5 0;
+            text-align: center;
+
+            p {
+                color: $black;
+            }
+
+            img {
+                width:  auto;
+                margin: 0 auto $global-margin * 2;
+            }
+
+            .l-row {
+                margin: 0 (-$global-margin) * .5;
+            }
+
+            .l-col-2,
+            .l-col-4 {
+                margin-bottom: $global-margin * 3;
+            }
+
+            @include medium-desktop {
+                .l-row {
+                    margin: 0 0 $global-margin * 5;
+                }
+
+                .l-col-2,
+                .l-col-4 {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .sponsors-social {
+        @include position(relative, 5rem, 0, 0, 0);
+
+        h3 {
+            color:      $community-color;
+            font-size:  $global-font-size * 2;
+            text-align: center;
+        }
+    }
+
+
+    .diamond {
+        margin-right: 0;
+
+        .large-title-block {
+            h2 {
+                &::after {
+                    border-color: $diamond-color;
+                }
+            }
+        }
+
+        .button {
+            color: $diamond-color;
+        }
+    }
+
+    .gold {
+        margin-left: 0;
+
+        .button {
+            color: $secondary-color;
+        }
+    }
+
+    .silver {
+        margin-right: 0;
+
+        .large-title-block {
+            h2 {
+                &::after {
+                    border-color: $primary-color;
+                }
+            }
+        }
+    }
+
+    .community {
+        margin-left: 0;
+
+        .large-title-block {
+            h2 {
+                &::after {
+                    border-color: $community-color;
+                }
+            }
+        }
+    }
+}
