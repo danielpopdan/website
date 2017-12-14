@@ -59,3 +59,12 @@
         }
     }
 }
+
+.important-dates-timeline {
+    .footer {
+        &--background {
+            background: $primary-color url($backgrounds-path + 'footer-background-purple.png') no-repeat;
+            background-size: cover;
+        }
+    }
+}
