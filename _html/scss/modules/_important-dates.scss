@@ -1,0 +1,106 @@
+.important-dates {
+    position:         relative;
+    background-color: $primary-color;
+
+    .l-container {
+        padding-top: $global-padding;
+    }
+
+    &--description {
+        position:   relative;
+        width:      50%;
+        min-height: 6rem;
+        color:      $white;
+        font-size:  0;
+        text-align: center;
+
+        &.left,
+        &.right {
+            &::after {
+                position: absolute;
+            }
+        }
+
+        &.left {
+            left: 0;
+
+            &::after {
+                top:     2rem;
+                right:   -.2rem;
+                content: url($icons-path+'timeline-down.png');
+            }
+        }
+
+        &.right {
+            @include      clearfix;
+            left:         50%;
+            padding-left: $global-padding * 2.7;
+
+            &::after {
+                left:    -.2rem;
+                content: url($icons-path+'timeline-up.png');
+            }
+        }
+
+        div {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        &--center {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &--date {
+            padding:          $global-padding * .45 $global-padding * 1.2;
+            background-color: $secondary-color;
+        }
+
+        &--text {
+            padding: $global-padding * .25;
+        }
+
+        &--date,
+        &--text {
+            border-bottom: 1px solid $secondary-color;
+            font-size:     $global-font-size * 1.125;
+        }
+    }
+
+    .vertical-line {
+        position:   absolute;
+        left:       50%;
+        width:      .150rem;
+        transform:  translateX(-50%);
+        background: $white;
+
+        &.one {
+            top: 0;
+            height: .5rem;
+        }
+
+        &.two {
+            top: 2%;
+            height: 1rem;
+        }
+
+        &.three {
+            top: 5%;
+            height: 1.5rem;
+        }
+
+        &.four {
+            top: 9%;
+            height: 100%;
+        }
+    }
+
+    .right {
+        .important-dates--description--text {
+            float: left;
+
+        }
+    }
+}
