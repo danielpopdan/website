@@ -29,7 +29,8 @@
         max-width: 40%;
     }
 
-    label {
+    label,
+    legend {
         display:    inline-block;
         position:   relative;
         padding:    0 0 $global-padding * .2;
@@ -37,7 +38,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
         width: 100%;
     }
 
@@ -50,6 +52,31 @@
 
         &[data-drupal-selector*='edit-preview'] {
             display: none;
+        }
+    }
+
+    .form-type-radio {
+        width: 50%;
+        float: left;
+
+        input {
+            &[type*='radio'] {
+                display:     none;
+                padding:     0;
+
+                & + label {
+                    padding:    $global-padding * .45 0;
+                    border:     1px solid $primary-color-faded;
+                    text-align: center;
+                    cursor:     pointer;
+                }
+            }
+
+            &:checked + label {
+                border-color:     $secondary-color;
+                background-color: $secondary-color;
+                color:            $white;
+            }
         }
     }
 

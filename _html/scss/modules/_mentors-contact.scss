@@ -1,0 +1,83 @@
+.mentors-form {
+    @include   clearfix;
+    margin:    $global-margin * 5 auto -15rem;
+    font-size: 0;
+
+    form {
+        position:  relative;
+        max-width: 100%;
+        z-index:   1;
+
+        @include tablet {
+            max-width: 80%;
+        }
+
+        @include large-desktop {
+            max-width: 50%;
+        }
+    }
+
+    .form-wrapper {
+        display: inline-block;
+        width: 100%;
+
+        &:nth-child(odd) {
+            margin-right: 0;
+        }
+
+        @include tablet {
+            width: 48%;
+
+            &:nth-child(odd) {
+                margin-right: 4%;
+            }
+        }
+    }
+
+    label {
+        display: block;
+    }
+
+    select {
+        background: url($icons-path+'arrow-down.png') no-repeat 95% 55%;
+        appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        border: 1px solid $primary-color-faded;
+    }
+
+    fieldset {
+        &.form-wrapper {
+            width:     100%;
+            margin:    0;
+            font-size: 0;
+        }
+    }
+
+    textarea {
+        min-height: 8rem;
+    }
+
+    input {
+        &[type='submit'] {
+            width: 100%;
+
+            @include tablet {
+                width: 50%;
+            }
+        }
+    }
+
+    #edit-field-message-wrapper,
+    #edit-actions {
+        width: 100%;
+        margin-right: 0;
+    }
+}

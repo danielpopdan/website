@@ -72,6 +72,7 @@ input,
 button,
 textarea,
 label,
+legend,
 .button {
     @include     disable-outline;
     color:       $primary-color;
@@ -80,8 +81,13 @@ label,
 }
 
 input,
-textarea {
+textarea,
+select {
     padding: $global-padding * .4;
+}
+
+textarea {
+    resize: none;
 }
 
 button,
@@ -141,4 +147,8 @@ input {
     @include tablet {
         font-size: $global-font-size;
     }
+}
+
+.text-center {
+    text-align: center;
 }
