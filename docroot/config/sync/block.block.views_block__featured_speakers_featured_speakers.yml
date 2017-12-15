@@ -1,0 +1,30 @@
+uuid: b3d008d1-97de-42e7-bcfd-a0f447bedb6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.featured_speakers
+  module:
+    - system
+    - views
+  theme:
+    - dct_theme
+id: views_block__featured_speakers_featured_speakers
+theme: dct_theme
+region: content
+weight: -2
+provider: null
+plugin: 'views_block:featured_speakers-featured_speakers'
+settings:
+  id: 'views_block:featured_speakers-featured_speakers'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

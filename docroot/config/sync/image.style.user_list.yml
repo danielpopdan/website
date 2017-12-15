@@ -1,0 +1,14 @@
+uuid: e52ee6b9-e039-46c9-87f9-fcffca8c2747
+langcode: en
+status: true
+dependencies: {  }
+name: user_list
+label: 'User list (109x109)'
+effects:
+  7de9fb45-7780-4e85-bcd5-083a08879294:
+    uuid: 7de9fb45-7780-4e85-bcd5-083a08879294
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 109
+      height: 109

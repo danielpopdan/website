@@ -7,6 +7,7 @@ module:
   advagg_css_minify: 0
   advagg_js_minify: 0
   automated_cron: 0
+  better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -43,10 +44,12 @@ module:
   dct_node_access: 0
   dct_paragraphs: 0
   dct_sessions: 0
+  dct_user: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
   entity_reference_revisions: 0
+  entity_theme_suggestions: 0
   entity_view_builder: 0
   field: 0
   field_ui: 0
@@ -91,7 +94,6 @@ module:
   tour: 0
   user: 0
   views_templates: 0
-  views_ui: 0
   menu_link_content: 1
   pathauto: 1
   views: 10

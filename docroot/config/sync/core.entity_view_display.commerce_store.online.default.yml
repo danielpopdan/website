@@ -25,3 +25,5 @@ hidden:
   default_currency: true
   mail: true
   name: true
+  prices_include_tax: true
+  tax_registrations: true
