@@ -5,15 +5,15 @@
     overflow:         hidden;
 
     @include large-mobile {
-        padding: 0 0 165%;
+        padding: 0 0 145%;
     }
 
     @include medium-desktop {
-        padding: 0 0 105%;
+        padding: 0 0 90%;
     }
 
     @include extra-large-desktop {
-        padding: 0 0 100%;
+        padding: 0 0 75%;
     }
 
     &--item {
