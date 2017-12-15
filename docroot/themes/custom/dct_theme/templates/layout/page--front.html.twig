@@ -17,26 +17,26 @@
             <div class="homepage-parallax--item item-3"></div>
             <div class="homepage-parallax--item item-4"></div>
             <div class="homepage-parallax--item item-5"></div>
-        </div>
-
-        <div class="homepage-intro">
-            <div class="l-container">
-                <div class="homepage-intro--logos">
-                    <div class="l-row">
-                        <div class="l-col homepage-intro--logos--img">
-                            <img src="{{ base_path ~ directory }}/images/logos/vampire-logo.png"
-                                 alt="Drupal Camp Transilvania logo">
-                        </div>
-                        <div class="l-col homepage-intro--logos--text">
-                            <img src="{{ base_path ~ directory }}/images/logos/intro-logo.png"
-                                 alt="Drupal Camp Transilvania logo">
+            <div class="homepage-intro">
+                <div class="l-container">
+                    <div class="homepage-intro--logos">
+                        <div class="l-row">
+                            <div class="l-col homepage-intro--logos--img">
+                                <img src="{{ base_path ~ directory }}/images/logos/vampire-logo.png"
+                                     alt="Drupal Camp Transilvania logo">
+                            </div>
+                            <div class="l-col homepage-intro--logos--text">
+                                <img src="{{ base_path ~ directory }}/images/logos/intro-logo.png"
+                                     alt="Drupal Camp Transilvania logo">
+                            </div>
                         </div>
                     </div>
+                    {{ page.intro }}
                 </div>
-                {{ page.intro }}
             </div>
         </div>
         {{ page.content }}
+
 
     </main>
 

@@ -1,0 +1,4 @@
+name: DCT User
+description: Custom implementations for user.
+type: module
+core: 8.x
