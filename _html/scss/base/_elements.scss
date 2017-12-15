@@ -120,6 +120,18 @@ button,
             padding: 1.25rem 5rem;
         }
     }
+
+    &--default {
+        padding: 0;
+        background-color: transparent;
+        color: $primary-color;
+        font-size: $global-font-size;
+
+        @include on-events {
+            background-color: transparent;
+            color: $primary-color;
+        }
+    }
 }
 
 input {
