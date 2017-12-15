@@ -25,6 +25,10 @@
         .form-type-radio {
             display:   inline-block;
             font-size: $global-font-size;
+
+            &:first-child {
+                display: none;
+            }
         }
 
         label {
@@ -45,12 +49,19 @@
         }
     }
 
+    .l-row {
+        font-size:  0;
+        text-align: center;
+    }
+
     &--display {
+        display:     inline-block;
         width:       100%;
         margin:      $global-margin * 2 0 0;
+        float:       none;
         color:       $primary-color;
         line-height: $global-line-height * 1.5;
-        text-align:  center;
+
 
         @include tablet {
             width:  25%;
@@ -58,8 +69,9 @@
         }
 
         img {
-            width:  auto;
-            margin: 0 auto $global-margin;
+            width:         auto;
+            margin:        0 auto $global-margin;
+            border-radius: 50%;
         }
 
         &--name {
@@ -73,6 +85,11 @@
 
         &--firm {
             text-transform: uppercase;
+        }
+
+        &--position,
+        &--firm {
+            font-size: $global-font-size;
         }
     }
 }
