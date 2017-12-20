@@ -43,6 +43,9 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
     $form['field_organization']['widget'][0]['target_id']['#default_value'] = Term::load($organization);
     $form['field_gender']['widget']['#default_value'] = $gender;
     $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
+
+    unset($form['langcode']);
+    $form['form_build_id']['#weight'] = 100;
   }
 
 }
