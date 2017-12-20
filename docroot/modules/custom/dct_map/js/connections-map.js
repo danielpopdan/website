@@ -14,17 +14,23 @@
             }
           },
           defaultPlot: {
-            type: 'circle',
-            size: 7,
-            attrs: {
-              fill: "#fcb02a"
+              text: {
+              attrs: {
+                fill: '#000'
+              },
+              attrsHover: {
+                fill: '#000',
+              }
             }
           },
           defaultLink: {
             factor: 0.3,
             attrs: {
               "stroke": "#fcb02a",
-              "stroke-width": 0.95
+              "stroke-width": 1.5
+            },
+            attrsHover: {
+              stroke: "#721139"
             }
           },
           zoom: {
@@ -32,7 +38,7 @@
           }
         },
         plots:drupalSettings['connections-map']['plots'],
-        links:drupalSettings['connections-map']['links']
+        links:drupalSettings['connections-map']['links'],
       });
     }
   }

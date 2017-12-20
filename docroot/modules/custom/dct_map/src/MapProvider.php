@@ -35,7 +35,7 @@ class MapProvider implements MapProviderInterface {
         'library' => [
           'dct_map/mapael',
           'dct_map/maps_eu',
-          'dct_theme/connections-map',
+          'dct_map/connections-map',
         ],
         'drupalSettings' => [
           'connections-map' => [
