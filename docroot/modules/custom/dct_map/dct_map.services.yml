@@ -1,0 +1,4 @@
+services:
+  dct_map.map_provider:
+    class: Drupal\dct_map\MapProvider
+    arguments: ['@dct_airport_connections.data_provider']
