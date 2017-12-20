@@ -31,9 +31,11 @@
     <div class="l-container">
         <div class="large-title-block">
             <h2>{{ label }}</h2>
-            {% block content %}
-                {{ content }}
-            {% endblock %}
+            <div class="homepage-speakers--selected">
+                {% block content %}
+                    {{ content }}
+                {% endblock %}
+            </div>
         </div>
     </div>
 </div>
