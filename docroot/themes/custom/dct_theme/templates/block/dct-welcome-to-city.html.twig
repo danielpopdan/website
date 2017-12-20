@@ -1,0 +1,23 @@
+<div class="homepage-welcome homepage-spread-word">
+    <div class="l-container">
+        <div class="large-title-block">
+            <h2>{{ "Welcome to Cluj-Napoca!"|t }}</h2>
+            {{ description }}
+        </div>
+        <div class="homepage-spread-word--read-more">
+            {{ link }}
+        </div>
+        <div class="homepage-welcome--video">
+            <iframe width="560" height="315" src="{{ youtube_url }}"
+            frameborder="0" gesture="media" allow="encrypted-media"
+            allowfullscreen></iframe>
+        </div>
+        <div class="homepage-welcome--map">
+            <div class="large-title-block">
+                <h3>{{ "How to get here"|t }}</h3>
+                {{ airport_description|raw }}
+            </div>
+            {{ airport_map }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+uuid: f37bc5f7-8c7c-410e-a7f6-08274da9b181
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_homepage
+    - system
+  theme:
+    - dct_theme
+id: welcometocity
+theme: dct_theme
+region: content
+weight: -2
+provider: null
+plugin: welcome_to_city
+settings:
+  id: welcome_to_city
+  label: 'Welcome to city'
+  provider: dct_homepage
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

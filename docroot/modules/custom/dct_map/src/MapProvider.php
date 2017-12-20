@@ -1,18 +1,15 @@
 <?php
 
-namespace Drupal\dct_map\Controller;
+namespace Drupal\dct_map;
 
-use Drupal\Core\Controller\ControllerBase;
 use Drupal\dct_airport_connections\DataProviderInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\dct_airport_connections;
 
 /**
- * Class ConnectionsMapController.
+ * Class MapProvider.
  *
  * @package Drupal\dct_map\Controller
  */
-class ConnectionsMapController extends ControllerBase {
+class MapProvider implements MapProviderInterface {
 
   /**
    * Data provider the for airport connections.
@@ -24,24 +21,12 @@ class ConnectionsMapController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('dct_airport_connections.data_provider')
-    );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function __construct(DataProviderInterface $dataProvider) {
     $this->connectionsDataProvider = $dataProvider;
   }
 
   /**
-   * Returns the array associated to the airport connections map.
-   *
-   * @return array
-   *   Array associated to the airport connections map.
+   * {@inheritdoc}
    */
   public function getMap() {
     return [
