@@ -19,3 +19,13 @@ maps_eu:
     js/maps/european_union.js: {}
   dependencies:
     - core/jquery
+
+connections-map:
+  version: 1.x
+  css:
+    theme:
+      css/connections-map.css: {}
+  js:
+    js/connections-map.js: {}
+  dependencies:
+    - core/jquery

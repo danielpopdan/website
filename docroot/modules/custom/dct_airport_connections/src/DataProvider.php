@@ -24,7 +24,7 @@ class DataProvider implements DataProviderInterface {
   /**
    * Name of the origin city.
    */
-  const ORIGIN_NAME = 'Cluj';
+  const ORIGIN_NAME = 'Cluj-Napoca';
 
   /**
    * The entity_type.manager service.
@@ -48,13 +48,24 @@ class DataProvider implements DataProviderInterface {
    */
   public function getPlots() {
     $plots = [];
-    $connections = $this->entityTypeManager->getStorage('airport_connections')->loadByProperties();
+    $connections = $this->entityTypeManager->getStorage('airport_connections')
+      ->loadByProperties();
 
     // Creates associative array containing the locations.
     foreach ($connections as $connection) {
       $plots[$connection->get('title')->first()->value] = [
         'latitude' => $connection->get('latitude')->first()->value,
         'longitude' => $connection->get('longitude')->first()->value,
+        'size' => 5,
+        'tooltip' => [
+          'content' => $connection->get('title')->first()->value,
+        ],
+        'attrs' => [
+          'fill' => '#fcb02a',
+        ],
+        'attrsHover' => [
+          'fill' => '#721139',
+        ],
       ];
     }
 
@@ -63,7 +74,13 @@ class DataProvider implements DataProviderInterface {
       'longitude' => self::ORIGIN_LONGITUDE,
       'size' => 10,
       'attrs' => [
-        'fill' => "white",
+        'fill' => '#fcb02a',
+      ],
+      'attrsHover' => [
+        'fill' => '#721139',
+      ],
+      'tooltip' => [
+        'content' => self::ORIGIN_NAME,
       ],
     ];
 
@@ -81,15 +98,11 @@ class DataProvider implements DataProviderInterface {
     foreach ($plots as $title => $plot) {
       $links[self::ORIGIN_NAME . $title] = [
         'between' => [
-          [
-            'latitude' => self::ORIGIN_LATITUDE,
-            'longitude' => self::ORIGIN_LONGITUDE,
-          ],
-          [
-            'latitude' => floatval($plot['latitude']),
-            'longitude' => floatval($plot['longitude'])
-          ]
+          self::ORIGIN_NAME, $title,
         ],
+        'tooltip' => [
+          'content' => self::ORIGIN_NAME  . ' - ' . $title,
+        ]
       ];
     }
     return $links;
