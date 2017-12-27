@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dct_sponsors_theme() {
+  return [
+    'dct_sponsors_page' => [
+      'variables' => [
+        'diamond' => NULL,
+        'gold' => NULL,
+        'silver' => NULL,
+        'community' => NULL,
+      ]
+    ],
+  ];
+}

@@ -73,7 +73,7 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
 /**
  * Form submission handler for become a sprint mentor.
  *
- * @see dct_sessions_form_contact_message_sprint_mentor_form_form_alter().
+ * @see dct_sessions_form_contact_message_sprint_mentor_form_form_alter()
  */
 function dct_sessions_sprint_mentor_submit(array $form, FormStateInterface $form_state) {
   $values = $form_state->getValues();

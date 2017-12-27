@@ -1,0 +1,7 @@
+dct_sponsors.sponsors_page:
+  path: '/sponsors'
+  defaults:
+    _controller: '\Drupal\dct_sponsors\Controller\SponsorsPageController::content'
+    _title: 'Sponsors'
+  requirements:
+    _permission: 'access content'
