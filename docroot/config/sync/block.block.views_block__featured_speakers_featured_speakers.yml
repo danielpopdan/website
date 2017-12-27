@@ -12,7 +12,7 @@ dependencies:
 id: views_block__featured_speakers_featured_speakers
 theme: dct_theme
 region: content
-weight: -3
+weight: -4
 provider: null
 plugin: 'views_block:featured_speakers-featured_speakers'
 settings:

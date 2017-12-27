@@ -1,26 +1,26 @@
-uuid: f37bc5f7-8c7c-410e-a7f6-08274da9b181
+uuid: 2a2ed749-2583-46a2-9c10-910f782857c2
 langcode: en
 status: true
 dependencies:
   module:
-    - dct_homepage
+    - addtoany
     - system
   theme:
     - dct_theme
-id: welcometocity
+id: addtoanybuttons
 theme: dct_theme
 region: content
-weight: -3
+weight: 0
 provider: null
-plugin: welcome_to_city
+plugin: addtoany_block
 settings:
-  id: welcome_to_city
-  label: 'Welcome to city'
-  provider: dct_homepage
+  id: addtoany_block
+  label: 'AddToAny buttons'
+  provider: addtoany
   label_display: '0'
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: /sponsors
     negate: false
     context_mapping: {  }
