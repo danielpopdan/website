@@ -11,7 +11,7 @@ id: contact_message.sprint_mentor_form.field_mentored_before
 field_name: field_mentored_before
 entity_type: contact_message
 bundle: sprint_mentor_form
-label: 'Have you ever mentored a Drupal sprint before ?'
+label: 'Have you mentored a Drupal sprint before?'
 description: ''
 required: true
 translatable: false

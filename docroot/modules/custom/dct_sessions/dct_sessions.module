@@ -15,10 +15,29 @@ use Drupal\user\Entity\User;
  * Implements hook_form_FORM_ID_alter().
  */
 function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-
+  // Alter the email field.
+  if (!empty($form['mail'])) {
+    $form['mail']['#title'] = t('Email address');
+    $mail = $form['mail'];
+    $form['mail'] = [
+      '#type' => 'container',
+      '#parents' => [
+        'field_email_wrapper',
+      ],
+      '#attributes' => [
+        'class' => [
+          'field--type-string',
+          '"field--name-field-email',
+          'field--widget-string-textfield',
+          'form-wrapper',
+        ],
+      ],
+      'widget' => $mail
+    ];
+  }
   // If the user is logged in, we prepopulate the form_state.
   $currentUserId = Drupal::currentUser()->id();
-  if ($currentUserId) {
+  if (!empty($currentUserId)) {
 
     $user = User::load($currentUserId);
     $first_name = $user->get('field_first_name')->first()->value;
@@ -44,10 +63,21 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
     $form['field_gender']['widget']['#default_value'] = $gender;
     $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
 
-    unset($form['langcode']);
     $form['form_build_id']['#weight'] = 100;
   }
+  array_unshift($form['actions']['submit']['#submit'], 'dct_sessions_sprint_mentor_submit');
+  // The langcode is not required.
+  unset($form['langcode']);
+}
 
+/**
+ * Form submission handler for become a sprint mentor.
+ *
+ * @see dct_sessions_form_contact_message_sprint_mentor_form_form_alter()
+ */
+function dct_sessions_sprint_mentor_submit(array $form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+  $form_state->setValue('name', $values['field_first_name'][0]['value'] . ' ' . $values['field_last_name'][0]['value']);
 }
 
 /**
