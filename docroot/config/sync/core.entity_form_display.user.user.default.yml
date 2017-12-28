@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.commerce_remote_id
     - field.field.user.user.field_bio
     - field.field.user.user.field_country
     - field.field.user.user.field_drupal_org_username
