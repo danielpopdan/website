@@ -1,0 +1,20 @@
+{% set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'section-intro',
+'sponsors-intro'
+] %}
+<div{{ attributes.addClass(classes) }}>
+    <div class="section-intro--background"></div>
+    <div class="section-intro--text">
+        <h1 class="section-intro--title">{{ label }}</h1>
+    </div>
+</div>
+
+<div class="small-title-block">
+    {{ content.body }}
+</div>
