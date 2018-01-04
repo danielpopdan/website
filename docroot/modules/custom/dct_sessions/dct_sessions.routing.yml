@@ -1,8 +1,8 @@
 dct_sessions.sprint_mentor:
-  path: '/sprint-mentor'
+  path: '/sign-up-to-mentor'
   defaults:
     _controller: '\Drupal\dct_sessions\Controller\SprintMentorController::content'
-    _title: 'Be a sprint mentor!'
+    _title: 'Sign up to be a mentor!'
   requirements:
     _permission: 'submit sprint mentorship'
 
