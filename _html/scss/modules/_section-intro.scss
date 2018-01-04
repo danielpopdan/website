@@ -28,6 +28,7 @@
     &--text {
         position: relative;
         padding: $global-padding * 2.5 $global-padding * 1.5 $global-padding * 3.5;
+        text-align: center;
 
         @include tablet {
             @include position(absolute, auto, 0, 20%, 0);

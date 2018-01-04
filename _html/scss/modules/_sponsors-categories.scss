@@ -328,12 +328,18 @@
             }
 
             .l-row {
-                margin: 0 (-$global-margin) * .5;
+                margin:    0 (-$global-margin) * .5;
+                font-size: 0;
             }
 
             .l-col-2,
             .l-col-4 {
                 margin-bottom: $global-margin * 3;
+            }
+
+            .l-col {
+                display: inline-block;
+                float:   none;
             }
 
             @include medium-desktop {

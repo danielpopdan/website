@@ -36,6 +36,11 @@
             border:  .15rem solid $secondary-color;
             color:   $secondary-color;
             cursor:  pointer;
+            display: block;
+
+            @include large-mobile {
+                display: inline-block;
+            }
         }
 
         input {

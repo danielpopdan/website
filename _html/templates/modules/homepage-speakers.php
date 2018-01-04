@@ -6,6 +6,10 @@
     <div class="homepage-speakers--selected">
       <div class="fieldset-wrapper">
         <div id="edit-field-gender" class="form-radios">
+        <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-field-gender form-item-field-gender">
+            <input data-drupal-selector="edit-field-gender-m" type="radio" id="edit-field-gender-m" name="field_gender" value="M" class="form-radio">
+            <label for="edit-field-gender-m" class="option">All</label>
+          </div>
           <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-field-gender form-item-field-gender">
             <input data-drupal-selector="edit-field-gender-m" type="radio" id="edit-field-gender-m" name="field_gender" value="M" class="form-radio">
             <label for="edit-field-gender-m" class="option">Speakers</label>
