@@ -1,0 +1,85 @@
+.user-login-form,
+.forgot-password {
+    margin:     0 auto $global-margin;
+    padding:    0 $global-padding;
+    text-align: left;
+
+    @include tablet {
+        max-width: 75%;
+        padding:   0;
+    }
+
+    @include medium-desktop {
+        max-width: 40%;
+    }
+
+    label,
+    legend {
+        display:    inline-block;
+        position:   relative;
+        margin-top: 0.5rem;
+        padding:    0 0 $global-padding * .2;
+        font-size:  $global-font-size * .875;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        margin: 0.3rem 0;
+    }
+
+    input {
+        &[type*='submit'] {
+            @include tablet {
+                width:   65%;
+            }
+        }
+
+        &[data-drupal-selector*='edit-preview'] {
+            display: none;
+        }
+    }
+
+    .form-type-radio {
+        width: 50%;
+        float: left;
+
+        input {
+            &[type*='radio'] {
+                display:     none;
+                padding:     0;
+
+                & + label {
+                    padding:    $global-padding * .45 0;
+                    border:     1px solid $primary-color-faded;
+                    text-align: center;
+                    cursor:     pointer;
+                }
+            }
+
+            &:checked + label {
+                border-color:     $secondary-color;
+                background-color: $secondary-color;
+                color:            $white;
+            }
+        }
+    }
+
+    .form-wrapper {
+        margin: 0 0 $global-margin * 1.5;
+    }
+
+    .form-actions {
+        margin-top: $global-margin * 2.75;
+        text-align: center;
+    }
+
+    .description {
+        margin: 5px 0;
+    }
+}
+
+.forgot-password {
+    text-align: right;
+}

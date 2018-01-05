@@ -101,6 +101,10 @@
         }
     }
 
+    .addtoany_list a span {
+        display: none;
+    }
+
     &--action  {
         margin:      $global-margin * 2 auto 0;
         color:       $primary-color;
