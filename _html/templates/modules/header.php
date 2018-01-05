@@ -2,7 +2,7 @@
     <div class="header--logo">
         <a href="javascript:void(0)" title="Homepage"></a>
     </div>
-    <div class="header--menu">
+    <div class="header--menu link-menu">
         <nav>
             <ul class="menu">
                 <li class="menu-item">
@@ -17,5 +17,6 @@
             </ul>
         </nav>
     </div>
+    <?php include "modules/burger-menu.php";?>
 </header>
 <main>
