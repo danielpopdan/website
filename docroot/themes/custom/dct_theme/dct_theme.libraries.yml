@@ -5,7 +5,7 @@ global:
     theme:
       css/main.css: {}
 
-matchHeight:
+match_height:
   version: 1.x
   js:
     js/matchHeight.js: {}
