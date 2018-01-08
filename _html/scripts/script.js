@@ -279,10 +279,11 @@
                 menuButtonLayers.toggleClass('btn-layers-fade');
                 modalBurgerMenu.fadeToggle();
                 
-                burgermenuActionLink.on('click', function() {
-                    $(this).toggleClass('active-burger-link');
-                    $(this).siblings(sublinks).fadeToggle();
-                });
+            });
+            
+            burgermenuActionLink.on('click', function() {
+                $(this).toggleClass('active-burger-link');
+                $(this).siblings(sublinks).fadeToggle();
             });
         }
     };

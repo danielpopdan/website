@@ -16,11 +16,11 @@
     z-index: 10;
 
     .btn-layers {
-        transform: translateY(-50%);
         position: absolute;
         top: 50%;
         width: 25px;
         height: 3px;
+        transform: translateY(-50%);
         background-color: $white;
 
         &::before,
@@ -57,14 +57,14 @@
 }
 
 .burger-menu {
+    @include position (absolute, 0, 0, null, 0);
+    display: none;
     width: 100%;
     padding: 2rem 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: $black-color-opacity;
     color: $white;
-    @include position (absolute, 0, 0, null, 0);
-    text-align: center;
-    display: none;
     font-size: 1.3rem;
+    text-align: center;
 
     li {
         padding: .5rem 0;
@@ -78,12 +78,12 @@
         .sublinks {
             display: none;
             padding: 1rem 0;
-    
+
             li {
-                font-size: 1rem;
                 color: $white;
+                font-size: 1rem;
                 text-decoration: none;
-                
+
                 @include on-events {
                     color: $secondary-color;
                 }
@@ -99,7 +99,7 @@
     .share-links {
         &--link {
             background: url($logos-path + 'sprites.png') no-repeat;
-    
+
             &.facebook {
                 background-position: 0 0;
 
@@ -110,19 +110,19 @@
 
             &.google-plus {
                 background-position: -49px 0;
-    
+                
                 @include on-events {
                     background-position: -49px 0;
                 }
             }
-    
+
             &.twitter {
                 background-position: -99px 1px;
             }
 
             &.linkedin {
                 background-position: -148px 0;
-    
+
                 @include on-events {
                     background-position: -148px 0;
                 }
