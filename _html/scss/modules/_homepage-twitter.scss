@@ -101,8 +101,12 @@
         }
     }
 
-    .addtoany_list a span {
-        display: none;
+    .addtoany_list {
+        a {
+            span {
+                display: none;
+            }
+        }
     }
 
     &--action  {
