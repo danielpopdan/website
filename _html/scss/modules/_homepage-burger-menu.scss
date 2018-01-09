@@ -1,0 +1,132 @@
+.header--menu,
+.burger-button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.link-menu {
+    right: 6rem;
+}
+
+.burger-button {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+    z-index: 10;
+
+    .btn-layers {
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        height: 3px;
+        transform: translateY(-50%);
+        background-color: $white;
+
+        &::before,
+        &::after {
+            @include position (absolute, 50%, null, null, null);
+            width: 25px;
+            height: 3px;
+            transition: .2s;
+            background-color: $white;
+            content: '';
+        }
+
+        &::before {
+            transform: translateY(-10px);
+        }
+
+        &::after {
+            transform: translateY(8px);
+        }
+    }
+
+    .btn-layers-fade {
+        background-color: transparent;
+        box-shadow: none;
+
+        &::before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.burger-menu {
+    @include position (absolute, 0, 0, null, 0);
+    display: none;
+    width: 100%;
+    padding: 2rem 0;
+    background-color: $black-color-opacity;
+    color: $white;
+    font-size: 1.3rem;
+    text-align: center;
+
+    li {
+        padding: .5rem 0;
+
+        span {
+            @include on-events {
+                color: $secondary-color;
+            }
+        }
+
+        .sublinks {
+            display: none;
+            padding: 1rem 0;
+
+            li {
+                color: $white;
+                font-size: 1rem;
+                text-decoration: none;
+
+                @include on-events {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .active-burger-link {
+        color: $secondary-color;
+        text-decoration: underline;
+    }
+
+    .share-links {
+        &--link {
+            background: url($logos-path + 'sprites.png') no-repeat;
+
+            &.facebook {
+                background-position: 0 0;
+
+                @include on-events {
+                    background-position: 0 0;
+                }
+            }
+
+            &.google-plus {
+                background-position: -49px 0;
+                
+                @include on-events {
+                    background-position: -49px 0;
+                }
+            }
+
+            &.twitter {
+                background-position: -99px 1px;
+            }
+
+            &.linkedin {
+                background-position: -148px 0;
+
+                @include on-events {
+                    background-position: -148px 0;
+                }
+            }
+        }
+    }
+}

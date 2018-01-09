@@ -17,7 +17,7 @@
     legend {
         display:    inline-block;
         position:   relative;
-        margin-top: 0.5rem;
+        margin-top: .5rem;
         padding:    0 0 $global-padding * .2;
         font-size:  $global-font-size * .875;
     }
@@ -26,7 +26,7 @@
     textarea,
     select {
         width: 100%;
-        margin: 0.3rem 0;
+        margin: .3rem 0;
     }
 
     input {
@@ -82,4 +82,8 @@
 
 .forgot-password {
     text-align: right;
+
+    .form-required {
+        float: left;
+    }
 }

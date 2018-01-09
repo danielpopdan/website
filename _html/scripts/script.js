@@ -266,8 +266,28 @@
             var sponsorCategory = $('.sponsors-categories--category');
 
             sponsorCategory.matchHeight();
+        },
+
+        burgerMenu: function() {
+            var menuButton = $('.burger-button');
+            var menuButtonLayers = $('.btn-layers');
+            var modalBurgerMenu = $('.burger-menu');
+            var burgermenuActionLink = $('.action-link');
+            var sublinks = $('.sublinks');
+        
+            menuButton.on('click', function() {
+                menuButtonLayers.toggleClass('btn-layers-fade');
+                modalBurgerMenu.fadeToggle();
+                
+            });
+            
+            burgermenuActionLink.on('click', function() {
+                $(this).toggleClass('active-burger-link');
+                $(this).siblings(sublinks).fadeToggle();
+            });
         }
     };
+
 
     /**
      * Execute methods after DOM has loaded.
@@ -278,5 +298,6 @@
         dCampTrans.locationCreateSlider();
         dCampTrans.locationMap();
         dCampTrans.sponsorsMatchHeight();
+        dCampTrans.burgerMenu();
     });
 })(jQuery);
