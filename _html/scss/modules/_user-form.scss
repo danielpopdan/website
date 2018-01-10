@@ -1,0 +1,31 @@
+.user-form {
+    margin-top: 10rem;
+
+    .form-item-wrapper-content {
+        display: inline-block;
+        width: calc(50% - 1.2rem);
+        vertical-align: top;
+
+        &.form-item-pass,
+        .form-item-field-gender>label {
+            width: 100%;
+        }
+    }
+
+    .form-item-wrapper {
+        margin-bottom: 2rem;
+
+        & > :first-child {
+            margin-right: 1rem;
+        }
+
+        & > :nth-child(2) {
+            margin-left: 1rem;
+        }
+
+        label,
+        legend {
+            margin: .5rem 0;
+        }
+    }
+}

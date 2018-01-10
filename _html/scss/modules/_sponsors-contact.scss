@@ -93,3 +93,58 @@
         display: none;
     }
 }
+
+.proposal-form-container {
+    margin-top: 7rem;
+
+    .contact-form {
+        .field-add-more-submit-wrapper {
+            float: right;
+        }
+
+        .session-selection,
+        .session-duration {
+            display: inline-block;
+            width: 50%;
+            margin: 0 -.1rem 1.5rem;
+        }
+
+        .session-selection {
+            .form-item-field-select-list {
+                margin-right: 1rem;
+            }
+        }
+
+        .session-duration {
+            padding-left: 1rem;
+
+            label {
+                width: 100%;
+            }
+        }
+
+        .session-level {
+            .form-type-radio {
+                width: 33.33%;
+
+                label {
+                    width: 100%;
+                }
+            }
+        }
+
+        .field--widget-boolean-checkbox {
+            input {
+                width: auto;
+                padding-right: 1rem;
+            }
+
+            input,
+            label {
+                display: inline-block;
+                vertical-align: middle;
+
+            }
+        }
+    }
+}
