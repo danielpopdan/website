@@ -6,6 +6,11 @@
 
 .link-menu {
     right: 6rem;
+    display: none;
+
+    @include tablet {
+        display: inline-block;
+    }
 }
 
 .burger-button {
