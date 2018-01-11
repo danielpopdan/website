@@ -4,6 +4,10 @@ global:
   css:
     theme:
       css/main.css: {}
+  js:
+    js/burgerMenu.js: {}
+  dependencies:
+    - core/jquery
 
 match_height:
   version: 1.x
