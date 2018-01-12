@@ -5,8 +5,8 @@
 }
 
 .link-menu {
-    right: 6rem;
     display: none;
+    right: 6rem;
 
     @include tablet {
         display: inline-block;

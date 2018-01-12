@@ -5,10 +5,10 @@
         width: 50rem;
 
         .title {
+            margin: 0;
+            padding: 1rem 0 .6rem;
             color: $fourth-color;
             font-size: 1.3rem;
-            padding: 1rem 0 .6rem;
-            margin: 0;
 
             h2 {
                 color: $fourth-color;
@@ -17,26 +17,26 @@
 
         .article-description {
             position: relative;
-            text-align: center;
+            margin-bottom: 3rem;
             padding-bottom: 3.5rem;
-            margin-bottom: 3rem; 
+            text-align: center;
 
-            &:after {
-                content: '';
+            &::after {
                 position: absolute;
-                width: 40rem;
-                height: .1rem;
-                background-color: $light-border;
                 bottom: 0;
                 left: 50%;
+                width: 40rem;
+                height: .1rem;
                 transform: translateX(-50%);
+                background-color: $light-border;
+                content: '';
             }
         }
 
         p {
-            color: $black;
-            padding: .5rem 0 3rem;
             margin: 0;
+            padding: .5rem 0 3rem;
+            color: $black;
         }
     }
 }
