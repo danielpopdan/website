@@ -236,3 +236,14 @@ function _modify_duration_options($select_list_option) {
 
   return $options;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function dct_sessions_theme() {
+  return [
+    'contact_message_session_proposal_form_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}

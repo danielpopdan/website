@@ -67,14 +67,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_node_id:
-    type: string_textfield
-    weight: 11
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_radio_button:
     weight: 8
     settings: {  }
@@ -113,6 +105,7 @@ content:
     region: content
 hidden:
   copy: true
+  field_node_id: true
   mail: true
   message: true
   name: true

@@ -49,6 +49,9 @@ function dct_user_form_user_register_form_alter(&$form, FormStateInterface $form
 
 }
 
+/**
+ * Implements hook_theme().
+ */
 function dct_user_theme() {
   return [
     'user_register_form' => [
