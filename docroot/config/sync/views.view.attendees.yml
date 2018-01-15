@@ -4,14 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.teaser
-    - user.role.atendee
+    - user.role.attendee
     - user.role.featured_speaker
     - user.role.organizer
     - user.role.sprint_mentor
   module:
     - address
     - user
-id: atendees
+id: attendees
 label: Atendees
 module: views
 description: ''
@@ -174,7 +174,7 @@ display:
             featured_speaker: featured_speaker
             sprint_mentor: sprint_mentor
             organizer: organizer
-            atendee: atendee
+            attendee: attendee
           group: 1
           exposed: false
           expose:
@@ -233,7 +233,7 @@ display:
               featured_speaker: '0'
               sprint_mentor: '0'
               organizer: '0'
-              atendee: '0'
+              attendee: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -277,7 +277,7 @@ display:
               featured_speaker: '0'
               sprint_mentor: '0'
               organizer: '0'
-              atendee: '0'
+              attendee: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -319,7 +319,7 @@ display:
               featured_speaker: '0'
               sprint_mentor: '0'
               organizer: '0'
-              atendee: '0'
+              attendee: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -615,7 +615,7 @@ display:
               featured_speaker: '0'
               sprint_mentor: '0'
               organizer: '0'
-              atendee: '0'
+              attendee: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -679,7 +679,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: atendees
+      path: attendees
     cache_metadata:
       max-age: -1
       contexts:
