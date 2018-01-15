@@ -15,3 +15,5 @@
     {{ form.field_country }}
 </div>
 {{ form.field_bio }}
+{{ form.actions }}
+{{ form|without("field_first_name", "field_last_name", "name", "mail", "pass", "user_picture", "field_drupal_org_username", "field_gender", "field_organization", "field_job_title", "actions", "field_shirt_size", "field_country", "field_bio") }}

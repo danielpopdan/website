@@ -1,0 +1,15 @@
+{{ form.field_name }}
+{{ form.field_user }}
+{{ form.field_description }}
+<div class="form-two-column">
+    {{ form.field_select_list }}
+    {{ form.field_duration }}
+    {{ form.field_select }}
+    {{ form.field_taxonomy_reference }}
+    {{ form.field_radio_button }}
+</div>
+{{ form.field_file_upload }}
+{{ form.field_long_description }}
+{{ form.field_agree }}
+{{ form.actions }}
+{{ form|without("field_name", "field_user", "field_description", "field_select_list", "field_duration", "field_select", "field_taxonomy_reference", "field_radio_button", "field_file_upload", "field_agree", "actions", "field_long_description") }}
