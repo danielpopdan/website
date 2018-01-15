@@ -1,0 +1,43 @@
+.error-page-container {
+    background-color: #2b101c;
+    height: 100vh;
+}
+
+.image-text-wrapper {
+    text-align: center;
+    width: 70%;
+    top: 25%;
+
+    @include horizontal-center;
+
+    .text-btn-wrapper {
+        p {
+            font-size: $global-font-size ;
+            font-family: $font-main;
+            color: $error-page-color;
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: $error-page-color;
+            color: $black;
+            margin-top: 1rem;
+            padding: 1.25rem 1.9rem;
+        }
+    }
+
+    @include tablet {
+        width: 50%;
+
+        .text-btn-wrapper {
+            p {
+                font-size: $global-font-size * 1.5;
+                margin-top: 4rem;
+            }
+    
+            button {
+                margin-top: 3.5rem;
+            }
+        }
+    }
+}
