@@ -1,0 +1,24 @@
+uuid: 621aabdc-61fc-407f-892a-ba7f2b228340
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.burger
+  module:
+    - system
+  theme:
+    - dct_theme
+id: burgermenu
+theme: dct_theme
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:burger'
+settings:
+  id: 'system_menu_block:burger'
+  label: 'Burger Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

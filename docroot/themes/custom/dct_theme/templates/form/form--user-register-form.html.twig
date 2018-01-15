@@ -12,18 +12,19 @@
  * @ingroup themeable
  */
 #}
-<div class="section-intro">
+<div class="section-intro sponsors-intro">
     <div class="section-intro--background"></div>
     <div class="section-intro--text">
-        <h1 class="section-intro--title">{{ 'Register'|trans }}</h1>
-    </div>
-</div>
-<div class="sponsors-contact">
-    <div class="l-container">
-        <div class="small-title-block">
-            <form{{ attributes }}>
-                {{ children }}
-            </form>
+        <h1 class="section-intro--title">{{ "Register"|t }}</h1>
+        <div class="section-intro--details text-center">
+            <p>Introduction text consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exevoluptatem.</p>
         </div>
     </div>
+</div>
+<div class="form-general">
+    <form{{ attributes.addClass(['contact-form']) }}>
+        {{ children }}
+    </form>
 </div>
