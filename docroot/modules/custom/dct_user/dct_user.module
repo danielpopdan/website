@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_view().
@@ -17,4 +18,41 @@ function dct_user_entity_view(array &$build, EntityInterface $entity, EntityView
       '#markup' => $entity->get('field_first_name')->value . ' ' . $entity->get('field_last_name')->value,
     ];
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dct_user_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Remove wrappers from the fields define below.
+  $account_replaces = [
+    'name' => 2,
+    'mail' => 3,
+    'pass' => 4,
+  ];
+
+  foreach ($account_replaces as $key => $weight) {
+    $form[$key] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'form-wrapper',
+        ],
+      ],
+      '#weight' => $weight,
+    ];
+    $form[$key]['widget'] = $form['account'][$key];
+    unset($form['account'][$key]);
+    $form[$key]['#attributes']['class'][] = 'form-wrapper';
+  }
+  unset($form['account']);
+
+}
+
+function dct_user_theme() {
+  return [
+    'user_register_form' => [
+      'render element' => 'form',
+    ],
+  ];
 }
