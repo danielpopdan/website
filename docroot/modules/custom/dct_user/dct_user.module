@@ -28,5 +28,108 @@ function dct_user_theme() {
     'user_register_form' => [
       'render element' => 'form',
     ],
+    'dct_user_reset_password' => [
+      'variables' => [
+        'first_name' => NULL,
+        'last_name' => NULL,
+        'link' => NULL,
+      ],
+    ],
+    'dct_user_register' => [
+      'variables' => [
+        'first_name' => NULL,
+        'last_name' => NULL,
+      ],
+    ]
   ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function dct_user_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'basic':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Content-Type'] = 'text/html';
+      $message['subject'] = $params['subject'];
+      $message['body'][0] = render($params['body']);
+      break;
+
+    case 'text':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Content-Type'] = 'text/plain';
+      $message['subject'] = $params['subject'];
+      $message['body'][0] = render($params['body']);
+      break;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook mail alter.
+ */
+function dct_user_mail_alter(&$message) {
+  switch ($message['id']) {
+    case 'user_password_reset':
+      dct_user_user_password_reset($message);
+      break;
+
+    case 'user_register_no_approval_required':
+      dct_user_user_register($message);
+      break;
+
+    default:
+  }
+}
+
+/**
+ * Implements reset password template.
+ */
+function dct_user_user_password_reset(&$message) {
+  $user = $message['params']['account'];
+  $body = [
+    '#theme' => 'dct_user_reset_password',
+    '#first_name' => $user->get('field_first_name')->value,
+    '#last_name' => $user->get('field_last_name')->value,
+    '#link' => user_pass_reset_url($user),
+  ];
+
+  $message['headers']['Content-Type'] = 'text/html';
+  $message['body'][0] = render($body);
+}
+
+/**
+ * Implements welcome email template.
+ */
+function dct_user_user_register(&$message) {
+  $user = $message['params']['account'];
+  $body = [
+    '#theme' => 'dct_user_register',
+    '#first_name' => $user->get('field_first_name')->value,
+    '#last_name' => $user->get('field_last_name')->value,
+  ];
+
+  $message['headers']['Content-Type'] = 'text/html';
+  $message['body'][0] = render($body);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ *
+ * @see dct_user_register_form_submit
+ */
+function dct_user_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  array_unshift($form['actions']['submit']['#submit'], 'dct_user_register_form_submit');
+}
+
+/**
+ * Submit handler for registration form.
+ *
+ * @see dct_user_form_user_register_form_alter
+ */
+function dct_user_register_form_submit($form, FormStateInterface $form_state) {
+  // Adds attendee role to new users.
+  $form_state->setValue('roles', ['authenticated', 'attendee']);
 }

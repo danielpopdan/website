@@ -5,7 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.user.teaser
     - user.role.administrator
-    - user.role.atendee
+    - user.role.attendee
     - user.role.featured_speaker
     - user.role.organizer
     - user.role.sprint_mentor
@@ -157,7 +157,7 @@ display:
               featured_speaker: '0'
               sprint_mentor: '0'
               organizer: '0'
-              atendee: '0'
+              attendee: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -185,7 +185,7 @@ display:
           value:
             administrator: administrator
             organizer: organizer
-            atendee: atendee
+            attendee: attendee
           group: 1
           exposed: false
           expose:

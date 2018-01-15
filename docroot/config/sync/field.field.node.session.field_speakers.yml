@@ -26,7 +26,7 @@ settings:
         administrator: '0'
         sprint_mentor: '0'
         organizer: '0'
-        atendee: '0'
+        attendee: '0'
     target_bundles: null
     sort:
       field: _none
