@@ -1,0 +1,4 @@
+services:
+  dct_confirmation.plugin.manager.confirmation:
+    class: Drupal\dct_confirmation\Plugin\ConfirmationPage\ConfirmationManager
+    parent: default_plugin_manager
