@@ -1,3 +1,6 @@
+<div>
+    <img src="../images/backgrounds/small-header.png" alt="background">
+</div>
 <div class="article-section">
     <div class="l-container">
         <div class="title-container">
@@ -95,6 +98,40 @@
                     ipsa rerum scientia; Quis istud possit, inquit, negare?
                 </p>
             </div>
+        </div>
+        <div>
+            <table border="1" cellspacing="1" cellpadding="1" class="important-dates-table">
+                <tbody>
+                    <tr>
+                        <td>31 October</td>
+                        <td>Submission for sponsorship begins</td>
+                    </tr>
+                    <tr>
+                        <td>8 January</td>
+                        <td>Call for papers</td>
+                    </tr>
+                    <tr>
+                        <td>5 February</td>
+                        <td>Begin of early bird</td>
+                    </tr>
+                    <tr>
+                        <td>19 March</td>
+                        <td>End call for papers</td>
+                    </tr>
+                    <tr>
+                        <td>26 March</td>
+                        <td>Full conference schedule published</td>
+                    </tr>
+                    <tr>
+                        <td>2 April</td>
+                        <td>End of early bird</td>
+                    </tr>
+                    <tr>
+                        <td>4 May</td>
+                        <td>Onsite registration opens, DrupalCamp Transylvania begins!</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
