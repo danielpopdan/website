@@ -1,3 +1,7 @@
+.user-register-form {
+    margin-top: 4rem;
+}
+
 @include tablet {
     .form-two-column {
         & > :nth-child(odd) {
