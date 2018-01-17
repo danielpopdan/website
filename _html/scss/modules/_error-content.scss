@@ -1,28 +1,27 @@
 .error-page-container {
-    background-color: #2b101c;
     height: 100vh;
+    background-color: $background-color-secondary;
 }
 
 .image-text-wrapper {
-    text-align: center;
-    width: 70%;
-    top: 25%;
-
     @include horizontal-center;
+    top: 25%;
+    width: 70%;
+    text-align: center;
 
     .text-btn-wrapper {
         p {
-            font-size: $global-font-size ;
-            font-family: $font-main;
-            color: $error-page-color;
             margin-top: 2rem;
+            color: $error-page-color;
+            font-family: $font-main;
+            font-size: $global-font-size;
         }
 
         button {
-            background-color: $error-page-color;
-            color: $black;
             margin-top: 1rem;
             padding: 1.25rem 1.9rem;
+            background-color: $error-page-color;
+            color: $black;
         }
     }
 
@@ -31,10 +30,10 @@
 
         .text-btn-wrapper {
             p {
-                font-size: $global-font-size * 1.5;
                 margin-top: 4rem;
+                font-size: $global-font-size * 1.5;
             }
-    
+
             button {
                 margin-top: 3.5rem;
             }

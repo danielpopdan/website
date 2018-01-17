@@ -149,6 +149,10 @@ input {
     }
 }
 
+label {
+    width: 100%;
+}
+
 .error-message,
 .success-message {
     color:       $secondary-color;

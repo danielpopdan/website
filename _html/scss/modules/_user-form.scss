@@ -1,31 +1,32 @@
-.user-form {
-    margin-top: 10rem;
+.user-register-form {
+    margin-top: 4rem;
+}
 
-    .form-item-wrapper-content {
-        display: inline-block;
-        width: calc(50% - 1.2rem);
-        vertical-align: top;
-
-        &.form-item-pass,
-        .form-item-field-gender>label {
-            width: 100%;
-        }
-    }
-
-    .form-item-wrapper {
-        margin-bottom: 2rem;
-
-        & > :first-child {
+@include tablet {
+    .form-two-column {
+        & > :nth-child(odd) {
             margin-right: 1rem;
         }
 
-        & > :nth-child(2) {
+        & > :nth-child(even) {
             margin-left: 1rem;
         }
 
-        label,
-        legend {
-            margin: .5rem 0;
+        .form-wrapper {
+            display: inline-block;
+            width: calc(50% - 1.2rem);
+            vertical-align: top;        
+            
+            input,
+            label,
+            select,
+            #edit-field-gender {
+                width: 100%;
+            }
         }
     }
+}
+
+.field-container {
+    width: 100%;
 }
