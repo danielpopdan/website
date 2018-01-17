@@ -1,0 +1,36 @@
+uuid: dcbe17b5-e684-4a0b-98b8-fbab9ec911d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.dct_product
+    - field.field.commerce_product.dct_product.body
+    - field.field.commerce_product.dct_product.stores
+    - field.field.commerce_product.dct_product.variations
+  module:
+    - commerce_product
+    - text
+id: commerce_product.dct_product.default
+targetEntityType: commerce_product
+bundle: dct_product
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: -4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    weight: 10
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true

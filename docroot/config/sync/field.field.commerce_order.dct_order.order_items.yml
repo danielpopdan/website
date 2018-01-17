@@ -1,22 +1,20 @@
-uuid: b66acdb8-a506-4ba3-8222-4401d34de293
+uuid: c74942a5-e578-49d4-b132-9babd2fac53e
 langcode: en
 status: true
 dependencies:
   config:
-    - commerce_order.commerce_order_type.default
+    - commerce_order.commerce_order_type.dct_order
     - field.storage.commerce_order.order_items
-_core:
-  default_config_hash: iqPSpcfsl-SdT3MtQLp1uBc4udRzM_185m3Yqd5KdTA
-id: commerce_order.default.order_items
+id: commerce_order.dct_order.order_items
 field_name: order_items
 entity_type: commerce_order
-bundle: default
+bundle: dct_order
 label: 'Order items'
 description: ''
 required: true
 translatable: false
 default_value: {  }
-default_value_callback: ''
+default_value_callback: null
 settings:
   handler: 'default:commerce_order_item'
   handler_settings: {  }

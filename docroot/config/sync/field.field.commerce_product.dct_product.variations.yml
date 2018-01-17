@@ -1,26 +1,24 @@
-uuid: 13333378-2030-4595-8c3d-798090ca04bf
+uuid: 59164853-9a4c-4be9-a05d-76b2a34abd2b
 langcode: en
 status: true
 dependencies:
   config:
-    - commerce_product.commerce_product_type.default
-    - commerce_product.commerce_product_variation_type.default
+    - commerce_product.commerce_product_type.dct_product
+    - commerce_product.commerce_product_variation_type.dct_product_variation
     - field.storage.commerce_product.variations
-_core:
-  default_config_hash: '-I2JKkD4E2ths6CAmEuI9IWXzBLBO5CcOKVIyc81CNE'
-id: commerce_product.default.variations
+id: commerce_product.dct_product.variations
 field_name: variations
 entity_type: commerce_product
-bundle: default
+bundle: dct_product
 label: Variations
 description: ''
 required: true
 translatable: false
 default_value: {  }
-default_value_callback: ''
+default_value_callback: null
 settings:
   handler: 'default:commerce_product_variation'
   handler_settings:
     target_bundles:
-      - default
+      - dct_product_variation
 field_type: entity_reference

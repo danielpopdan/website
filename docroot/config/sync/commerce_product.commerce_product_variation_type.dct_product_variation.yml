@@ -1,0 +1,9 @@
+uuid: b2ea3808-01a9-4833-9e50-ed8df063680c
+langcode: en
+status: true
+dependencies: {  }
+id: dct_product_variation
+label: 'DCT Product Variation'
+orderItemType: dct_order_item
+generateTitle: false
+traits: {  }

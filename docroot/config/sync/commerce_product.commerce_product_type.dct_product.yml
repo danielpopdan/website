@@ -1,0 +1,10 @@
+uuid: f1276fff-ef77-4298-876d-c88e54a69f61
+langcode: en
+status: true
+dependencies: {  }
+id: dct_product
+label: 'DCT Product'
+description: 'DCT product.'
+variationType: dct_product_variation
+injectVariationFields: true
+traits: {  }
