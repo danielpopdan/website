@@ -3,9 +3,11 @@
     <div class="section-intro--text">
         <h1 class="section-intro--title">Register</h1>
         <div class="section-intro--details text-center">
-            <p>Introduction text consectetur adipisicing elit, sed do eiusmod
+            <p>
+                Introduction text consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exevoluptatem.</p>
+                minim veniam, quis nostrud exevoluptatem.
+            </p>
         </div>
     </div>
 </div>
@@ -185,8 +187,7 @@
                                 <option value="BA">Bosnia &amp; Herzegovina</option>
                                 <option value="BW">Botswana</option>
                                 <option value="BR">Brazil</option>
-                                <option value="IO">British Indian Ocean Territory
-                                </option>
+                                <option value="IO">British Indian Ocean Territory</option>
                                 <option value="VG">British Virgin Islands</option>
                                 <option value="BN">Brunei</option>
                                 <option value="BG">Bulgaria</option>
@@ -237,8 +238,7 @@
                                 <option value="FR">France</option>
                                 <option value="GF">French Guiana</option>
                                 <option value="PF">French Polynesia</option>
-                                <option value="TF">French Southern Territories
-                                </option>
+                                <option value="TF">French Southern Territories</option>
                                 <option value="GA">Gabon</option>
                                 <option value="GM">Gambia</option>
                                 <option value="GE">Georgia</option>
@@ -357,9 +357,7 @@
                                 <option value="SB">Solomon Islands</option>
                                 <option value="SO">Somalia</option>
                                 <option value="ZA">South Africa</option>
-                                <option value="GS">South Georgia &amp; South
-                                    Sandwich Islands
-                                </option>
+                                <option value="GS">South Georgia &amp; South Sandwich Islands</option>
                                 <option value="KR">South Korea</option>
                                 <option value="SS">South Sudan</option>
                                 <option value="ES">Spain</option>
@@ -369,10 +367,8 @@
                                 <option value="KN">St. Kitts &amp; Nevis</option>
                                 <option value="LC">St. Lucia</option>
                                 <option value="MF">St. Martin</option>
-                                <option value="PM">St. Pierre &amp; Miquelon
-                                </option>
-                                <option value="VC">St. Vincent &amp; Grenadines
-                                </option>
+                                <option value="PM">St. Pierre &amp; Miquelon</option>
+                                <option value="VC">St. Vincent &amp; Grenadines</option>
                                 <option value="SD">Sudan</option>
                                 <option value="SR">Suriname</option>
                                 <option value="SJ">Svalbard &amp; Jan Mayen</option>
@@ -393,8 +389,7 @@
                                 <option value="TN">Tunisia</option>
                                 <option value="TR">Turkey</option>
                                 <option value="TM">Turkmenistan</option>
-                                <option value="TC">Turks &amp; Caicos Islands
-                                </option>
+                                <option value="TC">Turks &amp; Caicos Islands</option>
                                 <option value="TV">Tuvalu</option>
                                 <option value="UM">U.S. Outlying Islands</option>
                                 <option value="VI">U.S. Virgin Islands</option>
