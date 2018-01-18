@@ -11,12 +11,13 @@
      *
      * @type {Drupal~behavior}
      */
-    Drupal.behaviors.dctMatchHeightFunctionality = {
+    Drupal.behaviors.burger_menu = {
         attach: function () {
+
             var menuButton = $('.burger-button');
             var menuButtonLayers = $('.btn-layers');
             var modalBurgerMenu = $('.burger-menu');
-            var burgermenuActionLink = $('.action-link');
+            var burgermenuActionLink = $('.menu-item--expanded > a');
             var sublinks = $('.sublinks');
 
             menuButton.on('click', function () {
@@ -25,9 +26,11 @@
 
             });
 
-            burgermenuActionLink.on('click', function () {
-                $(this).toggleClass('active-burger-link');
+            burgermenuActionLink.on('click', function() {
+                $(this).toggleClass('is-active');
                 $(this).siblings(sublinks).fadeToggle();
+
+                return false;
             });
         }
     };
