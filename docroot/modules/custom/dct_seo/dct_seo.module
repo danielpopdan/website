@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function dct_seo_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (in_array($route_name, ['system.401', 'system.403', 'system.404'])) {
+    $suggestions[] = $variables['theme_hook_original'] . '__40x';
+  }
+}
