@@ -109,7 +109,7 @@
 
     .menu-item--expanded {
 
-        a {
+        > a {
             &::after {
                 @include vertical-center;
                 right: -2rem;
