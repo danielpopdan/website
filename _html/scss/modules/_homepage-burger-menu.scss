@@ -87,7 +87,7 @@
                 background: url('../images/icons/arrow-up.png') no-repeat center;
                 content: '';
             }
-            
+
             @include on-events {
                 color: $secondary-color;
             }
@@ -154,7 +154,7 @@
 
             &.google-plus {
                 background-position: -49px 0;
-                
+
                 @include on-events {
                     background-position: -49px 0;
                 }
