@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme().
+ */
+function dct_confirmation_theme($existing, $type, $theme, $path) {
+  return [
+    'dct_confirmation_page' => [
+      'variables' => [
+        'title' => NULL,
+        'description' => NULL,
+        'link' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dct_confirmation_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Verifies if the current form has a Confirmation Page plugin defined.
+  $plugin_definitions = dct_confirmation_get_plugin_definitions('dct_confirmation.plugin.manager.confirmation');
+  if (!empty($plugin_definitions)) {
+    foreach ($plugin_definitions as $id => $definition) {
+      if ($definition['form_id'] == $form_id) {
+        // Sets the redirect to the Thank up page.
+        $form['#submit'][] = 'dct_confirmation_redirect_confirmation';
+      }
+    }
+  }
+}
+
+/**
+ * Gets the plugin definitions.
+ *
+ * @param string $plugin_id
+ *   The id of the plugin.
+ *
+ * @return mixed
+ *   The plugin definitions.
+ */
+function dct_confirmation_get_plugin_definitions($plugin_id) {
+  $plugin_definitions = Drupal::service($plugin_id)
+    ->getDefinitions();
+
+  return $plugin_definitions;
+}
+
+/**
+ * Sets the redirect confirmation page.
+ */
+function dct_confirmation_redirect_confirmation(&$form, FormStateInterface $form_state) {
+  $url = Url::fromRoute('dct_confirmation.confirmation_page')
+    ->setRouteParameters(['form_id' => $form['#form_id']]);
+  $form_state->setRedirectUrl($url);
+}
