@@ -3,13 +3,12 @@
 </div>
 <div class="l-container burger-menu">
     <nav role="navigation" aria-labelledby="block-burgermenu-menu" id="block-burgermenu" class="block block-menu navigation menu--burger">
-        <h2 class="visually-hidden" id="block-burgermenu-menu">Burger Menu</h2>
         <ul class="menu">
             <li class="menu-item">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Homepage</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Homepage</a>
             </li>
             <li class="menu-item menu-item--expanded">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Event</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Event</a>
                 <ul class="menu sublinks">
                     <li class="menu-item">
                         <a href="/node/4" data-drupal-link-system-path="node/4">About Us</a>
@@ -26,10 +25,10 @@
                 </ul>
             </li>
             <li class="menu-item menu-item--active-trail">
-                <a href="/user/register" data-drupal-link-system-path="user/register" class="is-active action-link">Registration</a>
+                <a href="/user/register" data-drupal-link-system-path="user/register" class="is-active">Registration</a>
             </li>
             <li class="menu-item menu-item--expanded">
-                <a href="#" data-drupal-link-system-path="<front>" class="action-link">Program</a>
+                <a href="#" data-drupal-link-system-path="<front>" >Program</a>
                 <ul class="menu sublinks">
                     <li class="menu-item">
                         <a href="/" data-drupal-link-system-path="<front>">Schedule</a>
@@ -52,7 +51,7 @@
                 </ul>
             </li>
             <li class="menu-item menu-item--expanded">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Travel</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Travel</a>
                 <ul class="menu sublinks">
                     <li class="menu-item">
                         <a href="/" data-drupal-link-system-path="<front>">Venue</a>
@@ -63,10 +62,10 @@
                 </ul>
             </li>
             <li class="menu-item menu-item--collapsed">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Community</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Community</a>
             </li>
             <li class="menu-item menu-item--expanded">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Sponsors</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Sponsors</a>
                 <ul class="menu sublinks">
                     <li class="menu-item">
                         <a href="/" data-drupal-link-system-path="<front>">Become a sponsor</a>
@@ -77,7 +76,7 @@
                 </ul>
             </li>
             <li class="menu-item">
-                <a href="/" data-drupal-link-system-path="<front>" class="action-link">Login</a>
+                <a href="/" data-drupal-link-system-path="<front>" >Login</a>
             </li>
         </ul>
     </nav>
