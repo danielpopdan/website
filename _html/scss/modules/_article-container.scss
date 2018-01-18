@@ -44,8 +44,8 @@
         width: calc(100% + .8rem);
         color: $white;
         font-size: $global-font-size;
-        border-spacing: .4rem;
         border-collapse: separate;
+        border-spacing: .4rem;
 
         td {
             padding: 1%;
@@ -55,7 +55,7 @@
             &:nth-child(odd) {
                 background-color: $secondary-color;
             }
-    
+
             &:nth-child(even) {
                 background-color: $primary-color;
             }
@@ -70,9 +70,11 @@
         }
 
         .important-dates-table {
-            td:nth-child(even) {
-                text-align: left;
-                padding-left: 1rem;
+            td {
+                &:nth-child(even) {
+                    padding-left: 1rem;
+                    text-align: left;
+                }
             }
         }
     }

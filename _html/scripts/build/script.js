@@ -283,9 +283,9 @@
             
             burgermenuActionLink.on('click', function() {
                 $(this).toggleClass('active-burger-link');
-                $(this).siblings(sublinks).fadeToggle();
+                $(this).siblings(sublinks).fadeToggle();   
             });
-        }
+        },
     };
 
 

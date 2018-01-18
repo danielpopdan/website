@@ -19,13 +19,13 @@
     &--edit {
         padding: $global-padding * 1.25 $global-padding * 1.3;
         text-align: right;
-    
+
         a {
             padding-left: 30px;
             background: url($icons-path+'edit.png') no-repeat 3% 10% / contain;
             color: $primary-color-faded;
             font-size: 14px;
-    
+
             @include on-events {
                 text-decoration: underline;
             }
@@ -50,12 +50,12 @@
     &--left {
         width: 100%;
         margin-bottom: $global-margin * 2;
-    
+
         @include tablet {
             width: 25%;
             text-align: center;
         }
-    
+
         button {
             display: block;
             width: 50%;
@@ -64,7 +64,7 @@
             background-color: $community-color;
             font-size: 14px;
             font-weight: $weight-regular;
-    
+
             @include tablet {
                 width: 100%;
                 margin-bottom: $global-margin;
@@ -75,28 +75,28 @@
     &--image {
         width: 30%;
         margin: 0 auto;
-    
+
         @include tablet {
             width: 100%;
         }
     }
-    
+
     &--username {
         padding: $global-padding * 1.5 0;
         text-align: center;
-    
+
         p {
             margin-bottom: 0;
             color: $community-color;
             font-weight: $weight-medium;
         }
     }
-    
+
     &--right {
         width: 100%;
         margin-bottom: $global-margin * 2;
         padding: $global-padding * 1.625 $global-padding * 2.5 0;
-    
+
         @include tablet {
             width: 75%;
             padding: $global-padding * 1.625 0 0 $global-padding * 3;
