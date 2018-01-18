@@ -3,6 +3,27 @@
     padding:  0 0 150%;
     overflow: hidden;
 
+    .sponsors-wrapper {
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            margin: .5rem 0;
+            
+            @include tablet {
+                margin: 1rem;
+            }
+        }
+    }
+
+    .diamond-sponsor-text {
+        margin: 1rem auto;
+        font-weight: $weight-bold;
+
+        @include tablet {
+            margin-top: 3rem;
+        }
+    }
+
     @include tablet {
         padding: 0 0 100%;
     }
