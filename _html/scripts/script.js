@@ -272,7 +272,7 @@
             var menuButton = $('.burger-button');
             var menuButtonLayers = $('.btn-layers');
             var modalBurgerMenu = $('.burger-menu');
-            var burgermenuActionLink = $('.action-link');
+            var burgermenuActionLink = $('.menu-item--expanded > a');
             var sublinks = $('.sublinks');
         
             menuButton.on('click', function() {
@@ -282,8 +282,10 @@
             });
             
             burgermenuActionLink.on('click', function() {
-                $(this).toggleClass('active-burger-link');
-                $(this).siblings(sublinks).fadeToggle();   
+                $(this).toggleClass('is-active');
+                $(this).siblings(sublinks).fadeToggle();
+
+                return false;
             });
         },
     };
