@@ -71,16 +71,60 @@
     font-size: 1.3rem;
     text-align: center;
 
-    li {
-        padding: .5rem 0;
+    .menu-item {
+        padding: .7rem 0;
 
-        span {
+        .action-link {
+            position: relative;
+            color: $white;
+
+            &::after {
+                @include vertical-center;
+                position: absolute;
+                right: -2rem;
+                width: .875rem;
+                height: .5rem;
+                background: url('../images/icons/arrow-up.png') no-repeat center;
+                content: '';
+            }
+            
             @include on-events {
                 color: $secondary-color;
             }
         }
 
+        .active-burger-link {
+            color: $secondary-color;
+            text-decoration: underline;
+
+            &::after {
+                @include vertical-center;
+                position: absolute;
+                right: -2rem;
+                width: .875rem;
+                height: .5rem;
+                background: url('../images/icons/menu-dropdown.png') no-repeat center;
+            }
+        }
+
         .sublinks {
+            display: none;
+            padding: 1rem 0;
+
+            a {
+                color: $white;
+                font-size: 1rem;
+                text-decoration: none;
+
+                @include on-events {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .menu-item--expanded {
+        .menu {
             display: none;
             padding: 1rem 0;
 
@@ -94,11 +138,6 @@
                 }
             }
         }
-    }
-
-    .active-burger-link {
-        color: $secondary-color;
-        text-decoration: underline;
     }
 
     .share-links {
