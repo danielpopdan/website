@@ -69,41 +69,20 @@
     background-color: $black-color-opacity;
     color: $white;
     font-size: 1.3rem;
-    text-align: center;
+
+    ul {
+        text-align: center;
+    }
 
     .menu-item {
         padding: .7rem 0;
 
-        .action-link {
+        a {
             position: relative;
             color: $white;
 
-            &::after {
-                @include vertical-center;
-                position: absolute;
-                right: -2rem;
-                width: .875rem;
-                height: .5rem;
-                background: url('../images/icons/arrow-up.png') no-repeat center;
-                content: '';
-            }
-
             @include on-events {
                 color: $secondary-color;
-            }
-        }
-
-        .active-burger-link {
-            color: $secondary-color;
-            text-decoration: underline;
-
-            &::after {
-                @include vertical-center;
-                position: absolute;
-                right: -2rem;
-                width: .875rem;
-                height: .5rem;
-                background: url('../images/icons/menu-dropdown.png') no-repeat center;
             }
         }
 
@@ -121,9 +100,26 @@
                 }
             }
         }
+
+        .is-active {
+            color: $secondary-color;
+            text-decoration: underline;
+        }
     }
 
     .menu-item--expanded {
+
+        a {
+            &::after {
+                @include vertical-center;
+                right: -2rem;
+                width: .875rem;
+                height: .5rem;
+                background: url('../images/icons/arrow-up.png') no-repeat center;
+                content: '';
+            }
+        }
+
         .menu {
             display: none;
             padding: 1rem 0;
