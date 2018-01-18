@@ -1,0 +1,5 @@
+name: DCT SEO
+type: module
+description: Implements SEO improvements.
+core: 8.x
+package: DCT
