@@ -27,8 +27,9 @@
                 <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Log in" class="button js-form-submit form-submit">
                 </div>
             </form>
-            <div class="forgot-password">
-                <a href="/user/password">Forgot password?</a>
+            <div class="forgot-password form-two-column">
+                <a href="/user/password" class="form-wrapper">Registration</a>
+                <a href="/user/password" class="form-wrapper">Forgot password?</a>
             </div>
         </div>
     </div>

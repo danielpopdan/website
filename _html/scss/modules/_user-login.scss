@@ -81,9 +81,27 @@
 }
 
 .forgot-password {
-    text-align: right;
+    text-align: left;
 
     .form-required {
         float: left;
+    }
+}
+
+.small-title-block {
+    .forgot-password {
+        .form-wrapper {
+            display: inline-block;
+            width: 49%;
+            margin: 0 auto;
+        }
+
+        & :first-child {
+            text-align: left;
+        }
+
+        & :last-child {
+            text-align: right;
+        }
     }
 }
