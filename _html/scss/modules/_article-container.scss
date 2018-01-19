@@ -35,13 +35,22 @@
 
         p {
             margin: 0;
-            padding: .5rem 0 3rem;
+            padding: .5rem 0 2rem;
             color: $black;
+        }
+
+        ul {
+            margin: 0 0 1rem 3rem;
+            list-style: inside;
+
+            li {
+                margin-bottom: 10px;
+            }
         }
     }
 
-    .important-dates-table {
-        width: calc(100% + .8rem);
+    table {
+        width: calc(100% + .8rem) !important;
         color: $white;
         font-size: $global-font-size;
         border-collapse: separate;
@@ -69,7 +78,7 @@
             max-width: 50rem;
         }
 
-        .important-dates-table {
+        table {
             td {
                 &:nth-child(even) {
                     padding-left: 1rem;
