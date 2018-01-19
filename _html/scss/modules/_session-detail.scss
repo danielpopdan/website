@@ -1,0 +1,110 @@
+.session-detail-content {
+    padding: $global-padding * 3.875 0;
+
+    .title {
+        h2 {
+            color: $fourth-color;
+            font-family: $font-main;
+            font-size: $global-font-size * 2;
+            font-weight: $weight-medium;
+        }
+    }
+
+    .l-container {
+        width: 100%;
+        max-width: 49rem;
+
+        p {
+            color: $black;
+        }
+    }
+
+    .session-detail--item {
+        width: 100%;
+        padding: $global-padding $global-padding * .5;
+        border-bottom: 1px solid #e1e1e1;
+        font-size: 0;
+
+        @include tablet {
+            padding: $global-padding $global-padding * 1.5;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &-term,
+        &-value {
+            display: inline-block;
+            vertical-align: top;
+
+            p,
+            span {
+                font-weight: $weight-medium;
+            }
+        }
+
+        &-term {
+            width: 100%;
+
+            @include tablet {
+                width: 20%;
+            }
+
+            p {
+                color: #787a7b;
+            }
+        }
+
+        &-value {
+            width: 100%;
+
+            @include tablet {
+                width: 80%;
+            }
+
+            a,
+            p,
+            span {
+                color: $primary-color;
+                font-size: 14px;
+            }
+
+            &.session-status {
+                p {
+                    color: $secondary-color;
+                }
+            }
+
+            &.session-speakers {
+                p {
+                    color: $community-color;
+                }
+            }
+
+            &.session-presentation {
+                a {
+                    padding-left: 35px;
+                    background: url($icons-path+'presentation-icon.png') no-repeat 3% 10% / contain;
+
+                    @include on-events {
+                        color: $secondary-color;
+                    }
+                }
+
+                span {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    .session-detail--presentation {
+        width: 85%;
+        margin: $global-margin * 2.5 auto;
+    }
+}
