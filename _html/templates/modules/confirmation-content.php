@@ -6,7 +6,7 @@
             <p class="title">Thank you for joining us!</p>
             <p>
                 We are happy to have you as a member of the community.
-                You will receive an email shortly containing instructions 
+                You will receive an email shortly containing instructions
                 to activate your account.
             </p>
             <button type="button">Return to Homepage</button>
