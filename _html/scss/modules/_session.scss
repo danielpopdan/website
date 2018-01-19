@@ -1,0 +1,68 @@
+.my-profile-session {
+    margin-top: $global-padding * 2;
+    
+    a {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        text-decoration: none;
+    }
+
+    &--item {
+        @include box-shadow(.125rem, .125rem, .25rem, $box-shadow);
+        margin-bottom: $global-margin * 1.5;
+        padding: $global-padding $global-padding * 1.5 $global-padding * .5;
+        background-color: $white;
+
+        .session-item--title {
+            margin: $global-margin * 1.25 0 $global-margin;
+            color: $primary-color;
+            font-size: 20px;
+            font-weight: $weight-medium;
+        }
+
+        .session-item--status {
+            font-size: 14px;
+            font-weight: $weight-medium;
+        }
+
+        &.session-status-accepted {
+            border-left: 5px solid $secondary-color;
+
+            .session-item--status {
+                color: $secondary-color;
+            }
+        }
+        
+        &.session-status-rejected {
+            border-left: 5px solid $community-color;
+
+            .session-item--status {
+                color: $community-color;
+            }
+        }
+        
+        &.session-status-pending {
+            border-left: 5px solid #a6aaad;
+
+            .session-item--status {
+                color: #a6aaad;
+            }
+        }
+    }
+
+    button {
+        position: absolute;
+        right: 0;
+        left: inherit;
+        background-color: transparent;
+
+        &.session-item--edit {
+            top: 0;
+        }
+
+        &.session-item--remove {
+            bottom: 1.25rem;
+        }
+    }
+}
