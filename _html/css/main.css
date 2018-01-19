@@ -361,8 +361,8 @@ img.zoom-img {
   overflow: hidden; }
   .footer .sponsors-wrapper a {
     display: inline-block;
-    vertical-align: middle;
-    margin: .5rem 0; }
+    margin: .5rem 0;
+    vertical-align: middle; }
     @media all and (min-width: 48em) {
       .footer .sponsors-wrapper a {
         margin: 1rem; } }
@@ -1703,9 +1703,20 @@ img.zoom-img {
     margin: 5px 0; }
 
 .forgot-password {
-  text-align: right; }
+  text-align: left; }
   .forgot-password .form-required {
     float: left; }
+
+.small-title-block .forgot-password .form-wrapper {
+  display: inline-block;
+  width: 49%;
+  margin: 0 auto; }
+
+.small-title-block .forgot-password :first-child {
+  text-align: left; }
+
+.small-title-block .forgot-password :last-child {
+  text-align: right; }
 
 .header--menu,
 .burger-button {

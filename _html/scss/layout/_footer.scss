@@ -6,8 +6,8 @@
     .sponsors-wrapper {
         a {
             display: inline-block;
-            vertical-align: middle;
             margin: .5rem 0;
+            vertical-align: middle;
             
             @include tablet {
                 margin: 1rem;
