@@ -1,11 +1,13 @@
 .my-profile {
+    position: relative;
+    top: -10rem;
     width: 100%;
     max-width: 785px;
     min-height: 300px;
     margin: 0 auto;
-    background-color: $white;
+    background-color: $section-bg-color;
     font-family: $font-main;
-    z-index: 1;
+    border: 2px solid rgba(156, 209, 211, 0.2);
 
     p {
         color: $black;
@@ -39,7 +41,7 @@
     font-size: 0;
 
     @include tablet {
-        padding: 0 $global-padding * 4 $global-padding;
+        padding: $global-padding * 3 $global-padding * 4 $global-padding;
     }
 
     &--left,
@@ -70,6 +72,10 @@
             @include tablet {
                 width: 100%;
                 margin-bottom: $global-margin;
+            }
+
+            &.active-btn {
+                background-color: $secondary-color;
             }
         }
     }
@@ -107,7 +113,7 @@
     &--right {
         width: 100%;
         margin-bottom: $global-margin * 2;
-        padding: $global-padding * 1.625 $global-padding * 2.5 0;
+        padding: $global-padding * 1.625 $global-padding * 1.5 0;
 
         @include tablet {
             width: 69.5%;
