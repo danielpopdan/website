@@ -1,27 +1,62 @@
 .user-register-form {
     margin-top: 4rem;
-}
 
-@include tablet {
     .form-two-column {
-        & > :nth-child(odd) {
-            margin-right: 1rem;
-        }
-
-        & > :nth-child(even) {
-            margin-left: 1rem;
-        }
-
         .form-wrapper {
-            display: inline-block;
-            width: calc(50% - 1.2rem);
-            vertical-align: top;
-
             input,
             label,
             select,
-            #edit-field-gender {
+            fieldset,
+            #edit-field-gender--wrapper,
+            #edit-field-country-0-value {
                 width: 100%;
+            }
+
+            fieldset {
+                margin: 0;
+            }
+        }
+    }
+
+    #edit-field-drupal-org-username-wrapper {
+        div {
+            margin-top: 0;
+        }
+    }
+
+    .image-preview {
+        width: 85px;
+        height: 85px;
+    }
+
+    .image-widget-data {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        label {
+            text-align: left;
+        }
+
+        .form-submit {
+            margin-top: 1.5rem;
+        }
+    }
+
+    @include tablet {
+        .form-two-column {
+            & > :nth-child(odd) {
+                margin-right: 1rem;
+            }
+
+            & > :nth-child(even) {
+                margin-left: 1rem;
+            }
+
+            .form-wrapper {
+                display: inline-block;
+                width: calc(50% - 1.2rem);
+                vertical-align: top;
             }
         }
     }
