@@ -1,7 +1,4 @@
 <div class="my-profile">
-    <div class="my-profile--edit my-profile--edit-mode">
-        <a href="#">Save</a>
-    </div>
     <div class="my-profile-info">
         <div class="my-profile-info--left">
             <div class="my-profile-info--basic">
@@ -22,6 +19,9 @@
         </div>
         <div class="my-profile-info--right">
             <form data-drupal-selector="user-profile-form" action="#" method="post" id="user-profile-form" accept-charset="UTF-8">
+                <div class="my-profile--edit my-profile--edit-mode">
+                    <a href="#">Save</a>
+                </div>
                 <div class="my-profile-info--fullname">
                     <div class="form-two-column">
                         <div class="field--type-string field--name-field-first-name field--widget-string-textfield js-form-wrapper form-wrapper" data-drupal-selector="edit-field-first-name-wrapper" id="edit-field-first-name-wrapper">

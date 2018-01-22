@@ -29,6 +29,10 @@
         }
 
         &-mode {
+            position: absolute;
+            top: 0;
+            right: 0;
+            
             a {
                 background: url($icons-path+'checked.png') no-repeat 3% 10% / contain;
             }

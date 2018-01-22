@@ -1,0 +1,17 @@
+.meet-team-container {
+    background-color: $white;
+    @include box-shadow(.125rem, .125rem, .25rem, $box-shadow);
+
+    @include tablet {
+        margin: -5rem auto 0;
+    }
+}
+
+.meet-team-footer,
+.meet-main-background {
+    background-color: $section-bg-color;
+}
+
+.meet-main-background {
+    padding-bottom: .3rem;
+}

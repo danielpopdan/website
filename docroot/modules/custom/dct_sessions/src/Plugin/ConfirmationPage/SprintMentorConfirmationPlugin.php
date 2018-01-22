@@ -3,6 +3,7 @@
 namespace Drupal\dct_sessions\Plugin\ConfirmationPage;
 
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Url;
 use Drupal\dct_confirmation\ConfirmationPageInterface;
 
 /**
@@ -19,21 +20,24 @@ class SprintMentorConfirmationPlugin extends PluginBase implements ConfirmationP
    * {@inheritdoc}
    */
   public function getTitle() {
-    return t('Become a sprint mentor');
+    return t('Thank you!');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('Become a sprint mentor');
+    return t('We are glad that you want to share your knowledge at DrupalCamp Transylvania! We will take your application in consideration and we will keep in touch!');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLink() {
-    return t('link');
+    return [
+      'title' => $this->t('Home'),
+      'url' => Url::fromRoute('<front>'),
+    ];
   }
 
 }
