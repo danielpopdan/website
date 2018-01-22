@@ -7,3 +7,6 @@ services:
   session_proposal:
     class: '\Drupal\dct_sessions\Service\SessionProposalService'
     arguments: ['@entity_type.manager']
+  dct_sessions.public_user_roles:
+    class: '\Drupal\dct_sessions\Service\UserSessions'
+    arguments: ['@entity_type.manager']
