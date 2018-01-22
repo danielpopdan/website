@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<div class="section-intro sponsors-intro">
+    <div class="section-intro--background"></div>
+    <div class="section-intro--text">
+        <h1 class="section-intro--title">{{ "Meet the team"|t }}</h1>
+        <div class="section-intro--details meet-team-text">
+            <p>It takes a teamwork to create a dreamwork.</p>
+        </div>
+    </div>
+</div>
+<div class="meet-main-background">
+    <div class="l-container meet-team-container">
+        <div class="homepage-speakers">
+            <div class="l-container">
+                <div class="l-row">
+                    {% for row in rows %}
+                        {% if loop.index is divisible by(3) %}
+                            <div class="l-row">
+                        {% endif %}
+                        {{ row.content }}
+                        {% if (loop.index+1) is divisible by(3) %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
