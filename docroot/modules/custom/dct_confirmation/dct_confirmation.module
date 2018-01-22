@@ -32,8 +32,8 @@ function dct_confirmation_form_alter(&$form, FormStateInterface $form_state, $fo
   if (!empty($plugin_definitions)) {
     foreach ($plugin_definitions as $id => $definition) {
       if ($definition['form_id'] == $form_id) {
-        // Sets the redirect to the Thank up page.
-        $form['#submit'][] = 'dct_confirmation_redirect_confirmation';
+        // Sets the redirect to the confirmation page.
+        $form['actions']['submit']['#submit'][] = 'dct_confirmation_redirect_confirmation';
       }
     }
   }

@@ -3,6 +3,7 @@
 namespace Drupal\dct_user\Plugin\ConfirmationPage;
 
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Url;
 use Drupal\dct_confirmation\ConfirmationPageInterface;
 
 /**
@@ -19,21 +20,24 @@ class UserRegisterConfirmationPlugin extends PluginBase implements ConfirmationP
    * {@inheritdoc}
    */
   public function getTitle() {
-    return t('User Registration Confirmation');
+    return t('Thank you for joining us!');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('Registration complete');
+    return t('We are happy that you are interested in the event and we are eager to see you at DrupalCamp Transylvania.');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLink() {
-    return t('link');
+    return [
+      'title' => $this->t('Visit your profile'),
+      'url' => Url::fromRoute('user.page'),
+    ];
   }
 
 }
