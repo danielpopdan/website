@@ -14,7 +14,7 @@ dependencies:
     - field.field.user.user.field_organization
     - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - image.style.user_list
   module:
     - address
     - image
@@ -102,8 +102,8 @@ content:
   user_picture:
     type: image_image
     settings:
+      preview_image_style: user_list
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     weight: 3
     region: content
