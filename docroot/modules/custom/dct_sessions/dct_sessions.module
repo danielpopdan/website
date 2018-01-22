@@ -64,6 +64,8 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
     $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
 
     $form['form_build_id']['#weight'] = 100;
+
+    $form['mail']['widget']['#type'] = 'email';
   }
   array_unshift($form['actions']['submit']['#submit'], 'dct_sessions_sprint_mentor_submit');
   // The langcode is not required.

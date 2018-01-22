@@ -58,6 +58,7 @@
     .form-type-radio {
         width: 50%;
         float: left;
+        margin-top: 0;
 
         input {
             &[type*='radio'] {
@@ -89,9 +90,6 @@
         text-align: center;
     }
 
-    .description {
-        display: none;
-    }
 }
 
 .proposal-form-container {
@@ -123,7 +121,11 @@
             }
         }
 
-        .session-level {
+        .field--name-field-duration {
+            margin: 16px 0;
+        }
+
+        .field--name-field-radio-button {
             .form-type-radio {
                 width: 33.33%;
 
@@ -145,6 +147,20 @@
                 vertical-align: middle;
 
             }
+        }
+
+        .field--name-field-agree {
+            input, .description {
+                display: inline;
+            }
+
+            label {
+                display: none;
+            }
+        }
+
+        .tabledrag-toggle-weight-wrapper {
+            display: none;
         }
     }
 }
