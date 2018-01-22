@@ -5,4 +5,5 @@ package: DCT
 core: 8.x
 dependencies:
   - commerce
-  - commerce_euplatesc
+  - commerce_euplatescn
+  - commerce_checkout
