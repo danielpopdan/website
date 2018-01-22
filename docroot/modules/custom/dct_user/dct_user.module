@@ -28,6 +28,9 @@ function dct_user_theme() {
     'user_register_form' => [
       'render element' => 'form',
     ],
+    'contact_message_session_proposal_form_form' => [
+      'render element' => 'form',
+    ],
     'dct_user_reset_password' => [
       'variables' => [
         'first_name' => NULL,

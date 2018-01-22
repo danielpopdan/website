@@ -1,7 +1,4 @@
 <div class="my-profile">
-    <div class="my-profile--edit my-profile--edit-mode">
-        <a href="#">Save</a>
-    </div>
     <div class="my-profile-info">
         <div class="my-profile-info--left">
             <div class="my-profile-info--basic">
@@ -14,14 +11,17 @@
                 </div>
             </div>
             <div class="my-profile-info--tabs">
-                <button>My sessions</button>
-                <button>My ratings</button>
-                <button>My schedule</button>
-                <button>Ticket info</button>
+                <a href="#" class="button">My sessions</a>
+                <a href="#" class="button">My ratings</a>
+                <a href="#" class="button">My schedule</a>
+                <a href="#" class="button">Ticket info</a>
             </div>
         </div>
         <div class="my-profile-info--right">
             <form data-drupal-selector="user-profile-form" action="#" method="post" id="user-profile-form" accept-charset="UTF-8">
+                <div class="my-profile--edit my-profile--edit-mode">
+                    <a href="#">Save</a>
+                </div>
                 <div class="my-profile-info--fullname">
                     <div class="form-two-column">
                         <div class="field--type-string field--name-field-first-name field--widget-string-textfield js-form-wrapper form-wrapper" data-drupal-selector="edit-field-first-name-wrapper" id="edit-field-first-name-wrapper">

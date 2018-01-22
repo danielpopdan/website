@@ -13,10 +13,10 @@
                 </div>
             </div>
             <div class="my-profile-info--tabs">
-                <button>My sessions</button>
-                <button>My ratings</button>
-                <button>My schedule</button>
-                <button>Ticket info</button>
+                <a href="#" class="button">My sessions</a>
+                <a href="#" class="button">My ratings</a>
+                <a href="#" class="button">My schedule</a>
+                <a href="#" class="button">Ticket info</a>
             </div>
         </div>
         <div class="my-profile-info--right">

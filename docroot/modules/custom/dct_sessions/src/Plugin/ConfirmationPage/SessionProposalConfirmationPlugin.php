@@ -3,6 +3,7 @@
 namespace Drupal\dct_sessions\Plugin\ConfirmationPage;
 
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Url;
 use Drupal\dct_confirmation\ConfirmationPageInterface;
 
 /**
@@ -19,21 +20,24 @@ class SessionProposalConfirmationPlugin extends PluginBase implements Confirmati
    * {@inheritdoc}
    */
   public function getTitle() {
-    return t('Session proposal');
+    return t('Thank you for the proposal!');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('Session proposal');
+    return t('We are glad that you want to share your knowledge at DrupalCamp Transylvania! We will take your proposal in consideration and we will keep in touch!');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLink() {
-    return t('link');
+    return [
+      'title' => $this->t('Check your proposals'),
+      'url' => Url::fromRoute('dct_sessions.user_sessions'),
+    ];
   }
 
 }
