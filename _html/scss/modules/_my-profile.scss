@@ -29,6 +29,10 @@
         }
 
         &-mode {
+            position: absolute;
+            top: 0;
+            right: 0;
+            
             a {
                 background: url($icons-path+'checked.png') no-repeat 3% 10% / contain;
             }
@@ -42,6 +46,20 @@
 
     @include tablet {
         padding: $global-padding * 3 $global-padding * 4 $global-padding;
+    }
+
+    .confirmation-link {
+        text-align: center;
+
+        a {
+            padding: .75rem 1.25rem;
+            border: 0;
+            background-color: #fcb02a;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
     }
 
     &--left,

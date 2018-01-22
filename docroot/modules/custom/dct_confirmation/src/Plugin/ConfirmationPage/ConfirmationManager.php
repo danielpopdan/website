@@ -83,9 +83,6 @@ class ConfirmationManager extends DefaultPluginManager {
     $build = [];
 
     $build['#theme'] = 'dct_confirmation_page';
-    $build['#title'] = [
-      '#markup' => $confirmationPage->getTitle(),
-    ];
 
     $build['#title'] = [
       '#markup' => $confirmationPage->getTitle(),
@@ -93,10 +90,12 @@ class ConfirmationManager extends DefaultPluginManager {
     $build['#description'] = [
       '#markup' => $confirmationPage->getDescription(),
     ];
+
+    $link = $confirmationPage->getLink();
     $build['#link'] = [
       '#type' => 'link',
-      '#title' => $confirmationPage->getTitle(),
-      '#url' => $confirmationPage->getLink(),
+      '#title' => $link['title'],
+      '#url' => $link['url'],
     ];
 
     return $build;

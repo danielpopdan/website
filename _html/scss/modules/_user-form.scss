@@ -1,4 +1,4 @@
-.user-register-form {
+.contact-form {
     margin-top: 4rem;
 
     .form-two-column {
@@ -12,7 +12,8 @@
                 width: 100%;
             }
 
-            fieldset {
+            fieldset,
+            .form-type-password {
                 margin: 0;
             }
         }
@@ -41,6 +42,10 @@
         .form-submit {
             margin-top: 1.5rem;
         }
+    }
+
+    .form-item--error-message {
+        margin-top: 10px;
     }
 
     @include tablet {
