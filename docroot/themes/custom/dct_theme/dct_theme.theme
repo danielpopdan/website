@@ -5,7 +5,7 @@
  * Contains hook implementations.
  */
 
-use Drupal\user\Entity\Role;
+use Drupal\dct_sessions\Service\UserSessions;
 
 /**
  * Implements hook_preprocess_HOOK() for page templates.
@@ -54,15 +54,5 @@ function dct_theme_preprocess_node(&$variables) {
  */
 function dct_theme_preprocess_user(&$variables) {
   $user = $variables['user'];
-  $roles = $user->getRoles();
-  $private_roles = ['anonymous', 'authenticated', 'administrator'];
-  $display_roles = [];
-  foreach ($roles as $role) {
-    if (!in_array($role, $private_roles)) {
-      $role = Role::load($role);
-      $display_roles[] = $role->get('label');
-    }
-  }
-
-  $variables['content']['roles'] = implode(', ', $display_roles);
+  $variables['content']['roles'] = UserSessions::getPublicUserRoles($user);
 }

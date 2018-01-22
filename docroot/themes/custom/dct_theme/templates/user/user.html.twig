@@ -41,10 +41,7 @@
                     </div>
                 </div>
                 <div class="my-profile-info--tabs">
-                    <button>{{ "My sessions"|t }}</button>
-                    {#<button>My ratings</button>#}
-                    {#<button>My schedule</button>#}
-                    {#<button>Ticket info</button>#}
+                    <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
                 </div>
             </div>
             <div class="my-profile-info--right">

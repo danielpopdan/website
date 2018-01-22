@@ -33,3 +33,11 @@ dct_sessions.confirm_session_proposal_accept:
     _form: '\Drupal\dct_sessions\Form\ConfirmProposalForm'
   requirements:
     _permission: 'access content'
+
+dct_sessions.user_sessions:
+  path: '/user/sessions'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::content'
+    _title: 'User Sessions'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,39 @@
+<div>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+
+<div class="my-profile">
+    <div class="my-profile-info">
+        <div class="my-profile-info--left">
+            <div class="my-profile-info--basic">
+                <div class="my-profile-info--image">
+                    {% if user.user_picture.target_id %}
+                        {{ user_picture }}
+                    {% else %}
+                        <img src="/{{ directory }}/images/icons/default_avatar.png" alt="user default avatar">
+                    {% endif %}
+                </div>
+                <div class="my-profile-info--username">
+                    <p>{{ user.name.value }}</p>
+                </div>
+            </div>
+            <div class="my-profile-info--tabs">
+                <a href="{{ path('dct_sessions.user_sessions') }}" class="button active-btn">{{ "My sessions"|t }}</a>
+            </div>
+        </div>
+        <div class="my-profile-info--right">
+            <div class="my-profile-info--fullname">
+                <h2>{{ user.field_first_name.value ~ ' ' ~ user.field_last_name.value }}</h2>
+            </div>
+            <h3 class="my-profile-info--role">{{ user_roles }}</h3>
+            <div class="my-profile-session">
+                {% for session in sessions %}
+                    <div class="my-profile-session--item session-status-pending">
+                        <h3 class="session-item--title">{{ session.title }}</h3>
+                        <p class="session-item--status">{{ "Pending"|t }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
