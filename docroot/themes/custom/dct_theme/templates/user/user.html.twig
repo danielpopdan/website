@@ -1,0 +1,99 @@
+{#
+/**
+ * @file
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+<div>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+
+<article{{ attributes }}>
+    <div class="my-profile">
+        <div class="my-profile--edit">
+            <a href="{{ path('entity.user.edit_form', {'user': user.id}) }}">{{ "Edit profile"|t }}</a>
+        </div>
+        <div class="my-profile-info">
+            <div class="my-profile-info--left">
+                <div class="my-profile-info--basic">
+                    <div class="my-profile-info--image">
+                        {% if user.user_picture.target_id %}
+                            {{ content.user_picture }}
+                        {% else %}
+                            <img src="/{{ directory }}/images/icons/default_avatar.png" alt="acquia logo">
+                        {% endif %}
+                    </div>
+                    <div class="my-profile-info--username">
+                        <p>{{ user.name.value }}</p>
+                    </div>
+                </div>
+                <div class="my-profile-info--tabs">
+                    <button>{{ "My sessions"|t }}</button>
+                    {#<button>My ratings</button>#}
+                    {#<button>My schedule</button>#}
+                    {#<button>Ticket info</button>#}
+                </div>
+            </div>
+            <div class="my-profile-info--right">
+                <div class="my-profile-info--fullname">
+                    <h2>{{ user.field_first_name.value ~ ' ' ~ user.field_last_name.value }}</h2>
+                </div>
+                <h3 class="my-profile-info--role">{{ content.roles }}</h3>
+                <div class="my-profile-info--bio">
+                    {{ content.field_bio }}
+                </div>
+                <div class="my-profile-info--details">
+                    <div class="my-profile-details--row">
+                        <div class="my-profile-details--col">
+                            <p>{{ "Country"|t }}</p>
+                        </div>
+                        <div class="my-profile-details--col">
+                            <p>{{ content.field_country }}</p>
+                        </div>
+                    </div>
+                    <div class="my-profile-details--row">
+                        <div class="my-profile-details--col">
+                            <p>{{ "Job Title"|t }}</p>
+                        </div>
+                        <div class="my-profile-details--col">
+                            <p>{{ user.field_job_title.value }}</p>
+                        </div>
+                    </div>
+                    <div class="my-profile-details--row">
+                        <div class="my-profile-details--col">
+                            <p>{{ "Organization"|t }}</p>
+                        </div>
+                        <div class="my-profile-details--col">
+                            <p>{{ (user.field_organization.target_id) ? user.field_organization.entity.name.value : '' }}</p>
+                        </div>
+                    </div>
+                    <div class="my-profile-details--row">
+                        <div class="my-profile-details--col">
+                            <p>{{ "drupal.org account"|t }}</p>
+                        </div>
+                        <div class="my-profile-details--col">
+                            {% if user.field_drupal_org_username.value %}
+                                <p>
+                                    <a href="{{ 'https://www.drupal.org/u/' ~ user.field_drupal_org_username.value }}">{{ user.field_drupal_org_username.value }}</a>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
