@@ -33,11 +33,13 @@ class UserSessions {
   /**
    * Returns the public user roles as a string.
    *
-   * @param AccountInterface $user
+   * @param \Drupal\Core\Session\AccountInterface $user
    *   The user object.
-   * @return string public user roles
+   *
+   * @return string
+   *   Public user roles
    */
-  public static function getPublicUserRoles(AccountInterface $user){
+  public static function getPublicUserRoles(AccountInterface $user) {
     $roles = $user->getRoles();
     $private_roles = ['anonymous', 'authenticated', 'administrator'];
     $display_roles = [];
@@ -54,14 +56,15 @@ class UserSessions {
   /**
    * Retrieves user session contact submissions.
    *
-   * @param AccountInterface $user
+   * @param \Drupal\Core\Session\AccountInterface $user
    *   The user object.
+   *
    * @return array
    *   The session contact submissions information.
    */
   public function retrieveUserSessions(AccountInterface $user) {
     // Retrieve the display of sponsors_contact_form form.
-    $submissions =  $this->entityTypeManager->getStorage('contact_message')
+    $submissions = $this->entityTypeManager->getStorage('contact_message')
       ->loadByProperties(['contact_form' => 'session_proposal_form', 'field_user' => [$user->id()]]);
 
     $submissions_information = [];
