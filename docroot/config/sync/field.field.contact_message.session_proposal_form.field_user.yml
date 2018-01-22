@@ -18,13 +18,15 @@ default_value_callback: ''
 settings:
   handler: 'default:user'
   handler_settings:
-    include_anonymous: true
+    include_anonymous: false
     filter:
       type: role
       role:
         featured_speaker: featured_speaker
+        sprint_mentor: sprint_mentor
+        organizer: organizer
+        attendee: attendee
         administrator: '0'
-        sprint_mentor: '0'
     target_bundles: null
     sort:
       field: _none
