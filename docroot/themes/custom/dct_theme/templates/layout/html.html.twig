@@ -63,7 +63,7 @@
                       content="/{{ directory }}/favicon//ms-icon-144x144.png">
                 <meta name="theme-color" content="#ffffff">
                 </head>
-<body{{ attributes }}>
+<body{{ attributes.addClass([node_type, root_path]) }}>
 {#
   Keyboard navigation/accessibility link to main content section in
   page.html.twig.

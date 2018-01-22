@@ -30,7 +30,7 @@ content:
     weight: 1
     label: hidden
     settings:
-      link_to_entity: false
+      link_to_entity: true
     third_party_settings: {  }
     type: string
     region: content
@@ -46,7 +46,7 @@ content:
     weight: 2
     label: hidden
     settings:
-      link_to_entity: false
+      link_to_entity: true
     third_party_settings: {  }
     type: string
     region: content
@@ -54,7 +54,7 @@ content:
     weight: 4
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
