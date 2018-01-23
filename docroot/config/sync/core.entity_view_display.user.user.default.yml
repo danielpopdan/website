@@ -14,7 +14,7 @@ dependencies:
     - field.field.user.user.field_organization
     - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - image.style.user_profile
   module:
     - address
     - image
@@ -106,7 +106,7 @@ content:
     weight: 0
     region: content
     settings:
-      image_style: thumbnail
+      image_style: user_profile
       image_link: content
     third_party_settings: {  }
     label: hidden

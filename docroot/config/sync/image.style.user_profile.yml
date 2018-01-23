@@ -1,0 +1,14 @@
+uuid: 2f38a6b3-9a95-4401-9e7b-c6809a349d84
+langcode: en
+status: true
+dependencies: {  }
+name: user_profile
+label: 'User profile (206x206)'
+effects:
+  5aa59d37-42ed-4ff4-8fbb-16973b070503:
+    uuid: 5aa59d37-42ed-4ff4-8fbb-16973b070503
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 206
+      height: 206
