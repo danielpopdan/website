@@ -1,6 +1,6 @@
 .my-profile {
     position: relative;
-    top: -10rem;
+    top: -1.8rem;
     width: 100%;
     max-width: 785px;
     min-height: 300px;
@@ -8,6 +8,10 @@
     background-color: $section-bg-color;
     font-family: $font-main;
     border: 2px solid rgba(156, 209, 211, 0.2);
+
+    @include tablet {
+        top: -10rem;
+    }
 
     p {
         color: $black;
@@ -43,6 +47,10 @@
 .my-profile-info {
     padding: 0;
     font-size: 0;
+
+    .image-style-user-profile {
+        height: auto;
+    }
 
     @include tablet {
         padding: $global-padding * 3 $global-padding * 4 $global-padding;
