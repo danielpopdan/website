@@ -16,6 +16,7 @@ permissions:
   - 'access devel information'
   - 'access kint'
   - 'access site-wide contact form'
+  - 'access user profiles'
   - 'execute php code'
   - 'search content'
   - 'submit sprint mentorship'

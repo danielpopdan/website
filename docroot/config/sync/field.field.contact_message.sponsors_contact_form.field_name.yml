@@ -10,7 +10,7 @@ field_name: field_name
 entity_type: contact_message
 bundle: sponsors_contact_form
 label: Name
-description: 'The name of the sponsor.'
+description: ''
 required: true
 translatable: false
 default_value: {  }
