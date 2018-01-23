@@ -12,10 +12,16 @@
  * @ingroup themeable
  */
 #}
-<div class="section-intro">
-    <div class="section-intro--background"></div>
-    <div class="section-intro--text">
-        <h1 class="section-intro--title">{{ "Log in" }}</h1>
+<div>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+<div class="article-section form-article">
+    <div class="l-container">
+        <div class="title-container">
+            <div class="large-title-block title">
+                <h2>{{ "Log in"|t }}</h2>
+            </div>
+        </div>
     </div>
 </div>
 <div class="sponsors-contact">
@@ -24,8 +30,9 @@
             <form{{ attributes }}>
                 {{ children }}
             </form>
-            <div class="forgot-password">
-                <a href="{{ path('user.pass') }}">{{ "Forgot password?"|t }}</a>
+            <div class="forgot-password form-two-column">
+                <a href="{{ path('user.register') }}" class="form-wrapper">{{ "Registration"|t }}</a>
+                <a href="{{ path('user.pass') }}" class="form-wrapper">{{ "Forgot password?"|t }}</a>
             </div>
         </div>
     </div>

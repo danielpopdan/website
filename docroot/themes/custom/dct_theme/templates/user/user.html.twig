@@ -53,42 +53,48 @@
                     {{ content.field_bio }}
                 </div>
                 <div class="my-profile-info--details">
-                    <div class="my-profile-details--row">
-                        <div class="my-profile-details--col">
-                            <p>{{ "Country"|t }}</p>
+                    {% if user.field_country.value %}
+                        <div class="my-profile-details--row">
+                            <div class="my-profile-details--col">
+                                <p>{{ "Country"|t }}</p>
+                            </div>
+                            <div class="my-profile-details--col">
+                                <p>{{ content.field_country }}</p>
+                            </div>
                         </div>
-                        <div class="my-profile-details--col">
-                            <p>{{ content.field_country }}</p>
+                    {% endif %}
+                    {% if user.field_job_title.value %}
+                        <div class="my-profile-details--row">
+                            <div class="my-profile-details--col">
+                                <p>{{ "Job Title"|t }}</p>
+                            </div>
+                            <div class="my-profile-details--col">
+                                <p>{{ user.field_job_title.value }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="my-profile-details--row">
-                        <div class="my-profile-details--col">
-                            <p>{{ "Job Title"|t }}</p>
+                    {% endif %}
+                    {% if user.field_organization.target_id %}
+                        <div class="my-profile-details--row">
+                            <div class="my-profile-details--col">
+                                <p>{{ "Organization"|t }}</p>
+                            </div>
+                            <div class="my-profile-details--col">
+                                <p>{{ user.field_organization.entity.name.value }}</p>
+                            </div>
                         </div>
-                        <div class="my-profile-details--col">
-                            <p>{{ user.field_job_title.value }}</p>
-                        </div>
-                    </div>
-                    <div class="my-profile-details--row">
-                        <div class="my-profile-details--col">
-                            <p>{{ "Organization"|t }}</p>
-                        </div>
-                        <div class="my-profile-details--col">
-                            <p>{{ (user.field_organization.target_id) ? user.field_organization.entity.name.value : '' }}</p>
-                        </div>
-                    </div>
-                    <div class="my-profile-details--row">
-                        <div class="my-profile-details--col">
-                            <p>{{ "drupal.org account"|t }}</p>
-                        </div>
-                        <div class="my-profile-details--col">
-                            {% if user.field_drupal_org_username.value %}
+                    {% endif %}
+                    {% if user.field_drupal_org_username.value %}
+                        <div class="my-profile-details--row">
+                            <div class="my-profile-details--col">
+                                <p>{{ "drupal.org account"|t }}</p>
+                            </div>
+                            <div class="my-profile-details--col">
                                 <p>
                                     <a href="{{ 'https://www.drupal.org/u/' ~ user.field_drupal_org_username.value }}">{{ user.field_drupal_org_username.value }}</a>
                                 </p>
-                            {% endif %}
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
