@@ -24,7 +24,7 @@
 <article{{ attributes }}>
     <div class="my-profile">
         <div class="my-profile--edit">
-            <a href="{{ path('entity.user.edit_form', {'user': user.id}) }}">{{ "Edit profile"|t }}</a>
+            <a href="{{ path('entity.user.edit_form', {'user': user.id, 'destination' : 'user'}) }}">{{ "Edit profile"|t }}</a>
         </div>
         <div class="my-profile-info">
             <div class="my-profile-info--left">
