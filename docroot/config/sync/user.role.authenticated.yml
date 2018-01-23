@@ -24,5 +24,7 @@ permissions:
   - 'submit sprint mentorship'
   - 'switch users'
   - 'use text format basic_html'
+  - 'use text format full_html'
   - 'use text format mailchimp_campaign'
+  - 'use text format restricted_html'
   - 'view commerce_product'
