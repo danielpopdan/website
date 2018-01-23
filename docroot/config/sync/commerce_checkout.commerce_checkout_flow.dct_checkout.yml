@@ -17,31 +17,31 @@ configuration:
       allow_registration: false
       step: login
       weight: '0'
+    ticket_information:
+      step: ticket_information
+      weight: '1'
     contact_information:
       double_entry: false
       step: order_information
-      weight: '1'
+      weight: '2'
     payment_information:
       step: order_information
-      weight: '2'
+      weight: '3'
     review:
       step: review
-      weight: '3'
-    payment_process:
-      capture: true
-      step: payment
       weight: '4'
     completion_message:
       step: complete
-      weight: '5'
+      weight: '6'
     order_summary:
       view: ''
       step: _sidebar
-      weight: '6'
+      weight: '7'
+    payment_process:
+      capture: true
+      step: payment
+      weight: '5'
     coupon_redemption:
       allow_multiple: false
       step: _disabled
-      weight: '7'
-    ticket_information:
-      step: ticket_information
-      weight: '10'
+      weight: '8'

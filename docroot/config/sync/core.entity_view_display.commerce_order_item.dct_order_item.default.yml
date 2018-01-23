@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_order.commerce_order_item_type.dct_order_item
     - field.field.commerce_order_item.dct_order_item.field_recipients
+    - field.field.commerce_order_item.dct_order_item.field_tickets
 id: commerce_order_item.dct_order_item.default
 targetEntityType: commerce_order_item
 bundle: dct_order_item
@@ -16,6 +17,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
+  field_tickets:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
 hidden:
   adjustments: true

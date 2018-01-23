@@ -23,42 +23,34 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   }
  * )
  */
-class Ticket extends ContentEntityBase {
+class Ticket extends ContentEntityBase implements TicketInterface {
 
   /**
-   * Gets the ticket code.
-   *
-   * @return string
+   * {@inheritdoc}
    */
   public function getCode() {
-    return $this->code->getValue();
+    return $this->code->value;
   }
 
   /**
-   * Gets the order item of this ticket.
-   *
-   * @return \Drupal\commerce_order\Entity\OrderItemInterface
+   * {@inheritdoc}
    */
   public function getOrderItem() {
-    return $this->order_item->getEntity();
+    return $this->order_item->entity;
   }
 
   /**
-   * Gets the ticket buyer.
-   *
-   * @return \Drupal\user\UserInterface
+   * {@inheritdoc}
    */
   public function getBuyer() {
     return $this->buyer->getEntity();
   }
 
   /**
-   * Checks if this ticket was redeemed.
-   *
-   * @return bool
+   * {@inheritdoc}
    */
   public function isRedeemed() {
-    return (bool) $this->redeemer;
+    return (bool) $this->redeemer->value;
   }
 
   /**
@@ -75,7 +67,7 @@ class Ticket extends ContentEntityBase {
     $fields['order_item'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Order'))
       ->setDescription(t('The orderitem on which the ticket was bought.'))
-      ->setSetting('commerce_order_item', 'user');
+      ->setSetting('target_type', 'commerce_order_item');
 
     $fields['buyer'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Buying user'))
@@ -91,7 +83,7 @@ class Ticket extends ContentEntityBase {
       ->setDefaultValue(NULL);
 
     $fields['created'] = BaseFieldDefinition::create('created')
-      ->setLabel(t('Activated on'))
+      ->setLabel(t('Created on'))
       ->setDescription(t('The time that the ticket was redeemed.'));
 
     $fields['activated'] = BaseFieldDefinition::create('timestamp')

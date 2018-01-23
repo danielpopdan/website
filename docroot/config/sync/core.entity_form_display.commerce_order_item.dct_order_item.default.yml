@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_order.commerce_order_item_type.dct_order_item
     - field.field.commerce_order_item.dct_order_item.field_recipients
+    - field.field.commerce_order_item.dct_order_item.field_tickets
   module:
     - commerce_order
 id: commerce_order_item.dct_order_item.default
@@ -19,6 +20,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+    region: content
+  field_tickets:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   purchased_entity:
     type: entity_reference_autocomplete

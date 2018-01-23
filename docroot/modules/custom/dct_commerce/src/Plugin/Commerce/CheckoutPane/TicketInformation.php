@@ -53,6 +53,12 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
       $order_item_entity->set('field_recipients', $item_values);
       $order_item_entity->save();
     }
+
+    // This is used to dispatch the payment success event.
+    // TODO: Remove.
+//    $event = new EuPlatescPaymentEvent($this->order);
+//    $event_dispatcher = \Drupal::getContainer()->get('event_dispatcher');
+//    $event_dispatcher->dispatch(EuPlatescEvents::PAYMENT_SUCCESS, $event);
   }
 
 }
