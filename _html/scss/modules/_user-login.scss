@@ -104,4 +104,16 @@
             text-align: right;
         }
     }
+
+    #user-pass {
+        input {
+            text-align: left;
+        }
+        
+        #edit-actions {
+            .form-submit {
+                text-align: center;
+            }
+        }  
+    }
 }
