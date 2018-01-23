@@ -17,6 +17,7 @@ permissions:
   - 'access kint'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'access user profiles'
   - 'execute php code'
   - 'post comments'
   - 'search content'

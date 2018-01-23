@@ -323,7 +323,8 @@
             }
 
             img {
-                width:  auto;
+                max-width: 180px;
+                height: auto;
                 margin: 0 auto $global-margin * 2;
             }
 

@@ -10,7 +10,7 @@ field_name: field_subject
 entity_type: contact_message
 bundle: sponsors_contact_form
 label: Subject
-description: 'The subject of the message.'
+description: ''
 required: true
 translatable: false
 default_value: {  }
