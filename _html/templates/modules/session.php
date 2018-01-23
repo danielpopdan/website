@@ -10,10 +10,10 @@
                 </div>
             </div>
             <div class="my-profile-info--tabs">
-                <button class="active-btn">My sessions</button>
-                <button>My ratings</button>
-                <button>My schedule</button>
-                <button>Ticket info</button>
+                <a class="button active-btn">My sessions</a>
+                <a class="button">My ratings</a>
+                <a class="button">My schedule</a>
+                <a class="button">Ticket info</a>
             </div>
         </div>
         <div class="my-profile-info--right">
