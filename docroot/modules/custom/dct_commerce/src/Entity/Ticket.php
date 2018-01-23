@@ -5,6 +5,7 @@ namespace Drupal\dct_commerce\Entity;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines the ticket entity class.
@@ -50,7 +51,21 @@ class Ticket extends ContentEntityBase implements TicketInterface {
    * {@inheritdoc}
    */
   public function isRedeemed() {
-    return (bool) $this->redeemer->value;
+    return $this->redeemer->entity !== NULL;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function redeem(AccountInterface $account) {
+    if ($this->redeemer->entity !== NULL) {
+      throw new \LogicException('This ticket has been already activated.');
+    }
+
+    $this->set('redeemer', $account->id());
+    $this->set('activated', time());
+
+    return $this;
   }
 
   /**

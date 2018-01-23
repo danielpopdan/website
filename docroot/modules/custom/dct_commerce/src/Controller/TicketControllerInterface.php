@@ -54,6 +54,17 @@ interface TicketControllerInterface {
   public function getTicketByCode($code);
 
   /**
+   * Gets the ticket activated by an user.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The ticket redeemer.
+   *
+   * @return \Drupal\dct_commerce\Entity\TicketInterface|null
+   *   The ticket activated with this account, or null if no ticket found.
+   */
+  public function getTicketByRedeemer(AccountInterface $account);
+
+  /**
    * Gets the ticket storage.
    *
    * @return \Drupal\Core\Entity\EntityStorageInterface

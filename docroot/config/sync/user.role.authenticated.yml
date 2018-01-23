@@ -18,6 +18,7 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
+  - 'access ticket redemption'
   - 'execute php code'
   - 'post comments'
   - 'search content'

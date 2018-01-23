@@ -3,6 +3,7 @@
 namespace Drupal\dct_commerce\Entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Session\AccountInterface;
 
 interface TicketInterface extends ContentEntityInterface {
 
@@ -32,5 +33,16 @@ interface TicketInterface extends ContentEntityInterface {
    * @return bool
    */
   public function isRedeemed();
+
+  /**
+   * Activates this ticket for an user.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The user account.
+   *
+   * @return $this
+   *   This Ticket instance.
+   */
+  public function redeem(AccountInterface $account);
 
 }

@@ -96,6 +96,15 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
   /**
    * {@inheritdoc}
    */
+  public function getTicketByRedeemer(AccountInterface $account) {
+    // TODO: This will have to vary by ticket type, sometime and somehow.
+    $tickets = $this->getTicketStorage()->loadByProperties(['redeemer' => $account->id()]);
+    return array_pop($tickets);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getTicketStorage() {
     if (!isset($this->ticketStorage)) {
       $this->ticketStorage = $this->entityTypeManager()->getStorage('dct_commerce_ticket');
