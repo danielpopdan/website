@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\dct_newsletter\Controller\MailchimpController;
 use Egulias\EmailValidator\EmailValidatorInterface;
@@ -47,6 +48,13 @@ class NewsletterSubscriptionForm extends FormBase {
   protected $mailManager;
 
   /**
+   * The language service.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected $languageManager;
+
+  /**
    * Constructs a NewsletterForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -57,12 +65,15 @@ class NewsletterSubscriptionForm extends FormBase {
    *   The mailchimp service.
    * @param \Drupal\Core\Mail\MailManagerInterface $mail_manager
    *   The mail service.
+   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+   *   The language service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator, MailchimpController $mailchimp_service, MailManagerInterface $mail_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, EmailValidatorInterface $email_validator, MailchimpController $mailchimp_service, MailManagerInterface $mail_manager, LanguageManagerInterface $languageManager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->emailValidator = $email_validator;
     $this->mailchimpService = $mailchimp_service;
     $this->mailManager = $mail_manager;
+    $this->languageManager = $languageManager;
   }
 
   /**
@@ -73,7 +84,8 @@ class NewsletterSubscriptionForm extends FormBase {
       $container->get('entity_type.manager'),
       $container->get('email.validator'),
       $container->get('dct_newsletter.mailchimp_service'),
-      $container->get('plugin.manager.mail')
+      $container->get('plugin.manager.mail'),
+      $container->get('language_manager')
     );
   }
 
@@ -139,7 +151,6 @@ class NewsletterSubscriptionForm extends FormBase {
       $error = TRUE;
     }
     else {
-
       // Checks if the email is in a valid format.
       if (!$this->emailValidator->isValid($form_state->getValue('email'))) {
         $html = [
@@ -149,80 +160,31 @@ class NewsletterSubscriptionForm extends FormBase {
         ];
         $error = TRUE;
       }
-
-      else {
-        // Checks if the email is not already used for a subscription.
-        $subscribed_user = $this->entityTypeManager
-          ->getStorage('user')
-          ->loadByProperties(['mail' => $form_state->getValue('email')]);
-        if ($subscribed_user) {
-          $html = [
-            '#prefix' => '<span class="error-message">',
-            '#markup' => $this->t('This email address is already subscribed to the newsletter.'),
-            '#suffix' => '</span>',
-          ];
-          $error = TRUE;
-        }
-      }
     }
 
     if (!$error) {
-
-      // Creates an account for the email address.
-      $user = [
-        'name' => $form_state->getValue('email'),
-        'mail' => $form_state->getValue('email'),
-        'init' => $form_state->getValue('email'),
-        'pass' => user_password(),
-        'roles' => ['newsletter'],
-        'status' => 0,
+      $html = [
+        '#prefix' => '<span class="success-message">',
+        '#markup' => $this->t('You have successfully subscribed to our newsletter!'),
+        '#suffix' => '</span>',
       ];
 
-      // Creates and validates the user.
-      $user = $this->entityTypeManager->getStorage('user')->create($user);
-      $user_validation = $user->validate();
-      $violations = $user_validation->getEntityViolations();
+      $html = render($html);
+      $command = new ReplaceCommand('#dct-newsletter-form', $html);
 
-      // Checks if there are any violations after the validation.
-      if (!empty($violations)) {
-        $user->save();
-        $html = [
-          '#prefix' => '<span class="success-message">',
-          '#markup' => $this->t('You have successfully subscribed to our newsletter!'),
-          '#suffix' => '</span>',
-        ];
+      // Adds the user to the 'Target Audience' list in mailchimp.
+      $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
 
-        $html = render($html);
-        $command = new ReplaceCommand('#dct-newsletter-form', $html);
-
-        // Adds the user to the 'Target Audience' list in mailchimp.
-        $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
-
-        // Sends a confirmation email to the subscriber.
-        if (!$form_state->get('anyErrors')) {
-          $result = $this->mailManager->mail(
-            'dct_newsletter',
-            'newsletter_subscription_confirmation',
-            $form_state->getValue('email'),
-            $user->getPreferredLangcode(),
-            [],
-            NULL,
-            TRUE
-          );
-        }
-
-      }
-      else {
-        $html = [
-          '#prefix' => '<span class="error-message">',
-          '#markup' => $this->t('An error occured during the registration. Please try again!'),
-          '#suffix' => '</span>',
-        ];
-        $html = render($html);
-        $command = new HtmlCommand('.newsletter-error-container', $html);
+      // Sends a confirmation email to the subscriber.
+      if (!$form_state->get('anyErrors')) {
+        $this->mailManager->mail(
+          'dct_newsletter',
+          'newsletter_subscription_confirmation',
+          $form_state->getValue('email'),
+          $this->languageManager->getCurrentLanguage()->getId()
+        );
       }
     }
-
     else {
       $html = render($html);
       $command = new HtmlCommand('.newsletter-error-container', $html);
