@@ -2,5 +2,6 @@ dct_confirmation.confirmation_page:
   path: '/thank-you/{form_id}'
   defaults:
     _controller: '\Drupal\dct_confirmation\Controller\ConfirmationPageController::getContent'
+    _title_callback: '\Drupal\dct_confirmation\Controller\ConfirmationPageController::getTitle'
   requirements:
     _permission: 'access content'
