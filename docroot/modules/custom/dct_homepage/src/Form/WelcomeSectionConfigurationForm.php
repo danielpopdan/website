@@ -75,6 +75,14 @@ class WelcomeSectionConfigurationForm extends FormBase {
       '#default_value' => isset($state_values['youtube']) ? $state_values['youtube'] : '',
     ];
 
+    $form['visit'] = [
+      '#type' => 'textfield',
+      '#title' => 'Visit Cluj-Napoca Node ID',
+      '#required' => TRUE,
+      '#default_value' => isset($state_values['visit']) ? $state_values['visit'] : '',
+    ];
+
+
     $form['airport_description'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Airport Description'),
