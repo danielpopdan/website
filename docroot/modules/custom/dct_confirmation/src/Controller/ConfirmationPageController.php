@@ -49,4 +49,17 @@ class ConfirmationPageController extends ControllerBase {
     return $this->confirmationManager->getConfirmationPage($form_id);
   }
 
+  /**
+   * Gets the confirmation page title.
+   *
+   * @param string $form_id
+   *   The id of the form.
+   *
+   * @return string
+   *   The title of the page.
+   */
+  public function getTitle($form_id) {
+    return $this->confirmationManager->getConfirmationPageTitle($form_id);
+  }
+
 }
