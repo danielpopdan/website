@@ -75,7 +75,7 @@ class WelcomeCityBlock extends BlockBase implements ContainerFactoryPluginInterf
     $link = [
       '#type' => 'link',
       '#title' => $this->t('Visit Cluj-Napoca'),
-      '#url' => Url::fromRoute('<front>'),
+      '#url' => !empty($values['visit']) ? Url::fromRoute('entity.node.canonical', ['node' => $values['visit']]) : Url::fromRoute('<front>'),
       '#attributes' => [
         'class' => [
           'button',
