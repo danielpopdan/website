@@ -14,7 +14,8 @@ third_party_settings:
 id: sponsors_contact_form
 label: 'Sponsors contact form'
 recipients:
-  - contact@drupaltransylvania.camp
+  - rnegrean@pitechplus.com
+  - popdan.daniel@gmail.com
 reply: ''
 weight: 0
 message: 'Your message has been sent.'
