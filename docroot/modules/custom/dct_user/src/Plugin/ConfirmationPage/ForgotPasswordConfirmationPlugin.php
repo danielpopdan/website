@@ -3,6 +3,7 @@
 namespace Drupal\dct_user\Plugin\ConfirmationPage;
 
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Url;
 use Drupal\dct_confirmation\ConfirmationPageInterface;
 
 /**
@@ -10,7 +11,7 @@ use Drupal\dct_confirmation\ConfirmationPageInterface;
  *
  * @ConfirmationPage(
  *   id = "forgot_password_confirmation_plugin",
- *   form_id = "user_forgot_password_form"
+ *   form_id = "user_pass"
  * )
  */
 class ForgotPasswordConfirmationPlugin extends PluginBase implements ConfirmationPageInterface {
@@ -19,21 +20,24 @@ class ForgotPasswordConfirmationPlugin extends PluginBase implements Confirmatio
    * {@inheritdoc}
    */
   public function getTitle() {
-    return t('Forgot password confirmation');
+    return t('Password recovery was successful,  one time login link was sent to your email address.');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('Reset password');
+    return t('Password recovery');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getLink() {
-    return t('link');
+    return [
+      'title' => $this->t('Return to hompage'),
+      'url' => Url::fromRoute('<front>'),
+    ];
   }
 
 }
