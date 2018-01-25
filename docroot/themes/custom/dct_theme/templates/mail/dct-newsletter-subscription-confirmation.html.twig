@@ -1,115 +1,188 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Simple Transactional Email</title>
-    <style>
-        ------------------------------------- */
-        @media only screen and (max-width: 620px) {
-            table[class=body] h1 {
-                font-size: 28px !important;
-                margin-bottom: 10px !important;
-            }
-            table[class=body] p,
-            table[class=body] ul,
-            table[class=body] ol,
-            table[class=body] td,
-            table[class=body] span,
-            table[class=body] a {
-                font-size: 16px !important;
-            }
-            table[class=body] .wrapper,
-            table[class=body] .article {
-                padding: 10px !important;
-            }
-            table[class=body] .content {
-                padding: 0 !important;
-            }
-            table[class=body] .container {
-                padding: 0 !important;
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        @media only screen and (max-width: 480px) {
+            .content-wrapper,
+            .template-container {
                 width: 100% !important;
             }
-            table[class=body] .main {
-                border-left-width: 0 !important;
-                border-radius: 0 !important;
-                border-right-width: 0 !important;
-            }
-            table[class=body] .btn table {
-                width: 100% !important;
-            }
-            table[class=body] .btn a {
-                width: 100% !important;
-            }
-            table[class=body] .img-responsive {
-                height: auto !important;
+
+            img {
                 max-width: 100% !important;
-                width: auto !important;
+            }
+
+            .block {
+                display: inline-block !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            .mobile-reposition {
+                text-align: center !important;
+            }
+
+            .mobile-exclude {
+                display: none;
             }
         }
 
-        /* -------------------------------------
-            PRESERVE THESE STYLES IN THE HEAD
-        ------------------------------------- */
-        @media all {
-            .ExternalClass {
-                width: 100%;
-            }
-            .ExternalClass,
-            .ExternalClass p,
-            .ExternalClass span,
-            .ExternalClass font,
-            .ExternalClass td,
-            .ExternalClass div {
-                line-height: 100%;
-            }
-            .apple-link a {
-                color: inherit !important;
-                font-family: inherit !important;
-                font-size: inherit !important;
-                font-weight: inherit !important;
-                line-height: inherit !important;
-                text-decoration: none !important;
-            }
-            .btn-primary table td:hover {
-                background-color: #34495e !important;
-            }
-            .btn-primary a:hover {
-                background-color: #34495e !important;
-                border-color: #34495e !important;
-            }
-        }
     </style>
 </head>
-<body class="" style="background-color: #f6f6f6; font-family: roboto; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-<table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #200f17;">
-    <tr>
-        <td style="font-family: roboto; font-size: 14px; vertical-align: top;">&nbsp;</td>
-        <td class="container" style="font-family: roboto; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;">
-            <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;">
-
-                <!-- START CENTERED WHITE CONTAINER -->
-                <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
-                <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
-
-                    <!-- START MAIN CONTENT AREA -->
+<body bgcolor="#ffffff" style="text-align: center; background-color: #ffffff;">
+<center>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+           bgcolor="#ffffff" class="content-wrapper">
+        <tr style="text-align: center;">
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0"
+                       width="600px" class="template-container"
+                       bgcolor="#200F17">
                     <tr>
-                        <td class="wrapper" style="font-family: roboto; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
-                            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                        <td>
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%">
                                 <tr>
-                                    <td style="font-family: roboto; font-size: 14px; vertical-align: top;">
-                                        <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/vampire-logo.png">
-                                        <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/intro-logo.png">
-                                        <p style="font-family: roboto; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">You succesfully subscribed to Drupal CampTransylvania newsletter,</p>
-                                        <p style="font-family: roboto; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We are happy that you are interested in this event and we will keep you updated!</p>
-                                        <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
+                                    <td>
+                                        <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/backgrounds/small-header.png"
+                                             alt="First row background">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="padding: 15px;">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td>
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%"
+                                   style="text-align: center;">
+                                <tr>
+                                    <td>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%"
+                                               style="text-align: center;">
+                                            <tr style="text-align: center;">
+                                                <td style="text-align: center;">
+                                                    <span style="font-size: 32px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #ffffff;"> {{ "Hello" }} {{ first_name }} {{ last_name }},</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td style="padding: 20px;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <td style="text-align:center;">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td>
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="60%">
+                                                        <tr style="text-align: center;">
+                                                            <td>
+                                                                        <span style="text-align: center; line-height: 40px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                                                                            {{ "You succesfully subscribed to Drupal CampTransylvania newsletter," }}<br>
+                                                                            {{ "We are happy that you are interested in this event and we will keep you updated!" }}
+                                                                        </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                        </table>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td style="padding: 20px;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0"
+                                               cellspacing="0" width="100%"
+                                               style="min-width:100%;">
                                             <tbody>
                                             <tr>
-                                                <td align="left" style="font-family: roboto; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
-                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                                                <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;"
+                                                    valign="top" align="center">
+                                                    <table border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           style="border-collapse: separate !important;border-radius: 3px;background-color: #FCB02A;">
                                                         <tbody>
                                                         <tr>
-                                                            <td style="font-family: roboto; font-size: 14px; vertical-align: top; background-color: #fcb02a; border-radius: 5px; text-align: center;"> <a href="http://drupaltransylvania.ro" target="_blank" style="display: inline-block; color: #ffffff; background-color: #fcb02a; border: solid 1px #fcb02a; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #fcb02a;">Visit website</a> </td>
+                                                            <td align="center"
+                                                                valign="middle"
+                                                                style="font-family: Helvetica; font-size: 18px; padding: 18px;">
+                                                                <a href="http://drupaltransylvania.ro"
+                                                                   target="_blank"
+                                                                   style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">{{ "Visit the website" }}</a>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -119,30 +192,159 @@
                                         </table>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td style="padding: 20px;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td>
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%"
+                                                           style="text-align: center;">
+                                                        <tr style="text-align: center;">
+                                                            <td style="text-align: center;">
+                                                                        <span style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                                                                            Best regards,
+                                                                        </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0"
+                                               cellspacing="0" width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="top" align="center">
+                                                    <table border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           style="border-collapse: separate !important;border-radius: 3px;">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="center"
+                                                                valign="middle"
+                                                                style="font-family: Helvetica; font-size: 18px; padding: 18px;">
+                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/header-logo.png"
+                                                                     alt="logo">
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td style="padding: 10px;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td class="block"
+                                                    style="width: 45%;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr style="text-align: right;"
+                                                            class="mobile-reposition">
+                                                            <td>
+                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/transylvania.png"
+                                                                     alt="logo">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="block"
+                                                    style="width: 10%;">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
+                                            <tr>
+                                                <td style="padding: 20px;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
-
-                    <!-- END MAIN CONTENT AREA -->
                 </table>
-
-                <!-- START FOOTER -->
-                <div class="footer" style="clear: both; Margin-top: 10px; text-align: center; width: 100%;">
-                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
-                        <tr>
-                            <td class="content-block" style="font-family: roboto; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Copyright © 2017 DrupalCamp Transylvania, All rights reserved.</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- END FOOTER -->
-
-                <!-- END CENTERED WHITE CONTAINER -->
-            </div>
-        </td>
-        <td style="font-family: roboto; font-size: 14px; vertical-align: top;">&nbsp;</td>
-    </tr>
-</table>
+            </td>
+        </tr>
+    </table>
+</center>
 </body>
 </html>
