@@ -20,14 +20,14 @@ class ForgotPasswordConfirmationPlugin extends PluginBase implements Confirmatio
    * {@inheritdoc}
    */
   public function getTitle() {
-    return t('Password recovery was successful,  one time login link was sent to your email address.');
+    return t('Password recovery');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('Password recovery');
+    return t('Password recovery was successful,  one time login link was sent to your email address.');
   }
 
   /**
