@@ -101,7 +101,8 @@
             }
         }
 
-        .is-active {
+        .is-active,
+        &--expanded.menu-item--active-trail >a {
             color: $secondary-color;
             text-decoration: underline;
         }
