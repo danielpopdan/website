@@ -19,7 +19,13 @@
  */
 #}
 <div class="homepage-speakers--display l-col">
-    {{ content.user_picture }}
+    {% if content.user_picture|render is empty %}
+        <a href="{{ path('entity.user.canonical', {'user': user.id}) }}">
+        <img src="/{{ directory }}/images/homepage/speakers-mentors.png"
+             alt="speaker portrait"></a>
+    {% else %}
+        {{ content.user_picture }}
+    {% endif %}
     <div class="homepage-speakers--display--name">
         {{ content.name }}
     </div>
