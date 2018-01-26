@@ -40,6 +40,11 @@ function dct_homepage_theme() {
         'airport_map' => NULL,
       ],
     ],
+    'dct_diamond_sponsors_block' => [
+      'variables' => [
+        'sponsors' => NULL,
+      ],
+    ],
   ];
 }
 

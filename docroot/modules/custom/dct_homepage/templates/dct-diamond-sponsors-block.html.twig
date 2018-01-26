@@ -1,0 +1,7 @@
+{% if sponsors %}
+    <div class="sponsors-wrapper">
+        {% for sponsor in sponsors %}
+            <a href="{{ sponsor.link }}"><img src="{{ sponsor.image }}" alt="sponsor brand" class="sponsor-logo"></a>
+        {% endfor %}
+    </div>
+{% endif %}
