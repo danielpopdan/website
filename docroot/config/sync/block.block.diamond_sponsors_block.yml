@@ -1,4 +1,4 @@
-uuid: e9574e00-6817-4c76-97af-075675f0d922
+uuid: 29e11970-c743-4758-9b2e-6d212470445d
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,15 @@ dependencies:
     - dct_homepage
   theme:
     - dct_theme
-id: hostedbyacquiablock
+id: diamond_sponsors_block
 theme: dct_theme
 region: footer
-weight: -5
+weight: -4
 provider: null
-plugin: hosted_by_acquia
+plugin: diamond_sponsors_block
 settings:
-  id: hosted_by_acquia
-  label: 'Hosted by Acquia Block'
+  id: diamond_sponsors_block
+  label: 'Diamond Sponsors Block'
   provider: dct_homepage
   label_display: '0'
 visibility: {  }

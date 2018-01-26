@@ -37,7 +37,6 @@ class DiamondSponsorsConfigurationsForm extends FormBase {
    */
   const SPONSOR_NUMBER = 2;
 
-
   /**
    * {@inheritdoc}
    */
