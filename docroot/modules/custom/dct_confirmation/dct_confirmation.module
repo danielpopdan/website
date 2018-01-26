@@ -63,7 +63,14 @@ function dct_confirmation_get_plugin_definitions($plugin_id) {
  * Sets the redirect confirmation page.
  */
 function dct_confirmation_redirect_confirmation(&$form, FormStateInterface $form_state) {
-  $url = Url::fromRoute('dct_confirmation.confirmation_page')
-    ->setRouteParameters(['form_id' => $form['#form_id']]);
+  $checkoutRedirect = \Drupal::request()->get('checkout_redirect');
+  if (is_numeric($checkoutRedirect)) {
+    $url = Url::fromRoute('commerce_checkout.form')
+      ->setRouteParameters(['commerce_order' => $checkoutRedirect]);
+  }
+  else {
+    $url = Url::fromRoute('dct_confirmation.confirmation_page')
+      ->setRouteParameters(['form_id' => $form['#form_id']]);
+  }
   $form_state->setRedirectUrl($url);
 }

@@ -13,7 +13,7 @@ configuration:
   display_checkout_progress: true
   panes:
     login:
-      allow_guest_checkout: true
+      allow_guest_checkout: false
       allow_registration: false
       step: login
       weight: '0'
@@ -30,6 +30,10 @@ configuration:
     review:
       step: review
       weight: '4'
+    payment_process:
+      capture: true
+      step: payment
+      weight: '5'
     completion_message:
       step: complete
       weight: '6'
@@ -37,10 +41,6 @@ configuration:
       view: ''
       step: _sidebar
       weight: '7'
-    payment_process:
-      capture: true
-      step: payment
-      weight: '5'
     coupon_redemption:
       allow_multiple: false
       step: _disabled
