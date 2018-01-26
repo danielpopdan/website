@@ -1,0 +1,23 @@
+.attendees-container {
+    text-align: center;
+
+    .js-form-item,
+    .form-actions {
+        display: inline-block;
+        width: 80%;
+        margin: 0 auto;
+        
+        input,
+        select {
+            width: 100%;
+        }
+    }
+
+    @include tablet {
+        .js-form-item,
+        .form-actions {
+            margin: 0 .5rem 1rem; 
+            width: 20%;  
+        }
+    }
+}

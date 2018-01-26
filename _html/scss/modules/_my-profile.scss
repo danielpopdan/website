@@ -5,9 +5,9 @@
     max-width: 785px;
     min-height: 300px;
     margin: 0 auto;
+    border: 2px solid rgba(156, 209, 211, 0.2);
     background-color: $section-bg-color;
     font-family: $font-main;
-    border: 2px solid rgba(156, 209, 211, 0.2);
 
     @include tablet {
         top: -10rem;
