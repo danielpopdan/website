@@ -5,6 +5,8 @@ dependencies:
   config:
     - contact.form.session_proposal_form
     - field.storage.contact_message.field_user
+  content:
+    - 'user:user:ec08ba9f-8d22-4a5f-96d8-5d223b0d86f2'
 id: contact_message.session_proposal_form.field_user
 field_name: field_user
 entity_type: contact_message
@@ -13,7 +15,9 @@ label: Speakers
 description: 'Type the username of the speaker, and to add more speakers click "Add another".'
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: ec08ba9f-8d22-4a5f-96d8-5d223b0d86f2
 default_value_callback: ''
 settings:
   handler: 'default:user'

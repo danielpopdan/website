@@ -150,12 +150,12 @@
         }
 
         .field--name-field-agree {
-            input, .description {
+            input, label {
                 display: inline;
-            }
 
-            label {
-                display: none;
+                a {
+                    vertical-align: inherit;
+                }
             }
         }
 
