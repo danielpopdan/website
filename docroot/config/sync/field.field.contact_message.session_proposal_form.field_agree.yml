@@ -10,8 +10,8 @@ field_name: field_agree
 entity_type: contact_message
 bundle: session_proposal_form
 label: Agree
-description: 'By submitting this session I acknowledge that I have read and agree to the terms outlined in the Speaker Agreement document.'
-required: false
+description: ''
+required: true
 translatable: false
 default_value:
   -

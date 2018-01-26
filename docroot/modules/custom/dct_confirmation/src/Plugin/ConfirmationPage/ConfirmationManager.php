@@ -53,6 +53,24 @@ class ConfirmationManager extends DefaultPluginManager {
   }
 
   /**
+   * Gets the title of the confirmation page.
+   *
+   * @param string $form_id
+   *   The id of the form.
+   *
+   * @return string
+   *   The title of the page.
+   */
+  public function getConfirmationPageTitle($form_id) {
+    $pagePlugin = $this->getPagePlugin($form_id);
+    if (!empty($pagePlugin)) {
+      return $pagePlugin->getTitle();
+    }
+
+    return '';
+  }
+
+  /**
    * Gets the plugin for the page.
    *
    * @param string $form_id

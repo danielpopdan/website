@@ -10,7 +10,7 @@ field_name: field_description
 entity_type: contact_message
 bundle: session_proposal_form
 label: Description
-description: "Please give us a detailed overview of your session and why attendees will be excited to hear about it.\r\nEnsure that you let us know:\r\n   - What level of knowledge should attendees have before walking into your session\r\n   - What will your session accomplish and what will attendees walk away having learned"
+description: "Please give us a detailed overview of your session and why attendees will be excited to hear about it.\r\nEnsure that you let us know:\r\n\r\n<ul>\r\n   <li> - What level of knowledge should attendees have before walking into your session </li>\r\n   <li> - What will your session accomplish and what will attendees walk away having learned </li>\r\n</ul>"
 required: true
 translatable: false
 default_value: {  }

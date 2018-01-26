@@ -5,6 +5,7 @@
  * Contains hook implementations.
  */
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
@@ -105,6 +106,14 @@ function dct_sessions_entity_operation_alter(array &$operations, EntityInterface
  * Implements hook_form_FORM_ID_alter().
  */
 function dct_sessions_form_contact_message_session_proposal_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add the current user as a default speaker on session proposal.
+  $user_id = Drupal::currentUser()->id();
+  $current_user = Drupal::entityTypeManager()->getStorage('user')->load($user_id);
+  $form['field_user']['widget'][0]['target_id']['#default_value'] = $current_user;
+  // Remove HTML5 validation from the form.
+  $form['#attributes']['novalidate'] = 'novalidate';
+  $speaker_agreement = new FormattableMarkup('<a target="_blank" href="/speaker-agreement">@title</a>', ['@title' => 'Speaker Agreement']);
+  $form['field_agree']['widget']['value']['#title'] = t('By submitting this session I acknowledge that I have read and agree to the terms outlined in the @speaker_agreement document.', ['@speaker_agreement' => $speaker_agreement]);
   // Adds ajax callback on session type select list.
   $form['field_select_list']['widget']['#ajax'] = [
     'callback' => '_change_duration_options_callback',
