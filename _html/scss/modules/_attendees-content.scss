@@ -4,7 +4,7 @@
     .js-form-item,
     .form-actions {
         display: inline-block;
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         
         input,
@@ -13,11 +13,31 @@
         }
     }
 
+    .form-actions {
+        margin-top: 1.2rem;
+
+        .form-submit {
+            display: block;
+            margin: 1rem 0;
+        }
+    }
+
     @include tablet {
         .js-form-item,
         .form-actions {
             margin: 0 .5rem 1rem; 
-            width: 20%;  
+            width: calc(25% - 1rem);  
+        }
+
+        .form-actions {
+            display: block;
+            margin: 0 auto;
         }
     }
 }
+
+ .pager {
+     font-size: 1.2rem;
+     display: inline-block;
+     margin: 4rem auto 0;
+ }
