@@ -21,3 +21,9 @@ dct_spread_the_word_configuration.admin.structure.settings:
   route_name: dct_homepage.spread_the_word_config
   description: 'Manages Spread the word configurations.'
   parent: dct_homepage.admin.structure.settings
+
+dct_diamond_sponsors_configurations.admin.structure.settings:
+  title: 'Diamond Sponsors Configurations'
+  route_name: dct_homepage.diamond_sponsors_configurations
+  description: 'Manages Diamond Sponsors Configurations.'
+  parent: dct_homepage.admin.structure.settings
