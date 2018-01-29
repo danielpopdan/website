@@ -33,7 +33,6 @@
     .image-widget-data {
         margin-bottom: 1.5rem;
         text-align: center;
-        margin-bottom: 1.5rem;
 
         label {
             text-align: left;
@@ -46,10 +45,10 @@
 
     .form-item--error-message {
         margin: 1.5rem 0;
-        background: #ffcccc;
         padding: 10px 5px;
+        background: #ffcccc;
 
-        &::before{
+        &::before {
             display: none;
         }
     }
