@@ -1,15 +1,13 @@
 {#
 /**
  * @file
- * Default theme implementation for a 'form' element.
+ * Theme override for a 'form' element.
  *
  * Available variables
  * - attributes: A list of HTML attributes for the wrapper element.
  * - children: The child elements of the form.
  *
  * @see template_preprocess_form()
- *
- * @ingroup themeable
  */
 #}
 <div>
@@ -19,7 +17,7 @@
     <div class="l-container">
         <div class="title-container">
             <div class="large-title-block title">
-                <h2>{{ "Reset password"|t }}</h2>
+                <h2>{{ "Reset your password"|t }}</h2>
             </div>
         </div>
     </div>
@@ -27,7 +25,7 @@
 <div class="sponsors-contact">
     <div class="l-container">
         <div class="small-title-block">
-            <form{{ attributes.addClass(['forgot-password']) }}>
+            <form{{ attributes }}>
                 {{ children }}
             </form>
         </div>
