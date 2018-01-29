@@ -207,4 +207,7 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
       ])),
     ];
   }
+  elseif ($form['#step_id'] === 'order_information') {
+    $form['payment_information']['billing_information']['#type'] = 'dct_commerce_profile_select';
+  }
 }
