@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aca2da9e39453b4339c5943f4b2813a",
+    "content-hash": "29b9d67a9b38c79e1cea7ba267d62b18",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1263,6 +1263,28 @@
             ],
             "description": "Provides theme suggestions plugin for all type of entities.",
             "time": "2017-12-14T13:53:28+00:00"
+        },
+        {
+            "name": "drupal-generics/invisible_recaptcha",
+            "version": "8.1.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drupal-generics/invisible_recaptcha.git",
+                "reference": "aff8c1809ffdff9af3f9df728d4861547c47c1c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drupal-generics/invisible_recaptcha/zipball/aff8c1809ffdff9af3f9df728d4861547c47c1c6",
+                "reference": "aff8c1809ffdff9af3f9df728d4861547c47c1c6",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Provides invisible recaptcha implementation.",
+            "time": "2018-01-29T14:51:52+00:00"
         },
         {
             "name": "drupal/acquia_connector",
