@@ -8,6 +8,9 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class TicketRedemptionForm.
+ */
 class TicketRedemptionForm extends FormBase {
 
   /**
@@ -38,7 +41,7 @@ class TicketRedemptionForm extends FormBase {
    * TicketRedemptionForm constructor.
    *
    * @param \Drupal\Core\Session\AccountInterface $account
-   *   The current user account
+   *   The current user account.
    * @param \Drupal\dct_commerce\Controller\TicketControllerInterface $ticketController
    *   The ticket controller.
    */
@@ -72,7 +75,7 @@ class TicketRedemptionForm extends FormBase {
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => t('Redeem Code'),
+      '#value' => $this->t('Redeem Code'),
       '#button_type' => 'primary',
     ];
 
@@ -105,4 +108,5 @@ class TicketRedemptionForm extends FormBase {
 
     drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
   }
+
 }

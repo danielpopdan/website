@@ -2,6 +2,9 @@
 
 namespace Drupal\commerce_euplatesc\Event;
 
+/**
+ * Class EuPlatescEvents.
+ */
 final class EuPlatescEvents {
 
   /**

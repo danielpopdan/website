@@ -6,9 +6,15 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\Component\Utility\Random;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Mail\MailManager;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
 use RuntimeException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class TicketController.
+ */
 class TicketController extends ControllerBase implements TicketControllerInterface {
 
   /**
@@ -22,6 +28,32 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   protected $ticketStorage = NULL;
+
+  /**
+   * The mail manager service.
+   *
+   * @var \Drupal\Core\Mail\MailManager
+   */
+  protected $mailManager;
+
+  /**
+   * TicketController constructor.
+   *
+   * @param \Drupal\Core\Mail\MailManager $mailManager
+   *   The mail manager service.
+   */
+  public function __construct(MailManager $mailManager) {
+    $this->mailManager = $mailManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static (
+      $container->get('plugin.manager.mail')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -44,6 +76,41 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
         $tickets[] = $ticket;
       }
 
+      $recipients = $order_item->get('field_recipients')->getValue();
+      $params = [
+        'code' => NULL,
+        'redeem_link' => Url::fromRoute('dct_commerce.ticket_redemption_code')->setAbsolute(TRUE)->toString(TRUE)->getGeneratedUrl(),
+      ];
+
+      // Send mails to each of the ticket recipients.
+      for ($i = 0; $i < count($tickets); $i++) {
+        if (!empty($recipients[$i])) {
+          $params['code'] = $tickets[$i]->getCode();
+          $this->mailManager->doMail(
+            'dct_commerce',
+            'ticket_recipient',
+            $recipients[$i]['value'],
+            $this->currentUser->getPreferredLangcode(),
+            $params,
+            NULL,
+            TRUE
+          );
+        }
+      }
+
+      // Send mail containing all of the codes
+      // to the user who purchased the tickets.
+      $params['tickets'] = $tickets;
+      $this->mailManager->doMail(
+        'dct_commerce',
+        'ticket_buyer',
+        $this->currentUser->getEmail(),
+        $this->currentUser->getPreferredLangcode(),
+        $params,
+        NULL,
+        TRUE
+      );
+
       // Add the tickets to the order item.
       $order_item->set('field_tickets', $tickets);
       $order_item->save();
@@ -56,7 +123,7 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
   public function createTicket(AccountInterface $creator, OrderItemInterface $orderItem) {
 
     // TODO: Have this made configurable somewhere.
-    $code = $this->generateTicketCode(8, 'DCT2018-');
+    $code = $this->generateTicketCode(10, 'DCT2018-');
     $values = [
       'code' => $code,
       'order_item' => $orderItem->id(),
@@ -72,7 +139,7 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
   /**
    * {@inheritdoc}
    */
-  public function generateTicketCode($codeLength = 8, $prefix = NULL, $suffix = NULL) {
+  public function generateTicketCode($codeLength = 10, $prefix = NULL, $suffix = NULL) {
     $random = new Random();
 
     for ($counter = 0; $counter < static::MAXIMUM_TRIES; $counter++) {

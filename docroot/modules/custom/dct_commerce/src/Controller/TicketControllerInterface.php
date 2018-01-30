@@ -6,12 +6,16 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\Core\Session\AccountInterface;
 
+/**
+ * Interface TicketControllerInterface.
+ */
 interface TicketControllerInterface {
 
   /**
    * Handles the payment success ticket creation.
    *
    * @param \Drupal\commerce_order\Entity\OrderInterface $order
+   *   The order.
    */
   public function handlePaymentSuccess(OrderInterface $order);
 
@@ -23,7 +27,7 @@ interface TicketControllerInterface {
    * @param \Drupal\commerce_order\Entity\OrderItemInterface $orderItem
    *   The order item on which the ticket was created.
    *
-   * @return \Drupal\dct_commerce\Entity\TicketInterface;
+   * @return \Drupal\dct_commerce\Entity\TicketInterface
    *   The Ticket object.
    */
   public function createTicket(AccountInterface $creator, OrderItemInterface $orderItem);
@@ -33,9 +37,9 @@ interface TicketControllerInterface {
    *
    * @param int $codeLength
    *   The generated code length, without prefix or suffix.
-   * @param null $prefix
+   * @param string|null $prefix
    *   Optional code prefix.
-   * @param null $suffix
+   * @param string|null $suffix
    *   Optional code prefix.
    *
    * @return string
@@ -46,7 +50,8 @@ interface TicketControllerInterface {
   /**
    * Gets the ticket associated with a code.
    *
-   * @param $code
+   * @param string $code
+   *   The code string.
    *
    * @return \Drupal\dct_commerce\Entity\TicketInterface|null
    *   The ticket associated with this code, or null if no ticket found.
@@ -68,6 +73,7 @@ interface TicketControllerInterface {
    * Gets the ticket storage.
    *
    * @return \Drupal\Core\Entity\EntityStorageInterface
+   *   The entity storage service.
    */
   public function getTicketStorage();
 

@@ -22,29 +22,29 @@ class DctMultistepFlow extends CheckoutFlowWithPanesBase {
     // shown on the step itself. Instead, they are the labels shown
     // when going back to the step, or proceeding to the step.
     return [
-        'login' => [
-          'label' => $this->t('Login'),
-          'previous_label' => $this->t('Go back'),
-          'has_sidebar' => FALSE,
-        ],
-        'ticket_information' => [
-          'label' => $this->t('Ticket information'),
-          'has_sidebar' => TRUE,
-          'previous_label' => $this->t('Go back'),
-        ],
-        'order_information' => [
-          'label' => $this->t('Order information'),
-          'has_sidebar' => TRUE,
-          'previous_label' => $this->t('Go back'),
-          'next_label' => $this->t('Continue to order information'),
-        ],
-        'review' => [
-          'label' => $this->t('Review'),
-          'next_label' => $this->t('Continue to review'),
-          'previous_label' => $this->t('Go back'),
-          'has_sidebar' => TRUE,
-        ],
-      ] + parent::getSteps();
+      'login' => [
+        'label' => $this->t('Login'),
+        'previous_label' => $this->t('Go back'),
+        'has_sidebar' => FALSE,
+      ],
+      'ticket_information' => [
+        'label' => $this->t('Ticket information'),
+        'has_sidebar' => TRUE,
+        'previous_label' => $this->t('Go back'),
+      ],
+      'order_information' => [
+        'label' => $this->t('Order information'),
+        'has_sidebar' => TRUE,
+        'previous_label' => $this->t('Go back'),
+        'next_label' => $this->t('Continue to order information'),
+      ],
+      'review' => [
+        'label' => $this->t('Review'),
+        'next_label' => $this->t('Continue to review'),
+        'previous_label' => $this->t('Go back'),
+        'has_sidebar' => TRUE,
+      ],
+    ] + parent::getSteps();
   }
 
 }

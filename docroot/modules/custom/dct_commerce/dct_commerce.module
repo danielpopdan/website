@@ -211,3 +211,54 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
     $form['payment_information']['billing_information']['#type'] = 'dct_commerce_profile_select';
   }
 }
+
+/**
+ * {@inheritdoc}
+ */
+function dct_commerce_theme() {
+  return [
+    'dct_ticket_recipient' => [
+      'variables' => [
+        'code' => NULL,
+        'redeem_link' => NULL,
+      ],
+    ],
+    'dct_ticket_buyer' => [
+      'variables' => [
+        'codes' => NULL,
+        'redeem_link' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * {@inheritdoc}
+ */
+function dct_commerce_mail($key, &$message, $params) {
+  if ($key === 'ticket_recipient') {
+    $message['from'] = \Drupal::config('system.site')->get('mail');
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['subject'] = t('Your have received a ticket code for Drupal Camp Transylvania');
+    $body = [
+      '#theme' => 'dct_ticket_recipient',
+      '#code' => $params['code'],
+      '#redeem_link' => $params['redeem_link'],
+    ];
+    $message['body'][0] = render($body);
+  }
+  elseif ($key === 'ticket_buyer') {
+    $message['from'] = \Drupal::config('system.site')->get('mail');
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['subject'] = count($params['tickets']) > 1 ? t('You have bought tickets for Drupal Camp Transylvania') : t('You have bought a ticket for Drupal Camp Transylvania');
+    foreach ($params['tickets'] as &$ticket) {
+      $ticket = $ticket->getCode();
+    }
+    $body = [
+      '#theme' => 'dct_ticket_buyer',
+      '#codes' => $params['tickets'],
+      '#redeem_link' => $params['redeem_link'],
+    ];
+    $message['body'][0] = render($body);
+  }
+}

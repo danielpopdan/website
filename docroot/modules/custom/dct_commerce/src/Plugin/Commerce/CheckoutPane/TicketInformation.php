@@ -45,6 +45,9 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
     return $pane_form;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function submitPaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
     $values = $form_state->getValue('ticket_information');
     foreach ($values['order_item'] as $delta => $item_values) {
@@ -54,11 +57,6 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
       $order_item_entity->save();
     }
 
-    // This is used to dispatch the payment success event.
-    // TODO: Remove.
-//    $event = new EuPlatescPaymentEvent($this->order);
-//    $event_dispatcher = \Drupal::getContainer()->get('event_dispatcher');
-//    $event_dispatcher->dispatch(EuPlatescEvents::PAYMENT_SUCCESS, $event);
   }
 
 }
