@@ -63,7 +63,7 @@ class TicketRedemptionForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $ticket = $this->ticketController->getTicketByRedeemer($this->currentUser);
     if (!empty($ticket)) {
-      $form['message']['#markup'] = $this->t('You have already redeemed your code.');
+      $form['message']['#markup'] = $this->t('You have redeemed your code.');
       return $form;
     }
 

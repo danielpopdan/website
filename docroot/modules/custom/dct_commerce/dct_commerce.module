@@ -8,6 +8,7 @@
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\dct_commerce\Entity\Ticket;
 
 /**
  * Creates a store, a product and a promotion for DCTransylvania commerce.
@@ -286,5 +287,18 @@ function add_to_cart_redirect_to_checkout(array &$form, FormStateInterface $form
   if (empty($form_state->getErrors())) {
     $url = Url::fromRoute('commerce_cart.page');
     $form_state->setRedirectUrl($url);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dct_commerce_preprocess_user(&$variables) {
+  $user = \Drupal::currentUser();
+  if ($user->isAuthenticated()) {
+    $ticket = \Drupal::service('dct_commerce.ticket_controller')->getTicketByRedeemer($user);
+    if ($ticket instanceof Ticket) {
+      $variables['my_ticket_code'] = $ticket->getCode();
+    }
   }
 }
