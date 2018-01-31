@@ -262,3 +262,29 @@ function dct_commerce_mail($key, &$message, $params) {
     $message['body'][0] = render($body);
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function dct_commerce_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (preg_match('/commerce_order_item_add_to_cart_.*/', $form_id)) {
+    $form['actions']['submit']['#submit'][] = 'add_to_cart_redirect_to_checkout';
+  }
+}
+
+/**
+ * Redirects to the cart page.
+ *
+ * Used after a user adds a product to their cart.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state object.
+ */
+function add_to_cart_redirect_to_checkout(array &$form, FormStateInterface $form_state) {
+  if (empty($form_state->getErrors())) {
+    $url = Url::fromRoute('commerce_cart.page');
+    $form_state->setRedirectUrl($url);
+  }
+}
