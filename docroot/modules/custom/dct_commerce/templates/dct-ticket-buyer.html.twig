@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <p>You received a ticket for Drupal Camp Transylvania!</p>
+        {% if codes|length == 1 %}
+            <p>Your ticket code is:</p>
+        {% else %}
+            <p>Your ticket codes are:</p>
+        {% endif %}
+        {% for code in codes %}
+            <p><b>{{ code }}</b></p>
+        {% endfor %}
+        <p>Click here to redeem the ticket(s): {{ redeem_link }}</p>
+    </body>
+</html>

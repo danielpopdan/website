@@ -1,0 +1,47 @@
+uuid: 6a096405-32ef-411a-98b8-31ae70167df2
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_payment
+    - commerce_promotion
+    - dct_commerce
+id: dct_checkout
+label: 'DCT Checkout'
+plugin: dct_multistep
+configuration:
+  display_checkout_progress: true
+  panes:
+    login:
+      allow_guest_checkout: false
+      allow_registration: false
+      step: login
+      weight: '0'
+    ticket_information:
+      step: ticket_information
+      weight: '1'
+    contact_information:
+      double_entry: false
+      step: order_information
+      weight: '2'
+    payment_information:
+      step: order_information
+      weight: '3'
+    review:
+      step: review
+      weight: '4'
+    payment_process:
+      capture: true
+      step: payment
+      weight: '5'
+    completion_message:
+      step: complete
+      weight: '6'
+    order_summary:
+      view: ''
+      step: _sidebar
+      weight: '7'
+    coupon_redemption:
+      allow_multiple: false
+      step: _disabled
+      weight: '8'

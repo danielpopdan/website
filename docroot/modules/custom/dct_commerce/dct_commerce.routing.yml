@@ -1,0 +1,7 @@
+dct_commerce.ticket_redemption_code:
+  path: /redeem-code
+  defaults:
+    _form: Drupal\dct_commerce\Form\TicketRedemptionForm
+    _title: Redeem a code
+  requirements:
+    _permission: access ticket redemption

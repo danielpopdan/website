@@ -1,0 +1,18 @@
+uuid: 3727de7e-6a42-4e09-b12d-39ec40fc2054
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_order
+id: commerce_order_item.field_recipients
+field_name: field_recipients
+entity_type: commerce_order_item
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

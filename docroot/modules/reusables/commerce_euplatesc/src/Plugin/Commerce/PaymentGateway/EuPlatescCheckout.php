@@ -2,12 +2,21 @@
 
 namespace Drupal\commerce_euplatesc\Plugin\Commerce\PaymentGateway;
 
+use Drupal\commerce_euplatesc\Event\EuPlatescEvents;
+use Drupal\commerce_euplatesc\Event\EuPlatescPaymentEvent;
 use Drupal\commerce_order\Entity\OrderInterface;
-use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayBase;
-use Drupal\Core\Form\FormStateInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Drupal\commerce_payment\Entity\PaymentInterface;
+use Drupal\commerce_payment\Exception\PaymentGatewayException;
+use Drupal\commerce_payment\PaymentMethodTypeManager;
+use Drupal\commerce_payment\PaymentTypeManager;
+use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayBase;
 use Drupal\commerce_price\Calculator;
+use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Provides the EuPlatesc Checkout payment gateway plugin.
@@ -29,18 +38,52 @@ use Drupal\commerce_price\Calculator;
 class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCheckoutInterface {
 
   /**
-   * The price rounder.
+   * The event dispatcher service.
    *
-   * @var \Drupal\commerce_price\RounderInterface
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
    */
-  protected $rounder;
+  protected $eventDispatcher;
 
   /**
-   * The time.
+   * Constructs a new PaymentGatewayBase object.
    *
-   * @var \Drupal\commerce\TimeInterface
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   * @param \Drupal\commerce_payment\PaymentTypeManager $payment_type_manager
+   *   The payment type manager.
+   * @param \Drupal\commerce_payment\PaymentMethodTypeManager $payment_method_type_manager
+   *   The payment method type manager.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time.
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
+   *   The event dispatcher service.
    */
-  protected $time;
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, EventDispatcherInterface $eventDispatcher) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $payment_type_manager, $payment_method_type_manager, $time);
+    $this->eventDispatcher = $eventDispatcher;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('plugin.manager.commerce_payment_type'),
+      $container->get('plugin.manager.commerce_payment_method_type'),
+      $container->get('datetime.time'),
+      $container->get('event_dispatcher')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -109,10 +152,16 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $order->setData('state', 'completed');
       $payment->state = 'authorization';
 
+      $event = new EuPlatescPaymentEvent($order);
+      $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_SUCCESS, $event);
+
       drupal_set_message(t('The payment was made successfully.'), 'status');
     }
     else {
       $payment->state = 'authorization_voided';
+
+      $event = new EuPlatescPaymentEvent($order);
+      $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_FAILURE, $event);
 
       drupal_set_message(t('Transaction failed: @message', ['@message' => $request->query->get['message']]), 'warning');
     }

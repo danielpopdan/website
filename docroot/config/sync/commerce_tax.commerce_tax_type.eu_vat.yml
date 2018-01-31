@@ -1,0 +1,9 @@
+uuid: 8123df76-3716-4f19-bb31-c52bac24c385
+langcode: en
+status: true
+dependencies: {  }
+id: eu_vat
+label: 'EU VAT'
+plugin: european_union_vat
+configuration:
+  display_inclusive: true

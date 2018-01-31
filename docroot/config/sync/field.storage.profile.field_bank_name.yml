@@ -1,0 +1,21 @@
+uuid: d5e2fb7b-d08d-4195-a4b6-428674eca70b
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: profile.field_bank_name
+field_name: field_bank_name
+entity_type: profile
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

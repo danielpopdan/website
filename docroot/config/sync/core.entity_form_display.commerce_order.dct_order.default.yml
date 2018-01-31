@@ -1,0 +1,54 @@
+uuid: 9b62998e-c9a3-4c3b-a332-ddfa09d37e2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.dct_order
+    - field.field.commerce_order.dct_order.order_items
+  module:
+    - commerce_order
+    - inline_entity_form
+id: commerce_order.dct_order.default
+targetEntityType: commerce_order
+bundle: dct_order
+mode: default
+content:
+  adjustments:
+    type: commerce_adjustment_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  billing_profile:
+    type: commerce_billing_profile
+    weight: 0
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  cart:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 20
+    region: content
+    third_party_settings: {  }
+  order_items:
+    type: inline_entity_form_complex
+    weight: 0
+    settings:
+      override_labels: true
+      label_singular: 'order item'
+      label_plural: 'order items'
+      form_mode: default
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+    third_party_settings: {  }
+    region: content
+hidden:
+  ip_address: true
+  mail: true
+  order_number: true
+  state: true
+  store_id: true
+  uid: true

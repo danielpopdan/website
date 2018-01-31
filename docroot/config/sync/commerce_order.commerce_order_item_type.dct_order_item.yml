@@ -1,0 +1,14 @@
+uuid: bb95fd11-2d93-461f-9939-ac2345263a5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_tax
+third_party_settings:
+  commerce_tax:
+    taxable_type: events
+label: 'DCT Order Item'
+id: dct_order_item
+purchasableEntityType: commerce_product_variation
+orderType: dct_order
+traits: {  }

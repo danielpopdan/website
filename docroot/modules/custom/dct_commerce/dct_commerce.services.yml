@@ -1,0 +1,10 @@
+services:
+  dct_commerce.ticket_controller:
+    class: 'Drupal\dct_commerce\Controller\TicketController'
+    arguments: ['@plugin.manager.mail']
+
+  dct_commerce.transaction_event_subscriber:
+    class: 'Drupal\dct_commerce\EventSubscriber\TransactionEventSubscriber'
+    arguments: ['@dct_commerce.ticket_controller']
+    tags:
+      - { name: 'event_subscriber' }
