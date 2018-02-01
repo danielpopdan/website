@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{% set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'sponsors-intro'
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+<div class="article-section">
+    <div class="l-container">
+        <div class="title-container">
+            <div class="large-title-block title">
+                <h2>{{ "But tickets"|t }}</h2>
+            </div>
+            {{- product|without('variation_attributes') -}}
+        </div>
+        {{ content.body }}
+    </div>
+</div>
+
