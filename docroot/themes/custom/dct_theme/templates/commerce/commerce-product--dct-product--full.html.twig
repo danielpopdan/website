@@ -19,17 +19,40 @@
  * @ingroup themeable
  */
 #}
-<article{{ attributes }}>
-    {{ product.title }}
-    {{ product.body }}
-    {{ product.variation_sku }}
-    {{ product.variation_title }}
-    {% if product.promotional_price.promotion|length > 0 %}
-        {{ product.promotional_price.promotion.name[0].value }} Price {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
-        <br>
-        {{ "Ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }}
-    {% else %}
-        {{ product.variation_price }}
-    {% endif %}
-    {{ product.variations }}
-</article>
+{% set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'sponsors-intro'
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+<div class="article-section">
+    <div class="l-container">
+        <div class="title-container">
+            <div class="large-title-block title">
+                <h2>{{ "But tickets"|t }}</h2>
+            </div>
+            <article{{ attributes }}>
+                {{ product.title }}
+                {{ product.body }}
+                {{ product.variation_sku }}
+                {{ product.variation_title }}
+                {% if product.promotional_price.promotion|length > 0 %}
+                    {{ product.promotional_price.promotion.name[0].value }} Price {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
+                    <br>
+                    {{ "Ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }}
+                {% else %}
+                    {{ product.variation_price }}
+                {% endif %}
+                {{ product.variations }}
+            </article>
+        </div>
+        {{ content.body }}
+    </div>
+</div>

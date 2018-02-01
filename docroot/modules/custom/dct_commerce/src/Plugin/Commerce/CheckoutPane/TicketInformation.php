@@ -27,7 +27,8 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
       /* @var $order_item \Drupal\commerce_order\Entity\OrderItemInterface */
       $pane_form['order_item'][$delta] = [
         '#type' => 'fieldset',
-        '#title' => $order_item->getTitle(),
+        '#title' => $this->t('Please complete the following fields with the email address of the persons should receive the ticket code(s). One unique
+        code will be sent for each input. You will receive the codes for each ticket acquired by email, even if you complete the fields or not.'),
         '#tree' => TRUE,
       ];
       $quantity = (int) $order_item->getQuantity();
@@ -36,7 +37,7 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
         $recipient = isset($recipient_item_field) ? $recipient_item_field->value : '';
         $pane_form['order_item'][$delta][$number] = [
           '#type' => 'email',
-          '#title' => t('Ticket recipient email #%number', ['%number' => $number + 1]),
+          '#title' => t('Ticket recipient email address #%number', ['%number' => $number + 1]),
           '#default_value' => $recipient,
         ];
       }

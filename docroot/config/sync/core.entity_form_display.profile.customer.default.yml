@@ -6,7 +6,9 @@ dependencies:
     - field.field.profile.customer.address
     - field.field.profile.customer.field_account_number
     - field.field.profile.customer.field_bank_name
+    - field.field.profile.customer.field_company_name
     - field.field.profile.customer.field_company_registration_no
+    - field.field.profile.customer.field_county
     - field.field.profile.customer.field_tax_identification_no
     - field.field.profile.customer.field_telephone
     - profile.type.customer
@@ -44,8 +46,24 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_company_name:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_company_registration_no:
     weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_county:
+    weight: 10
     settings:
       size: 60
       placeholder: ''
