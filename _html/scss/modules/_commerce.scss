@@ -15,3 +15,28 @@
   }
 
 }
+
+.l-container {
+  .homepage-twitter {
+    p {
+      font-size: 2em;
+      color: #fcb02a;
+    }
+  }
+}
+
+.field--name-variations {
+  .field__label,
+  .field--name-purchased-entity {
+    display: none;
+  }
+}
+
+.field--name-quantity {
+  label {
+    display: inline-block;
+    position: relative;
+    padding: 0 0 .2rem;
+    font-size: .875rem;
+  }
+}
