@@ -30,28 +30,46 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
-    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+    <img src="/{{ directory }}/images/backgrounds/small-header.png"
+         alt="background">
 </div>
 <div class="article-section">
     <div class="l-container">
         <div class="title-container">
             <div class="large-title-block title">
-                <h2>{{ "But tickets"|t }}</h2>
+                <h2>{{ "Buy tickets"|t }}</h2>
             </div>
-            <article{{ attributes }}>
-                {{ product.title }}
-                {{ product.body }}
-                {{ product.variation_sku }}
-                {{ product.variation_title }}
-                {% if product.promotional_price.promotion|length > 0 %}
-                    {{ product.promotional_price.promotion.name[0].value }} Price {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
-                    <br>
-                    {{ "Ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }}
-                {% else %}
-                    {{ product.variation_price }}
-                {% endif %}
-                {{ product.variations }}
-            </article>
+            <div class="location-map">
+                <div class="l-container">
+                    <div id="location-map" class="location-map--container"><img
+                                src="/{{ directory }}/images/commerce/ticket.png"
+                                alt="drupal camp ticket"/></div>
+                    <div>
+                        <table border="1" cellspacing="1" cellpadding="1"
+                               class="important-dates-table">
+                            <tbody>
+                            <tr>
+                                {% if product.promotional_price.promotion|length > 0 %}
+                                    <td>{{ product.promotional_price.price }} {{ product.promotional_price.currency }}</td>
+                                    <td>{{ "Early Bird Price" }}</td>
+                                                                    {% else %}
+                                    <td>{{ product.variation_price }}</td>
+                                    <td>{{ "Regular Price" }}</td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+                        </table>
+                        {{ product.variations }}
+                        {% if product.promotional_price.promotion|length > 0 %}
+                            <p>
+                                <b>{{ "Early bird ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }} {{ "!" }}</b>
+                            </p>
+                        {% else %}
+                            <p><b>{{ "Sales ends on 2018-05-04!"|t }}</b></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
         {{ content.body }}
     </div>
