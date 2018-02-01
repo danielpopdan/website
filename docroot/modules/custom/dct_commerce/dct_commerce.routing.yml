@@ -5,3 +5,10 @@ dct_commerce.ticket_redemption_code:
     _title: Redeem a code
   requirements:
     _permission: access ticket redemption
+dct_commerce.my_tickets:
+  path: /my-tickets
+  defaults:
+    _controller: \Drupal\dct_commerce\Controller\MyTickets::renderMyTicketsPage
+    _title: My tickets
+  requirements:
+    _permission: access ticket redemption
