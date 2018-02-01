@@ -8,7 +8,8 @@
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\dct_commerce\Entity\Ticket;
+use Drupal\commerce_product\Entity\Product;
+use Drupal\commerce_promotion\Entity\Promotion;
 
 /**
  * Creates a store, a product and a promotion for DCTransylvania commerce.
@@ -297,14 +298,26 @@ function add_to_cart_redirect_to_checkout(array &$form, FormStateInterface $form
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess().
  */
-function dct_commerce_preprocess_user(&$variables) {
-  $user = \Drupal::currentUser();
-  if ($user->isAuthenticated()) {
-    $ticket = \Drupal::service('dct_commerce.ticket_controller')->getTicketByRedeemer($user);
-    if ($ticket instanceof Ticket) {
-      $variables['my_ticket_code'] = $ticket->getCode();
+function dct_commerce_preprocess_commerce_product(&$variables) {
+  $product = $variables['product_entity'];
+  if ($product instanceof Product) {
+    $variation = $product->getVariations();
+    $variation = array_pop($variation);
+    $store = array_pop($product->getStores());
+    $promotionalPrice = \Drupal::service('dct_commerce.promotional_price_calculator')->calculatePromotionalPrice($variation, $store);
+
+    $promotion = [];
+    if (!empty($promotionalPrice['promotions'])) {
+      $adjustment = array_pop($promotionalPrice['promotions']);
+      $promotion = Promotion::load($adjustment->getSourceId());
     }
+
+    $variables['product']['promotional_price'] = [
+      'price' => $promotionalPrice['price']->getNumber(),
+      'currency' => $promotionalPrice['price']->getCurrencyCode(),
+      'promotion' => $promotion,
+    ];
   }
 }
