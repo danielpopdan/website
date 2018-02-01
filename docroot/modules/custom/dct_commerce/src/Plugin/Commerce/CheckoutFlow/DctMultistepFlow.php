@@ -30,12 +30,12 @@ class DctMultistepFlow extends CheckoutFlowWithPanesBase {
       'ticket_information' => [
         'label' => $this->t('Ticket information'),
         'has_sidebar' => TRUE,
-        'previous_label' => $this->t('Go back'),
+        'previous_label' => $this->t('Back'),
       ],
       'order_information' => [
         'label' => $this->t('Order information'),
         'has_sidebar' => TRUE,
-        'previous_label' => $this->t('Go back'),
+        'previous_label' => $this->t('Back'),
         'next_label' => $this->t('Continue to order information'),
       ],
       'review' => [
