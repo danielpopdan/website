@@ -46,6 +46,7 @@
                     {% if has_user_access %}
                         <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
                     {% endif %}
+                    <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
                 </div>
             </div>
             <div class="my-profile-info--right">
@@ -57,22 +58,6 @@
                     {{ content.field_bio }}
                 </div>
                 <div class="my-profile-info--details">
-                    <div class="my-profile-details--row">
-                        <div class="my-profile-details--col">
-                            <p>{{ "My ticket code "|t }}</p>
-                        </div>
-                        <div class="my-profile-details--col">
-                            {% if my_ticket_code %}
-                                <p>{{ my_ticket_code }}</p>
-                            {% else %}
-                               <p>{{ "You did not redeem any ticket yet."|t }}</p>
-                               <p>
-                                   {{ "You can redeem a ticket "|t }} <a href="{{ path('dct_commerce.ticket_redemption_code') }}">{{ "here"|t }}</a>
-                                   {{ " or you can buy a ticket " }}<a href="/buy-tickets">{{ "here"|t }}</a>
-                               </p>
-                            {% endif %}
-                        </div>
-                    </div>
                     {% if user.field_country.value %}
                         <div class="my-profile-details--row">
                             <div class="my-profile-details--col">

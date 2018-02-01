@@ -1,0 +1,16 @@
+<div>
+  <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+<div>
+  {{ "Redeemed ticket:"|t }}
+  {% if redeemed_ticket %}
+      <b>{{ redeemed_ticket }}</b>
+  {% else %}
+    {{ "You have not redeemed a ticket. "|t }}
+    {{ "You can redeem one "|t }} <b><a href="{{ path('dct_commerce.ticket_redemption_code') }}">{{ "here"|t }}</a></b>
+    {{ " or you can buy tickets " }} <b><a href="/buy-tickets">{{ "here"|t }}</a></b>
+  {% endif %}
+  <div>
+    {{ bought_tickets_view }}
+  </div>
+</div>

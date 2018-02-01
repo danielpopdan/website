@@ -230,6 +230,12 @@ function dct_commerce_theme() {
         'redeem_link' => NULL,
       ],
     ],
+    'dct_my_tickets' => [
+      'variables' => [
+        'bought_tickets_view' => NULL,
+        'redeemed_ticket' => NULL,
+      ],
+    ],
   ];
 }
 
