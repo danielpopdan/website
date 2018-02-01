@@ -1,4 +1,4 @@
-<div>
+<div{{ attributes }}>
     <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
 </div>
 <div class="article-section form-article">
@@ -10,12 +10,9 @@
         </div>
     </div>
 </div>
-<div class="sponsors-contact">
-    <div class="l-container">
-        <div class="small-title-block">
-            <form{{ attributes }}>
-                {{ children }}
-            </form>
-        </div>
-    </div>
+
+<div class="form-general">
+    <form{{ attributes.addClass(['contact-form']) }}>
+        {{ children }}
+    </form>
 </div>

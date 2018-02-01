@@ -39,7 +39,7 @@ configuration:
       weight: '6'
     order_summary:
       view: ''
-      step: _sidebar
+      step: _disabled
       weight: '7'
     coupon_redemption:
       allow_multiple: false

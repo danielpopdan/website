@@ -59,3 +59,36 @@ function dct_theme_preprocess_user(&$variables) {
   $variables['has_user_access'] = $user->id() == $current_user->id() ? TRUE : FALSE;
   $variables['content']['roles'] = UserSessions::getPublicUserRoles($user);
 }
+
+/**
+ * Implements dct_theme_preprocess_field_multiple_value_form().
+ */
+function dct_theme_preprocess_field_multiple_value_form(&$variables) {
+  // Sets wrappers to the address field on checkout.
+  if ($variables['element']['#id'] == 'edit-payment-information-billing-information-address') {
+    unset($variables['elements'][0]['address']['langcode']);
+    unset($variables['elements'][0]['address']['postal_code']);
+    unset($variables['elements'][0]['address']['organization']);
+    unset($variables['elements'][0]['address']['container0']);
+    unset($variables['elements'][0]['address']['container4']);
+    $variables['elements'][0]['address']['fields'] = [
+      '#prefix' => '<div class="form-two-column">',
+      '#suffix' => '</div>',
+    ];
+    $fields = [
+      'given_name',
+      'family_name',
+      'address_line1',
+      'address_line2',
+      'country_code',
+      'locality',
+    ];
+    foreach ($fields as $weight => $field) {
+      $variables['elements'][0]['address']['fields'][$field] = $variables['elements'][0]['address'][$field];
+      $variables['elements'][0]['address']['fields'][$field]['#weight'] = $weight;
+      $variables['elements'][0]['address']['fields'][$field]['#prefix'] = '<div class="form-wrapper">';
+      $variables['elements'][0]['address']['fields'][$field]['#suffix'] = '</div>';
+      unset($variables['elements'][0]['address'][$field]);
+    }
+  }
+}
