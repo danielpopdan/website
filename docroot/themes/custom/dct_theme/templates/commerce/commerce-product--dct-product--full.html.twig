@@ -38,9 +38,21 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
             <div class="large-title-block title">
                 <h2>{{ "But tickets"|t }}</h2>
             </div>
-            {{- product|without('variation_attributes') -}}
+            <article{{ attributes }}>
+                {{ product.title }}
+                {{ product.body }}
+                {{ product.variation_sku }}
+                {{ product.variation_title }}
+                {% if product.promotional_price.promotion|length > 0 %}
+                    {{ product.promotional_price.promotion.name[0].value }} Price {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
+                    <br>
+                    {{ "Ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }}
+                {% else %}
+                    {{ product.variation_price }}
+                {% endif %}
+                {{ product.variations }}
+            </article>
         </div>
         {{ content.body }}
     </div>
 </div>
-
