@@ -44,7 +44,7 @@ class UserSessionsController extends ControllerBase {
   /**
    * The session_proposal service.
    *
-   * @var \Drupal\dct_sessions\Service\SessionProposalService;
+   * @var \Drupal\dct_sessions\Service\SessionProposalService
    */
   protected $sessionProposalService;
 
@@ -116,7 +116,7 @@ class UserSessionsController extends ControllerBase {
         $allow_user = TRUE;
       }
     }
-    if (!in_array('administrator', $this->currentUser->getRoles()) && !$allow_user){
+    if (!in_array('administrator', $this->currentUser->getRoles()) && !$allow_user) {
       throw new AccessDeniedHttpException();
     }
 
