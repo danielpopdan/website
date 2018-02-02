@@ -1,0 +1,72 @@
+<?php
+
+namespace Drupal\dct_commerce\Controller;
+
+use Drupal\commerce_order\Entity\Order;
+use Drupal\commerce_payment\PaymentGatewayManager;
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Class PaymentResponse.
+ *
+ * Serves the url used when returning from the payment
+ * processor.
+ *
+ * @package Drupal\dct_commerce\Controller
+ */
+class PaymentResponse extends ControllerBase {
+
+  /**
+   * The payment gateway.
+   *
+   * @var \Drupal\commerce_euplatesc\Plugin\Commerce\PaymentGateway\EuPlatescCheckout
+   */
+  private $paymentGateway;
+
+  /**
+   * PaymentResponse constructor.
+   *
+   * @param \Drupal\commerce_payment\PaymentGatewayManager $paymentGatewayManager
+   *   The payment gateway plugin manager.
+   */
+  public function __construct(PaymentGatewayManager $paymentGatewayManager) {
+    $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static (
+      $container->get('plugin.manager.commerce_payment_gateway')
+    );
+  }
+
+  /**
+   * Constructs a response to the payment processor callback.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The current request.
+   *
+   * @return array
+   *   The render array for the response.
+   */
+  public function content(Request $request) {
+    $data = $this->paymentGateway->getRequestData($request);
+    $order = Order::load($data['invoice_id']);
+    if ($order instanceof Order) {
+      $this->paymentGateway->onReturn($order, $request);
+    }
+    else {
+      drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
+    }
+    return [
+      '#theme' => 'dct_commerce_payment_response',
+      '#content' => $_SESSION['messages'],
+    ];
+
+  }
+
+}

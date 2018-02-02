@@ -1,0 +1,16 @@
+<div>
+  <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+<div>
+  {% if content.status %}
+    {% for status in content.status %}
+        <h3>{{ status }}</h3>
+    {% endfor %}
+  {% elseif content.warning %}
+      {% for warning in content.warning %}
+        <h3>{{ warning }}</h3>
+      {% endfor %}
+  {% else %}
+    {{ "Something went wrong. Please contact the system adminstrator"|t }}
+  {% endif %}
+</div>
