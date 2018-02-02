@@ -30,13 +30,11 @@
             <div class="l-container">
                 <div class="l-row">
                     {% for row in rows %}
-                        {% if loop.index is divisible by(3) %}
-                            <div class="l-row">
-                        {% endif %}
-                        {{ row.content }}
-                        {% if (loop.index+1) is divisible by(3) %}
-                            </div>
-                        {% endif %}
+                    {{ row }}
+                    {% if (loop.index) is divisible by(3) %}
+                </div>
+                <div class="l-row">
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
