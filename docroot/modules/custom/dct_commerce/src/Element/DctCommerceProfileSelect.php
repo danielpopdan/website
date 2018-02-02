@@ -26,6 +26,16 @@ class DctCommerceProfileSelect extends ProfileSelect {
       '#weight' => -1,
     ];
 
+    $company_fields = [
+      'field_company_name',
+      'field_tax_identification_no',
+      'field_company_registration_no',
+      'field_bank_name',
+      'field_account_number',
+      'field_county',
+      'field_telephone'
+    ];
+
     $company_visibility_states = [
       'visible' => [
         ':input[name="payment_information[billing_information][profile_type]"]' => ['value' => 'company'],
@@ -35,17 +45,24 @@ class DctCommerceProfileSelect extends ProfileSelect {
       ],
     ];
 
-    $company_fields = [
-      'field_account_number',
-      'field_bank_name',
-      'field_company_registration_no',
-      'field_tax_identification_no',
+    // Set wrappers to the fields.
+    $element['company'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'form-two-column',
+        ]
+      ],
+      '#states' => $company_visibility_states,
     ];
 
-    foreach ($company_fields as $field) {
+    foreach ($company_fields as $weight => $field) {
       $element[$field]['widget'][0]['value']['#states'] = $company_visibility_states;
+      $element['company'][$field] = $element[$field];
+      $element['company'][$field]['#weight'] = $weight;
+
+      unset($element[$field]);
     }
-    $element['field_telephone']['#states']['visible'] = $company_visibility_states['visible'];
 
     return $element;
   }

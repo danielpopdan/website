@@ -1,46 +1,49 @@
-{#
-/**
- * @file
- *
- * Default product template.
- *
- * Available variables:
- * - attributes: HTML attributes for the wrapper.
- * - product: The rendered product fields.
- *   Use 'product' to print them all, or print a subset such as
- *   'product.title'. Use the following code to exclude the
- *   printing of a given field:
- *   @code
- *   {{ product|without('title') }}
- *   @endcode
- * - product_entity: The product entity.
- * - product_url: The product URL.
- *
- * @ingroup themeable
- */
-#}
-{% set classes = [
-'node',
-'node--type-' ~ node.bundle|clean_class,
-node.isPromoted() ? 'node--promoted',
-node.isSticky() ? 'node--sticky',
-not node.isPublished() ? 'node--unpublished',
-view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-'sponsors-intro'
-] %}
-
-<div{{ attributes.addClass(classes) }}>
+<div>
     <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
 </div>
-<div class="article-section">
-    <div class="l-container">
-        <div class="title-container">
-            <div class="large-title-block title">
-                <h2>{{ "But tickets"|t }}</h2>
-            </div>
-            {{- product|without('variation_attributes') -}}
-        </div>
-        {{ content.body }}
-    </div>
-</div>
 
+<article{{ attributes }}>
+    <div class="my-profile">
+        <div class="my-profile-info">
+            <div class="my-profile-info--left">
+                <div class="my-profile-info--basic">
+                    <div class="my-profile-info--image">
+                            <img src="/{{ directory }}/images/commerce/ticket.png" alt="acquia logo">
+                    </div>
+                    <div class="my-profile-info--username">
+                    </div>
+                </div>
+                <div class="my-profile-info--tabs">
+                    <a href="/session-tracks"
+                       class="button">{{ "Session Tracks"|t }}</a>
+                    <a href="/sprints"
+                       class="button">{{ "Sprints"|t }}</a>
+                    <a href="/birds-of-a-feather"
+                       class="button">{{ "Birds of a Feather"|t }}</a>
+                </div>
+            </div>
+            <div class="my-profile-info--right">
+                <div class="my-profile-info--fullname">
+                    <h2>{{ "DrupalCamp ticket"|t  }}</h2>
+                </div>
+                <h3 class="my-profile-info--role">
+                    {% if product.promotional_price.promotion|length > 0 %}
+                        {{ "Early Bird"|t }} {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
+                    {% else %}
+                        {{ "Regular price"|t }} {{ product.variation_price }}
+                    {% endif %}
+                </h3>
+                <div class="my-profile-info--bio">
+                    {% if product.promotional_price.promotion|length > 0 %}
+                        <p>{{ "Early bird ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }} {{ "!" }}</p>
+                    {% else %}
+                        <p>{{ "Sales ends on 2018-05-04!"|t }}</p>
+                    {% endif %}
+                </div>
+                <div class="my-profile-info--details commerce-add-to-cart">
+                    {{ product.variations }}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
