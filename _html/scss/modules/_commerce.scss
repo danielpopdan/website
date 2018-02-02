@@ -40,3 +40,28 @@
     font-size: .875rem;
   }
 }
+
+.my-profile-info {
+  .commerce-add-to-cart {
+    .field--name-quantity {
+      width: 46%;
+      float: left;
+      font-size: initial;
+
+      input {
+        color: #200f17;
+      }
+
+    }
+
+    .form-actions {
+      margin: 1.7rem 0 0 0;
+      width: 30%;
+      float: right;
+
+      input {
+        color: #fff;
+      }
+    }
+  }
+}
