@@ -202,6 +202,7 @@ function dct_commerce_update_8401() {
  * {@inheritdoc}
  */
 function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, FormStateInterface $form_state) {
+  $form['#attributes']['novalidate'] = 'novalidate';
   if ($form['#step_id'] === 'login') {
     $form['register'] = [
       '#markup' => \Drupal::service('link_generator')->generate(t('Register'), Url::fromRoute('user.register', [
