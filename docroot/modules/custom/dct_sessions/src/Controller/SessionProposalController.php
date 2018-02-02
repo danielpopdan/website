@@ -42,9 +42,19 @@ class SessionProposalController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function content($contact_message_id) {
+  public function getAcceptContent($contact_message_id) {
     // Gets the confirmation form.
-    $form = $this->formBuilder->getForm('\Drupal\dct_sessions\Form\ConfirmProposalForm', $contact_message_id);
+    $form = $this->formBuilder->getForm('\Drupal\dct_sessions\Form\AcceptSessionProposalForm', $contact_message_id);
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getRejectContent($contact_message_id) {
+    // Gets the confirmation form.
+    $form = $this->formBuilder->getForm('\Drupal\dct_sessions\Form\RejectSessionProposalForm', $contact_message_id);
 
     return $form;
   }

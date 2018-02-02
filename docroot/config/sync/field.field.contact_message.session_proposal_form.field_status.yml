@@ -1,0 +1,23 @@
+uuid: 4f7216d9-c26b-4591-ac72-c6543ac2f980
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.session_proposal_form
+    - field.storage.contact_message.field_status
+  module:
+    - options
+id: contact_message.session_proposal_form.field_status
+field_name: field_status
+entity_type: contact_message
+bundle: session_proposal_form
+label: Status
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: PENDING
+default_value_callback: ''
+settings: {  }
+field_type: list_string
