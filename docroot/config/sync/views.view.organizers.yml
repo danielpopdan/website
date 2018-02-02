@@ -198,6 +198,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      title: 'Meet the team'
     cache_metadata:
       max-age: -1
       contexts:
