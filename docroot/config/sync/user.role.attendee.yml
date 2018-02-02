@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: attendee
-label: Atendee
+label: Attendee
 weight: 6
 is_admin: null
 permissions: {  }
