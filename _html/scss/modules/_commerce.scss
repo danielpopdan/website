@@ -1,5 +1,16 @@
 .commerce-checkout-flow-dct-multistep {
 
+  fieldset {
+
+    &.checkout-pane-payment-information>legend {
+      display: none;
+    }
+
+    span {
+      line-height: 20px;
+    }
+  }
+
   .form-item-payment-information-billing-information-address-0-address-address-line2 {
     margin-top: 2em;
   }
@@ -11,6 +22,12 @@
   @include tablet {
     .form-two-column {
       margin-bottom: -3em;
+    }
+  }
+
+  .form-actions {
+    a {
+      float: left;
     }
   }
 
@@ -61,6 +78,35 @@
 
       input {
         color: #fff;
+      }
+    }
+  }
+}
+
+.view-commerce-cart-form {
+  form {
+    margin: 5%;
+    table {
+      width: calc(100% + .8rem);
+      color: #fff;
+      font-size: 1rem;
+      border-collapse: separate;
+      border-spacing: .4rem;
+
+      th {
+        background-color: #fcb02a;
+        padding: 1%;
+        line-height: 2rem;
+        text-align: center;
+      }
+
+      td {
+        background-color: #200f17;
+        padding: 1%;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        vertical-align: middle;
       }
     }
   }
