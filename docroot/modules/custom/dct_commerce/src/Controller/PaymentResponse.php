@@ -32,7 +32,8 @@ class PaymentResponse extends ControllerBase {
    *   The payment gateway plugin manager.
    */
   public function __construct(PaymentGatewayManager $paymentGatewayManager) {
-    $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout');
+    $configuration = $this->entityTypeManager()->getStorage('commerce_payment_gateway')->load('dct_euplatesc_gateway')->getPluginConfiguration();
+    $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout', $configuration);
   }
 
   /**
