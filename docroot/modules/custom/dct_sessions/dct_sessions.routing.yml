@@ -17,27 +17,55 @@ dct_sessions.sprint_mentor_config:
 dct_sessions.session_proposal_accept:
   path: '/admin/structure/contact/session-proposal/{contact_message_id}/accept'
   defaults:
-    _controller: '\Drupal\dct_sessions\Controller\SessionProposalController::content'
+    _controller: '\Drupal\dct_sessions\Controller\SessionProposalController::getAcceptContent'
     _title: 'Session proposal acceptance'
   options:
     parameters:
       contact_message_id:
         type: String
   requirements:
-    _permission: 'access content'
+    _permission: 'administer contact forms'
+
+dct_sessions.session_proposal_reject:
+  path: '/admin/structure/contact/session-proposal/{contact_message_id}/reject'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\SessionProposalController::getRejectContent'
+    _title: 'Session proposal rejection'
+  options:
+    parameters:
+      contact_message_id:
+        type: String
+  requirements:
+    _permission: 'administer contact forms'
 
 dct_sessions.confirm_session_proposal_accept:
   path: '/admin/structure/contact/session-proposal/accept/confirmation'
   defaults:
     _title: 'Confirmation page'
-    _form: '\Drupal\dct_sessions\Form\ConfirmProposalForm'
+    _form: '\Drupal\dct_sessions\Form\AcceptSessionProposalForm'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer contact forms'
+
+dct_sessions.confirm_session_proposal_reject:
+  path: '/admin/structure/contact/session-proposal/reject/confirmation'
+  defaults:
+    _title: 'Confirmation page'
+    _form: '\Drupal\dct_sessions\Form\RejectSessionProposalForm'
+  requirements:
+    _permission: 'administer contact forms'
 
 dct_sessions.user_sessions:
   path: '/user/sessions'
   defaults:
-    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::content'
+    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::getUserSessionsContent'
     _title: 'User Sessions'
+  requirements:
+    _permission: 'access content'
+
+dct_sessions.session_view:
+  path: '/session/{contact_message}'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::getSessionContent'
+    _title_callback: '\Drupal\dct_sessions\Controller\UserSessionsController::getSessionTitle'
   requirements:
     _permission: 'access content'

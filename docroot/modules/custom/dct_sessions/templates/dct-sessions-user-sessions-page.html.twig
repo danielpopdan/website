@@ -29,10 +29,12 @@
             <h3 class="my-profile-info--role">{{ user_roles }}</h3>
             <div class="my-profile-session">
                 {% for session in sessions %}
-                    <div class="my-profile-session--item session-status-pending">
-                        <h3 class="session-item--title">{{ session.title }}</h3>
-                        <p class="session-item--status">{{ "Pending"|t }}</p>
-                    </div>
+                    <a href="{{ path('dct_sessions.session_view', {'contact_message': session.id}) }}">
+                        <div class="my-profile-session--item {{ (session.status) ? 'session-status-' ~ session.status : 'session-status-pending' }}">
+                            <h3 class="session-item--title">{{ session.title }}</h3>
+                            <p class="session-item--status">{{ (session.status) ? session.status|capitalize : "Pending"|t }}</p>
+                        </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

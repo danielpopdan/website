@@ -1,0 +1,91 @@
+<div>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+
+<div class="session-detail-content">
+    <div class="large-title-block title">
+        <h2>{{ session.field_name.value }}</h2>
+    </div>
+    <div class="l-container">
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Status:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value session-status">
+                <p>{{ session.field_status.value }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Speakers:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value session-speakers">
+                <p>
+                    {% for user in session.field_user %}
+                        {{ user.entity.field_first_name.value ~ ' ' ~ user.entity.field_last_name.value }}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Description:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_description.value }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Session Type:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_select_list.value }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Duration:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_duration.value ~ "'" }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Session track:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_taxonomy_reference.entity.name.value }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Drupal version:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_select.value }}</p>
+            </div>
+        </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Audience:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value">
+                <p>{{ session.field_radio_button.value }}</p>
+            </div>
+        </div>
+        {% if session.field_file_upload.target_id %}
+            <div class="session-detail--item">
+                <div class="session-detail--item-term">
+                    <p>{{ "Slides"|t }}</p>
+                </div>
+                <div class="session-detail--item-value session-presentation">
+                    <a href="{{ file_url(session.field_file_upload.entity.uri.value) }}" target="_blank"
+                       class="session-presentation--link">{{ session.field_file_upload.entity.filename.value }}</a>
+                    <span class="session-presentation--size">{{ session.field_file_upload.entity.filesize.value/1000 ~ ' KB' }}</span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

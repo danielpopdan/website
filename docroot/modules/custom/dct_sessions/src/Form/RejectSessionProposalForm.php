@@ -9,9 +9,9 @@ use Drupal\dct_sessions\Service\SessionProposalService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a confirmation form for the acceptance of an proposal.
+ * Defines a confirmation form for the rejection of an proposal.
  */
-class ConfirmProposalForm extends ConfirmFormBase {
+class RejectSessionProposalForm extends ConfirmFormBase {
 
   /**
    * The session proposal service.
@@ -56,14 +56,14 @@ class ConfirmProposalForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->sessionProposalService->saveSessionProposal($this->entityId);
+    $this->sessionProposalService->rejectSessionProposal($this->entityId);
   }
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return "accept_proposal_confirmation_form";
+    return "reject_proposal_confirmation_form";
   }
 
   /**
@@ -77,7 +77,7 @@ class ConfirmProposalForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return t('Do you want to accept this proposal?');
+    return t('Do you want to reject this proposal?');
   }
 
 }

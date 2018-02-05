@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
+use Drupal\dct_sessions\Service\SessionProposalService;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -89,13 +90,19 @@ function dct_sessions_sprint_mentor_submit(array $form, FormStateInterface $form
 function dct_sessions_entity_operation_alter(array &$operations, EntityInterface $entity) {
   if ($entity->getEntityTypeId() == 'contact_message' && $entity->bundle() == 'session_proposal_form') {
     // Verifies if the current message is already accepted.
-    $isAccepted = $entity->field_node_id->value;
-    if (empty($isAccepted)) {
-      // Adds a new operation for the current message.
+    $status = !empty($entity->field_status->value) ? $entity->field_status->value : SessionProposalService::PENDING_SESSION;
+    if ($status == SessionProposalService::PENDING_SESSION && !($entity->field_node_id->value)) {
+      // Adds a new ACCEPT operation for the current message.
       $operations['accept'] = [
         'title' => t('Accept'),
-        'weight' => 0,
+        'weight' => -1,
         'url' => Url::fromRoute('dct_sessions.session_proposal_accept', ['contact_message_id' => $entity->id()]),
+      ];
+      // Adds a new REJECT operation for the current message.
+      $operations['reject'] = [
+        'title' => t('Reject'),
+        'weight' => 0,
+        'url' => Url::fromRoute('dct_sessions.session_proposal_reject', ['contact_message_id' => $entity->id()]),
       ];
     }
   }
@@ -262,6 +269,11 @@ function dct_sessions_theme() {
         'user_picture' => NULL,
         'user_roles' => NULL,
         'sessions' => NULL,
+      ],
+    ],
+    'dct_sessions_session_detail_page' => [
+      'variables' => [
+        'session' => NULL,
       ],
     ],
   ];
