@@ -56,13 +56,19 @@ class PaymentResponse extends ControllerBase {
   public function content(Request $request) {
     $data = $this->paymentGateway->getRequestData($request);
     $order = Order::load($data['invoice_id']);
+    $_SESSION['messages']['extra'] = [];
     if ($order instanceof Order) {
-      $this->paymentGateway->onReturn($order, $request);
+      try {
+        $this->paymentGateway->onReturn($order, $request);
+      }
+      catch (\Exception $e) {
+        $_SESSION['messages']['extra'][] = $e->getFile() . ':' . $e->getLine() . $e->getMessage();
+      }
     }
     else {
       drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
     }
-    $_SESSION['messages']['extra'] = [print_r($request->query->all(), TRUE)];
+    $_SESSION['messages']['extra'][] = print_r($request->query->all(), TRUE);
     $_SESSION['messages']['extra'][] = print_r($request->request->all(), TRUE);
     return [
       '#theme' => 'dct_commerce_payment_response',

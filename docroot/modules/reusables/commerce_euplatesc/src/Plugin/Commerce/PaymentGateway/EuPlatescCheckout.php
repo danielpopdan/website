@@ -140,7 +140,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
 
     $configuration = $this->getConfiguration();
     $data['fp_hash'] = strtoupper($this->hashData($data, $configuration['secret_key']));
-    $fp_hash = addslashes(trim($request->query->get('fp_hash')));
+    $fp_hash = addslashes(trim($request->request->get('fp_hash')));
 
     if ($data['fp_hash'] !== $fp_hash) {
       throw new PaymentGatewayException('Invalid signature');
@@ -148,7 +148,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
 
     $payment = $this->createPaymentStorage($order, $request);
 
-    if ($request->query->get('action') == "0") {
+    if ($request->request->get('action') == "0") {
       $order->setData('state', 'completed');
       $payment->state = 'authorization';
 
@@ -163,7 +163,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $event = new EuPlatescPaymentEvent($order);
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_FAILURE, $event);
 
-      drupal_set_message(t('Transaction failed: @message', ['@message' => $request->query->get['message']]), 'warning');
+      drupal_set_message(t('Transaction failed: @message', ['@message' => $request->request->get['message']]), 'warning');
     }
 
     $order->save();
@@ -286,8 +286,8 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       'payment_gateway' => $this->entityId,
       'order_id' => $order->id(),
       'test' => $this->getMode() == 'test',
-      'remote_id' => $request->query->get('ep_id'),
-      'remote_state' => $request->query->get('message'),
+      'remote_id' => $request->request->get('ep_id'),
+      'remote_state' => $request->request->get('message'),
       'authorized' => $request_time,
     ]);
   }
