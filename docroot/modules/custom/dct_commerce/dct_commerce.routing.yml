@@ -12,3 +12,10 @@ dct_commerce.my_tickets:
     _title: My tickets
   requirements:
     _permission: access ticket redemption
+dct_commerce.payment_response:
+  path: /checkout/response
+  defaults:
+    _controller: \Drupal\dct_commerce\Controller\PaymentResponse::content
+    _title: Payment result
+  requirements:
+    _permission: access checkout

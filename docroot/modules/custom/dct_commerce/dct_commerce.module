@@ -238,6 +238,11 @@ function dct_commerce_theme() {
         'redeemed_ticket' => NULL,
       ],
     ],
+    'dct_commerce_payment_response' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
   ];
 }
 
