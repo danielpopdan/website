@@ -14,6 +14,7 @@ dependencies:
     - field.field.contact_message.session_proposal_form.field_radio_button
     - field.field.contact_message.session_proposal_form.field_select
     - field.field.contact_message.session_proposal_form.field_select_list
+    - field.field.contact_message.session_proposal_form.field_status
     - field.field.contact_message.session_proposal_form.field_taxonomy_reference
     - field.field.contact_message.session_proposal_form.field_user
   module:
@@ -106,6 +107,7 @@ content:
 hidden:
   copy: true
   field_node_id: true
+  field_status: true
   mail: true
   message: true
   name: true

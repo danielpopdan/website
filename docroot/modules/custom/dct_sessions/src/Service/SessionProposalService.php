@@ -13,6 +13,14 @@ use Drupal\node\Entity\Node;
 class SessionProposalService {
 
   /**
+   * Available statuses for session contact messages.
+   */
+  const PENDING_SESSION = 'PENDING';
+  const ACCEPTED_SESSION = 'ACCEPTED';
+  const CANCELED_SESSION = 'CANCELED';
+  const REJECTED_SESSION = 'REJECTED';
+
+  /**
    * The entity type service.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
@@ -42,6 +50,7 @@ class SessionProposalService {
     // Creates a node with the values of the contact message entity.
     $node = Node::create([
       'type' => 'session',
+      'uid' => $message_entity->get('uid')->getValue(),
       'field_subtitle' => $message_entity->get('name'),
       'field_email' => $message_entity->get('mail'),
       'title' => $message_entity->get('field_name'),
@@ -58,8 +67,25 @@ class SessionProposalService {
     );
     $node->save();
 
+    // Update the field_status with the ACCEPTED status.
+    $message_entity->field_status->value = self::ACCEPTED_SESSION;
     // Saves a reference to the newly created node in the message entity.
     $message_entity->field_node_id->value = $node->id();
+    $message_entity->save();
+  }
+
+  /**
+   * Changes the status of the session proposal to REJECTED.
+   *
+   * @param int $contact_message_id
+   *   The id of the contact message entity.
+   */
+  public function rejectSessionProposal($contact_message_id) {
+    // Gets the contact_message entity with this id.
+    $message_entity = $this->getEntity($contact_message_id);
+
+    // Update the field_status with the REJECTED status.
+    $message_entity->field_status->value = self::REJECTED_SESSION;
     $message_entity->save();
   }
 

@@ -70,6 +70,8 @@ class UserSessions {
     $submissions_information = [];
     foreach ($submissions as $id => $submission) {
       $submissions_information[$id]['title'] = $submission->field_name->value;
+      $submissions_information[$id]['id'] = $submission->id->value;
+      $submissions_information[$id]['status'] = strtolower($submission->field_status->value);
     }
 
     return $submissions_information;
