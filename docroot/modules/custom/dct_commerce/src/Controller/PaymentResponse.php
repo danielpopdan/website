@@ -62,6 +62,8 @@ class PaymentResponse extends ControllerBase {
     else {
       drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
     }
+    $_SESSION['messages']['extra'] = [print_r($request->query->all(), TRUE)];
+    $_SESSION['messages']['extra'][] = print_r($request->request->all(), TRUE);
     return [
       '#theme' => 'dct_commerce_payment_response',
       '#content' => $_SESSION['messages'],

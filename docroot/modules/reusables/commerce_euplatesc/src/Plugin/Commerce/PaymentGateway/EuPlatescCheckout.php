@@ -247,20 +247,20 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
    */
   public function getRequestData(Request $request) {
     return [
-      'amount' => addslashes(trim($request->query->get('amount'))),
-      'curr' => addslashes(trim($request->query->get('curr'))),
-      'invoice_id' => addslashes(trim($request->query->get('invoice_id'))),
+      'amount' => addslashes(trim($request->request->get('amount'))),
+      'curr' => addslashes(trim($request->request->get('curr'))),
+      'invoice_id' => addslashes(trim($request->request->get('invoice_id'))),
       // A unique id provided by EuPlatesc.ro.
-      'ep_id' => addslashes(trim($request->query->get('ep_id'))),
-      'merch_id' => addslashes(trim($request->query->get('merch_id'))),
+      'ep_id' => addslashes(trim($request->request->get('ep_id'))),
+      'merch_id' => addslashes(trim($request->request->get('merch_id'))),
       // For the transaction to be ok, the action should be 0.
-      'action' => addslashes(trim($request->query->get('action'))),
+      'action' => addslashes(trim($request->request->get('action'))),
       // The transaction response message.
-      'message' => addslashes(trim($request->query->get('message'))),
+      'message' => addslashes(trim($request->request->get('message'))),
       // If the transaction action is different 0, the approval value is empty.
-      'approval' => addslashes(trim($request->query->get('approval'))),
-      'timestamp' => addslashes(trim($request->query->get('timestamp'))),
-      'nonce' => addslashes(trim($request->query->get('nonce'))),
+      'approval' => addslashes(trim($request->request->get('approval'))),
+      'timestamp' => addslashes(trim($request->request->get('timestamp'))),
+      'nonce' => addslashes(trim($request->request->get('nonce'))),
     ];
   }
 

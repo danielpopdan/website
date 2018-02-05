@@ -13,4 +13,7 @@
   {% else %}
     {{ "Something went wrong. Please contact the system adminstrator"|t }}
   {% endif %}
+  {% for extra in content.extra %}
+    <h3>{{ extra }}</h3>
+  {% endfor %}
 </div>
