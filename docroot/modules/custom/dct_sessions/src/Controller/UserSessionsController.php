@@ -73,7 +73,7 @@ class UserSessionsController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(FormBuilderInterface $formBuilder,EntityTypeManagerInterface $entityTypeManager, UserSessions $userSessions, SessionProposalService $sessionProposalService, AccountInterface $currentUser) {
+  public function __construct(FormBuilderInterface $formBuilder, EntityTypeManagerInterface $entityTypeManager, UserSessions $userSessions, SessionProposalService $sessionProposalService, AccountInterface $currentUser) {
     $this->formBuilder = $formBuilder;
     $this->entityTypeManager = $entityTypeManager;
     $this->userSessions = $userSessions;
