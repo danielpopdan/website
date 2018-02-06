@@ -1,0 +1,10 @@
+<div>
+    <h2>
+        {{ form.description }}
+    </h2>
+</div>
+<div class="form-two-actions">
+    {{ form.actions.submit }}
+    {{ form.actions.cancel }}
+</div>
+{{ form|without("description", "actions") }}

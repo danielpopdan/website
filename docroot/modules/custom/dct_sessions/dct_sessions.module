@@ -263,6 +263,12 @@ function dct_sessions_theme() {
     'contact_message_session_proposal_form_form' => [
       'render element' => 'form',
     ],
+    'contact_message_session_proposal_form_edit_form' => [
+      'render element' => 'form',
+    ],
+    'cancel_proposal_confirmation_form' => [
+      'render element' => 'form',
+    ],
     'dct_sessions_user_sessions_page' => [
       'variables' => [
         'user' => NULL,

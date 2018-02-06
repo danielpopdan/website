@@ -38,6 +38,14 @@ dct_sessions.session_proposal_reject:
   requirements:
     _permission: 'administer contact forms'
 
+dct_sessions.session_proposal_cancel:
+  path: '/session/{contact_message}/cancel'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::getCancelContent'
+    _title: 'Cancel Session Proposal'
+  requirements:
+    _permission: 'access content'
+
 dct_sessions.confirm_session_proposal_accept:
   path: '/admin/structure/contact/session-proposal/accept/confirmation'
   defaults:
@@ -67,5 +75,13 @@ dct_sessions.session_view:
   defaults:
     _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::getSessionContent'
     _title_callback: '\Drupal\dct_sessions\Controller\UserSessionsController::getSessionTitle'
+  requirements:
+    _permission: 'access content'
+
+dct_sessions.session_edit:
+  path: '/session/{contact_message}/edit'
+  defaults:
+    _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::editSessionProposal'
+    _title: 'Edit Session Proposal'
   requirements:
     _permission: 'access content'
