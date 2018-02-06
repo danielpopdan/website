@@ -1,7 +1,8 @@
 .my-profile-session {
     margin-top: $global-padding * 2;
     
-    a {
+    .text-container,
+    .wrapper {
         display: inline-block;
         position: relative;
         width: 100%;
@@ -49,20 +50,30 @@
                 color: #a6aaad;
             }
         }
+
+        &.session-status-canceled {
+            border-left: 5px solid $third-color;
+
+            .session-item--status {
+                color: $third-color;
+            }
+        }
     }
 
-    button {
+    a {
         position: absolute;
         right: 0;
         left: inherit;
         background-color: transparent;
 
         &.session-item--edit {
-            top: 0;
+            top: 1rem;
+            right: 1rem;
         }
 
         &.session-item--remove {
-            bottom: 1.25rem;
+            bottom: 2.25rem;
+            right: 1rem;
         }
     }
 }

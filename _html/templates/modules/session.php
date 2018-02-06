@@ -22,42 +22,48 @@
             </div>
             <h3 class="my-profile-info--role">speaker</h3>
             <div class="my-profile-session">
-                <a href="#">
-                    <div class="my-profile-session--item session-status-accepted">
-                        <h3 class="session-item--title">Title title session title</h3>
-                        <p class="session-item--status">accepted</p>
-                    </div>
-                    <button class="session-item--edit">
+                <div class="wrapper">
+                    <a href="#" class="text-container">
+                        <div class="my-profile-session--item session-status-accepted">
+                            <h3 class="session-item--title">Title title session title</h3>
+                            <p class="session-item--status">accepted</p>
+                        </div>
+                    </a>
+                    <a class="session-item--edit">
                         <img src="../images/icons/edit.png" alt="Edit icon"/>
-                    </button>
-                    <button class="session-item--remove">
+                    </a>
+                    <a class="session-item--remove">
                         <img src="../images/icons/delete-icon.png" alt="Edit icon"/>
-                    </button>
-                </a>
-                <a href="#">
-                    <div class="my-profile-session--item session-status-rejected">
-                        <h3 class="session-item--title">Title title session title</h3>
-                        <p class="session-item--status">rejected</p>
-                    </div>
-                    <button class="session-item--edit">
+                    </a>
+                </div>
+                <div class="wrapper">
+                    <a href="#" class="text-container">
+                        <div class="my-profile-session--item session-status-rejected">
+                            <h3 class="session-item--title">Title title session title</h3>
+                            <p class="session-item--status">rejected</p>
+                        </div>
+                    </a>
+                    <a class="session-item--edit">
                         <img src="../images/icons/edit.png" alt="Edit icon"/>
-                    </button>
-                    <button class="session-item--remove">
+                    </a>
+                    <a class="session-item--remove">
                         <img src="../images/icons/delete-icon.png" alt="Edit icon"/>
-                    </button>
-                </a>
-                <a href="#">
-                    <div class="my-profile-session--item session-status-pending">
-                        <h3 class="session-item--title">Title title session title</h3>
-                        <p class="session-item--status">pending</p>
-                    </div>
-                    <button class="session-item--edit">
+                    </a>
+                </div>
+                <div class="wrapper">
+                    <a href="#" class="text-container">
+                        <div class="my-profile-session--item session-status-pending">
+                            <h3 class="session-item--title">Title title session title</h3>
+                            <p class="session-item--status">pending</p>
+                        </div>
+                    </a>
+                    <a class="session-item--edit">
                         <img src="../images/icons/edit.png" alt="Edit icon"/>
-                    </button>
-                    <button class="session-item--remove">
+                    </a>
+                    <a class="session-item--remove">
                         <img src="../images/icons/delete-icon.png" alt="Edit icon"/>
-                    </button>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
