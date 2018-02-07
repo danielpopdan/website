@@ -19,3 +19,10 @@ dct_commerce.payment_response:
     _title: Payment result
   requirements:
     _permission: access checkout
+dct_commerce.generate_coupons:
+  path: /admin/commerce/coupons
+  defaults:
+    _controller: \Drupal\dct_commerce\Controller\TicketAdministration::content
+    _title: Coupon administration
+  requirements:
+    _permission: administer tickets

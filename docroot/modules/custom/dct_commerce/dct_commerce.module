@@ -243,6 +243,12 @@ function dct_commerce_theme() {
         'content' => NULL,
       ],
     ],
+    'dct_tickets_administration' => [
+      'variables' => [
+        'tickets_generation_form' => NULL,
+        'tickets_view' => NULL,
+      ],
+    ],
   ];
 }
 
@@ -264,7 +270,7 @@ function dct_commerce_mail($key, &$message, $params) {
   elseif ($key === 'ticket_buyer') {
     $message['from'] = \Drupal::config('system.site')->get('mail');
     $message['headers']['Content-Type'] = 'text/html';
-    $message['subject'] = count($params['tickets']) > 1 ? t('You have bought tickets for Drupal Camp Transylvania') : t('You have bought a ticket for Drupal Camp Transylvania');
+    $message['subject'] = count($params['tickets']) > 1 ? t('You got tickets for Drupal Camp Transylvania') : t('You got a ticket for Drupal Camp Transylvania');
     foreach ($params['tickets'] as &$ticket) {
       $ticket = $ticket->getCode();
     }
