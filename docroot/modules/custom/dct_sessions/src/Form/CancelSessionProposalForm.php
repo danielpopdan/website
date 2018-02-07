@@ -51,10 +51,7 @@ class CancelSessionProposalForm extends ConfirmFormBase {
 
     $form['#theme'] = 'cancel_proposal_confirmation_form';
 
-    $formm = parent::buildForm($form, $form_state);
-
-    $x = $formm;
-    return $formm;
+    return parent::buildForm($form, $form_state);
   }
 
   /**
