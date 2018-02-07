@@ -24,13 +24,13 @@ interface TicketControllerInterface {
    *
    * @param \Drupal\Core\Session\AccountInterface $creator
    *   The ticket buyer.
-   * @param \Drupal\commerce_order\Entity\OrderItemInterface $orderItem
+   * @param \Drupal\commerce_order\Entity\OrderItemInterface|null $orderItem
    *   The order item on which the ticket was created.
    *
    * @return \Drupal\dct_commerce\Entity\TicketInterface
    *   The Ticket object.
    */
-  public function createTicket(AccountInterface $creator, OrderItemInterface $orderItem);
+  public function createTicket(AccountInterface $creator, $orderItem);
 
   /**
    * Generates a random unique ticket code.

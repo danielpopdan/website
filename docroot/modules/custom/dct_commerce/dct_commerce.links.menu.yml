@@ -1,0 +1,5 @@
+dct_commerce.commerce.coupons:
+  title: 'Coupons'
+  route_name: 'dct_commerce.generate_coupons'
+  parent: 'commerce.admin_commerce'
+  description: 'View and generate coupons.'

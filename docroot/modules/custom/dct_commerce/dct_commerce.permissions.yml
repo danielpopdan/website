@@ -1,3 +1,6 @@
 access ticket redemption:
   title: Access Ticket redemption
   description: Allows the user to access the ticket redemption form
+administer tickets:
+  title: Administer tickets
+  description: Allows the user to see all coupons and generate new ones
