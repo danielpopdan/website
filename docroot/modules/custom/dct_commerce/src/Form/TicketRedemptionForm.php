@@ -63,7 +63,7 @@ class TicketRedemptionForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $ticket = $this->ticketController->getTicketByRedeemer($this->currentUser);
     if (!empty($ticket)) {
-      $form['message']['#markup'] = $this->t('You have redeemed your code.');
+      $form['message']['#markup'] = $this->t('You have already redeemed a coupon.');
       return $form;
     }
 
@@ -89,11 +89,11 @@ class TicketRedemptionForm extends FormBase {
     $code = $form_state->getValue('code');
     $ticket = $this->ticketController->getTicketByCode($code);
     if (empty($ticket)) {
-      $form_state->setErrorByName('code', $this->t('The code %code is invalid.', ['%code' => $code]));
+      $form_state->setErrorByName('code', $this->t('The coupon %code is invalid.', ['%code' => $code]));
       return;
     }
     if ($ticket->isRedeemed()) {
-      $form_state->setErrorByName('code', $this->t('The code %code has already been redeemed.', ['%code' => $code]));
+      $form_state->setErrorByName('code', $this->t('The coupon %code has already been redeemed.', ['%code' => $code]));
     }
   }
 

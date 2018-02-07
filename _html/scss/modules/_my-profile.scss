@@ -42,6 +42,21 @@
             }
         }
     }
+
+    &--back {
+        padding: $global-padding * 1.5 $global-padding * 1.3;
+        text-align: right;
+
+        a {
+            padding-left: 30px;
+            color: #a6aaad;
+            font-size: 14px;
+
+            @include on-events {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .my-profile-info {
