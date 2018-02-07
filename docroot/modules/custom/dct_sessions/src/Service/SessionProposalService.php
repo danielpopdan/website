@@ -90,6 +90,21 @@ class SessionProposalService {
   }
 
   /**
+   * Changes the status of the session proposal to CANCELED.
+   *
+   * @param int $contact_message_id
+   *   The id of the contact message entity.
+   */
+  public function cancelSessionProposal($contact_message_id) {
+    // Gets the contact_message entity with this id.
+    $message_entity = $this->getEntity($contact_message_id);
+
+    // Update the field_status with the REJECTED status.
+    $message_entity->field_status->value = self::CANCELED_SESSION;
+    $message_entity->save();
+  }
+
+  /**
    * Gets the contact message entity.
    *
    * @param string $entity_id
