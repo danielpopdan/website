@@ -111,3 +111,28 @@
     }
   }
 }
+
+.bought-tickets {
+  .redeem-message {
+    padding: 2rem 4rem 0 4rem;
+  }
+  .article-section {
+    table {
+      th {
+        background-color: #200f17;
+        padding: 1%;
+        line-height: 2rem;
+        text-align: center;
+      }
+
+      a {
+        text-decoration: underline;
+        color: white;
+
+        &:hover {
+          color: #200f17;
+        }
+      }
+    }
+  }
+}
