@@ -2,10 +2,12 @@
 
 namespace Drupal\dct_commerce\Controller;
 
+use Drupal\commerce\Response\NeedsRedirectException;
 use Drupal\commerce_checkout\CheckoutOrderManagerInterface;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_payment\PaymentGatewayManager;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -54,8 +56,7 @@ class PaymentResponse extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static (
       $container->get('plugin.manager.commerce_payment_gateway'),
-      $container->get('commerce_checkout.checkout_order_manager'),
-      $container->get('logger.factory')
+      $container->get('commerce_checkout.checkout_order_manager')
     );
   }
 
@@ -67,28 +68,35 @@ class PaymentResponse extends ControllerBase {
    *
    * @return array
    *   The render array for the response.
+   *
+   * @throws \Drupal\commerce\Response\NeedsRedirectException
    */
   public function content(Request $request) {
     $data = $this->paymentGateway->getRequestData($request);
     $order = Order::load($data['invoice_id']);
+
     $_SESSION['messages']['extra'] = [];
     if ($order instanceof Order) {
-      /** @var \Drupal\commerce_checkout\Entity\CheckoutFlowInterface $checkout_flow */
-      $checkout_flow = $order->get('checkout_flow')->entity;
-      $checkout_flow_plugin = $checkout_flow->getPlugin();
       try {
-        $step_id = $this->checkoutOrderManager->getCheckoutStepId($order);
         $this->paymentGateway->onReturn($order, $request);
-        $redirect_step_id = $checkout_flow_plugin->getNextStepId($step_id);
-        $this->getLogger('commerce_payment')->error("Payment for order " . $order->id() . "successful, redirecting to step " . $redirect_step_id);
-        $checkout_flow_plugin->redirectToStep($redirect_step_id);
+        $step_id = 'complete';
       }
       catch (\Exception $e) {
         $this->getLogger('commerce_payment')->error($e->getMessage());
         drupal_set_message($this->t('Payment failed at the payment server. Please review your information and try again.'), 'error');
-        $redirect_step_id = $checkout_flow_plugin->getPreviousStepId($step_id);
-        $checkout_flow_plugin->redirectToStep($redirect_step_id);
+        $step_id = 'review';
       }
+      // Redirect to the appropriate step.
+      $order->set('checkout_step', $step_id);
+      if ($step_id == 'complete') {
+        $transition = $order->getState()->getWorkflow()->getTransition('place');
+        $order->getState()->applyTransition($transition);
+      }
+      $order->save();
+      throw new NeedsRedirectException(Url::fromRoute('commerce_checkout.form', [
+        'commerce_order' => $order->id(),
+        'step' => $step_id,
+      ])->toString());
     }
     else {
       drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
