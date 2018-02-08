@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_commerce\Controller;
 
+use Drupal\commerce_checkout\CheckoutOrderManagerInterface;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_payment\PaymentGatewayManager;
 use Drupal\Core\Controller\ControllerBase;
@@ -26,15 +27,25 @@ class PaymentResponse extends ControllerBase {
   private $paymentGateway;
 
   /**
+   * The checkout order manager.
+   *
+   * @var \Drupal\commerce_checkout\CheckoutOrderManagerInterface
+   */
+  protected $checkoutOrderManager;
+
+  /**
    * PaymentResponse constructor.
    *
    * @param \Drupal\commerce_payment\PaymentGatewayManager $paymentGatewayManager
    *   The payment gateway plugin manager.
+   * @param \Drupal\commerce_checkout\CheckoutOrderManagerInterface $checkout_order_manager
+   *   The checkout order manager.
    */
-  public function __construct(PaymentGatewayManager $paymentGatewayManager) {
+  public function __construct(PaymentGatewayManager $paymentGatewayManager, CheckoutOrderManagerInterface $checkout_order_manager) {
     $configuration = $this->entityTypeManager()->getStorage('commerce_payment_gateway')->load('dct_euplatesc_gateway')->getPluginConfiguration();
     $configuration['_entity_id'] = 'dct_euplatesc_gateway';
     $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout', $configuration);
+    $this->checkoutOrderManager = $checkout_order_manager;
   }
 
   /**
@@ -42,7 +53,9 @@ class PaymentResponse extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static (
-      $container->get('plugin.manager.commerce_payment_gateway')
+      $container->get('plugin.manager.commerce_payment_gateway'),
+      $container->get('commerce_checkout.checkout_order_manager'),
+      $container->get('logger.factory')
     );
   }
 
@@ -60,18 +73,26 @@ class PaymentResponse extends ControllerBase {
     $order = Order::load($data['invoice_id']);
     $_SESSION['messages']['extra'] = [];
     if ($order instanceof Order) {
+      /** @var \Drupal\commerce_checkout\Entity\CheckoutFlowInterface $checkout_flow */
+      $checkout_flow = $order->get('checkout_flow')->entity;
+      $checkout_flow_plugin = $checkout_flow->getPlugin();
       try {
+        $step_id = $this->checkoutOrderManager->getCheckoutStepId($order);
         $this->paymentGateway->onReturn($order, $request);
+        $redirect_step_id = $checkout_flow_plugin->getNextStepId($step_id);
+        $this->getLogger('commerce_payment')->error("Payment for order " . $order->id() . "successful, redirecting to step " . $redirect_step_id);
+        $checkout_flow_plugin->redirectToStep($redirect_step_id);
       }
       catch (\Exception $e) {
-        $_SESSION['messages']['extra'][] = $e->getFile() . ':' . $e->getLine() . $e->getMessage();
+        $this->getLogger('commerce_payment')->error($e->getMessage());
+        drupal_set_message($this->t('Payment failed at the payment server. Please review your information and try again.'), 'error');
+        $redirect_step_id = $checkout_flow_plugin->getPreviousStepId($step_id);
+        $checkout_flow_plugin->redirectToStep($redirect_step_id);
       }
     }
     else {
       drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
     }
-    $_SESSION['messages']['extra'][] = print_r($request->query->all(), TRUE);
-    $_SESSION['messages']['extra'][] = print_r($request->request->all(), TRUE);
     return [
       '#theme' => 'dct_commerce_payment_response',
       '#content' => $_SESSION['messages'],
