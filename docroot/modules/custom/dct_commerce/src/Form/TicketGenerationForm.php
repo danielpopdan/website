@@ -77,7 +77,7 @@ class TicketGenerationForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'dct_commerce_ticket_redemption_form';
+    return 'dct_commerce_ticket_generation_form';
   }
 
   /**
