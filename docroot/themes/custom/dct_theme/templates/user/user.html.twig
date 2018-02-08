@@ -45,8 +45,8 @@
                 <div class="my-profile-info--tabs">
                     {% if has_user_access %}
                         <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
+                        <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
                     {% endif %}
-                    <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
                 </div>
             </div>
             <div class="my-profile-info--right">
