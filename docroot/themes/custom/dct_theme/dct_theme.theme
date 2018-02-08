@@ -90,5 +90,12 @@ function dct_theme_preprocess_field_multiple_value_form(&$variables) {
       $variables['elements'][0]['address']['fields'][$field]['#suffix'] = '</div>';
       unset($variables['elements'][0]['address'][$field]);
     }
+    // Unset ajax from country select.
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#ajax']);
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#ajax_processed']);
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#value_callback']);
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#process']);
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#attached']['drupalSettings']['ajax']);
+    unset($variables['elements'][0]['address']['fields']['country_code']['country_code']['#attached']['drupalSettings']['ajaxTrustedUrl']);
   }
 }
