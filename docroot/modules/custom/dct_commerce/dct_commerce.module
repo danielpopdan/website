@@ -216,6 +216,14 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
     $form['payment_information']['billing_information']['#type'] = 'dct_commerce_profile_select';
   }
   elseif ($form['#step_id'] === 'review') {
+    $form['#theme'] = 'dct_commerce_checkout_review_form';
+    $form['#messages'] = [
+      'status_headings' => [
+        'error' => t('Error message'),
+        'warning' => t('Warning message'),
+      ],
+      'messages' => drupal_get_messages(),
+    ];
     $order = \Drupal::service('current_route_match')->getParameter('commerce_order');
     if ($order instanceof OrderInterface) {
       $order_items = $order->order_items;
@@ -230,7 +238,7 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
           }
         }
       }
-      $form['review']['#recipient_emails'] = $recipient_emails;
+      $form['#recipient_emails'] = $recipient_emails;
     }
   }
 }
@@ -268,6 +276,9 @@ function dct_commerce_theme() {
         'tickets_generation_form' => NULL,
         'tickets_view' => NULL,
       ],
+    ],
+    'dct_commerce_checkout_review_form' => [
+      'render element' => 'form',
     ],
   ];
 }
