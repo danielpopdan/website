@@ -10,17 +10,17 @@
             vertical-align: middle;
             
             @include tablet {
-                margin: 1rem;
+                margin: 0rem;
             }
         }
     }
 
     .diamond-sponsor-text {
-        margin: 1rem auto;
+        margin: 0rem auto;
         font-weight: $weight-bold;
 
         @include tablet {
-            margin-top: 3rem;
+            margin-top: 1rem;
         }
     }
 
@@ -56,7 +56,7 @@
         }
 
         @include medium-desktop {
-            bottom: 7.5rem;
+            bottom: 0rem;
         }
 
         &--intro {
