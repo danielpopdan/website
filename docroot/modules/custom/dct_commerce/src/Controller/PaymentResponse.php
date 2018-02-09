@@ -78,12 +78,15 @@ class PaymentResponse extends ControllerBase {
     $_SESSION['messages']['extra'] = [];
     if ($order instanceof Order) {
       try {
-        $this->paymentGateway->onReturn($order, $request);
-        $step_id = 'complete';
+        if ($this->paymentGateway->onReturn($order, $request)) {
+          $step_id = 'complete';
+        }
+        else {
+          $step_id = 'review';
+        }
       }
       catch (\Exception $e) {
         $this->getLogger('commerce_payment')->error($e->getMessage());
-        drupal_set_message($this->t('Payment failed at the payment server. Please review your information and try again.'), 'error');
         $step_id = 'review';
       }
       // Redirect to the appropriate step.

@@ -148,7 +148,6 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
 
     $payment = $this->createPaymentStorage($order, $request);
 
-    // TODO: Remove true condition in if after testing commerce.
     if ($request->request->get('action') == "0") {
       $order->setData('state', 'completed');
       $payment->state = 'authorization';
@@ -157,6 +156,10 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_SUCCESS, $event);
 
       drupal_set_message(t('The payment was made successfully.'), 'status');
+
+      $order->save();
+      $payment->save();
+      return TRUE;
     }
     else {
       $payment->state = 'authorization_voided';
@@ -165,10 +168,11 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_FAILURE, $event);
 
       drupal_set_message(t('Transaction failed: @message', ['@message' => $request->request->get['message']]), 'warning');
-    }
 
-    $order->save();
-    $payment->save();
+      $order->save();
+      $payment->save();
+      return FALSE;
+    }
   }
 
   /**
