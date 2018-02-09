@@ -75,7 +75,6 @@ class PaymentResponse extends ControllerBase {
     $data = $this->paymentGateway->getRequestData($request);
     $order = Order::load($data['invoice_id']);
 
-    $_SESSION['messages']['extra'] = [];
     if ($order instanceof Order) {
       try {
         if ($this->paymentGateway->onReturn($order, $request)) {
