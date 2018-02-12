@@ -4,13 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.teaser
-    - user.role.administrator
-    - user.role.attendee
+    - entityqueue.entity_queue.featured_speakers_mentors
     - user.role.featured_speaker
-    - user.role.organizer
     - user.role.sprint_mentor
   module:
     - better_exposed_filters
+    - entityqueue
     - user
 id: featured_speakers
 label: 'Featured speakers/mentors'
@@ -174,48 +173,6 @@ display:
           reduce_duplicates: false
           entity_type: user
           plugin_id: user_roles
-        roles_target_id_1:
-          id: roles_target_id_1
-          table: user__roles
-          field: roles_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: not
-          value:
-            administrator: administrator
-            organizer: organizer
-            attendee: attendee
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          entity_type: user
-          plugin_id: user_roles
         uid_raw:
           id: uid_raw
           table: users_field_data
@@ -223,11 +180,11 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '!='
+          operator: '>'
           value:
             min: ''
             max: ''
-            value: '0'
+            value: '1'
           group: 1
           exposed: false
           expose:
@@ -257,26 +214,35 @@ display:
           entity_type: user
           plugin_id: numeric
       sorts:
-        created:
-          id: created
+        entityqueue_relationship:
+          id: entityqueue_relationship
           table: users_field_data
-          field: created
-          order: DESC
-          entity_type: user
-          entity_field: created
-          plugin_id: date
+          field: entityqueue_relationship
           relationship: none
           group_type: group
           admin_label: ''
+          order: ASC
           exposed: false
           expose:
             label: ''
-          granularity: second
+          entity_type: user
+          plugin_id: entity_queue_position
       title: 'Featured speakers/mentors'
       header: {  }
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: users_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'User queue'
+          required: true
+          limit_queue: featured_speakers_mentors
+          entity_type: user
+          plugin_id: entity_queue
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
@@ -290,7 +256,10 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-      tags: {  }
+      tags:
+        - 'config:entityqueue.entity_queue.featured_speakers_mentors'
+        - entity_field_info
+        - views_data
   featured_speakers:
     display_plugin: block
     id: featured_speakers
@@ -304,4 +273,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-      tags: {  }
+      tags:
+        - 'config:entityqueue.entity_queue.featured_speakers_mentors'
+        - entity_field_info
+        - views_data
