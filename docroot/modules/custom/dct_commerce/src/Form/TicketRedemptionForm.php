@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_commerce\Form;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -28,12 +29,20 @@ class TicketRedemptionForm extends FormBase {
   protected $ticketController;
 
   /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_user'),
-      $container->get('dct_commerce.ticket_controller')
+      $container->get('dct_commerce.ticket_controller'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -44,10 +53,13 @@ class TicketRedemptionForm extends FormBase {
    *   The current user account.
    * @param \Drupal\dct_commerce\Controller\TicketControllerInterface $ticketController
    *   The ticket controller.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
-  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController) {
+  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController, EntityTypeManagerInterface $entity_type_manager) {
     $this->currentUser = $account;
     $this->ticketController = $ticketController;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -103,10 +115,20 @@ class TicketRedemptionForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $code = $form_state->getValue('code');
     $ticket = $this->ticketController->getTicketByCode($code);
-    $ticket->redeem($this->currentUser);
-    $ticket->save();
+    try {
+      $ticket->redeem($this->currentUser);
+      $ticket->save();
+      // Add the attendee role to the user.
+      $user = $this->entityTypeManager->getStorage('user')
+        ->load($this->currentUser->id());
+      $user->addRole('attendee');
+      $user->save();
 
-    drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
+      drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
+    }
+    catch (\Exception $e) {
+      drupal_set_message($this->t('The coupon %code is already redeemed!', ['%code' => $code]));
+    }
   }
 
 }
