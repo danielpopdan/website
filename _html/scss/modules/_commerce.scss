@@ -2,7 +2,7 @@
 
   fieldset {
 
-    &.checkout-pane-payment-information>legend {
+    &.checkout-pane-payment-information > legend {
       display: none;
     }
 
@@ -133,6 +133,26 @@
           color: #200f17;
         }
       }
+    }
+  }
+}
+
+.commerce-checkout-flow-dct-multistep {
+  margin-bottom: 1rem;
+
+  ul {
+    list-style-type: disc;
+
+    li {
+      margin-left: 2rem;
+    }
+  }
+
+  .commerce-messages {
+    margin-bottom: 2rem;
+    text-align: center;
+    .messages {
+      display: initial !important;
     }
   }
 }

@@ -225,6 +225,14 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
       'messages' => drupal_get_messages(),
     ];
     $order = \Drupal::service('current_route_match')->getParameter('commerce_order');
+    $form['sidebar']['order_summary'] = [
+      '#theme' => 'commerce_checkout_order_summary',
+      '#order_entity' => $order,
+      '#checkout_step' => $form['#step_id'] ,
+    ];
+    $form['review']['payment_information']['#title'] = t('Billing information');
+    $form['review']['contact_information']['#title'] = t('Contact email');
+    unset($form['review']['payment_information']['summary']['label']);
     if ($order instanceof OrderInterface) {
       $order_items = $order->order_items;
       $recipient_emails = [];
