@@ -43,23 +43,31 @@
 </head>
 <body bgcolor="#ffffff" style="text-align: center; background-color: #ffffff;">
 <center>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" class="content-wrapper">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+           bgcolor="#ffffff" class="content-wrapper">
         <tr style="text-align: center;">
             <td>
-                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" class="template-container" bgcolor="#200F17">
+                <table align="center" border="0" cellpadding="0" cellspacing="0"
+                       width="600px" class="template-container"
+                       bgcolor="#200F17">
                     <tr>
                         <td>
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%">
                                 <tr>
                                     <td>
-                                        <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/backgrounds/small-header.png" alt="First row background">
+                                        <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/backgrounds/small-header.png"
+                                             alt="First row background">
                                     </td>
                                 </tr>
                             </table>
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%">
                                 <tr>
                                     <td style="padding: 15px;">
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td>
                                                     <span></span>
@@ -73,20 +81,31 @@
                     </tr>
                     <tr>
                         <td>
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center;">
+                            <table align="center" border="0" cellpadding="0"
+                                   cellspacing="0" width="100%"
+                                   style="text-align: center;">
                                 <tr>
                                     <td>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center;">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%"
+                                               style="text-align: center;">
                                             <tr style="text-align: center;">
                                                 <td style="text-align: center;">
-                                                    <span style="font-size: 32px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">Hello,</span>
+                                                    <span style="font-size: 32px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">Hello {{ first_name }} {{ last_name }},</span>
                                                 </td>
                                             </tr>
                                         </table>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td style="padding: 20px;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
                                                         <tr>
                                                             <td>
                                                                 <span></span>
@@ -100,32 +119,49 @@
                                 </tr>
                                 <tr style="text-align: center;">
                                     <td style="text-align:center;">
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td>
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="60%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="60%">
                                                         <tr style="text-align: center;">
                                                             <td>
                                                                 <span style="text-align: center; line-height: 40px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
-                                                                    {{ "You bought a ticket for Drupal Camp Transylvania!"|t }}<br>
+                                                                    {{ "Congratulations! You have purchased ticket(s) for DrupalCamp Transylvania!"|t }}
+                                                                    <br>
                                                                     {% if codes|length == 1 %}
-                                                                        {{ "Your ticket coupon is"|t }}:<br>
+                                                                        {{ "Your ticket coupon is"|t }}:
+                                                                        <br>
                                                                     {% else %}
-                                                                        {{ "Your ticket coupons are"|t }}:<br>
+                                                                        {{ "Your ticket coupons are"|t }}:
+                                                                        <br>
                                                                     {% endif %}
                                                                     {% for code in codes %}
-                                                                        {{ code }}<br>
+                                                                        {{ code }}
+                                                                        <br>
                                                                     {% endfor %}
+                                                                    {{ " Redeem one of your coupons using the following link." }}<br>
                                                                 </span>
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
                                         </table>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td style="padding: 20px;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
                                                         <tr>
                                                             <td>
                                                                 <span></span>
@@ -139,20 +175,25 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;">
+                                        <table border="0" cellpadding="0"
+                                               cellspacing="0" width="100%"
+                                               style="min-width:100%;">
                                             <tbody>
                                             <tr>
-                                                <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center">
-                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate !important;border-radius: 3px;background-color: #FCB02A;">
+                                                <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;"
+                                                    valign="top" align="center">
+                                                    <table border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           style="border-collapse: separate !important;border-radius: 3px;background-color: #FCB02A;">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="center" valign="middle" style="font-family: Helvetica; font-size: 18px; padding: 18px;">
-                                                                <a href="{{ redeem_link }}" style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">
-                                                                    {% if codes|length == 1 %}
-                                                                        {{ "Redeem coupon"|t }}
-                                                                    {% else %}
-                                                                        {{ "Redeem coupons"|t }}
-                                                                    {% endif %}
+                                                            <td align="center"
+                                                                valign="middle"
+                                                                style="font-family: Helvetica; font-size: 18px; padding: 18px;">
+                                                                <a href="{{ redeem_link }}"
+                                                                   style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">
+                                                                    {{ "Redeem a coupon"|t }}
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -166,10 +207,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td style="padding: 20px;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
                                                         <tr>
                                                             <td>
                                                                 <span></span>
@@ -179,10 +226,17 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td>
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%"
+                                                           style="text-align: center;">
                                                         <tr style="text-align: center;">
                                                             <td style="text-align: center;">
                                                                         <span style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
@@ -197,15 +251,22 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table border="0" cellpadding="0"
+                                               cellspacing="0" width="100%">
                                             <tbody>
                                             <tr>
                                                 <td valign="top" align="center">
-                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate !important;border-radius: 3px;">
+                                                    <table border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           style="border-collapse: separate !important;border-radius: 3px;">
                                                         <tbody>
                                                         <tr>
-                                                            <td align="center" valign="middle" style="font-family: Helvetica; font-size: 18px; padding: 18px;">
-                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/header-logo.png" alt="logo">
+                                                            <td align="center"
+                                                                valign="middle"
+                                                                style="font-family: Helvetica; font-size: 18px; padding: 18px;">
+                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/header-logo.png"
+                                                                     alt="logo">
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -218,10 +279,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td style="padding: 10px;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
                                                         <tr>
                                                             <td>
                                                                 <span></span>
@@ -231,18 +298,28 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
-                                                <td class="block" style="width: 45%;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                        <tr style="text-align: right;" class="mobile-reposition">
+                                                <td class="block"
+                                                    style="width: 45%;">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
+                                                        <tr style="text-align: right;"
+                                                            class="mobile-reposition">
                                                             <td>
-                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/transylvania.png" alt="logo">
+                                                                <img src="http://drupaltransylvania.ro/themes/custom/dct_theme/images/logos/transylvania.png"
+                                                                     alt="logo">
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td class="block" style="width: 10%;">
+                                                <td class="block"
+                                                    style="width: 10%;">
                                                     <table>
                                                         <tr>
                                                             <td>
@@ -253,10 +330,16 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <table align="center" border="0"
+                                               cellpadding="0" cellspacing="0"
+                                               width="100%">
                                             <tr>
                                                 <td style="padding: 20px;">
-                                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <table align="center"
+                                                           border="0"
+                                                           cellpadding="0"
+                                                           cellspacing="0"
+                                                           width="100%">
                                                         <tr>
                                                             <td>
                                                                 <span></span>

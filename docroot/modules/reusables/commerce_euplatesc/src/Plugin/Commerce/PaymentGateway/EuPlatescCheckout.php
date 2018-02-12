@@ -167,7 +167,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $event = new EuPlatescPaymentEvent($order);
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_FAILURE, $event);
 
-      drupal_set_message(t('Transaction failed: @message', ['@message' => $request->request->get['message']]), 'warning');
+      drupal_set_message('Transaction failed. You should get an email with further details.', 'error');
 
       $order->save();
       $payment->save();

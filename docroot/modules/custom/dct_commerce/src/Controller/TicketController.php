@@ -6,6 +6,7 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\Component\Utility\Random;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Mail\MailManager;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
@@ -37,13 +38,23 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
   protected $mailManager;
 
   /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * TicketController constructor.
    *
    * @param \Drupal\Core\Mail\MailManager $mailManager
    *   The mail manager service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
-  public function __construct(MailManager $mailManager) {
+  public function __construct(MailManager $mailManager, EntityTypeManagerInterface $entity_type_manager) {
     $this->mailManager = $mailManager;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -51,7 +62,8 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
    */
   public static function create(ContainerInterface $container) {
     return new static (
-      $container->get('plugin.manager.mail')
+      $container->get('plugin.manager.mail'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -97,7 +109,7 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
           );
         }
       }
-
+      $params['account'] = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
       // Send mail containing all of the codes
       // to the user who purchased the tickets.
       $params['tickets'] = $tickets;
