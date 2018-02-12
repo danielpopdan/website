@@ -120,22 +120,3 @@ function dct_user_user_register(&$message) {
   $message['headers']['Content-Type'] = 'text/html';
   $message['body'][0] = render($body);
 }
-
-/**
- * Implements hook_form_FORM_ID_alter.
- *
- * @see dct_user_register_form_submit
- */
-function dct_user_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  array_unshift($form['actions']['submit']['#submit'], 'dct_user_register_form_submit');
-}
-
-/**
- * Submit handler for registration form.
- *
- * @see dct_user_form_user_register_form_alter
- */
-function dct_user_register_form_submit($form, FormStateInterface $form_state) {
-  // Adds attendee role to new users.
-  $form_state->setValue('roles', ['authenticated', 'attendee']);
-}
