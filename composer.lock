@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "29b9d67a9b38c79e1cea7ba267d62b18",
+    "content-hash": "6f6b44d8f45fc7d4c46f054ecd782301",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1672,7 +1672,7 @@
                 "source": "http://cgit.drupalcode.org/calendar",
                 "issues": "https://www.drupal.org/project/issues/calendar"
             },
-            "time": "2018-01-04 14:54:04"
+            "time": "2018-01-04T14:54:04+00:00"
         },
         {
             "name": "drupal/calendar_datetime",
@@ -2648,6 +2648,64 @@
             }
         },
         {
+            "name": "drupal/entityqueue",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/entityqueue",
+                "reference": "604d8656adfebf279d7113d42bbcff61afc2b94e"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha7+9-dev",
+                    "datestamp": "1516815184",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Mateescu",
+                    "homepage": "https://www.drupal.org/u/amateescu",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Jonathan Jordan",
+                    "homepage": "https://www.drupal.org/u/jojonaloha",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "quicksketch",
+                    "homepage": "https://www.drupal.org/user/35821"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                }
+            ],
+            "description": "The Entityqueue module allows users to create queues of any entity type.",
+            "homepage": "https://www.drupal.org/project/entityqueue",
+            "support": {
+                "source": "http://cgit.drupalcode.org/entityqueue",
+                "issues": "https://www.drupal.org/project/issues/entityqueue",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            },
+            "time": "2018-01-24T17:31:20+00:00"
+        },
+        {
             "name": "drupal/google_map_field",
             "version": "1.4.0",
             "source": {
@@ -3169,7 +3227,7 @@
                 "issues": "http://drupal.org/project/migrate_tools",
                 "irc": "irc://irc.freenode.org/drupal-migrate"
             },
-            "time": "2017-12-16 04:04:22"
+            "time": "2017-12-16T04:04:22+00:00"
         },
         {
             "name": "drupal/paragraphs",
@@ -8339,6 +8397,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/calendar": 20,
+        "drupal/entityqueue": 20,
         "drupal/migrate_tools": 20
     },
     "prefer-stable": true,
