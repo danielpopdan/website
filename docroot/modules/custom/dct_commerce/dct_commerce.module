@@ -252,7 +252,7 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
 }
 
 /**
- * {@inheritdoc}
+ * Implements hook_theme().
  */
 function dct_commerce_theme() {
   return [
@@ -266,6 +266,8 @@ function dct_commerce_theme() {
       'variables' => [
         'codes' => NULL,
         'redeem_link' => NULL,
+        'first_name' => NULL,
+        'last_name' => NULL,
       ],
     ],
     'dct_my_tickets' => [
@@ -292,13 +294,13 @@ function dct_commerce_theme() {
 }
 
 /**
- * {@inheritdoc}
+ * Implements hook_mail().
  */
 function dct_commerce_mail($key, &$message, $params) {
   if ($key === 'ticket_recipient') {
     $message['from'] = \Drupal::config('system.site')->get('mail');
     $message['headers']['Content-Type'] = 'text/html';
-    $message['subject'] = t('Your have received a ticket code for Drupal Camp Transylvania');
+    $message['subject'] = t('Your have received a ticket coupon for DrupalCamp Transylvania');
     $body = [
       '#theme' => 'dct_ticket_recipient',
       '#code' => $params['code'],
@@ -309,14 +311,17 @@ function dct_commerce_mail($key, &$message, $params) {
   elseif ($key === 'ticket_buyer') {
     $message['from'] = \Drupal::config('system.site')->get('mail');
     $message['headers']['Content-Type'] = 'text/html';
-    $message['subject'] = count($params['tickets']) > 1 ? t('You got tickets for Drupal Camp Transylvania') : t('You got a ticket for Drupal Camp Transylvania');
+    $message['subject'] = count($params['tickets']) > 1 ? t('Tickets for DrupalCamp Transylvania 2018') : t('Ticket for DrupalCamp Transylvania 2018');
     foreach ($params['tickets'] as &$ticket) {
       $ticket = $ticket->getCode();
     }
+    $user = $params['account'];
     $body = [
       '#theme' => 'dct_ticket_buyer',
       '#codes' => $params['tickets'],
       '#redeem_link' => $params['redeem_link'],
+      '#first_name' => $user->get('field_first_name')->value,
+      '#last_name' => $user->get('field_last_name')->value,
     ];
     $message['body'][0] = render($body);
   }
