@@ -116,14 +116,14 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       '#type' => 'textfield',
       '#title' => $this->t('Merchant ID'),
       '#description' => t('The merchant id from the EuPlatesc.ro provider.'),
-      '#default_value' => $this->state->get['eu_platesc.merchant_id'],
+      '#default_value' => $this->state->get('eu_platesc.merchant_id'),
       '#required' => TRUE,
     ];
     $form['secret_key'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Secret key'),
       '#description' => t('The secret key id from the EuPlatesc.ro provider.'),
-      '#default_value' => $this->state->get['eu_platesc.secret_key'],
+      '#default_value' => $this->state->get('eu_platesc.secret_key'),
       '#required' => TRUE,
     ];
 
