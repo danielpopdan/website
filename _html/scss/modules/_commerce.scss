@@ -151,8 +151,12 @@
   .commerce-messages {
     margin-bottom: 2rem;
     text-align: center;
-    .messages {
-      display: initial !important;
+    .commerce-error {
+      color: #a51b00;
+      background: #f9c9bf;
+      padding: 20px;
+      border-color: #e62600;
+      border: double;
     }
   }
 

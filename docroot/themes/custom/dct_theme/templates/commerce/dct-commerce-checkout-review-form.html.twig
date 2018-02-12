@@ -17,10 +17,9 @@
             {%
             set classes = [
             'messages',
-            'messages--' ~ type,
             ]
             %}
-            <div role="contentinfo" aria-label="{{ form['#messages'].status_headings[type] }}"{{ attributes.addClass(classes)|without('role', 'aria-label') }}>
+            <div class="commerce-checkout-flow-dct-multistep commerce-checkout-flow commerce-error">
                 {% if type == 'error' %}
                     <div role="alert">
                 {% endif %}
