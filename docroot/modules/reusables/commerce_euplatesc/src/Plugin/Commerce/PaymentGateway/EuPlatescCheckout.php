@@ -14,6 +14,7 @@ use Drupal\commerce_price\Calculator;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,6 +46,13 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
   protected $eventDispatcher;
 
   /**
+   * The state service.
+   *
+   * @var \Drupal\Core\State\StateInterface
+   */
+  protected $state;
+
+  /**
    * Constructs a new PaymentGatewayBase object.
    *
    * @param array $configuration
@@ -63,10 +71,13 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
    *   The time.
    * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
    *   The event dispatcher service.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   The state service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, EventDispatcherInterface $eventDispatcher) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, EventDispatcherInterface $eventDispatcher, StateInterface $state) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $payment_type_manager, $payment_method_type_manager, $time);
     $this->eventDispatcher = $eventDispatcher;
+    $this->state = $state;
   }
 
   /**
@@ -81,7 +92,8 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $container->get('plugin.manager.commerce_payment_type'),
       $container->get('plugin.manager.commerce_payment_method_type'),
       $container->get('datetime.time'),
-      $container->get('event_dispatcher')
+      $container->get('event_dispatcher'),
+      $container->get('state')
     );
   }
 
@@ -90,8 +102,6 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
    */
   public function defaultConfiguration() {
     return [
-      'merchant_id' => '',
-      'secret_key' => '',
       'redirect_method' => 'post',
     ] + parent::defaultConfiguration();
   }
@@ -106,14 +116,14 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       '#type' => 'textfield',
       '#title' => $this->t('Merchant ID'),
       '#description' => t('The merchant id from the EuPlatesc.ro provider.'),
-      '#default_value' => $this->configuration['merchant_id'],
+      '#default_value' => $this->state->get['eu_platesc.merchant_id'],
       '#required' => TRUE,
     ];
     $form['secret_key'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Secret key'),
       '#description' => t('The secret key id from the EuPlatesc.ro provider.'),
-      '#default_value' => $this->configuration['secret_key'],
+      '#default_value' => $this->state->get['eu_platesc.secret_key'],
       '#required' => TRUE,
     ];
 
@@ -127,8 +137,8 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
     parent::submitConfigurationForm($form, $form_state);
     if (!$form_state->getErrors()) {
       $values = $form_state->getValue($form['#parents']);
-      $this->configuration['merchant_id'] = $values['merchant_id'];
-      $this->configuration['secret_key'] = $values['secret_key'];
+      $this->state->set('eu_platesc.merchant_id', $values['merchant_id']);
+      $this->state->set('eu_platesc.secret_key', $values['secret_key']);
     }
   }
 
@@ -189,7 +199,6 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
     $order = $payment->getOrder();
 
     $amount = $payment->getAmount();
-    $configuration = $this->getConfiguration();
 
     // Order description.
     $order_desc = 'Order #' . $order->id() . ': ';
@@ -214,7 +223,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       'curr' => $amount->getCurrencyCode(),
       'invoice_id' => $order->id(),
       'order_desc' => $order_desc,
-      'merch_id' => $configuration['merchant_id'],
+      'merch_id' => $this->state->get('eu_platesc.merchant_id'),
       'timestamp' => $timestamp,
       'nonce' => $nonce,
     ];
@@ -232,10 +241,10 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       'curr' => $amount->getCurrencyCode(),
       'invoice_id' => $order->id(),
       'order_desc' => $order_desc,
-      'merch_id' => $configuration['merchant_id'],
+      'merch_id' => $this->state->get('eu_platesc.merchant_id'),
       'timestamp' => $timestamp,
       'nonce' => $nonce,
-      'fp_hash' => strtoupper($this->hashData($data, $configuration['secret_key'])),
+      'fp_hash' => strtoupper($this->hashData($data, $this->state->get('eu_platesc.secret_key'))),
     ];
 
     return $nvp_data;

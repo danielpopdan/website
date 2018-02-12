@@ -42,10 +42,14 @@ class PaymentResponse extends ControllerBase {
    *   The payment gateway plugin manager.
    * @param \Drupal\commerce_checkout\CheckoutOrderManagerInterface $checkout_order_manager
    *   The checkout order manager.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
   public function __construct(PaymentGatewayManager $paymentGatewayManager, CheckoutOrderManagerInterface $checkout_order_manager) {
     $configuration = $this->entityTypeManager()->getStorage('commerce_payment_gateway')->load('dct_euplatesc_gateway')->getPluginConfiguration();
     $configuration['_entity_id'] = 'dct_euplatesc_gateway';
+    $configuration['merchant_id'] = \Drupal::state()->get('eu_platesc.merchant_id');
+    $configuration['secret_key'] = \Drupal::state()->get('eu_platesc.secret_key');
     $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout', $configuration);
     $this->checkoutOrderManager = $checkout_order_manager;
   }

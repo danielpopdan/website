@@ -9,8 +9,6 @@ label: 'DCT EuPlatesc Gateway'
 weight: null
 plugin: euplatesc_checkout
 configuration:
-  merchant_id: '44840983494'
-  secret_key: 9BB0C4F0D0C603477F2CB03EF48C079D98C326E5
   redirect_method: post
   display_label: EuPlatesc
   mode: test
