@@ -1,0 +1,9 @@
+dct_user.error_page:
+  path: '/not-authenticated'
+  defaults:
+    _title: 'Not authenticated'
+    _controller: '\Drupal\dct_user\Controller\NotAuthenticated::index'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

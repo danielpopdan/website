@@ -46,7 +46,12 @@ function dct_user_theme() {
         'first_name' => NULL,
         'last_name' => NULL,
       ],
-    ]
+    ],
+    'dct_user_not_authenticated_error' => [
+      'variables' => [
+        'links' => NULL,
+      ],
+    ],
   ];
 }
 
