@@ -1,0 +1,6 @@
+services:
+  dct_user.not_authenticated_subscriber:
+    class: Drupal\dct_user\EventSubscriber\NotAuthenticatedEventSubscriber
+    arguments: ['@current_user', '@request_stack', '@current_route_match']
+    tags:
+     - { name: event_subscriber }
