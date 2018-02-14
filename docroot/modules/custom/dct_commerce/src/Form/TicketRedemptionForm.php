@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
+use Drupal\dct_newsletter\Controller\MailchimpController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -36,13 +37,21 @@ class TicketRedemptionForm extends FormBase {
   protected $entityTypeManager;
 
   /**
+   * The Mailchimp service.
+   *
+   * @var \Drupal\dct_newsletter\Controller\MailchimpController
+   */
+  protected $mailchimpService;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('current_user'),
       $container->get('dct_commerce.ticket_controller'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('dct_newsletter.mailchimp_service')
     );
   }
 
@@ -55,11 +64,14 @@ class TicketRedemptionForm extends FormBase {
    *   The ticket controller.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
+   * @param \Drupal\dct_newsletter\Controller\MailchimpController $mailchimpController
+   *   The Mailchimp service.
    */
-  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController, EntityTypeManagerInterface $entity_type_manager, MailchimpController $mailchimpController) {
     $this->currentUser = $account;
     $this->ticketController = $ticketController;
     $this->entityTypeManager = $entity_type_manager;
+    $this->mailchimpService = $mailchimpController;
   }
 
   /**
@@ -123,6 +135,7 @@ class TicketRedemptionForm extends FormBase {
         ->load($this->currentUser->id());
       $user->addRole('attendee');
       $user->save();
+      $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DCT-2018 Participants');
 
       drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
     }
