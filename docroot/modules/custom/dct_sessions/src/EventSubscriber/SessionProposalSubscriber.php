@@ -7,6 +7,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -41,6 +42,13 @@ class SessionProposalSubscriber implements EventSubscriberInterface {
   protected $entityTypeManager;
 
   /**
+   * The current request.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
+
+  /**
    * SessionProposalSubscriber constructor.
    *
    * @param \Drupal\Core\Session\AccountProxyInterface $current_user
@@ -49,11 +57,14 @@ class SessionProposalSubscriber implements EventSubscriberInterface {
    *   The service for managing the result of routing.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type service.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *   The current request stack.
    */
-  public function __construct(AccountProxyInterface $current_user, RouteMatchInterface $route_match, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(AccountProxyInterface $current_user, RouteMatchInterface $route_match, EntityTypeManagerInterface $entity_type_manager, RequestStack $requestStack) {
     $this->account = $current_user;
     $this->routeMatch = $route_match;
     $this->entityTypeManager = $entity_type_manager;
+    $this->request = $requestStack->getCurrentRequest();
   }
 
   /**
@@ -82,16 +93,13 @@ class SessionProposalSubscriber implements EventSubscriberInterface {
     // Checks if the current user is annonymous and if the current form is
     // the session proposal form.
     if ($this->account->isAnonymous() && $route_name == 'entity.contact_form.canonical' && $form_id == 'session_proposal_form') {
-
-      // Sets destination query parameter the current page.
-      $query = [];
-      $query['destination'] = Url::fromRoute('<current>')->toString();
-      $login_uri = Url::fromRoute('user.login', [], ['query' => $query])
-        ->toString();
-
-      // Sets the redirect option to the login page.
-      $returnResponse = new RedirectResponse($login_uri, Response::HTTP_FOUND);
-      $event->setResponse($returnResponse);
+      $destination = [];
+      if (!empty($this->request->getRequestUri())) {
+        $destination = ['destination' => $this->request->getRequestUri()];
+      }
+      $url = Url::fromRoute('dct_user.error_page', $destination);
+      $response = new RedirectResponse($url->toString(TRUE)->getGeneratedUrl());
+      $event->setResponse($response);
     }
   }
 
