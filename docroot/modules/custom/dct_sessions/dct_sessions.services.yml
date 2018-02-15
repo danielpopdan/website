@@ -1,7 +1,7 @@
 services:
   session_proposal_form_subcriber:
     class: '\Drupal\dct_sessions\EventSubscriber\SessionProposalSubscriber'
-    arguments: ['@current_user', '@current_route_match','@entity_type.manager']
+    arguments: ['@current_user', '@current_route_match','@entity_type.manager', '@request_stack']
     tags:
     - { name: 'event_subscriber' }
   session_proposal:
