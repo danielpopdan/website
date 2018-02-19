@@ -1,0 +1,340 @@
+.session-schedule-content {
+    padding: $global-padding * 4.625 0;
+    background-color: $section-bg-color;
+
+    .mobile-room-slider {
+        display: block;
+        padding: $global-padding * .375 0 0;
+
+        @include large-mobile {
+            padding: $global-padding 0;
+        }
+
+        &--item {
+            font-size: $global-font-size * .875;
+
+            @include tablet {
+                font-size: $global-font-size * 1.075;
+            }
+        }
+
+        .slick-list {
+            text-align: center;
+            padding: $global-padding 0;
+        }
+
+        .slick-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0;
+            background-color: transparent;
+            padding: 0 $global-padding * .5;
+            z-index: 9999;
+
+            &.slick-next {
+                right: 10px;
+                left: inherit;
+
+                &:before {
+                    content: url($icons-path + 'arrow-next.png');
+                }
+            }
+            
+            &.slick-prev {
+                left: 10px;
+                right: inherit;
+
+                &:before {
+                    content: url($icons-path + 'arrow-prev.png');
+                }
+            }
+
+            &.slick-disabled {
+                display: none !important;
+            }
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    .title {
+        h2 {
+            color: $fourth-color;
+            font-family: $font-main;
+            font-size: $global-font-size * 2;
+            font-weight: $weight-medium;
+        }
+    }
+
+    .scheduler-container {
+        @include box-shadow(0, 0, .25rem, $box-shadow);
+        max-width: 810px;
+        width: 100%;
+        margin: $global-margin * 4.5 auto 0;
+        background-color: $white;
+    }
+
+    .day-tabs-container {
+        width: 100%;
+        font-size: 0;
+        font-family: $font-main;
+        font-weight: $weight-medium;
+        color: $primary-color;
+
+        .day-tab {
+            @include box-shadow(.125rem, .125rem, .25rem, $box-shadow);
+            display: inline-block;
+            width: calc(100% / 3);
+            padding: $global-padding * 1.35 $global-padding * 1.25;
+            font-size: $global-font-size * .875;
+            text-align: center;
+            vertical-align: middle;
+            background-color: $white;
+            cursor: pointer;
+
+            @include tablet {
+                padding: $global-padding * 1.35 $global-padding * 6.25;
+                font-size: $global-font-size * 1.15;
+            }
+
+            &:last-child {
+                @include box-shadow(0, .125rem, .25rem, $box-shadow);
+            }
+
+            &.active-tab {
+                background-color: $secondary-color;
+                color: $white;
+            }
+
+            @include on-events {
+                background-color: $secondary-color;
+                color: $white;
+            }
+        }
+    }
+
+    .day-tab-content {
+        display: none;
+        margin: $global-margin * .5;
+        color: $primary-color;
+        
+        @include large-mobile {
+            margin: $global-margin;
+        }
+
+        p {
+            color: inherit;
+        }
+
+        &.active-tab-content {
+            display: block;
+        }
+    }
+
+    .conference-opening {
+        @include box-shadow(0, 0, .5rem, $box-shadow);
+        padding: $global-padding;
+        text-align: center;
+        font-family: $font-main;
+        font-weight: $weight-medium;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        &--hours {
+            margin-bottom: $global-margin * .75;
+            color: #a7a4a4;
+            font-size: $global-font-size *.9375;
+        }
+
+        &--title {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: url($backgrounds-path + 'scheduler-dash.png') repeat-x;
+            
+            p {
+                position: absolute;
+                top: -2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+                padding: 0 $global-padding * .5;
+                color: $primary-color;
+                font-size: $global-font-size * 1.0625;
+                background-color: $white;
+
+                @include large-mobile {
+                    width: auto;
+                }
+            }
+        }
+    }
+
+    .day-schedule {
+        font-size: 0;
+        margin: 0;
+        
+        @include large-mobile {
+            margin-top: $global-margin;
+        }
+
+        .room-schedule {
+            margin-right: 0;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+
+            @include tablet {
+                width: calc(100% / 3 - 7px);
+                margin-right: $global-margin * .625;
+            }
+
+            &:nth-child(3) {
+                margin-right: 0;
+            }
+
+            &.room-1 {
+                .schedule-item--room {
+                    background-color: $fourth-color;
+                }
+            }
+            
+            &.room-2 {
+                .schedule-item--room {
+                    background-color: $primary-color;
+                }
+            }
+            
+            &.room-3 {
+                .schedule-item--room {
+                    background-color: $third-color;
+                }
+            }
+        }
+
+        .schedule-item {
+            @include box-shadow(0, 0, .5rem, $box-shadow);
+            margin: $global-margin $global-margin * .1;
+            padding: $global-padding * .875;
+            font-family: $font-main;
+            color: $primary-color;
+
+            @include tablet {
+                margin-bottom: $global-margin;
+            }
+
+            &--detail-row {
+                margin-bottom: $global-margin;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            &--room,
+            &--hours,
+            &--topic,
+            &--save {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            &--room {
+                padding: $global-padding * .5;
+                font-size: $global-font-size * .75;
+                color: $white;
+            }
+
+            &--hours {
+                font-size: $global-font-size * .9375;
+                font-weight: $weight-medium;
+                color: #767575;
+                float: right;
+                margin-top: $global-margin * .375;
+            }
+
+            &--title {
+                margin-bottom: $global-margin *.9375;
+                font-weight: $weight-medium;
+                font-size: $global-font-size * 1.0625;
+            }
+
+            &--speaker {
+                font-size: $global-font-size;
+                font-style: italic;
+            }
+
+            &--topic {
+                padding: $global-padding * .5;
+                background-color: #ebebeb;
+                font-size: $global-font-size * .75;
+            }
+
+            &--difficulty {
+                margin: $global-margin 0;
+            }
+
+            &--rating-block,
+            &--save {
+                width: 50px;
+                height: 25px;
+                display: inline-block;
+                vertical-align: top;
+                background: url($icons-path + 'scheduler-sprite.png') no-repeat;
+                background-size: cover;
+                background-position: 0 0;
+
+                &.rating-active {
+                    background-position: 0 -35px;
+                }
+            }
+
+            &--save {
+                float: right;
+                width: 32px;
+                height: 32px;
+                background-position: -2px -52px;
+                background-size: inherit;
+                cursor: pointer;
+
+                &.item-saved {
+                    background-position-y: -86px;
+                }
+            }
+
+            &.break-item {
+                .schedule-item--detail-row {
+                    > div {
+                        width: 100%;
+                        text-align: right;
+                        float: none;
+                    }
+                }
+            }
+
+            .break-item--title {
+                position: relative;
+                width: 100%;
+                height: 20px;
+                background: url($backgrounds-path + 'scheduler-dash.png') repeat-x;
+
+                p {
+                    position: absolute;
+                    top: -2px;
+                    left: 0;
+                    padding: 0 $global-padding * .5 0 0;
+                    color: $primary-color;
+                    font-size: $global-font-size * 1.0625;
+                    font-weight: $weight-medium;
+                    background-color: $white;
+                }
+            }
+        }
+    }
+}
