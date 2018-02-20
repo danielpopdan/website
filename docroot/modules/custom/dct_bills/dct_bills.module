@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dct_bills_theme() {
+  return [
+    'bill' => [
+      'variables' => [
+        'country' => NULL,
+        'city' => NULL,
+        'address' => NULL,
+        'given_name' => NULL,
+        'family_name' => NULL,
+        'phone' => NULL,
+        'company' => NULL,
+        'tax_no' => NULL,
+        'company_no' => NULL,
+        'bank' => NULL,
+        'account_no' => NULL,
+        'ticket_title_1' => NULL,
+        'ticket_title_2' => NULL,
+        'unit_price' => NULL,
+        'quantity' => NULL,
+        'total_item_price' => NULL,
+        'total_price' => NULL,
+        'inv_no' => NULL,
+        'current_date' => NULL,
+      ],
+    ],
+  ];
+}

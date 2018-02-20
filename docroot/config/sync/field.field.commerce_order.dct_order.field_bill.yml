@@ -1,0 +1,27 @@
+uuid: c4da6375-61b4-4df4-977a-9ca60a254d8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.dct_order
+    - field.storage.commerce_order.field_bill
+  module:
+    - file
+id: commerce_order.dct_order.field_bill
+field_name: field_bill
+entity_type: commerce_order
+bundle: dct_order
+label: Bill
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
