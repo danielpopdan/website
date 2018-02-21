@@ -1,0 +1,5 @@
+dct_bills_configuartion.admin.structure.settings:
+  title: 'Invoice configurations'
+  route_name: dct_bills.invoice_configurations
+  description: 'Manages invoice configurations.'
+  parent: dct_homepage.admin.structure.settings
