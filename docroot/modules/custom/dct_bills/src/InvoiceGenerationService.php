@@ -53,6 +53,11 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
     // The list of countries is needed to find the country name based on code.
     $list = $this->countryManager->getList();
     $array = explode("\n", wordwrap($ticket->getTitle(), 40));
+    // Check if there is any promotion.
+    $store = array_pop($ticket->getPurchasedEntity()->getStores());
+    $final_price = \Drupal::service('dct_commerce.promotional_price_calculator')->calculatePromotionalPrice($ticket->getPurchasedEntity(), $store);
+    // Increments the invoice number.
+    $invoice_number++;
     $render = [
       '#theme' => 'bill',
       '#country' => [
@@ -95,26 +100,27 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
         '#markup' => $array[1],
       ],
       '#unit_price' => [
-        '#markup' => number_format($ticket->getUnitPrice()->getNumber(), 2) . $ticket->getUnitPrice()->getCurrencyCode(),
+        '#markup' => number_format($final_price['price']->getNumber(), 2) . $final_price['price']->getCurrencyCode(),
       ],
       '#quantity' => [
         '#markup' => $ticket->getQuantity(),
       ],
       '#total_item_price' => [
-        '#markup' => number_format($ticket->getTotalPrice()->getNumber(), 2) . $ticket->getTotalPrice()->getCurrencyCode(),
+        '#markup' => (number_format($final_price['price']->getNumber(), 2) * $ticket->getQuantity()) . $final_price['price']->getCurrencyCode(),
       ],
       '#total_price' => [
         '#markup' => number_format($order->getTotalPrice()->getNumber(), 2) . $order->getTotalPrice()->getCurrencyCode(),
       ],
       '#inv_no' => [
-        '#markup' => $invoice_number++,
+        '#markup' => $invoice_number,
       ],
       '#current_date' => [
         '#markup' => date('d.m.Y', $order->getCompletedTime()),
       ],
     ];
+
     // Sets the invoice number back, incremented.
-    $this->setInvoiceNumber($invoice_number++);
+    $this->setInvoiceNumber($invoice_number);
 
     return $this->generatePdf($render);
   }

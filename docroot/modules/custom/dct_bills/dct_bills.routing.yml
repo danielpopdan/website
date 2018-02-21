@@ -1,0 +1,7 @@
+dct_bills.invoice_configurations:
+  path: '/admin/config/camp-transylvania/invoice'
+  defaults:
+    _form: '\Drupal\dct_bills\Form\InvoiceNumberConfigurationForm'
+    _title: 'Invoice configurations'
+  requirements:
+    _permission: 'administer camp settings'

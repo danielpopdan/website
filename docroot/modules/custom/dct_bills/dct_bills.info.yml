@@ -7,3 +7,4 @@ dependencies:
   - commerce
   - commerce_checkout
   - dct_commerce
+  - dct_homepage
