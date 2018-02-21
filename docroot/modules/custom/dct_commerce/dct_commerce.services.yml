@@ -5,7 +5,7 @@ services:
 
   dct_commerce.transaction_event_subscriber:
     class: 'Drupal\dct_commerce\EventSubscriber\TransactionEventSubscriber'
-    arguments: ['@dct_commerce.ticket_controller']
+    arguments: ['@dct_commerce.ticket_controller', '@dct_bills.bill_generation']
     tags:
       - { name: 'event_subscriber' }
   dct_commerce.promotional_price_calculator:
