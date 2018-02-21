@@ -49,6 +49,7 @@ class TransactionEventSubscriber implements EventSubscriberInterface {
   public function onPaymentSuccess(EuPlatescPaymentEvent $event) {
     $order = $event->getOrder();
     $this->ticketController->handlePaymentSuccess($order);
+    $this->invoiceGeneration->generateInvoiceToOrder($order);
   }
 
   /**
