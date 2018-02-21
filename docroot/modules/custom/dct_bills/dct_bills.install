@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update tasks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dct_bills_install() {
+  // Sets the beginning of the invoice number.
+  \Drupal::state()->set('dct_bills.bill_no', 0);
+}

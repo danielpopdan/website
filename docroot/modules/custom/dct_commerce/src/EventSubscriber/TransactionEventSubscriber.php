@@ -4,6 +4,7 @@ namespace Drupal\dct_commerce\EventSubscriber;
 
 use Drupal\commerce_euplatesc\Event\EuPlatescEvents;
 use Drupal\commerce_euplatesc\Event\EuPlatescPaymentEvent;
+use Drupal\dct_bills\InvoiceGenerationServiceInterface;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -20,13 +21,23 @@ class TransactionEventSubscriber implements EventSubscriberInterface {
   protected $ticketController;
 
   /**
+   * The invoice generation service.
+   *
+   * @var \Drupal\dct_bills\InvoiceGenerationServiceInterface
+   */
+  protected $invoiceGeneration;
+
+  /**
    * TransactionEventSubscriber constructor.
    *
    * @param \Drupal\dct_commerce\Controller\TicketControllerInterface $ticketController
    *   The ticket controller.
+   * @param \Drupal\dct_bills\InvoiceGenerationServiceInterface $invoice_generation
+   *   The invoice generation service.
    */
-  public function __construct(TicketControllerInterface $ticketController) {
+  public function __construct(TicketControllerInterface $ticketController, InvoiceGenerationServiceInterface $invoice_generation) {
     $this->ticketController = $ticketController;
+    $this->invoiceGeneration = $invoice_generation;
   }
 
   /**

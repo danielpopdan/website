@@ -1,0 +1,4 @@
+services:
+  dct_bills.bill_generation:
+    class: 'Drupal\dct_bills\InvoiceGenerationService'
+    arguments: ['@country_manager', '@state']

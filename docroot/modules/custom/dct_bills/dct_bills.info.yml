@@ -1,0 +1,9 @@
+name: DCT Bills
+type: module
+description: Provides ticket billing functionality.
+package: DCT
+core: 8.x
+dependencies:
+  - commerce
+  - commerce_checkout
+  - dct_commerce
