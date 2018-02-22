@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations().
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dct_schedule_theme() {
+  return [
+    'dct_schedule' => [
+      'variables' => [
+        'sessions' => NULL,
+      ],
+    ],
+  ];
+}

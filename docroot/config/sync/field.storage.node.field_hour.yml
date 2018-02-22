@@ -1,0 +1,189 @@
+uuid: a0c062d0-9375-4eec-b253-d733ebcc94c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_hour
+field_name: field_hour
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: '08:00'
+    -
+      value: '2'
+      label: '08:15'
+    -
+      value: '3'
+      label: '08:30'
+    -
+      value: '4'
+      label: '08:45'
+    -
+      value: '5'
+      label: '09:00'
+    -
+      value: '6'
+      label: '09:15'
+    -
+      value: '7'
+      label: '09:30'
+    -
+      value: '8'
+      label: '09:45'
+    -
+      value: '10'
+      label: '10:00'
+    -
+      value: '11'
+      label: '10:15'
+    -
+      value: '12'
+      label: '10:30'
+    -
+      value: '13'
+      label: '10:45'
+    -
+      value: '14'
+      label: '11:00'
+    -
+      value: '15'
+      label: '11:15'
+    -
+      value: '16'
+      label: '11:30'
+    -
+      value: '17'
+      label: '11:45'
+    -
+      value: '18'
+      label: '12:00'
+    -
+      value: '19'
+      label: '12:15'
+    -
+      value: '20'
+      label: '12:30'
+    -
+      value: '21'
+      label: '12:45'
+    -
+      value: '22'
+      label: '13:00'
+    -
+      value: '23'
+      label: '13:15'
+    -
+      value: '24'
+      label: '13:30'
+    -
+      value: '25'
+      label: '13:45'
+    -
+      value: '26'
+      label: '14:00'
+    -
+      value: '27'
+      label: '14:15'
+    -
+      value: '28'
+      label: '14:30'
+    -
+      value: '29'
+      label: '14:45'
+    -
+      value: '30'
+      label: '15:00'
+    -
+      value: '31'
+      label: '15:15'
+    -
+      value: '32'
+      label: '15:30'
+    -
+      value: '33'
+      label: '15:45'
+    -
+      value: '34'
+      label: '16:00'
+    -
+      value: '35'
+      label: '16:15'
+    -
+      value: '36'
+      label: '16:30'
+    -
+      value: '37'
+      label: '16:45'
+    -
+      value: '38'
+      label: '17:00'
+    -
+      value: '39'
+      label: '17:15'
+    -
+      value: '40'
+      label: '17:30'
+    -
+      value: '41'
+      label: '17:45'
+    -
+      value: '42'
+      label: '18:00'
+    -
+      value: '43'
+      label: '18:15'
+    -
+      value: '44'
+      label: '18:30'
+    -
+      value: '45'
+      label: '18:45'
+    -
+      value: '46'
+      label: '19:00'
+    -
+      value: '47'
+      label: '19:15'
+    -
+      value: '48'
+      label: '19:30'
+    -
+      value: '49'
+      label: '19:45'
+    -
+      value: '50'
+      label: '20:00'
+    -
+      value: '51'
+      label: '20:15'
+    -
+      value: '52'
+      label: '20:30'
+    -
+      value: '53'
+      label: '20:45'
+    -
+      value: '54'
+      label: '21:00'
+    -
+      value: '55'
+      label: '21:15'
+    -
+      value: '56'
+      label: '21:30'
+    -
+      value: '57'
+      label: '21:45'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
