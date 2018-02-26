@@ -1,8 +1,9 @@
-uuid: b7988ef3-ed10-4350-9333-8f8a761bc8cc
+uuid: 36482130-b7d1-45d1-b898-7f188257a631
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.field.node.session.field_day
     - field.field.node.session.field_email
     - field.field.node.session.field_files
@@ -23,10 +24,10 @@ dependencies:
     - file
     - options
     - user
-id: node.session.default
+id: node.session.teaser
 targetEntityType: node
 bundle: session
-mode: default
+mode: teaser
 content:
   field_day:
     weight: 119
@@ -119,7 +120,7 @@ content:
     region: content
   field_speakers:
     weight: 102
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

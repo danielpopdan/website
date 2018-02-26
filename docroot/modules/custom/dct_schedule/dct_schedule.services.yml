@@ -1,0 +1,4 @@
+services:
+  dct_schedule.schedule_provider:
+    class: '\Drupal\dct_schedule\ScheduleProvider'
+    arguments: ['@entity_type.manager']

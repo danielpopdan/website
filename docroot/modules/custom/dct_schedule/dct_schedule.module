@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations().
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme().
+ */
+function dct_schedule_theme() {
+  return [
+    'dct_schedule' => [
+      'variables' => [
+        'sessions' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function dct_schedule_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'session' && $view_mode == 'teaser') {
+    $speakers = [];
+    // Get the speakers with first and last name.
+    foreach ($entity->get('field_speakers')->getValue() as $speaker) {
+      $speaker = Drupal::entityTypeManager()
+        ->getStorage('user')
+        ->load($speaker['target_id']);
+      $speakers[$speaker->id()] = [
+        '#type' => 'link',
+        '#title' => $speaker->get('field_first_name')->value . ' ' . $speaker->get('field_last_name')->value,
+        '#url' => Url::fromRoute('entity.user.canonical', ['user' => $speaker->id()])
+      ];
+      // If there is any other speaker, add a comma between them.
+      if (count($speakers) > 1) {
+        $speakers[$speaker->id()]['#prefix'] = ', ';
+      }
+    }
+    $build['speakers'] = $speakers;
+    // Generate the title.
+    $build['display_title'] = [
+      '#type' => 'link',
+      '#title' => $entity->label(),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+    ];
+  }
+}

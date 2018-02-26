@@ -1,0 +1,7 @@
+dct_schedule.schedule:
+  path: '/schedule'
+  defaults:
+    _controller: '\Drupal\dct_schedule\Controller\ScheduleController::content'
+    _title: 'Schedule'
+  requirements:
+    _permission: 'access content'

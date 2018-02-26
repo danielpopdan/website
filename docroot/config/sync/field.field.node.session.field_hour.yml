@@ -1,21 +1,21 @@
-uuid: f0e53a67-e8ec-4610-98ad-ef11a9bfe3e2
+uuid: b612ee3c-0a71-49bf-b7e2-33016e5f80c7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_date
+    - field.storage.node.field_hour
     - node.type.session
   module:
-    - datetime
-id: node.session.field_date
-field_name: field_date
+    - options
+id: node.session.field_hour
+field_name: field_hour
 entity_type: node
 bundle: session
-label: Date
+label: 'Start hour'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: datetime
+field_type: list_string

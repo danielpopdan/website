@@ -1,0 +1,9 @@
+uuid: 7522ca8b-63c4-4d54-8b25-3a88fc262cc8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Conference days'
+vid: conference_days
+description: ''
+hierarchy: 0
+weight: 0
