@@ -25,6 +25,7 @@ function dct_bills_theme() {
         'account_no' => NULL,
         'ticket_title_1' => NULL,
         'ticket_title_2' => NULL,
+        'ticket_title_3' => NULL,
         'unit_price' => NULL,
         'quantity' => NULL,
         'total_item_price' => NULL,

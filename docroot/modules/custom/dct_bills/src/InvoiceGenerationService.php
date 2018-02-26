@@ -52,7 +52,7 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
     $invoice_number = $this->getInvoiceNumber();
     // The list of countries is needed to find the country name based on code.
     $list = $this->countryManager->getList();
-    $array = explode("\n", wordwrap($ticket->getTitle(), 40));
+    $array = explode("\n", wordwrap($ticket->getTitle(), 28));
     // Check if there is any promotion.
     $store = array_pop($ticket->getPurchasedEntity()->getStores());
     $final_price = \Drupal::service('dct_commerce.promotional_price_calculator')->calculatePromotionalPrice($ticket->getPurchasedEntity(), $store);
@@ -99,6 +99,9 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
       '#ticket_title_2' => [
         '#markup' => $array[1],
       ],
+      '#ticket_title_3' => [
+        '#markup' => $array[2],
+      ],
       '#unit_price' => [
         '#markup' => number_format($final_price['price']->getNumber(), 2) . $final_price['price']->getCurrencyCode(),
       ],
@@ -115,7 +118,7 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
         '#markup' => $invoice_number,
       ],
       '#current_date' => [
-        '#markup' => date('d.m.Y', $order->getCompletedTime()),
+        '#markup' => date('d.m.Y'),
       ],
     ];
 
@@ -159,8 +162,6 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
     $output = $dompdf->output();
-
-    $dompdf->stream();
 
     return $output;
   }
