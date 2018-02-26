@@ -10,6 +10,11 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 
 /**
+ * Defines the starting hour of the conferece schedule.
+ */
+define('DCT_SCHEDULE_STARTING_HOUR', 8);
+
+/**
  * Implements hook_theme().
  */
 function dct_schedule_theme() {
@@ -50,5 +55,50 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
       '#title' => $entity->label(),
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
     ];
+    // Generate the difficulty output.
+    $difficulties = [
+      'Beginner' => '1',
+      'Intermediate' => '2',
+      'Advanced' => '3',
+    ];
+    for ($i = 1; $i <= 3; $i++) {
+      $build['difficulty'][$i] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [
+            'schedule-item--rating-block',
+          ],
+        ],
+      ];
+      if ($i <= $difficulties[$entity->get('field_list_select')->value]) {
+        $build['difficulty'][$i]['#attributes']['class'][] = 'rating-active';
+      }
+    }
+    // Calculate the session end time based on duration and starting hour.
+    $session_duration = $entity->get('field_select_list')->value;
+    $session_start = $entity->get('field_hour')->value;
+    $session_start_hour = intdiv(($session_start - 1), 4) + DCT_SCHEDULE_STARTING_HOUR;
+    $session_start_minutes = ($session_start - 1) % 4 * 15;
+    $session_end_minutes = $session_start_minutes + $session_duration;
+    $session_end_hour = $session_start_hour + intdiv($session_end_minutes, 60);
+    $session_end_minutes = $session_end_minutes % 60;
+    $start_time = _dct_schedule_format_hour($session_start_hour) . ':' . _dct_schedule_format_hour($session_start_minutes);
+    $end_time = _dct_schedule_format_hour($session_end_hour) . ':' . _dct_schedule_format_hour($session_end_minutes);
+    $build['session_hours'] = [
+      '#markup' => $start_time . '-' . $end_time,
+    ];
   }
+}
+
+/**
+ * Format a number to 2 digits.
+ *
+ * @param int $number
+ *   The number to format.
+ *
+ * @return string
+ *   The formatted number.
+ */
+function _dct_schedule_format_hour($number) {
+  return ($number < 10) ? '0' . $number : $number;
 }
