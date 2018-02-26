@@ -14,7 +14,7 @@ id: profile.customer.field_account_number
 field_name: field_account_number
 entity_type: profile
 bundle: customer
-label: 'Account number'
+label: IBAN
 description: ''
 required: false
 translatable: false
