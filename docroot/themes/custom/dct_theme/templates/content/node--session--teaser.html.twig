@@ -1,19 +1,17 @@
 <div class="schedule-item">
     <div class="schedule-item--detail-row">
-        <div class="schedule-item--room">Room 1</div>
-        <div class="schedule-item--hours">11:00-11:45</div>
+        <div class="schedule-item--room">{{ content.field_room }}</div>
+        <div class="schedule-item--hours">{{ content.session_hours }}</div>
     </div>
     <div class="schedule-item--title">{{ content.display_title }}</div>
     <div class="schedule-item--speaker">{{ content.speakers }}</div>
     <div class="schedule-item--difficulty">
-        <div class="schedule-item--rating-block rating-active"></div>
-        <div class="schedule-item--rating-block"></div>
-        <div class="schedule-item--rating-block"></div>
+       {{ content.difficulty }}
     </div>
     <div class="schedule-item--detail-row">
-        <div class="schedule-item--topic">Digital Ambitious
-            Experiences
+        <div class="schedule-item--topic">{{ content.field_taxonomy_reference }}
         </div>
         <div class="schedule-item--save"></div>
     </div>
 </div>
+{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty') }}

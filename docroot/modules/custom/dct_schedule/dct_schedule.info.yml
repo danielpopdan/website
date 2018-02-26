@@ -2,4 +2,3 @@ name: DCT schedule
 type: module
 description: Implements schedule for DrupalCamp Transylvania
 core: 8.x
-
