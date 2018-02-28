@@ -1,0 +1,29 @@
+uuid: de093581-f2aa-47b3-b0e2-2b1523293db6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_day
+    - node.type.breaks_social_activities
+    - taxonomy.vocabulary.conference_days
+id: node.breaks_social_activities.field_day
+field_name: field_day
+entity_type: node
+bundle: breaks_social_activities
+label: Day
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      conference_days: conference_days
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

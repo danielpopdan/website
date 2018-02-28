@@ -1,0 +1,16 @@
+uuid: 57aa49e6-9b7c-44b4-b803-0ff7674ca2ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_node_access
+third_party_settings:
+  dct_node_access:
+    hide_details: 0
+name: 'Breaks & social activities'
+type: breaks_social_activities
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

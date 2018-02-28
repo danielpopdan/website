@@ -36,21 +36,55 @@ class ScheduleProvider implements ScheduleProviderInterface {
     // Gets the session sorted by starting hour, based on the day.
     $query = $this->entityTypeManager->getStorage('node')
       ->getAggregateQuery()
-      ->condition('type', 'session')
+      ->condition('type', ['session', 'breaks_social_activities'], 'IN')
       ->condition('status', 1)
       ->condition('field_day', $day['id'])
       ->sort('field_hour')
       ->sort('field_room')
-      ->sort('nid');
+      ->sort('nid')
+      ->sort('type');
 
-    $result = $query->execute();
+    $results = $query->execute();
+    usort($results, [$this, 'cmp']);
+
     $schedule = [];
+    // Set the order for the rooms.
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadTree('rooms');
+    foreach ($terms as $term) {
+      $schedule[$term->tid] = [];
+    }
     // Group the results by the room.
-    foreach ($result as $result) {
-      $schedule[$result['field_room_target_id']][] = $result['nid'];
+    foreach ($results as $result) {
+      if ($result['type'] == 'breaks_social_activities' && empty($result['field_room_target_id'])) {
+        foreach ($terms as $term) {
+          $schedule[$term->tid][] = $result['nid'];
+        }
+      }
+      else {
+        $schedule[$result['field_room_target_id']][] = $result['nid'];
+      }
     }
 
     return $schedule;
+  }
+
+  /**
+   * Sorting helper for schedule.
+   *
+   * @param int $a
+   *   The first value to compare.
+   * @param int $b
+   *   The second value to compare.
+   *
+   * @return int
+   *   The result.
+   */
+  private function cmp($a, $b) {
+    if ($a['field_hour_value'] == $b['field_hour_value']) {
+      return 0;
+    }
+    return ($a['field_hour_value'] < $b['field_hour_value']) ? -1 : 1;
   }
 
   /**

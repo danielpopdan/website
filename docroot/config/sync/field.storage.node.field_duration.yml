@@ -1,14 +1,17 @@
-uuid: 52945865-1632-49f8-a0fc-bb1f65210fb8
+uuid: d574d912-60f2-4143-a1a1-7e95d9397217
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_is_break
-field_name: field_is_break
+id: node.field_duration
+field_name: field_duration
 entity_type: node
-type: boolean
-settings: {  }
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

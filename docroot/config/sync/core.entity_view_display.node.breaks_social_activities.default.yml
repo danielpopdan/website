@@ -1,0 +1,56 @@
+uuid: e5db889c-05ca-4a58-815a-bf640765d29d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.breaks_social_activities.field_day
+    - field.field.node.breaks_social_activities.field_duration
+    - field.field.node.breaks_social_activities.field_hour
+    - field.field.node.breaks_social_activities.field_room
+    - node.type.breaks_social_activities
+  module:
+    - options
+    - user
+id: node.breaks_social_activities.default
+targetEntityType: node
+bundle: breaks_social_activities
+mode: default
+content:
+  field_day:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_duration:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_hour:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_room:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true

@@ -1,0 +1,19 @@
+uuid: cc73ad9b-8c68-4998-a3cf-116855081862
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_duration
+    - node.type.breaks_social_activities
+id: node.breaks_social_activities.field_duration
+field_name: field_duration
+entity_type: node
+bundle: breaks_social_activities
+label: Duration
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

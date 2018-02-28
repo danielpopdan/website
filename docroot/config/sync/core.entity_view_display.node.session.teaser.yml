@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.session.field_email
     - field.field.node.session.field_files
     - field.field.node.session.field_hour
-    - field.field.node.session.field_is_break
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
     - field.field.node.session.field_plain_description
@@ -21,131 +20,40 @@ dependencies:
     - field.field.node.session.field_taxonomy_reference
     - node.type.session
   module:
-    - file
-    - options
     - user
 id: node.session.teaser
 targetEntityType: node
 bundle: session
 mode: teaser
 content:
-  field_day:
-    weight: 119
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_email:
-    weight: 113
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
-  field_files:
-    weight: 106
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: file_default
-    region: content
-  field_hour:
-    weight: 118
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_is_break:
-    weight: 117
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_list_select:
-    weight: 109
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_long_description:
-    weight: 108
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
-  field_plain_description:
-    weight: 103
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_room:
-    weight: 116
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_select:
-    weight: 107
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_select_list:
-    weight: 105
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_session_type:
-    weight: 111
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_speakers:
-    weight: 102
+    weight: 1
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
-  field_subtitle:
-    weight: 112
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
   field_taxonomy_reference:
-    weight: 110
-    label: above
+    weight: 0
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  links:
-    weight: 100
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   addtoany: true
+  field_day: true
+  field_email: true
+  field_files: true
+  field_hour: true
+  field_list_select: true
+  field_long_description: true
+  field_plain_description: true
+  field_select: true
+  field_select_list: true
+  field_session_type: true
+  field_speakers: true
+  field_subtitle: true
+  links: true
