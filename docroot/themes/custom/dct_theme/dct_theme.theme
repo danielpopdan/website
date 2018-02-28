@@ -45,6 +45,10 @@ function dct_theme_preprocess_node(&$variables) {
       $variables['#attached']['library'][] = 'dct_theme/match_height';
       break;
 
+    case 'sponsor':
+      $variables['#attached']['library'][] = 'dct_theme/match_height';
+      break;
+
     default:
   }
 }
