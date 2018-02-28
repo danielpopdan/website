@@ -1,0 +1,9 @@
+<div class="schedule-item break-item">
+    <div class="schedule-item--detail-row">
+        <div class="schedule-item--hours">{{ content.session_hours }}</div>
+    </div>
+    <div class="break-item--title">
+        <p>{{ label }}</p>
+    </div>
+</div>
+{{ content|without("session_hours") }}

@@ -41,3 +41,12 @@ zoom:
   dependencies:
     - core/jquery
     - core/drupal
+
+schedule:
+  version: 1.x
+  js:
+    node_modules/slick-carousel/slick/slick.min.js: {}
+    js/schedule.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

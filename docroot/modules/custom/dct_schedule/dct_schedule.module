@@ -88,6 +88,22 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
       '#markup' => $start_time . '-' . $end_time,
     ];
   }
+
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'breaks_social_activities' && $view_mode == 'teaser') {
+    // Calculate the session end time based on duration and starting hour.
+    $session_duration = $entity->get('field_duration')->value;
+    $session_start = $entity->get('field_hour')->value;
+    $session_start_hour = intdiv(($session_start - 1), 4) + DCT_SCHEDULE_STARTING_HOUR;
+    $session_start_minutes = ($session_start - 1) % 4 * 15;
+    $session_end_minutes = $session_start_minutes + $session_duration;
+    $session_end_hour = $session_start_hour + intdiv($session_end_minutes, 60);
+    $session_end_minutes = $session_end_minutes % 60;
+    $start_time = _dct_schedule_format_hour($session_start_hour) . ':' . _dct_schedule_format_hour($session_start_minutes);
+    $end_time = _dct_schedule_format_hour($session_end_hour) . ':' . _dct_schedule_format_hour($session_end_minutes);
+    $build['session_hours'] = [
+      '#markup' => $start_time . '-' . $end_time,
+    ];
+  }
 }
 
 /**

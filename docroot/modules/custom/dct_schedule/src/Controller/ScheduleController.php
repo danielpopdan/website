@@ -57,8 +57,31 @@ class ScheduleController extends ControllerBase {
   public function content() {
     // Get the conference days.
     $days = $this->scheduleProvider->getConferenceDays();
+    $sessions = [];
+    foreach ($days as $day) {
+      $sessions[strtolower($day['name'])] = $this->getDaySchedule($day);
+    }
+
+    return [
+      '#theme' => 'dct_schedule',
+      '#sessions' => $sessions,
+    ];
+  }
+
+  /**
+   * Returns the day schedule output.
+   *
+   * @param array $day
+   *   The day to return for.
+   *
+   * @return array
+   *   The resulted content.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   */
+  private function getDaySchedule(array $day) {
     // Get the schedule for the first day.
-    $first_day_schedule = $this->scheduleProvider->getSchedule($days[0]);
+    $first_day_schedule = $this->scheduleProvider->getSchedule($day);
     $sessions = [];
     $view_builder = $this->entityTypeManager->getViewBuilder('node');
     $node_storage = $this->entityTypeManager->getStorage('node');
@@ -70,10 +93,7 @@ class ScheduleController extends ControllerBase {
       }
     }
 
-    return [
-      '#theme' => 'dct_schedule',
-      '#sessions' => $sessions,
-    ];
+    return $sessions;
   }
 
 }

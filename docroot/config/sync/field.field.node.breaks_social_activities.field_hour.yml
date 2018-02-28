@@ -1,0 +1,21 @@
+uuid: 0da8582b-357e-490a-938f-9187bdcf838d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hour
+    - node.type.breaks_social_activities
+  module:
+    - options
+id: node.breaks_social_activities.field_hour
+field_name: field_hour
+entity_type: node
+bundle: breaks_social_activities
+label: 'Start hour'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

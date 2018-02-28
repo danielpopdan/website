@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.session.field_email
     - field.field.node.session.field_files
     - field.field.node.session.field_hour
-    - field.field.node.session.field_is_break
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
     - field.field.node.session.field_plain_description
@@ -57,16 +56,6 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_is_break:
-    weight: 117
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   field_list_select:
     weight: 109
     label: above
@@ -90,9 +79,9 @@ content:
     region: content
   field_room:
     weight: 116
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content

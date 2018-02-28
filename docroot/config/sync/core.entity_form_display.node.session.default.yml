@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.session.field_email
     - field.field.node.session.field_files
     - field.field.node.session.field_hour
-    - field.field.node.session.field_is_break
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
     - field.field.node.session.field_plain_description
@@ -52,13 +51,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  field_is_break:
-    weight: 15
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
     region: content
   field_list_select:
     weight: 10
