@@ -180,6 +180,7 @@ class TicketGenerationForm extends FormBase {
     // Send mail containing all of the codes
     // to the user who purchased the tickets.
     $params['tickets'] = $tickets;
+    $params['account'] = $author;
     $mailResult = $this->mailManager->doMail(
       'dct_commerce',
       'ticket_buyer',
