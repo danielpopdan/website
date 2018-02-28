@@ -18,9 +18,6 @@
       var matchHeight = function() {
         var sponsorCategory = $('.sponsors-categories--category');
         sponsorCategory.matchHeight();
-
-        var sponsorImage = $('.l-col .field--name-field-short-description');
-        sponsorImage.matchHeight();
       };
 
       matchHeight();
