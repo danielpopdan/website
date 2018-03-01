@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
@@ -115,7 +116,9 @@ function dct_sessions_entity_operation_alter(array &$operations, EntityInterface
 function dct_sessions_form_contact_message_session_proposal_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Add the current user as a default speaker on session proposal.
   $user_id = Drupal::currentUser()->id();
-  $current_user = Drupal::entityTypeManager()->getStorage('user')->load($user_id);
+  $current_user = Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->load($user_id);
   $form['field_user']['widget'][0]['target_id']['#default_value'] = $current_user;
   // Remove HTML5 validation from the form.
   $form['#attributes']['novalidate'] = 'novalidate';
@@ -283,4 +286,35 @@ function dct_sessions_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function dct_sessions_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'session' && $view_mode == 'full') {
+    $speakers = [];
+    // Get the speakers with first and last name.
+    foreach ($entity->get('field_speakers')->getValue() as $speaker) {
+      $speaker = Drupal::entityTypeManager()
+        ->getStorage('user')
+        ->load($speaker['target_id']);
+      $speakers[$speaker->id()] = [
+        '#type' => 'link',
+        '#title' => $speaker->get('field_first_name')->value . ' ' . $speaker->get('field_last_name')->value,
+        '#url' => Url::fromRoute('entity.user.canonical', ['user' => $speaker->id()])
+      ];
+      // If there is any other speaker, add a comma between them.
+      if (count($speakers) > 1) {
+        $speakers[$speaker->id()]['#prefix'] = ', ';
+      }
+    }
+    $build['speakers'] = $speakers;
+    // Display status just for the owner.
+    if ($entity->getOwnerId() == Drupal::currentUser()->id()) {
+      $build['session_status'] = [
+        '#markup' => t('ACCEPTED'),
+      ];
+    }
+  }
 }
