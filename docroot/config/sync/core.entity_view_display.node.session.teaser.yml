@@ -42,6 +42,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  flag_add_to_my_schedule:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
   field_day: true
