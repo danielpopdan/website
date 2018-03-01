@@ -1,15 +1,16 @@
 {% set classes = [
-'node',
-'node--type-' ~ node.bundle|clean_class,
-node.isPromoted() ? 'node--promoted',
-node.isSticky() ? 'node--sticky',
-not node.isPublished() ? 'node--unpublished',
-view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-'sponsors-intro'
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'sponsors-intro'
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
-    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+    <img src="/{{ directory }}/images/backgrounds/small-header.png"
+         alt="background">
 </div>
 
 <div class="session-detail-content">
@@ -18,12 +19,14 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
     </div>
     <div class="l-container">
         <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Status:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value session-status">
-                <p>{{ "ACCEPTED"|t }}</p>
-            </div>
+            {% if content.session_status is not empty %}
+                <div class="session-detail--item-term">
+                    <p>{{ "Status:"|t }}</p>
+                </div>
+                <div class="session-detail--item-value session-status">
+                    <p>{{ content.session_status }}</p>
+                </div>
+            {% endif %}
         </div>
         <div class="session-detail--item">
             <div class="session-detail--item-term">
@@ -31,9 +34,7 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
             </div>
             <div class="session-detail--item-value session-speakers">
                 <p>
-                    {% for user in node.field_speakers %}
-                        {{ user.entity.field_first_name.value ~ ' ' ~ user.entity.field_last_name.value }}
-                    {% endfor %}
+                    {{ content.speakers }}
                 </p>
             </div>
         </div>
@@ -91,7 +92,8 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
                     <p>{{ "Slides"|t }}</p>
                 </div>
                 <div class="session-detail--item-value session-presentation">
-                    <a href="{{ file_url(node.field_files.entity.uri.value) }}" target="_blank"
+                    <a href="{{ file_url(node.field_files.entity.uri.value) }}"
+                       target="_blank"
                        class="session-presentation--link">{{ node.field_files.entity.filename.value }}</a>
                     <span class="session-presentation--size">{{ node.field_files.entity.filesize.value/1000 ~ ' KB' }}</span>
                 </div>
