@@ -11,7 +11,7 @@
     <div class="schedule-item--detail-row">
         <div class="schedule-item--topic">{{ content.field_taxonomy_reference }}
         </div>
-        <div class="schedule-item--save"></div>
+        {{ content.flag_add_to_my_schedule }}
     </div>
 </div>
-{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty') }}
+{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty', 'flag_add_to_my_schedule') }}

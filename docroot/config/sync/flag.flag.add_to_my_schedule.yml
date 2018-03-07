@@ -1,0 +1,29 @@
+uuid: 12d0a720-623f-4cf5-9f33-66430dff7add
+langcode: en
+status: true
+dependencies: {  }
+id: add_to_my_schedule
+label: 'Add to my schedule'
+bundles:
+  - session
+entity_type: node
+global: false
+weight: 0
+flag_short: 'Add to my schedule'
+flag_long: ''
+flag_message: ''
+unflag_short: 'Unflag this item'
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links:
+    teaser: teaser
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }
