@@ -36,7 +36,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -53,7 +55,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -78,7 +83,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -95,7 +102,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -120,7 +130,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,7 +151,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save item-saved"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -156,7 +170,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -181,7 +198,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -206,7 +225,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +247,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -242,7 +266,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -259,7 +286,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -276,7 +305,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -301,7 +333,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -326,7 +360,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -349,7 +386,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -366,7 +405,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -391,7 +433,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -408,7 +453,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -433,7 +480,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -452,7 +502,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save item-saved"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -469,7 +521,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -494,7 +548,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -519,7 +576,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,7 +597,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -555,7 +617,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -572,7 +636,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -589,7 +656,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -614,7 +683,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -639,7 +711,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -662,7 +736,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -679,7 +756,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -704,7 +783,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Digital Ambitious Experiences</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -721,7 +803,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -746,7 +831,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">DevOps</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -765,7 +853,9 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save item-saved"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ" class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -782,7 +872,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -807,7 +900,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Back-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -832,7 +928,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -851,7 +950,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Horizons</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -868,7 +970,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -885,7 +990,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item">
@@ -902,7 +1010,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-unflag schedule-item--save">
+                                <a href="/flag/unflag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -927,7 +1038,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Front-End Development</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/flag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-item break-item">
@@ -952,7 +1066,10 @@
                         </div>
                         <div class="schedule-item--detail-row">
                             <div class="schedule-item--topic">Core Conversations</div>
-                            <div class="schedule-item--save"></div>
+                            <div class="flag flag-add_to_my_schedule flag-add_to_my_schedule-80 action-flag schedule-item--save">
+                                <a href="/flag/flag/add_to_my_schedule/80?destination=schedule&amp;token=XoSAUkrEg6YgytxgwMXH665x7f3tYdHyDHLQqg3p_KQ"
+                                class="use-ajax" rel="nofollow"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
