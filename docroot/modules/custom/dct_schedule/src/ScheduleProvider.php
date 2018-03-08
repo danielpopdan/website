@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_schedule;
 
+use Drupal\Core\Database\Database;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserInterface;
 
@@ -33,36 +34,52 @@ class ScheduleProvider implements ScheduleProviderInterface {
    * {@inheritdoc}
    */
   public function getSchedule($day, UserInterface $user = NULL) {
-    // Gets the session sorted by starting hour, based on the day.
-    $query = $this->entityTypeManager->getStorage('node')
-      ->getAggregateQuery()
-      ->condition('type', ['session', 'breaks_social_activities'], 'IN')
-      ->condition('status', 1)
-      ->condition('field_day', $day['id'])
-      ->sort('field_hour')
-      ->sort('field_room')
-      ->sort('nid')
-      ->sort('type');
-
-    $results = $query->execute();
-    usort($results, [$this, 'cmp']);
+    $query = Database::getConnection('default')->select('node_field_data', 'n');
+    $query->leftJoin('node__field_room', 'r', 'r.entity_id = n.nid');
+    $query->join('node__field_hour', 'h', 'h.entity_id = n.nid');
+    $query->join('node__field_day', 'd', 'd.entity_id = n.nid');
+    if (!empty($user)) {
+      $query->join('flagging', 'f', 'f.entity_id = n.nid');
+      $query->condition('f.entity_type', 'node');
+      $query->condition('f.uid', $user->id());
+    }
+    $query->condition('n.type', ['session', 'breaks_social_activities'], 'IN');
+    $query->condition('n.status', 1);
+    $query->condition('d.field_day_target_id', $day['id']);
+    $query->addField('n', 'nid');
+    $query->addField('n', 'type');
+    $query->addField('r', 'field_room_target_id');
+    $query->addField('h', 'field_hour_value');
+    $query->addExpression('h.field_hour_value + 0', 'order_field');
+    $query->orderBy('order_field', 'ASC');
+    $results = $query->execute()->fetchAll();
 
     $schedule = [];
-    // Set the order for the rooms.
-    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
-      ->loadTree('rooms');
-    foreach ($terms as $term) {
-      $schedule[$term->tid] = [];
+    $terms = [];
+    // Group by rooms only if it is the global schedule.
+    if (empty($user)) {
+      // Set the order for the rooms.
+      $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+        ->loadTree('rooms');
+      foreach ($terms as $term) {
+        $schedule[$term->tid] = [];
+      }
     }
     // Group the results by the room.
     foreach ($results as $result) {
-      if ($result['type'] == 'breaks_social_activities' && empty($result['field_room_target_id'])) {
+      if ($result->type == 'breaks_social_activities' && empty($result->field_room_target_id)) {
         foreach ($terms as $term) {
-          $schedule[$term->tid][] = $result['nid'];
+          $schedule[$term->tid][] = $result->nid;
         }
       }
       else {
-        $schedule[$result['field_room_target_id']][] = $result['nid'];
+        // Add the room information only if it is the global schedule.
+        if (!empty($user)) {
+          $schedule[] = $result->nid;
+        }
+        else {
+          $schedule[$result->field_room_target_id][] = $result->nid;
+        }
       }
     }
 
@@ -81,10 +98,10 @@ class ScheduleProvider implements ScheduleProviderInterface {
    *   The result.
    */
   private function cmp($a, $b) {
-    if ($a['field_hour_value'] == $b['field_hour_value']) {
+    if ($a->field_hour_value == $b->field_hour_value) {
       return 0;
     }
-    return ($a['field_hour_value'] < $b['field_hour_value']) ? -1 : 1;
+    return ($a->field_hour_value < $b->field_hour_value) ? -1 : 1;
   }
 
   /**
