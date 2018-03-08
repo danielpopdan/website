@@ -19,33 +19,33 @@
         }
 
         .slick-list {
-            text-align: center;
             padding: $global-padding 0;
+            text-align: center;
         }
 
         .slick-arrow {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            font-size: 0;
-            background-color: transparent;
             padding: 0 $global-padding * .5;
+            transform: translateY(-50%);
+            background-color: transparent;
+            font-size: 0;
             z-index: 9999;
 
             &.slick-next {
                 right: 10px;
                 left: inherit;
 
-                &:before {
+                &::before {
                     content: url($icons-path + 'arrow-next.png');
                 }
             }
-            
-            &.slick-prev {
-                left: 10px;
-                right: inherit;
 
-                &:before {
+            &.slick-prev {
+                right: inherit;
+                left: 10px;
+
+                &::before {
                     content: url($icons-path + 'arrow-prev.png');
                 }
             }
@@ -71,29 +71,29 @@
 
     .scheduler-container {
         @include box-shadow(0, 0, .25rem, $box-shadow);
-        max-width: 810px;
         width: 100%;
+        max-width: 810px;
         margin: $global-margin * 4.5 auto 0;
         background-color: $white;
     }
 
     .day-tabs-container {
         width: 100%;
-        font-size: 0;
-        font-family: $font-main;
-        font-weight: $weight-medium;
         color: $primary-color;
+        font-family: $font-main;
+        font-size: 0;
+        font-weight: $weight-medium;
 
         .day-tab {
             @include box-shadow(.125rem, .125rem, .25rem, $box-shadow);
             display: inline-block;
             width: calc(100% / 3);
             padding: $global-padding * 1.35 $global-padding * 1.25;
+            background-color: $white;
             font-size: $global-font-size * .875;
             text-align: center;
-            vertical-align: middle;
-            background-color: $white;
             cursor: pointer;
+            vertical-align: middle;
 
             @include tablet {
                 padding: $global-padding * 1.35 $global-padding * 6.25;
@@ -120,7 +120,7 @@
         display: none;
         margin: $global-margin * .5;
         color: $primary-color;
-        
+
         @include large-mobile {
             margin: $global-margin;
         }
@@ -137,9 +137,9 @@
     .conference-opening {
         @include box-shadow(0, 0, .5rem, $box-shadow);
         padding: $global-padding;
-        text-align: center;
         font-family: $font-main;
         font-weight: $weight-medium;
+        text-align: center;
 
         p {
             margin-bottom: 0;
@@ -148,7 +148,7 @@
         &--hours {
             margin-bottom: $global-margin * .75;
             color: #a7a4a4;
-            font-size: $global-font-size *.9375;
+            font-size: $global-font-size * .9375;
         }
 
         &--title {
@@ -162,12 +162,12 @@
                 position: absolute;
                 top: -2px;
                 left: 50%;
-                transform: translateX(-50%);
                 width: 70%;
                 padding: 0 $global-padding * .5;
+                transform: translateX(-50%);
+                background-color: $white;
                 color: $primary-color;
                 font-size: $global-font-size * 1.0625;
-                background-color: $white;
 
                 @include large-mobile {
                     width: auto;
@@ -177,18 +177,18 @@
     }
 
     .day-schedule {
-        font-size: 0;
         margin: 0;
+        font-size: 0;
         
         @include large-mobile {
             margin-top: $global-margin;
         }
 
         .room-schedule {
-            margin-right: 0;
             display: inline-block;
-            vertical-align: top;
+            margin-right: 0;
             font-size: 16px;
+            vertical-align: top;
 
             @include tablet {
                 width: calc(100% / 3 - 7px);
@@ -222,8 +222,8 @@
             @include box-shadow(0, 0, .5rem, $box-shadow);
             margin: $global-margin $global-margin * .1;
             padding: $global-padding * .875;
-            font-family: $font-main;
             color: $primary-color;
+            font-family: $font-main;
 
             @include tablet {
                 margin-bottom: $global-margin;
@@ -247,22 +247,22 @@
 
             &--room {
                 padding: $global-padding * .5;
-                font-size: $global-font-size * .75;
                 color: $white;
+                font-size: $global-font-size * .75;
             }
 
             &--hours {
+                margin-top: $global-margin * .375;
+                float: right;
+                color: #767575;
                 font-size: $global-font-size * .9375;
                 font-weight: $weight-medium;
-                color: #767575;
-                float: right;
-                margin-top: $global-margin * .375;
             }
 
             &--title {
-                margin-bottom: $global-margin *.9375;
-                font-weight: $weight-medium;
+                margin-bottom: $global-margin * .9375;
                 font-size: $global-font-size * 1.0625;
+                font-weight: $weight-medium;
             }
 
             &--speaker {
@@ -282,13 +282,13 @@
 
             &--rating-block,
             &--save {
+                display: inline-block;
                 width: 50px;
                 height: 25px;
-                display: inline-block;
-                vertical-align: top;
                 background: url($icons-path + 'scheduler-sprite.png') no-repeat;
-                background-size: cover;
                 background-position: 0 0;
+                background-size: cover;
+                vertical-align: top;
 
                 &.rating-active {
                     background-position: 0 -35px;
@@ -296,15 +296,15 @@
             }
 
             &--save {
-                float: right;
                 width: 32px;
                 height: 32px;
+                float: right;
                 background-position: -2px -52px;
                 background-size: inherit;
                 cursor: pointer;
 
-                &.item-saved {
-                    background-position-y: -86px;
+                &.action-unflag {
+                    background-position: -2px -125px;
                 }
             }
 
@@ -312,8 +312,8 @@
                 .schedule-item--detail-row {
                     > div {
                         width: 100%;
-                        text-align: right;
                         float: none;
+                        text-align: right;
                     }
                 }
             }
@@ -329,10 +329,10 @@
                     top: -2px;
                     left: 0;
                     padding: 0 $global-padding * .5 0 0;
+                    background-color: $white;
                     color: $primary-color;
                     font-size: $global-font-size * 1.0625;
                     font-weight: $weight-medium;
-                    background-color: $white;
                 }
             }
         }
