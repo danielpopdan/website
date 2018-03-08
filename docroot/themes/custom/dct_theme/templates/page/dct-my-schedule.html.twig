@@ -1,0 +1,39 @@
+{{ attach_library('dct_theme/schedule') }}
+<div>
+  <img src="/{{ directory }}/images/backgrounds/small-header.png"
+       alt="background">
+</div>
+
+<div class="session-schedule-content">
+  <div class="large-title-block title">
+    <h2>{{ "Schedule"|t }}</h2>
+  </div>
+  <div class="scheduler-container">
+    <div class="day-tabs-container">
+      <div class="day-tab active-tab" data-tab="friday">Friday</div>
+      <div class="day-tab" data-tab="saturday">Saturday</div>
+      <div class="day-tab" data-tab="sunday">Sunday</div>
+    </div>
+    <div class="mobile-room-slider">
+      <div class="mobile-room-slider--item">Room 1</div>
+      <div class="mobile-room-slider--item">Conference Room</div>
+      <div class="mobile-room-slider--item">Room 2</div>
+    </div>
+    {% for name, day in sessions %}
+      {% if loop.first %}
+        {% set classes = 'active-tab-content' %}
+      {% else %}
+        {% set classes = '' %}
+      {% endif %}
+      <div class="day-tab-content {{ classes }}" id="{{ name }}">
+        <div class="day-schedule">
+          <div class="room-schedule room-1 {{ classes }}">
+            {% for session in day %}
+              {{ session }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
