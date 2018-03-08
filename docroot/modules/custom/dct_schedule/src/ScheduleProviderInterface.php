@@ -33,4 +33,12 @@ interface ScheduleProviderInterface {
    */
   public function getConferenceDays();
 
+  /**
+   * Returns the conference rooms.
+   *
+   * @return array
+   *   The conference rooms.
+   */
+  public function getConferenceRooms();
+
 }

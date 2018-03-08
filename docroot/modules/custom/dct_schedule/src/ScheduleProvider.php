@@ -122,4 +122,22 @@ class ScheduleProvider implements ScheduleProviderInterface {
     return $days;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getConferenceRooms() {
+    $rooms = [];
+    // Load the conference days, based on the order set on taxonomies.
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadTree('rooms');
+    foreach ($terms as $term) {
+      $rooms[] = [
+        'id' => $term->tid,
+        'name' => $term->name,
+      ];
+    }
+
+    return $rooms;
+  }
+
 }

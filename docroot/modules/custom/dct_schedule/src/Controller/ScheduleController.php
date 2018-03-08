@@ -74,10 +74,19 @@ class ScheduleController extends ControllerBase {
     foreach ($days as $day) {
       $sessions[strtolower($day['name'])] = $this->getDaySchedule($day);
     }
+    $render_days = [];
+    foreach ($days as $id => $day) {
+      $render_days[strtolower($day['name'])] = $day['name'];
+    }
 
     return [
       '#theme' => 'dct_schedule',
       '#sessions' => $sessions,
+      '#days' => $render_days,
+      '#rooms' => $this->scheduleProvider->getConferenceRooms(),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -90,7 +99,8 @@ class ScheduleController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
   public function mySchedule() {
-    $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+    $user = $this->entityTypeManager->getStorage('user')
+      ->load($this->currentUser->id());
     // Get the conference days.
     $days = $this->scheduleProvider->getConferenceDays();
     $sessions = [];
@@ -98,9 +108,18 @@ class ScheduleController extends ControllerBase {
       $sessions[strtolower($day['name'])] = $this->getDaySchedule($day, $user);
     }
 
+    $render_days = [];
+    foreach ($days as $id => $day) {
+      $render_days[strtolower($day['name'])] = $day['name'];
+    }
+
     return [
       '#theme' => 'dct_my_schedule',
       '#sessions' => $sessions,
+      '#days' => $render_days,
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
