@@ -22,11 +22,14 @@ function dct_schedule_theme() {
     'dct_schedule' => [
       'variables' => [
         'sessions' => NULL,
+        'days' => NULL,
+        'rooms' => NULL,
       ],
     ],
     'dct_my_schedule' => [
       'variables' => [
         'sessions' => NULL,
+        'days' => NULL,
       ],
     ],
   ];

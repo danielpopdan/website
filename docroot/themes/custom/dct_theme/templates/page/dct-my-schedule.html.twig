@@ -6,18 +6,18 @@
 
 <div class="session-schedule-content">
   <div class="large-title-block title">
-    <h2>{{ "Schedule"|t }}</h2>
+    <h2>{{ "My schedule"|t }}</h2>
   </div>
   <div class="scheduler-container">
     <div class="day-tabs-container">
-      <div class="day-tab active-tab" data-tab="friday">Friday</div>
-      <div class="day-tab" data-tab="saturday">Saturday</div>
-      <div class="day-tab" data-tab="sunday">Sunday</div>
-    </div>
-    <div class="mobile-room-slider">
-      <div class="mobile-room-slider--item">Room 1</div>
-      <div class="mobile-room-slider--item">Conference Room</div>
-      <div class="mobile-room-slider--item">Room 2</div>
+      {% for name, day in days %}
+        {% if loop.first %}
+          {% set classes = 'active-tab' %}
+        {% else %}
+          {% set classes = '' %}
+        {% endif %}
+        <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
+      {% endfor %}
     </div>
     {% for name, day in sessions %}
       {% if loop.first %}
@@ -27,11 +27,9 @@
       {% endif %}
       <div class="day-tab-content {{ classes }}" id="{{ name }}">
         <div class="day-schedule">
-          <div class="room-schedule room-1 {{ classes }}">
-            {% for session in day %}
-              {{ session }}
-            {% endfor %}
-          </div>
+          {% for session in day %}
+            {{ session }}
+          {% endfor %}
         </div>
       </div>
     {% endfor %}
