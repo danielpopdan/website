@@ -69,9 +69,15 @@
     background-color: $black-color-opacity;
     color: $white;
     font-size: 1.3rem;
+    z-index: 9;
 
     ul {
         text-align: center;
+
+        &:not(.sublinks) {
+            height: 100vh;
+            overflow-y: auto;
+        }
     }
 
     .menu-item {
