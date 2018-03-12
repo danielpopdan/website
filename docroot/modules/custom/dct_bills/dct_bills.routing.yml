@@ -5,3 +5,10 @@ dct_bills.invoice_configurations:
     _title: 'Invoice configurations'
   requirements:
     _permission: 'administer camp settings'
+dct_bills.my_invoices:
+  path: '/user/invoices'
+  defaults:
+    _controller: '\Drupal\dct_bills\Controller\InvoiceController::getInvoices'
+    _title: 'My invoices'
+  requirements:
+    _permission: 'access content'

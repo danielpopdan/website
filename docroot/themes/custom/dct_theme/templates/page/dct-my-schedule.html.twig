@@ -8,30 +8,39 @@
   <div class="large-title-block title">
     <h2>{{ "My schedule"|t }}</h2>
   </div>
-  <div class="scheduler-container">
-    <div class="day-tabs-container">
-      {% for name, day in days %}
+  <div class="schedule-legend"><p>{{ "Visit" }} <a href="{{ path('dct_schedule.schedule') }}">{{ "the schedule"|t }}</a> {{ 'for other sessions' }}</p></div>
+  <div class="scheduler-container my-schedule">
+      <div class="day-tabs-container">
+        {% for name, day in days %}
+          {% if loop.first %}
+            {% set classes = 'active-tab' %}
+          {% else %}
+            {% set classes = '' %}
+          {% endif %}
+          <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
+        {% endfor %}
+      </div>
+      {% for name, day in sessions %}
         {% if loop.first %}
-          {% set classes = 'active-tab' %}
+          {% set classes = 'active-tab-content' %}
         {% else %}
           {% set classes = '' %}
         {% endif %}
-        <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
-      {% endfor %}
-    </div>
-    {% for name, day in sessions %}
-      {% if loop.first %}
-        {% set classes = 'active-tab-content' %}
-      {% else %}
-        {% set classes = '' %}
-      {% endif %}
-      <div class="day-tab-content {{ classes }}" id="{{ name }}">
-        <div class="day-schedule">
-          {% for session in day %}
-            {{ session }}
-          {% endfor %}
+        <div class="day-tab-content {{ classes }}" id="{{ name }}">
+          <div class="day-schedule">
+            {% if day is empty %}
+              <div class="conference-opening">
+                <div>
+                  <p>{{ "You have nothing added for this day"|t }}</p>
+                </div>
+              </div>
+            {% else %}
+              {% for session in day %}
+                {{ session }}
+              {% endfor %}
+            {% endif %}
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
   </div>
 </div>

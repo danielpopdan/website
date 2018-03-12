@@ -1,6 +1,18 @@
 .session-schedule-content {
+
+    .schedule-legend {
+        width: 100%;
+        max-width: 810px;
+        margin: 4.5rem auto 0;
+        background-color: #fff;
+        text-align: right;
+
+        p {
+            color: black;
+            font-size: 0.9rem;
+        }
+    }
     padding: $global-padding * 4.625 0;
-    background-color: $section-bg-color;
 
     .mobile-room-slider {
         display: block;
@@ -75,6 +87,12 @@
         max-width: 810px;
         margin: $global-margin * 4.5 auto 0;
         background-color: $white;
+    }
+
+    .my-schedule {
+        .day-tab-content {
+            padding-bottom: 10px;
+        }
     }
 
     .day-tabs-container {

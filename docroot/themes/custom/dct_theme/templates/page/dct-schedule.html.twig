@@ -1,51 +1,62 @@
 {{ attach_library('dct_theme/schedule') }}
 <div>
-    <img src="/{{ directory }}/images/backgrounds/small-header.png"
-         alt="background">
+  <img src="/{{ directory }}/images/backgrounds/small-header.png"
+       alt="background">
 </div>
 
 <div class="session-schedule-content">
-    <div class="large-title-block title">
-        <h2>{{ "Schedule"|t }}</h2>
+  <div class="large-title-block title">
+    <h2>{{ "Schedule"|t }}</h2>
+  </div>
+  <div class="schedule-legend"><p>{{ "You can add sessions to" }} <a
+        href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
+  </div>
+  <div class="scheduler-container">
+    <div class="day-tabs-container">
+      {% for name, day in days %}
+        {% if loop.first %}
+          {% set classes = 'active-tab' %}
+        {% else %}
+          {% set classes = '' %}
+        {% endif %}
+        <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
+      {% endfor %}
     </div>
-    <div class="scheduler-container">
-      <div class="day-tabs-container">
-        {% for name, day in days %}
-          {% if loop.first %}
-            {% set classes = 'active-tab' %}
-          {% else %}
-            {% set classes = '' %}
-          {% endif %}
-          <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
-        {% endfor %}
-      </div>
-        <div class="mobile-room-slider">
-          {% for room in rooms %}
-            <div class="mobile-room-slider--item">{{ room['name'] }}</div>
-          {% endfor %}
-        </div>
-        {% for name, day in sessions %}
-            {% if loop.first %}
-                {% set classes = 'active-tab-content' %}
-            {% else %}
-                {% set classes = '' %}
-            {% endif %}
-            <div class="day-tab-content {{ classes }}" id="{{ name }}">
-                <div class="day-schedule">
-                    {% for room in day %}
-                        {% if loop.first %}
-                            {% set classes = 'active-room' %}
-                        {% else %}
-                            {% set classes = '' %}
-                        {% endif %}
-                        <div class="room-schedule room-1 {{ classes }}">
-                            {% for session in room %}
-                                {{ session }}
-                            {% endfor %}
-                        </div>
-                    {% endfor %}
-                </div>
+    <div class="mobile-room-slider">
+      {% for room in rooms %}
+        <div class="mobile-room-slider--item">{{ room['name'] }}</div>
+      {% endfor %}
+    </div>
+    {% for name, day in sessions %}
+      {% if loop.first %}
+        {% set classes = 'active-tab-content' %}
+      {% else %}
+        {% set classes = '' %}
+      {% endif %}
+      <div class="day-tab-content {{ classes }}" id="{{ name }}">
+        <div class="day-schedule">
+          {% if day is empty %}
+            <div class="conference-opening">
+              <div>
+                <p>{{ "The schedule is not published yet."|t }}</p>
+              </div>
             </div>
-        {% endfor %}
-    </div>
+          {% else %}
+            {% for room in day %}
+              {% if loop.first %}
+                {% set classes = 'active-room' %}
+              {% else %}
+                {% set classes = '' %}
+              {% endif %}
+              <div class="room-schedule room-1 {{ classes }}">
+                {% for session in room %}
+                  {{ session }}
+                {% endfor %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
