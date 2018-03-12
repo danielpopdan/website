@@ -20,13 +20,7 @@ settings:
   handler_settings:
     include_anonymous: false
     filter:
-      type: role
-      role:
-        featured_speaker: featured_speaker
-        sprint_mentor: sprint_mentor
-        organizer: organizer
-        attendee: attendee
-        administrator: '0'
+      type: _none
     target_bundles: null
     sort:
       field: _none

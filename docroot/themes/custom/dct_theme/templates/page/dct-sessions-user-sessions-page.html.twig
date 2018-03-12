@@ -19,7 +19,9 @@
             </div>
             <div class="my-profile-info--tabs">
                 <a href="{{ path('dct_sessions.user_sessions') }}" class="button active-btn">{{ "My sessions"|t }}</a>
+                <a href="{{ path('dct_schedule.my_schedule') }}" class="button">{{ "My schedule"|t }}</a>
                 <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
+                <a href="{{ path('dct_bills.my_invoices') }}" class="button">{{ "My invoices"|t }}</a>
             </div>
         </div>
         <div class="my-profile-info--right">
@@ -28,6 +30,11 @@
             </div>
             <h3 class="my-profile-info--role">{{ user_roles }}</h3>
             <div class="my-profile-session">
+              {% if invoices is empty %}
+              <div class="text-container">
+                <p>{{ "Currently, you didn't propose any session."|t }}</p>
+              </div>
+              {% else %}
                 {% for session in sessions %}
                     <div class="wrapper">
                         <a href="{{ path('dct_sessions.session_view', {'contact_message': session.id}) }}"
@@ -49,6 +56,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+              {% endif %}
             </div>
         </div>
     </div>

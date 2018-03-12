@@ -1,0 +1,50 @@
+<div>
+  <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+</div>
+
+<div class="my-profile">
+  <div class="my-profile-info">
+    <div class="my-profile-info--left">
+      <div class="my-profile-info--basic">
+        <div class="my-profile-info--image">
+          {% if user.user_picture.target_id %}
+            {{ user_picture }}
+          {% else %}
+            <img src="/{{ directory }}/images/icons/default_avatar.png" alt="user default avatar">
+          {% endif %}
+        </div>
+        <div class="my-profile-info--username">
+          <p>{{ user.name.value }}</p>
+        </div>
+      </div>
+      <div class="my-profile-info--tabs">
+        <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
+        <a href="{{ path('dct_schedule.my_schedule') }}" class="button">{{ "My schedule"|t }}</a>
+        <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
+        <a href="{{ path('dct_bills.my_invoices') }}" class="button active-btn">{{ "My invoices"|t }}</a>
+      </div>
+    </div>
+    <div class="my-profile-info--right">
+      <div class="my-profile-info--fullname">
+        <h2>{{ user.field_first_name.value ~ ' ' ~ user.field_last_name.value }}</h2>
+      </div>
+      <h3 class="my-profile-info--role">{{ user_roles }}</h3>
+      <div class="my-profile-session">
+        {% if invoices is empty %}
+          <div class="text-container">
+              <p>{{ "Currently, you didn't purchase tickets." }}</p>
+          </div>
+        {% else %}
+          {% for invoice in invoices %}
+            <a href="{{ invoice.file }}" class="text-container" target="_blank">
+              <div class="my-profile-session--item session-status-accepted">
+                <h3 class="session-item--title">{{ invoice.title }}</h3>
+                <p class="session-item--status">{{ "Download invoice"|t }}</p>
+              </div>
+            </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
