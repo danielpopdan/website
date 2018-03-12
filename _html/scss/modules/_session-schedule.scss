@@ -293,6 +293,10 @@
                 &.rating-active {
                     background-position: 0 -35px;
                 }
+
+                a {
+                    padding: 0 0 50% 100%;
+                }
             }
 
             &--save {

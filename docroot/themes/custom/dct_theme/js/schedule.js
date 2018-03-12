@@ -41,21 +41,22 @@
             asNavFor: '.mobile-room-slider'
         }
 
-        if ($(window).width() < 768) {
-            if (typeof $.fn.Slick === 'undefined') {
-                console.log(roomSliderOptions);
-                roomSlider.slick(roomSliderOptions);
-                daySlider.slick(dayScheduleOptions);
-            }
+      if ($(window).width() < 768) {
+        if (roomSlider.hasClass('slick-initialized') == false) {
+          roomSlider.slick(roomSliderOptions);
+        }
+        if (daySlider.hasClass('slick-initialized') == false) {
+          daySlider.slick(dayScheduleOptions);
+        }
 
-            $('.day-tab').on('click', function () {
-                if (roomSlider.hasClass('slick-initialized') || daySlider.hasClass('slick-initialized')) {
-                    roomSlider.slick('unslick');
-                    daySlider.slick('unslick');
-                    daySlider.slick(dayScheduleOptions);
-                    roomSlider.slick(roomSliderOptions);
-                }
-            });
+        $('.day-tab').on('click', function () {
+          if (roomSlider.hasClass('slick-initialized') || daySlider.hasClass('slick-initialized')) {
+            roomSlider.slick('unslick');
+            daySlider.slick('unslick');
+            daySlider.slick(dayScheduleOptions);
+            roomSlider.slick(roomSliderOptions);
+          }
+        });
         }
     }
 
