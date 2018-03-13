@@ -128,13 +128,11 @@ AddEncoding gzip svgz
 
   # Rewrite condition for prod to force to 'https://' production.
   # Check if production.
-  RewriteCond %{HTTP_HOST} ^drupaltransylvania.ro [OR]
-  RewriteCond %{HTTP_HOST} ^www.drupaltransylvania.ro$
   # Ensure www.
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]  # exclude Acquia domains
+  RewriteCond %{HTTP_HOST} ^drupaltransylvania\.ro$ [NC]
   RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  # Ensure https
-  RewriteCond %{SERVER_PORT} 80
+  # ensure https
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
