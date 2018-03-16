@@ -20,6 +20,9 @@ settings:
     -
       value: 8.5.x
       label: 8.5.x
+    -
+      value: na
+      label: 'Not applicable'
   allowed_values_function: ''
 module: options
 locked: false
