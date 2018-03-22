@@ -5,9 +5,34 @@
  * Install functions for the dct_commerce module.
  */
 
+use Drupal\commerce_order\Entity\Order;
+
 /**
  * Implements hook_install()
  */
 function dct_commerce_install() {
   dct_commerce_initialize_commerce_data();
+}
+
+/**
+ * Closes and generates invoices for several orders.
+ */
+function dct_commerce_update_8402() {
+  $ids = [711, 731, 746];
+  $orders = Order::loadMultiple($ids);
+  /* @var $invoice_generator \Drupal\dct_bills\InvoiceGenerationService */
+  $invoice_generator = Drupal::service('dct_bills.bill_generation');
+
+  foreach ($orders as $order) {
+    /* @var $order Order */
+    $order->set('checkout_step', 'complete');
+    $order->set('completed', $order->get('changed')->value);
+    $order->set('order_number', $order->id());
+    $order->set('state', 'completed');
+    $order->set('locked', 0);
+    $order->setData('state', 'completed');
+    $order->save();
+    $invoice_generator->generateInvoiceToOrder($order);
+  }
+
 }
