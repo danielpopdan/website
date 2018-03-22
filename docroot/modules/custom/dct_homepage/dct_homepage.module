@@ -45,6 +45,11 @@ function dct_homepage_theme() {
         'sponsors' => NULL,
       ],
     ],
+    'dct_sponsors_block' => [
+      'variables' => [
+        'sponsors' => NULL,
+      ],
+    ],
   ];
 }
 

@@ -1,0 +1,26 @@
+uuid: 04315032-2282-49c7-9459-f10e741bb397
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_homepage
+    - system
+  theme:
+    - dct_theme
+id: sponsorsblock
+theme: dct_theme
+region: content
+weight: -4
+provider: null
+plugin: sponsors_block
+settings:
+  id: sponsors_block
+  label: 'Sponsors block'
+  provider: dct_homepage
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
