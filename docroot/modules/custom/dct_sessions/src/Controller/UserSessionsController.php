@@ -129,6 +129,11 @@ class UserSessionsController extends ControllerBase {
     return [
       '#theme' => 'dct_sessions_session_detail_page',
       '#session' => $contact_message,
+      '#cache' => [
+        'tags' => [
+          'contact_message:' . $contact_message->id(),
+        ]
+      ]
     ];
   }
 
