@@ -103,7 +103,7 @@
           "https://www.drupal.org/node/2929146": "https://www.drupal.org/files/issues/alter_view_template.patch"
         },
         "drupal/core": {
-            "https://www.drupal.org/project/drupal/issues/736066": "https://www.drupal.org/files/issues/736066-270.patch"
+            "https://www.drupal.org/project/drupal/issues/736066": "https://www.drupal.org/files/issues/2018-03-14/736066-296-328.patch"
         }
       }
     }
