@@ -17,22 +17,38 @@ function dct_commerce_install() {
 /**
  * Closes and generates invoices for several orders.
  */
-//function dct_commerce_update_8402() {
-//  $ids = [711, 731, 746];
-//  $orders = Order::loadMultiple($ids);
-//  /* @var $invoice_generator \Drupal\dct_bills\InvoiceGenerationService */
-//  $invoice_generator = Drupal::service('dct_bills.bill_generation');
-//
-//  foreach ($orders as $order) {
-//    /* @var $order Order */
-//    $order->set('checkout_step', 'complete');
-//    $order->set('completed', $order->get('changed')->value);
-//    $order->set('order_number', $order->id());
-//    $order->set('state', 'completed');
-//    $order->set('locked', 0);
-//    $order->setData('state', 'completed');
-//    $order->save();
-//    $invoice_generator->generateInvoiceToOrder($order);
-//  }
-//
-//}
+function dct_commerce_update_8402() {
+  $ids = [711, 731, 746];
+  $orders = Order::loadMultiple($ids);
+  /* @var $invoice_generator \Drupal\dct_bills\InvoiceGenerationService */
+  $invoice_generator = Drupal::service('dct_bills.bill_generation');
+  $state = Drupal::state();
+
+  // Set the current invoice number to 3, such that the next 3 invoices are
+  // 4, 5 and 6.
+  $state->set('dct_bills.bill_no', 3);
+
+  // Set the orders as completed.
+  foreach ($orders as $order) {
+    /* @var $order Order */
+    $order->set('checkout_step', 'complete');
+    $changed = $order->get('changed')->value;
+    $order->set('completed', $order->get('changed')->value);
+    $order->set('order_number', $order->id());
+    $order->set('state', 'completed');
+    $order->set('locked', 0);
+    $order->setData('state', 'completed');
+    $order->save();
+  }
+
+  // Order by completion date.
+  usort($orders, function ($a, $b) {
+    return $a->completed->value - $b->completed->value;
+  });
+
+  // Generate the invoices.
+  foreach ($orders as $order) {
+    $invoice_generator->generateInvoiceToOrder($order);
+  }
+
+}
