@@ -1,0 +1,9 @@
+uuid: 1a1f0eaf-3693-416e-b208-968fdb35a2bc
+langcode: en
+status: true
+dependencies: {  }
+id: seo
+label: SEO
+icon_uuid: null
+description: 'SEO configurations '
+behavior_plugins: {  }

@@ -1,0 +1,58 @@
+uuid: 3cc5da39-15e5-42ef-a19d-f08896ee108d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo
+    - node.type.news
+    - paragraphs.paragraphs_type.seo
+  module:
+    - entity_reference_revisions
+id: node.news.field_seo
+field_name: field_seo
+entity_type: node
+bundle: news
+label: SEO
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      seo: seo
+    target_bundles_drag_drop:
+      benefits_group:
+        weight: 11
+        enabled: false
+      google_map_paragraph:
+        weight: 12
+        enabled: false
+      image_slider_paragraph:
+        weight: 13
+        enabled: false
+      seo:
+        enabled: true
+        weight: 14
+      social_share:
+        weight: 15
+        enabled: false
+      sponsorship_container:
+        weight: 16
+        enabled: false
+      sponsorship_package:
+        weight: 17
+        enabled: false
+      sponsors_extras:
+        weight: 18
+        enabled: false
+      sponsor_contact_form:
+        weight: 19
+        enabled: false
+      text_paragraph:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

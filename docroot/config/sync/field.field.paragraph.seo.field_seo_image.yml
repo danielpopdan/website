@@ -1,20 +1,20 @@
-uuid: 36d2ccbf-f590-4d45-8a03-ee8d415a4ba0
+uuid: 6f01158f-f648-4c5a-a899-0618ebfa8361
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_meta_image
-    - node.type.news
+    - field.storage.paragraph.field_seo_image
+    - paragraphs.paragraphs_type.seo
   module:
     - image
-id: node.news.field_meta_image
-field_name: field_meta_image
-entity_type: node
-bundle: news
-label: 'Meta - Image'
+id: paragraph.seo.field_seo_image
+field_name: field_seo_image
+entity_type: paragraph
+bundle: seo
+label: Image
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -23,16 +23,16 @@ settings:
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''
-  alt_field: true
-  alt_field_required: true
+  alt_field: false
+  alt_field_required: false
   title_field: false
   title_field_required: false
   default_image:
-    uuid: e219c30c-0b83-4eb9-bc6c-bb150365eee8
-    alt: 'Drupal Camp Transylvania'
-    title: 'Drupal Camp Transylvania'
-    width: 1000
-    height: 1000
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
   handler: 'default:file'
   handler_settings: {  }
 field_type: image

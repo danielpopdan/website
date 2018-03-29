@@ -1,0 +1,32 @@
+uuid: c32fde3f-e396-455f-aa38-2ce6bf7d24d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.seo.field_seo_description
+    - field.field.paragraph.seo.field_seo_image
+    - paragraphs.paragraphs_type.seo
+  module:
+    - image
+id: paragraph.seo.default
+targetEntityType: paragraph
+bundle: seo
+mode: default
+content:
+  field_seo_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_seo_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }
