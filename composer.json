@@ -33,7 +33,7 @@
         "drupal/config_installer": "1.5",
         "drupal/console": "~1.0",
         "drupal/contact_storage": "1.0-beta9",
-        "drupal/core": "8.5.0",
+        "drupal/core": "8.5.1",
         "drupal/entityqueue": "1.x-dev",
         "drupal/flag": "4.0-alpha2",
         "drupal/google_map_field": "1.4",
