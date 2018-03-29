@@ -1,0 +1,36 @@
+uuid: 63e8c218-434d-4df1-ba36-bf722268909a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.seo.field_seo_description
+    - field.field.paragraph.seo.field_seo_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.seo
+  module:
+    - image
+id: paragraph.seo.default
+targetEntityType: paragraph
+bundle: seo
+mode: default
+content:
+  field_seo_description:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_seo_image:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

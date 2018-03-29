@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.news.field_description
-    - field.field.node.news.field_meta_image
+    - field.field.node.news.field_seo
     - field.field.node.news.field_short_description
-    - image.style.thumbnail
     - node.type.news
   module:
-    - image
+    - entity_reference_revisions
     - path
     - text
 id: node.news.default
@@ -31,13 +30,14 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_meta_image:
+  field_seo:
     weight: 123
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: image_image
+    type: entity_reference_revisions_autocomplete
     region: content
   field_short_description:
     weight: 121

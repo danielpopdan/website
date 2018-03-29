@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.field_seo
     - node.type.article
   module:
     - text
@@ -24,4 +25,5 @@ content:
     label: hidden
 hidden:
   addtoany: true
+  field_seo: true
   links: true
