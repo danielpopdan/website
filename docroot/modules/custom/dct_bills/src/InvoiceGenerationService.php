@@ -54,44 +54,60 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
     $list = $this->countryManager->getList();
     $array = explode("\n", wordwrap($ticket->getTitle(), 28));
     // Check if there is any promotion.
-    $store = array_pop($ticket->getPurchasedEntity()->getStores());
+    $stores = $ticket->getPurchasedEntity()->getStores();
+    $store = array_pop($stores);
     $final_price = \Drupal::service('dct_commerce.promotional_price_calculator')->calculatePromotionalPrice($ticket->getPurchasedEntity(), $store);
     // Increments the invoice number.
     $invoice_number++;
+
+    $profile = $order->getBillingProfile();
+
+    /* @var $address \CommerceGuys\Addressing\AddressInterface */
+    $address = $profile->address->first();
+    $theme = 'bill';
+
+    // If not a company, use a personal bill.
+    if (empty($profile->field_company_name->value) && empty($profile->field_company_registration_no->value)) {
+      $theme = 'bill-personal';
+    }
+
     $render = [
-      '#theme' => 'bill',
+      '#theme' => $theme,
       '#country' => [
-        '#markup' => $list[$order->getBillingProfile()->get('address')->first()->getCountryCode()],
+        '#markup' => $list[$address->getCountryCode()],
       ],
       '#city' => [
-        '#markup' => $order->getBillingProfile()->get('address')->first()->getLocality(),
+        '#markup' => $address->getLocality(),
       ],
       '#address' => [
-        '#markup' => $order->getBillingProfile()->get('address')->first()->getAddressLine1() . ' ' . $order->getBillingProfile()->get('address')->first()->getAddressLine2(),
+        '#markup' => $address->getAddressLine1() . ' ' . $address->getAddressLine2(),
       ],
       '#given_name' => [
-        '#markup' => $order->getBillingProfile()->get('address')->first()->getGivenName(),
+        '#markup' => $address->getGivenName(),
       ],
       '#family_name' => [
-        '#markup' => $order->getBillingProfile()->get('address')->first()->getFamilyName(),
+        '#markup' => $address->getFamilyName(),
       ],
       '#phone' => [
-        '#markup' => $order->getBillingProfile()->get('field_telephone')->value,
+        '#markup' => $profile->get('field_telephone')->value,
       ],
       '#company' => [
-        '#markup' => $order->getBillingProfile()->get('field_company_name')->value,
+        '#markup' => $profile->get('field_company_name')->value,
       ],
       '#tax_no' => [
-        '#markup' => $order->getBillingProfile()->get('field_tax_identification_no')->value,
+        '#markup' => $profile->get('field_tax_identification_no')->value,
       ],
       '#company_no' => [
-        '#markup' => $order->getBillingProfile()->get('field_company_registration_no')->value,
+        '#markup' => $profile->get('field_company_registration_no')->value,
       ],
       '#bank' => [
-        '#markup' => $order->getBillingProfile()->get('field_bank_name')->value,
+        '#markup' => $profile->get('field_bank_name')->value,
       ],
       '#account_no' => [
-        '#markup' => $order->getBillingProfile()->get('field_account_number')->value,
+        '#markup' => $profile->get('field_account_number')->value,
+      ],
+      '#county' => [
+        '#markup' => $profile->get('field_county')->value,
       ],
       '#ticket_title_1' => [
         '#markup' => $array[0],
@@ -118,14 +134,17 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
         '#markup' => $invoice_number,
       ],
       '#current_date' => [
-        '#markup' => date('d.m.Y'),
+        '#markup' => date('d.m.Y', $order->get('completed')->value),
       ],
     ];
+
+    // Attempt to generate the PDF file.
+    $pdf = $this->generatePdf($render);
 
     // Sets the invoice number back, incremented.
     $this->setInvoiceNumber($invoice_number);
 
-    return $this->generatePdf($render);
+    return $pdf;
   }
 
   /**
@@ -155,9 +174,14 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
    * @return string
    *   The pdf content.
    */
-  private function generatePdf($render) {
+  protected function generatePdf($render) {
     $dompdf = new Dompdf();
-    $html = render($render);
+    if (in_array(PHP_SAPI, ['cli', 'cli-server', 'phpdbg'])) {
+      $html = \Drupal::service('renderer')->renderRoot($render);
+    }
+    else {
+      $html = render($render);
+    }
     $dompdf->loadHtml(utf8_decode($html));
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
@@ -172,17 +196,17 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
    * @return mixed|string
    *   The invoice number.
    */
-  private function getInvoiceNumber() {
+  protected function getInvoiceNumber() {
     return (empty($this->state->get('dct_bills.bill_no'))) ? '0' : $this->state->get('dct_bills.bill_no');
   }
 
   /**
    * Sets the invoice number.
    *
-   * @param mixes|string $invoice_number
+   * @param mixed|string $invoice_number
    *   The invoice number.
    */
-  private function setInvoiceNumber($invoice_number) {
+  protected function setInvoiceNumber($invoice_number) {
     $this->state->set('dct_bills.bill_no', $invoice_number);
   }
 
