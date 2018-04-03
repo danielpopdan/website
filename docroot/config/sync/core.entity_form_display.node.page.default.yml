@@ -4,14 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.page.field_description
-    - field.field.node.page.field_meta_image
     - field.field.node.page.field_paragraphs
+    - field.field.node.page.field_seo
     - field.field.node.page.field_short_description
     - field.field.node.page.field_subtitle
-    - image.style.thumbnail
     - node.type.page
   module:
-    - image
+    - entity_reference_revisions
     - paragraphs
     - path
     - text
@@ -36,14 +35,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_meta_image:
-    weight: 26
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-    region: content
   field_paragraphs:
     type: entity_reference_paragraphs
     weight: 4
@@ -55,6 +46,15 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_seo:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
     region: content
   field_short_description:
     weight: 2
