@@ -9,10 +9,10 @@ dependencies:
     - field.field.node.session.field_hour
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
-    - field.field.node.session.field_plain_description
     - field.field.node.session.field_room
     - field.field.node.session.field_select
     - field.field.node.session.field_select_list
+    - field.field.node.session.field_session_description
     - field.field.node.session.field_session_type
     - field.field.node.session.field_speakers
     - field.field.node.session.field_subtitle
@@ -21,6 +21,7 @@ dependencies:
   module:
     - file
     - options
+    - text
     - user
 id: node.session.default
 targetEntityType: node
@@ -70,13 +71,6 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
-  field_plain_description:
-    weight: 103
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_room:
     weight: 116
     label: hidden
@@ -98,6 +92,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  field_session_description:
+    weight: 120
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_session_type:
     weight: 111
@@ -129,6 +130,9 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  flag_add_to_my_schedule:
+    weight: 10
     region: content
   links:
     weight: 100

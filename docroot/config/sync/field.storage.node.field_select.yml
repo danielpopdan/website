@@ -12,6 +12,9 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: na
+      label: 'Not applicable'
+    -
       value: 7.x
       label: 7.x
     -

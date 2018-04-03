@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.session.field_hour
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
-    - field.field.node.session.field_plain_description
     - field.field.node.session.field_room
     - field.field.node.session.field_select
     - field.field.node.session.field_select_list
@@ -55,7 +54,6 @@ hidden:
   field_hour: true
   field_list_select: true
   field_long_description: true
-  field_plain_description: true
   field_select: true
   field_select_list: true
   field_session_type: true

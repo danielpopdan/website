@@ -55,7 +55,7 @@ class SessionProposalService {
       'field_email' => $message_entity->get('mail'),
       'title' => $message_entity->get('field_name'),
       'field_list_select' => $message_entity->get('field_radio_button')->getValue(),
-      'field_plain_description' => $message_entity->get('field_description')->getValue(),
+      'field_session_description' => $message_entity->get('field_description')->getValue(),
       'field_select' => $message_entity->get('field_select')->getValue(),
       'field_select_list' => $message_entity->get('field_duration')->getValue(),
       'field_taxonomy_reference' => $message_entity->get('field_taxonomy_reference')->getValue(),
