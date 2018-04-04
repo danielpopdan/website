@@ -4,9 +4,6 @@
 <div class="l-container burger-menu">
     <nav role="navigation" aria-labelledby="block-burgermenu-menu" id="block-burgermenu" class="block block-menu navigation menu--burger">
         <ul class="menu">
-            <li class="menu-item">
-                <a href="/" data-drupal-link-system-path="<front>" >Homepage</a>
-            </li>
             <li class="menu-item menu-item--expanded">
                 <a href="/" data-drupal-link-system-path="<front>" >Event</a>
                 <ul class="menu sublinks">
@@ -80,7 +77,4 @@
             </li>
         </ul>
     </nav>
-    <ul>
-        <?php include "modules/share-links.php";?>
-    </ul>
 </div>
