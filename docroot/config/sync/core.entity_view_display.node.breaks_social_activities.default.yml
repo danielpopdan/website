@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.breaks_social_activities.field_day
     - field.field.node.breaks_social_activities.field_duration
+    - field.field.node.breaks_social_activities.field_height
     - field.field.node.breaks_social_activities.field_hour
     - field.field.node.breaks_social_activities.field_room
     - node.type.breaks_social_activities
@@ -31,6 +32,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_height:
+    weight: 105
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   field_hour:
     weight: 101

@@ -1,0 +1,23 @@
+uuid: f3f1bea4-d8b3-4d87-adf3-847490150873
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_height
+    - node.type.breaks_social_activities
+id: node.breaks_social_activities.field_height
+field_name: field_height
+entity_type: node
+bundle: breaks_social_activities
+label: Height
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

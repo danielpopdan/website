@@ -1,0 +1,23 @@
+uuid: 151824a8-818a-4574-afb9-b6f812b3d1ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_height
+    - node.type.session
+id: node.session.field_height
+field_name: field_height
+entity_type: node
+bundle: session
+label: Height
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

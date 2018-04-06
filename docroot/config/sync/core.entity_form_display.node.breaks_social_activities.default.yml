@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.breaks_social_activities.field_day
     - field.field.node.breaks_social_activities.field_duration
+    - field.field.node.breaks_social_activities.field_height
     - field.field.node.breaks_social_activities.field_hour
     - field.field.node.breaks_social_activities.field_room
     - node.type.breaks_social_activities
@@ -34,6 +35,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_height:
+    weight: 125
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   field_hour:
     weight: 121
