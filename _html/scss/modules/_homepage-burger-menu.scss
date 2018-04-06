@@ -10,6 +10,12 @@
     @include large-mobile {
         display: inline-block;
     }
+
+  @media all and (max-width: 1226px) {
+    .buy-ticket-button {
+      display: none;
+    }
+  }
 }
 
 .burger-button {
@@ -75,12 +81,12 @@
     padding: 0;
     color: $white;
     font-size: 1.3rem;
-    
+
     @include medium-desktop {
         display: inline-block;
         width: 85%;
     }
-    
+
 
     ul {
         text-align: right;
@@ -214,7 +220,7 @@
     & + nav {
         display: none;
         vertical-align: middle;
-        
+
         @include medium-desktop {
             display: inline-block;
         }
