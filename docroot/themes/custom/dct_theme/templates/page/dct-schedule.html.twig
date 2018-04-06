@@ -13,6 +13,14 @@
           href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
     </div>
   {% endif %}
+  <div class="schedule-legend"><p>
+    <ul>
+      <li><b>Transylvania</b> - session room</li>
+      <li><b>Platform.sh</b> - session room</li>
+      <li><b>PitechPlus</b> - sprint room</li>
+    </ul>
+    </p>
+  </div>
   <div class="scheduler-container">
     <div class="day-tabs-container">
       {% for name, day in days %}

@@ -1,4 +1,4 @@
-<div class="schedule-item" duration="{{ content.session_duration }}">
+<div class="schedule-item" duration="{{ content.session_duration }}" style="height: {{ content.field_height }}">
   <div class="schedule-item--detail-row">
     <div class="schedule-item--room">{{ content.field_room }}</div>
     <div class="schedule-item--hours">{{ content.session_hours }}</div>
@@ -18,4 +18,4 @@
     {{ content.flag_add_to_my_schedule }}
   </div>
 </div>
-{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty', 'flag_add_to_my_schedule', 'session_duration') }}
+{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty', 'flag_add_to_my_schedule', 'session_duration', 'field_height') }}

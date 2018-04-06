@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.session.field_day
     - field.field.node.session.field_email
     - field.field.node.session.field_files
+    - field.field.node.session.field_height
     - field.field.node.session.field_hour
     - field.field.node.session.field_list_select
     - field.field.node.session.field_long_description
@@ -46,6 +47,13 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
+  field_height:
+    weight: 27
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   field_hour:
     weight: 14

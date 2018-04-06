@@ -65,7 +65,7 @@
     var height;
     $('.schedule-item').each(function () {
       duration = $(this).attr('duration');
-      height = 220 + parseInt(duration) - 25;
+      height = parseInt(duration) * 7;
       $(this).height(height + 'px');
     });
   }
