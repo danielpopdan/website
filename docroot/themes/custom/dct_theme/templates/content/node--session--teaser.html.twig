@@ -1,17 +1,21 @@
-<div class="schedule-item">
-    <div class="schedule-item--detail-row">
-        <div class="schedule-item--room">{{ content.field_room }}</div>
-        <div class="schedule-item--hours">{{ content.session_hours }}</div>
-    </div>
-    <div class="schedule-item--title">{{ content.display_title }}</div>
-    <div class="schedule-item--speaker">{{ content.speakers }}</div>
+<div class="schedule-item" duration="{{ content.session_duration }}">
+  <div class="schedule-item--detail-row">
+    <div class="schedule-item--room">{{ content.field_room }}</div>
+    <div class="schedule-item--hours">{{ content.session_hours }}</div>
+  </div>
+  <div class="schedule-item--title">{{ content.display_title }}</div>
+  <div class="schedule-item--speaker">{{ content.speakers }}</div>
+  {% if content.difficulty is not empty %}
     <div class="schedule-item--difficulty">
-       {{ content.difficulty }}
+      {{ content.difficulty }}
     </div>
-    <div class="schedule-item--detail-row">
-        <div class="schedule-item--topic">{{ content.field_taxonomy_reference }}
-        </div>
-        {{ content.flag_add_to_my_schedule }}
-    </div>
+  {% endif %}
+  <div class="schedule-item--detail-row">
+    {% if content.field_taxonomy_reference['#object'] is not empty %}
+      <div class="schedule-item--topic">{{ content.field_taxonomy_reference }}
+      </div>
+    {% endif %}
+    {{ content.flag_add_to_my_schedule }}
+  </div>
 </div>
-{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty', 'flag_add_to_my_schedule') }}
+{{ content|without('field_room', 'field_taxonomy_reference', 'session_hours', 'display_title', 'speakers', 'difficulty', 'flag_add_to_my_schedule', 'session_duration') }}

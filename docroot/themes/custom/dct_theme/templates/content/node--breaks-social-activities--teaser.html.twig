@@ -1,4 +1,4 @@
-<div class="schedule-item break-item">
+<div class="schedule-item break-item" duration="{{ content.session_duration }}">
     <div class="schedule-item--detail-row">
         <div class="schedule-item--hours">{{ content.session_hours }}</div>
     </div>
@@ -6,4 +6,4 @@
         <p>{{ label }}</p>
     </div>
 </div>
-{{ content|without("session_hours") }}
+{{ content|without('session_hours', 'session_duration') }}
