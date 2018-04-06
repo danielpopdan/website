@@ -17,14 +17,6 @@
           href="{{ path('user.login') }}">{{ "Login"|t }}</a> {{ 'in order to add sessions to your schedule.' }}</p>
     </div>
   {% endif %}
-  <div class="schedule-legend"><p>
-    <ul>
-      <li><b>Transylvania</b> - session room</li>
-      <li><b>Platform.sh</b> - session room</li>
-      <li><b>PitechPlus</b> - sprint room</li>
-    </ul>
-    </p>
-  </div>
   <div class="scheduler-container">
     <div class="day-tabs-container">
       {% for name, day in days %}
@@ -38,7 +30,7 @@
     </div>
     <div class="mobile-room-slider">
       {% for room in rooms %}
-        <div class="mobile-room-slider--item">{{ room['name'] }}</div>
+        <div class="mobile-room-slider--item">{{ room['name'] }}{{ " room"|t }}</div>
       {% endfor %}
     </div>
     {% for name, day in sessions %}
@@ -63,7 +55,7 @@
                 {% set classes = '' %}
               {% endif %}
               <div class="room-schedule room-1 {{ classes }}">
-                <h2>{{ rooms[loop.index-1]['name'] }}</h2>
+                <h2>{{ rooms[loop.index-1]['name'] }} {{ " room"|t }}</h2>
                 {% for session in room %}
                   {{ session }}
                 {% endfor %}
@@ -73,5 +65,14 @@
         </div>
       </div>
     {% endfor %}
+  </div>
+  <div class="schedule-legend"><p>
+    <ul>
+      <li><b>Transylvania</b> - session room</li>
+      <li><b>Platform.sh</b> - session room</li>
+      <li><b>PitechPlus</b> - sprint room</li>
+    </ul>
+    </p>
+    <p>{{ "Transylvania and Platform.sh rooms will unify their power to host the keynotes and the featured sessions." }}</p>
   </div>
 </div>
