@@ -3,6 +3,7 @@
     height:  4rem;
     padding: 0 $global-padding;
     z-index: 2;
+    font-size: 0;
 
     @include tablet {
         padding: 0 $global-padding * 1.5;
@@ -22,22 +23,16 @@
         background: $header-color;
         content:    '';
         opacity:    .8;
+        z-index: -1;
     }
 
     &--logo {
-        @include vertical-center;
-        left:    1rem;
+        width: 20%;
+        display: inline-block;
+        vertical-align: middle;
 
         @include tablet {
-            left: 1.5rem;
-        }
-
-        @include medium-desktop {
-            left: 2rem;
-        }
-
-        @include large-desktop {
-            left: 2.5rem;
+            padding: $global-padding 0;
         }
 
         a {
@@ -55,28 +50,16 @@
             }
 
             @include medium-desktop {
-                width:           22rem;
-                height:          2.5rem;
-                background-size: 22rem;
+                width:           13rem;
+                height:          2rem;
+                background-size: 13rem;
             }
         }
     }
 
     &--menu {
-        @include vertical-center;
-        right:   1rem;
-
-        @include tablet {
-            right: 1.5rem;
-        }
-
-        @include medium-desktop {
-            right: 2rem;
-        }
-
-        @include large-desktop {
-            right: 2.5rem;
-        }
+        width: 80%;
+        text-align: right;
 
         ul {
             &.menu {
@@ -96,14 +79,18 @@
                 padding: 0 0 0 $global-padding;
 
                 @include tablet {
-                    padding: 0 0 0 $global-padding * 1.5;
+                    padding: $global-padding * 2 $global-padding * 1.5 $global-padding * 2 0;
+                }
+            
+                @include medium-desktop {
+                    padding: $global-padding * 2 $global-padding * 2 $global-padding * 2 0;
                 }
             }
         }
 
         a {
             color:       $white;
-            font-size:   $global-font-size * 1.125;
+            font-size:   $global-font-size * .875;
             font-weight: $weight-regular;
 
             &:hover {
