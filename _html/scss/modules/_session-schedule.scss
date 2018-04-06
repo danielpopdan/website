@@ -237,6 +237,7 @@
         }
 
         .schedule-item {
+            min-height: 150px;
             @include box-shadow(0, 0, .5rem, $box-shadow);
             margin: $global-margin $global-margin * .1;
             padding: $global-padding * .875;
