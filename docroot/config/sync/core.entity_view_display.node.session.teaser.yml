@@ -56,6 +56,7 @@ hidden:
   field_long_description: true
   field_select: true
   field_select_list: true
+  field_session_description: true
   field_session_type: true
   field_speakers: true
   field_subtitle: true
