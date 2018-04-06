@@ -45,23 +45,20 @@
 #}
 <div class="layout-container">
 
-    <header class="header">
-        <div class="header--logo">
-            <a href="{{ path('<front>') }}" title="Homepage"></a>
-        </div>
+  <header class="header">
+    <div class="header--logo">
+      <a href="{{ path('<front>') }}" title="Homepage"></a>
+    </div>
+    {{ page.header }}
+  </header>
 
-        <div class="header--login">
-            {{ page.header }}
-        </div>
-    </header>
+  <main class="clearfix" role="main">
+    {{ page.content }}
+  </main>
 
-    <main class="clearfix" role="main">
-        {{ page.content }}
-    </main>
-
-    <footer class="footer">
-        <div class="footer--background"></div>
-        {{ page.footer }}
-    </footer>
+  <footer class="footer">
+    <div class="footer--background"></div>
+    {{ page.footer }}
+  </footer>
 
 </div>{# /.layout-container #}

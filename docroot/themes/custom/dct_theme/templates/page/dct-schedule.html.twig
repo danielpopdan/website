@@ -8,9 +8,11 @@
   <div class="large-title-block title">
     <h2>{{ "Schedule"|t }}</h2>
   </div>
-  <div class="schedule-legend"><p>{{ "You can add sessions to" }} <a
-        href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
-  </div>
+  {% if logged_in %}
+    <div class="schedule-legend"><p>{{ "You can add sessions to" }} <a
+          href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
+    </div>
+  {% endif %}
   <div class="scheduler-container">
     <div class="day-tabs-container">
       {% for name, day in days %}

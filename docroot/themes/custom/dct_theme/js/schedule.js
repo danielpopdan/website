@@ -72,7 +72,6 @@
 
   scheduleTabs();
   mobileScheduleSlider();
-  calculateHeight();
 
   $(window).resize(function () {
     mobileScheduleSlider();

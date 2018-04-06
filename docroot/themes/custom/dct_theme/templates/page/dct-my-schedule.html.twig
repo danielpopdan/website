@@ -8,26 +8,28 @@
   <div class="large-title-block title">
     <h2>{{ "My schedule"|t }}</h2>
   </div>
-  <div class="schedule-legend"><p>{{ "Visit" }} <a href="{{ path('dct_schedule.schedule') }}">{{ "the schedule"|t }}</a> {{ 'for other sessions' }}</p></div>
+  <div class="schedule-legend"><p>{{ "Visit" }} <a
+        href="{{ path('dct_schedule.schedule') }}">{{ "the schedule"|t }}</a> {{ 'for other sessions' }}</p></div>
   <div class="scheduler-container my-schedule">
-      <div class="day-tabs-container">
-        {% for name, day in days %}
-          {% if loop.first %}
-            {% set classes = 'active-tab' %}
-          {% else %}
-            {% set classes = '' %}
-          {% endif %}
-          <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
-        {% endfor %}
-      </div>
-      {% for name, day in sessions %}
+    <div class="day-tabs-container">
+      {% for name, day in days %}
         {% if loop.first %}
-          {% set classes = 'active-tab-content' %}
+          {% set classes = 'active-tab' %}
         {% else %}
           {% set classes = '' %}
         {% endif %}
-        <div class="day-tab-content {{ classes }}" id="{{ name }}">
-          <div class="day-schedule">
+        <div class="day-tab {{ classes }}" data-tab="{{ name }}">{{ day }}</div>
+      {% endfor %}
+    </div>
+    {% for name, day in sessions %}
+      {% if loop.first %}
+        {% set classes = 'active-tab-content' %}
+      {% else %}
+        {% set classes = '' %}
+      {% endif %}
+      <div class="day-tab-content {{ classes }}" id="{{ name }}">
+        <div class="day-schedule">
+           <div class="room-schedule room-1 active-room" style="width: 100%">
             {% if day is empty %}
               <div class="conference-opening">
                 <div>
@@ -41,6 +43,7 @@
             {% endif %}
           </div>
         </div>
-      {% endfor %}
+      </div>
+    {% endfor %}
   </div>
 </div>

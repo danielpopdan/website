@@ -15,7 +15,9 @@
 
     menuButton.on('click', function () {
         menuButtonLayers.toggleClass('btn-layers-fade');
-        modalBurgerMenu.fadeToggle();
+        modalBurgerMenu.fadeToggle(0);
+        modalBurgerMenu.toggleClass('opened');
+
 
     });
 

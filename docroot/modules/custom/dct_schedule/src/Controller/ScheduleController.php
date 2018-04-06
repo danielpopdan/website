@@ -152,7 +152,9 @@ class ScheduleController extends ControllerBase {
       }
       else {
         $node = $node_storage->load($nids);
-        $sessions[] = $view_builder->view($node, 'teaser');
+        if (empty($sessions[$nids])) {
+          $sessions[$nids] = $view_builder->view($node, 'teaser');
+        }
       }
     }
 
