@@ -12,6 +12,10 @@
     <div class="schedule-legend"><p>{{ "You can add sessions to" }} <a
           href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
     </div>
+  {% else %}
+    <div class="schedule-legend"><p><a
+          href="{{ path('user.login') }}">{{ "Login"|t }}</a> {{ 'in order to add sessions to your schedule.' }}</p>
+    </div>
   {% endif %}
   <div class="schedule-legend"><p>
     <ul>
@@ -59,6 +63,7 @@
                 {% set classes = '' %}
               {% endif %}
               <div class="room-schedule room-1 {{ classes }}">
+                <h2>{{ rooms[loop.index-1]['name'] }}</h2>
                 {% for session in room %}
                   {{ session }}
                 {% endfor %}
