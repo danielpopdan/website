@@ -69,6 +69,7 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
       'Intermediate' => '2',
       'Advanced' => '3',
     ];
+    $has_difficulty = FALSE;
     for ($i = 1; $i <= 3; $i++) {
       $build['difficulty'][$i] = [
         '#type' => 'container',
@@ -80,7 +81,11 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
       ];
       if ($i <= $difficulties[$entity->get('field_list_select')->value]) {
         $build['difficulty'][$i]['#attributes']['class'][] = 'rating-active';
+        $has_difficulty = TRUE;
       }
+    }
+    if (empty($has_difficulty)) {
+      unset($build['difficulty']);
     }
     // Calculate the session end time based on duration and starting hour.
     $session_duration = $entity->get('field_select_list')->value;
@@ -94,6 +99,11 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
     $end_time = _dct_schedule_format_hour($session_end_hour) . ':' . _dct_schedule_format_hour($session_end_minutes);
     $build['session_hours'] = [
       '#markup' => $start_time . '-' . $end_time,
+    ];
+    $session_duration += $session_duration/5;
+    // Set the duration to expose in HTML.
+    $build['session_duration'] = [
+      '#markup' =>  $session_duration,
     ];
   }
 
@@ -111,7 +121,12 @@ function dct_schedule_entity_view(array &$build, EntityInterface $entity, Entity
     $build['session_hours'] = [
       '#markup' => $start_time . '-' . $end_time,
     ];
+    // Set the duration to expose in HTML.
+    $build['session_duration'] = [
+      '#markup' =>  $session_duration,
+    ];
   }
+
 }
 
 /**

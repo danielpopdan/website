@@ -1,103 +1,109 @@
 {% set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'sponsors-intro'
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'sponsors-intro'
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
-    <img src="/{{ directory }}/images/backgrounds/small-header.png"
-         alt="background">
+  <img src="/{{ directory }}/images/backgrounds/small-header.png"
+       alt="background">
 </div>
 
 <div class="session-detail-content">
-    <div class="large-title-block title">
-        <h2>{{ node.title.value }}</h2>
+  <div class="large-title-block title">
+    <h2>{{ node.title.value }}</h2>
+  </div>
+  <div class="l-container">
+    <div class="session-detail--item">
+      {% if content.session_status is not empty %}
+        <div class="session-detail--item-term">
+          <p>{{ "Status:"|t }}</p>
+        </div>
+        <div class="session-detail--item-value session-status">
+          <p>{{ content.session_status }}</p>
+        </div>
+      {% endif %}
     </div>
-    <div class="l-container">
-        <div class="session-detail--item">
-            {% if content.session_status is not empty %}
-                <div class="session-detail--item-term">
-                    <p>{{ "Status:"|t }}</p>
-                </div>
-                <div class="session-detail--item-value session-status">
-                    <p>{{ content.session_status }}</p>
-                </div>
-            {% endif %}
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Speakers:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value session-speakers">
-                <p>
-                    {{ content.speakers }}
-                </p>
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Description:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                {{ content.field_session_description }}
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Session Type:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                <p>{{ node.field_session_type.value }}</p>
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Duration:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                <p>{{ node.field_select_list.value ~ "'" }}</p>
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Session track:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                <p>{{ node.field_taxonomy_reference.entity.name.value }}</p>
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Drupal version:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                <p>{{ node.field_select.value }}</p>
-            </div>
-        </div>
-        <div class="session-detail--item">
-            <div class="session-detail--item-term">
-                <p>{{ "Audience:"|t }}</p>
-            </div>
-            <div class="session-detail--item-value">
-                <p>{{ node.field_list_select.value }}</p>
-            </div>
-        </div>
-        {% if node.field_files.target_id %}
-            <div class="session-detail--item">
-                <div class="session-detail--item-term">
-                    <p>{{ "Slides"|t }}</p>
-                </div>
-                <div class="session-detail--item-value session-presentation">
-                    <a href="{{ file_url(node.field_files.entity.uri.value) }}"
-                       target="_blank"
-                       class="session-presentation--link">{{ node.field_files.entity.filename.value }}</a>
-                    <span class="session-presentation--size">{{ node.field_files.entity.filesize.value/1000 ~ ' KB' }}</span>
-                </div>
-            </div>
-        {% endif %}
+    <div class="session-detail--item">
+      <div class="session-detail--item-term">
+        <p>{{ "Speakers:"|t }}</p>
+      </div>
+      <div class="session-detail--item-value session-speakers">
+        <p>
+          {{ content.speakers }}
+        </p>
+      </div>
     </div>
+    <div class="session-detail--item">
+      <div class="session-detail--item-term">
+        <p>{{ "Description:"|t }}</p>
+      </div>
+      <div class="session-detail--item-value">
+        {{ content.field_session_description }}
+      </div>
+    </div>
+    <div class="session-detail--item">
+      <div class="session-detail--item-term">
+        <p>{{ "Session Type:"|t }}</p>
+      </div>
+      <div class="session-detail--item-value">
+        <p>{{ node.field_session_type.value }}</p>
+      </div>
+    </div>
+    <div class="session-detail--item">
+      <div class="session-detail--item-term">
+        <p>{{ "Duration:"|t }}</p>
+      </div>
+      <div class="session-detail--item-value">
+        <p>{{ node.field_select_list.value ~ "'" }}</p>
+      </div>
+    </div>
+    {% if node.field_taxonomy_reference.entity.name.value is not empty %}
+      <div class="session-detail--item">
+        <div class="session-detail--item-term">
+          <p>{{ "Session track:"|t }}</p>
+        </div>
+        <div class="session-detail--item-value">
+          <p>{{ node.field_taxonomy_reference.entity.name.value }}</p>
+        </div>
+      </div>
+    {% endif %}
+    {% if node.field_select.value is not empty %}
+      <div class="session-detail--item">
+        <div class="session-detail--item-term">
+          <p>{{ "Drupal version:"|t }}</p>
+        </div>
+        <div class="session-detail--item-value">
+          <p>{{ node.field_select.value }}</p>
+        </div>
+      </div>
+    {% endif %}
+    {% if node.field_list_select.value is not empty %}
+      <div class="session-detail--item">
+        <div class="session-detail--item-term">
+          <p>{{ "Audience:"|t }}</p>
+        </div>
+        <div class="session-detail--item-value">
+          <p>{{ node.field_list_select.value }}</p>
+        </div>
+      </div>
+    {% endif %}
+    {% if node.field_files.target_id %}
+      <div class="session-detail--item">
+        <div class="session-detail--item-term">
+          <p>{{ "Slides"|t }}</p>
+        </div>
+        <div class="session-detail--item-value session-presentation">
+          <a href="{{ file_url(node.field_files.entity.uri.value) }}"
+             target="_blank"
+             class="session-presentation--link">{{ node.field_files.entity.filename.value }}</a>
+          <span class="session-presentation--size">{{ node.field_files.entity.filesize.value/1000 ~ ' KB' }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
 </div>
