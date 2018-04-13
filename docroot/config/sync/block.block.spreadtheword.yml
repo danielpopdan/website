@@ -10,7 +10,7 @@ dependencies:
 id: spreadtheword
 theme: dct_theme
 region: content
-weight: -1
+weight: -2
 provider: null
 plugin: spread_the_word_block
 settings:

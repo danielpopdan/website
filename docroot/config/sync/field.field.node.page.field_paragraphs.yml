@@ -56,9 +56,15 @@ settings:
       image_slider_paragraph:
         enabled: true
         weight: 9
+      image:
+        weight: 12
+        enabled: false
       social_share:
         enabled: true
         weight: 13
+      seo:
+        weight: 16
+        enabled: false
       sponsors_extras:
         weight: 16
         enabled: false
