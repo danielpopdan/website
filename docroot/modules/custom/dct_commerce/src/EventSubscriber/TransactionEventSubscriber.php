@@ -48,6 +48,14 @@ class TransactionEventSubscriber implements EventSubscriberInterface {
    */
   public function onPaymentSuccess(EuPlatescPaymentEvent $event) {
     $order = $event->getOrder();
+    // Set order to completed.
+    $order->set('checkout_step', 'complete');
+    $order->set('completed', $order->get('changed')->value);
+    $order->set('order_number', $order->id());
+    $order->set('state', 'completed');
+    $order->set('locked', 0);
+    $order->setData('state', 'completed');
+    $order->save();
     $this->ticketController->handlePaymentSuccess($order);
     $this->invoiceGeneration->generateInvoiceToOrder($order);
   }
