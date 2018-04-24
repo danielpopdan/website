@@ -52,3 +52,27 @@ function dct_commerce_update_8402() {
   }
 
 }
+
+/**
+ * Update bills to set the right date.
+ */
+function dct_commerce_update_8501() {
+  $ids = [616, 651, 711, 731, 746, 801, 836, 881, 901, 926, 961, 951, 1001, 1026, 1041];
+  $orders = Order::loadMultiple($ids);
+  /* @var $invoice_generator \Drupal\dct_bills\InvoiceGenerationService */
+  $invoice_generator = Drupal::service('dct_bills.bill_generation');
+  $state = Drupal::state();
+
+  // Set the current invoice number to 7.
+  $state->set('dct_bills.bill_no', 7);
+
+  // Order by completion date.
+  usort($orders, function ($a, $b) {
+    return $a->completed->value - $b->completed->value;
+  });
+
+  // Generate the invoices.
+  foreach ($orders as $order) {
+    $invoice_generator->generateInvoiceToOrder($order);
+  }
+}

@@ -119,13 +119,14 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
         '#markup' => $array[2],
       ],
       '#unit_price' => [
-        '#markup' => number_format($final_price['price']->getNumber(), 2) . $final_price['price']->getCurrencyCode(),
+        '#markup' => number_format($order->getTotalPrice()
+              ->getNumber() / $ticket->getQuantity(), 2) . $final_price['price']->getCurrencyCode(),
       ],
       '#quantity' => [
         '#markup' => $ticket->getQuantity(),
       ],
       '#total_item_price' => [
-        '#markup' => (number_format($final_price['price']->getNumber(), 2) * $ticket->getQuantity()) . $final_price['price']->getCurrencyCode(),
+        '#markup' => number_format($order->getTotalPrice()->getNumber(), 2) . $final_price['price']->getCurrencyCode(),
       ],
       '#total_price' => [
         '#markup' => number_format($order->getTotalPrice()->getNumber(), 2) . $order->getTotalPrice()->getCurrencyCode(),
@@ -154,7 +155,7 @@ class InvoiceGenerationService implements InvoiceGenerationServiceInterface {
     // Retrieves the pdf content.
     $output = $this->getInvoice($order);
     // Creates the pdf file.
-    $file = file_save_data($output, 'public://bill-order-' . $order->id() . '.pdf', FILE_EXISTS_REPLACE);
+    $file = file_save_data($output, 'public://invoice-order-' . $order->id() . '.pdf', FILE_EXISTS_REPLACE);
     $file_usage = \Drupal::service('file.usage');
     $file_usage->add($file, 'dct_bills', $order->getEntityTypeId(), $order->id());
     // Saves the pdf to the order.
