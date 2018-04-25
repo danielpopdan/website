@@ -16,6 +16,8 @@ function dct_sponsors_theme() {
         'gold' => NULL,
         'silver' => NULL,
         'community' => NULL,
+        'network' => NULL,
+        'media' => NULL,
       ]
     ],
   ];
