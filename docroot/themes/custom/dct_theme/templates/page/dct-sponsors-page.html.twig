@@ -1,52 +1,72 @@
 <div class="sponsors-display">
-    <div class="section-intro sponsors-intro">
-        <div class="section-intro--background"></div>
-        <div class="section-intro--text">
-            <h1 class="section-intro--title">{{ "Sponsors"|t }}</h1>
-        </div>
+  <div class="section-intro sponsors-intro">
+    <div class="section-intro--background"></div>
+    <div class="section-intro--text">
+      <h1 class="section-intro--title">{{ "Sponsors"|t }}</h1>
     </div>
-    <div class="sponsors-categories">
-        <div class="l-container">
-            {% if diamond is not empty %}
-                <div class="l-col l-col-1">
-                    <div class="sponsors-categories--category diamond">
-                        <div class="large-title-block">
-                            <h2>{{ "Diamond Sponsors"|t }}</h2>
-                        </div>
-                        {{ diamond }}
-                    </div>
-                </div>
-            {% endif %}
-            {% if gold is not empty %}
-                <div class="l-col l-col-1">
-                    <div class="sponsors-categories--category gold">
-                        <div class="large-title-block">
-                            <h2>{{ "Gold Sponsors"|t }}</h2>
-                        </div>
-                        {{ gold }}
-                    </div>
-                </div>
-            {% endif %}
-            {% if silver is not empty %}
-                <div class="l-col l-col-1">
-                    <div class="sponsors-categories--category silver">
-                        <div class="large-title-block">
-                            <h2>{{ "Silver Sponsors" }}</h2>
-                        </div>
-                        {{ silver }}
-                    </div>
-                </div>
-            {% endif %}
-            {% if community is not empty %}
-                <div class="l-col l-col-1">
-                    <div class="sponsors-categories--category community">
-                        <div class="large-title-block">
-                            <h2>{{ "Community Sponsors"|t }}</h2>
-                        </div>
-                        {{ community }}
-                    </div>
-                </div>
-            {% endif %}
+  </div>
+  <div class="sponsors-categories">
+    <div class="l-container">
+      {% if diamond is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category diamond">
+            <div class="large-title-block">
+              <h2>{{ "Diamond Sponsors"|t }}</h2>
+            </div>
+            {{ diamond }}
+          </div>
         </div>
+      {% endif %}
+      {% if gold is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category gold">
+            <div class="large-title-block">
+              <h2>{{ "Gold Sponsors"|t }}</h2>
+            </div>
+            {{ gold }}
+          </div>
+        </div>
+      {% endif %}
+      {% if silver is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category silver">
+            <div class="large-title-block">
+              <h2>{{ "Silver Sponsors" }}</h2>
+            </div>
+            {{ silver }}
+          </div>
+        </div>
+      {% endif %}
+      {% if community is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category community">
+            <div class="large-title-block">
+              <h2>{{ "Community Sponsors"|t }}</h2>
+            </div>
+            {{ community }}
+          </div>
+        </div>
+      {% endif %}
+      {% if network is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category community">
+            <div class="large-title-block">
+              <h2>{{ "Network Sponsors"|t }}</h2>
+            </div>
+            {{ network }}
+          </div>
+        </div>
+      {% endif %}
+      {% if media is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category community">
+            <div class="large-title-block">
+              <h2>{{ "Media Partners"|t }}</h2>
+            </div>
+            {{ media }}
+          </div>
+        </div>
+      {% endif %}
     </div>
+  </div>
 </div>

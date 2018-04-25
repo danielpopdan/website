@@ -23,6 +23,12 @@ settings:
     -
       value: community
       label: Community
+    -
+      value: media
+      label: Media
+    -
+      value: network
+      label: Network
   allowed_values_function: ''
 module: options
 locked: false
