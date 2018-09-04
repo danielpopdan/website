@@ -5,6 +5,11 @@
  * Contains hook implementations.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -23,3 +28,36 @@ function dct_sponsors_theme() {
   ];
 }
 
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dct_sponsors_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  // Checks if the node is of type sponsor.
+  if ($node->bundle() == 'sponsor') {
+    // The id of the sponsor editor.
+    $user_id = $node->get('field_sponsor_editor')->getValue()[0]['target_id'];
+    if ($user_id) {
+      if ($account->id() == $user_id) {
+        return AccessResult::allowed();
+      }
+    }
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dct_sponsors_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_sponsor_edit_form') {
+    // Checks if the current user is not the administrator.
+    if (!in_array('administrator', \Drupal::currentUser()->getRoles())) {
+      unset($form['revision_log']);
+      unset($form['revision_information']);
+      unset($form['revision']);
+      unset($form['field_type']);
+
+      $form['actions']['#weight'] = 126;
+    }
+  }
+}
