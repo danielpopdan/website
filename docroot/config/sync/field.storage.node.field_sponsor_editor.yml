@@ -1,0 +1,20 @@
+uuid: 5d54271e-8030-4e6f-8bf0-9141c8e9caee
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_sponsor_editor
+field_name: field_sponsor_editor
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

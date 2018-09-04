@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.sponsor.field_external_link
     - field.field.node.sponsor.field_image
     - field.field.node.sponsor.field_short_description
+    - field.field.node.sponsor.field_sponsor_editor
     - field.field.node.sponsor.field_type
     - image.style.thumbnail
     - node.type.sponsor
@@ -48,6 +49,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_sponsor_editor:
+    weight: 125
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_type:
     weight: 121

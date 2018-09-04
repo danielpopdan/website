@@ -11,7 +11,7 @@ third_party_settings:
       - main
     parent: 'main:'
   dct_node_access:
-    hide_details: 1
+    hide_details: 0
 name: Sponsor
 type: sponsor
 description: 'Use Sponsor to increase the visibility of the sponsors.'

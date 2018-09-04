@@ -1,0 +1,24 @@
+<div class="sponsors-display">
+    <div>
+        <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
+    </div>
+    <div class="sponsors-categories">
+        <div class="l-container">
+            <div class="l-col l-col-1">
+                <div class="sponsors-categories--category {{ node.field_type.value }}">
+                    <div class="large-title-block">
+                        <h2>{{ node.title.value }}</h2>
+                    </div>
+                    <div class="l-row">
+                        <div class="l-col l-col-2 l-col-md-4">
+                            {{ content.field_image }}
+                            <p>{{ content.field_short_description }}</p>
+                            {{ content.field_external_link }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
