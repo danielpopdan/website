@@ -786,7 +786,7 @@ $settings['fast404_string_whitelisting'] = array('cdn/farfuture', '/advagg_');
 # By default we will show a super plain 404, because usually errors like this are shown to browsers who only look at the headers.
 # However, some cases (usually when checking paths for Drupal pages) you may want to show a regular 404 error. In this case you can
 # specify a URL to another page and it will be read and displayed (it can't be redirected to because we have to give a 30x header to
-# do that. This page needs to be in your docroot.
+# do that. This page needs to be in your web.
 #$conf['fast404_HTML_error_page'] = './my_page.html';
 
 # Path checking. USE AT YOUR OWN RISK.

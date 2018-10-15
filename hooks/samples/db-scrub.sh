@@ -59,7 +59,7 @@ UPDATE users SET mail=CONCAT('user', uid, '@example.com'), init=CONCAT('user', u
 
 -- DRUPAL 7
 -- Drupal 7 requires sites to generate a hashed password specific to their site. A script in the 
--- docroot/scripts directory is provided for doing this. From your docroot run the following:
+-- web/scripts directory is provided for doing this. From your web run the following:
 --      
 --    scripts/password-hash.sh password
 --

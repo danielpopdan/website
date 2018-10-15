@@ -10,4 +10,4 @@ events:
             type: script
             script:
               - composer install
-              - cd docroot/themes/custom/dct_theme && npm install
+              - cd web/themes/custom/dct_theme && npm install

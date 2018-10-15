@@ -12,7 +12,7 @@ A Cloud Hook is simply a script in your code repository that Acquia Cloud execut
 
 ## Installing Cloud Hooks
 
-Cloud hook scripts live in your Acquia Cloud code repository. In each branch of your repo, there is a directory named docroot that contains your site's source code. Cloud hooks live in the directory hooks NEXT TO docroot (not inside of docroot).
+Cloud hook scripts live in your Acquia Cloud code repository. In each branch of your repo, there is a directory named web that contains your site's source code. Cloud hooks live in the directory hooks NEXT TO web (not inside of web).
 
 To install the correct directory structure and sample hook scripts, simply copy this repo into your Acquia Cloud repo.
 
