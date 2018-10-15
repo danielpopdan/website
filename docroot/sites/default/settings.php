@@ -285,7 +285,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'Zie5JlAgk3zXfRK4ctzhrB37YDM0qtEuBN5KepsOVZpxENxgMmgCaw1M2rlAmCyygdpmH3QL_g';
+$settings['hash_salt'] = 'iLswHpNwaeXRw5Tt-BKe869wz_ZXhxBPym6bZGhHZVt0opu24ZceNhCxtbJyye9vJ5daNuIhPw';
 
 /**
  * Deployment identifier.
@@ -728,7 +728,7 @@ if (file_exists('/var/www/site-php')) {
 $settings['site_uuid'] = '720b286c-a749-11e7-abc4-cec278b6b50a';
 # Set the installation profile, this must be done to eliminate configuration
 # conflicts with other modules.
-$settings['install_profile'] = 'config_installer';
+$settings['install_profile'] = 'standard';
 $config_directories['sync'] = DRUPAL_ROOT . '/config/sync';
 // Fix for issue: https://github.com/acquia/blt/issues/40
 $settings['cache']['default'] = 'cache.backend.database';
@@ -807,3 +807,13 @@ if (file_exists('./modules/contrib/fast404/fast404.inc')) {
   include_once './modules/contrib/fast404/fast404.inc';
   fast404_preboot($settings);
 }
+$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'mariadb',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);

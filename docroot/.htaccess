@@ -122,20 +122,6 @@ AddEncoding gzip svgz
   # uncomment the following line:
   # RewriteBase /
 
- # Rule for install.php forbidden
-  RewriteCond %{REQUEST_URI} ^(.*)?/(install.php)
-  RewriteRule ^ [F]
-
-  # Rewrite condition for prod to force to 'https://' production.
-  # Check if production.
-  # Ensure www.
-  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]  # exclude Acquia domains
-  RewriteCond %{HTTP_HOST} ^drupaltransylvania\.ro$ [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  # ensure https
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
   # Redirect common PHP files to their new locations.
   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
   RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild.php)

@@ -2,31 +2,32 @@ version: "2"
 
 services:
   mariadb:
-    image: wodby/mariadb:10.1-2.3.3
+    image: wodby/mariadb:$MARIADB_TAG
+    container_name: "${PROJECT_NAME}_mariadb"
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: drupal
-      MYSQL_USER: drupal
-      MYSQL_PASSWORD: drupal
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
     volumes:
       - ./mysql/:/var/lib/mysql
 
   php:
-    image: wodby/drupal-php:7.1-2.4.4
+    image: wodby/drupal-php:$PHP_TAG
+    container_name: "${PROJECT_NAME}_php"
     environment:
-      DB_HOST: mariadb
-      DB_USER: drupal
-      DB_PASSWORD: drupal
-      DB_NAME: drupal
-      DB_DRIVER: mysql
-      PHP_XDEBUG: 1
-      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      DB_HOST: $DB_HOST
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      COLUMNS: 80 # Set 80 columns for docker exec -it.
     volumes:
       - ./:/var/www/html
 
   nginx:
-    image: wodby/drupal-nginx:8-1.13-2.4.2
+    image: wodby/nginx:$NGINX_TAG
+    container_name: "${PROJECT_NAME}_nginx"
     depends_on:
       - php
     environment:
@@ -34,26 +35,29 @@ services:
       NGINX_ERROR_LOG_LEVEL: debug
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html/docroot
+      NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
     volumes:
       - ./:/var/www/html
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:dct.localhost'
+      - 'traefik.frontend.rule=Host:${PROJECT_BASE_URL}'
 
   front:
     build:
       context: dockers/front
       dockerfile: Dockerfile
+    container_name: "${PROJECT_NAME}_front"
     volumes:
       - ./_html/:/var/www/html
     labels:
       - 'traefik.backend=front'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:front.dct.localhost'
+      - 'traefik.frontend.rule=Host:front.${PROJECT_BASE_URL}'
 
   traefik:
     image: traefik
+    container_name: "${PROJECT_NAME}_traefik"
     command: -c /dev/null --web --docker --logLevel=INFO
     ports:
       - '8000:80'
@@ -63,33 +67,45 @@ services:
 
   pma:
     image: phpmyadmin/phpmyadmin
+    container_name: "${PROJECT_NAME}_pma"
     environment:
-      PMA_HOST: mariadb
-      PMA_USER: drupal
-      PMA_PASSWORD: drupal
+      PMA_HOST: $DB_HOST
+      PMA_USER: $DB_USER
+      PMA_PASSWORD: $DB_PASSWORD
       PHP_UPLOAD_MAX_FILESIZE: 1G
       PHP_MAX_INPUT_VARS: 1G
     labels:
       - 'traefik.backend=pma'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:pma.dct.localhost'
+      - 'traefik.frontend.rule=Host:pma.${PROJECT_BASE_URL}'
 
   portainer:
     image: portainer/portainer
-    command: --no-auth
+    container_name: "${PROJECT_NAME}_portainer"
+    command: --no-auth -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
       - 'traefik.backend=portainer'
       - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:portainer.dct.docker.localhost'
+      - 'traefik.frontend.rule=Host:portainer.${PROJECT_BASE_URL}'
 
   mailhog:
     image: mailhog/mailhog
+    container_name: "${PROJECT_NAME}_mailhog"
     labels:
       - 'traefik.backend=mailhog'
       - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.dct.localhost'
+      - 'traefik.frontend.rule=Host:mailhog.${PROJECT_BASE_URL}'
+
+  node:
+    image: node:8.12
+    container_name: "${PROJECT_NAME}_node"
+    working_dir: /var/www/html/
+    expose:
+    - "3000"
+    volumes:
+    - ./:/var/www/html
 
 volumes:
   docroot:
