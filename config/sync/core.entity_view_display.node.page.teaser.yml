@@ -29,6 +29,7 @@ content:
 hidden:
   field_description: true
   field_paragraphs: true
+  field_seo: true
   field_short_description: true
   field_subtitle: true
   field_text_paragraph: true

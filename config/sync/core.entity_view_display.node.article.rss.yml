@@ -21,3 +21,4 @@ content:
 hidden:
   addtoany: true
   body: true
+  field_seo: true

@@ -1,6 +1,6 @@
 uuid: 04315032-2282-49c7-9459-f10e741bb397
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - dct_homepage

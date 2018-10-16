@@ -51,6 +51,7 @@ hidden:
   field_day: true
   field_email: true
   field_files: true
+  field_height: true
   field_hour: true
   field_list_select: true
   field_long_description: true
