@@ -1,0 +1,20 @@
+uuid: 93700379-3b31-4986-afaf-f94bc28357ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_homepage
+  theme:
+    - dct_theme
+id: hostedbyplatformblock
+theme: dct_theme
+region: footer
+weight: 0
+provider: null
+plugin: hosted_by_platform
+settings:
+  id: hosted_by_platform
+  label: 'Hosted by Platform Block'
+  provider: dct_homepage
+  label_display: '0'
+visibility: {  }
