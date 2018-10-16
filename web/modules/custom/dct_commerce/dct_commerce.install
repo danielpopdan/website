@@ -11,7 +11,7 @@ use Drupal\commerce_order\Entity\Order;
  * Implements hook_install()
  */
 function dct_commerce_install() {
-  dct_commerce_initialize_commerce_data();
+//  dct_commerce_initialize_commerce_data();
 }
 
 /**

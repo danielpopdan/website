@@ -10,11 +10,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides Footer Block.
  *
  * @Block(
- *   id = "hosted_by_acquia",
- *   admin_label = @Translation("Hosted by Acquia Block"),
+ *   id = "hosted_by_platform",
+ *   admin_label = @Translation("Hosted by Platform Block"),
  * )
  */
-class HostedByAcquiaBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class HostedByPlatformBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -39,7 +39,7 @@ class HostedByAcquiaBlock extends BlockBase implements ContainerFactoryPluginInt
    */
   public function build() {
     return [
-      '#theme' => 'hosted_by_acquia_block',
+      '#theme' => 'hosted_by_platform_block',
     ];
   }
 

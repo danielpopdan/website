@@ -13,9 +13,9 @@ use Drupal\file\Entity\File;
  */
 function dct_homepage_theme() {
   return [
-    'hosted_by_acquia_block' => [
+    'hosted_by_platform_block' => [
       'variables' => [
-        'link' => 'https://www.acquia.com',
+        'link' => 'https://platform.sh',
       ]
     ],
     'dct_homepage_block' => [

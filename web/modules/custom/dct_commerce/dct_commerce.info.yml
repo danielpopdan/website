@@ -7,3 +7,4 @@ dependencies:
   - commerce
   - commerce_euplatesc
   - commerce_checkout
+  - dct_bills
