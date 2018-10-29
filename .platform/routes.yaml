@@ -1,17 +1,27 @@
-# The routes of the project.
-#
-# Each route describes how an incoming URL is going
-# to be processed by Platform.sh.
-
-"https://{default}/":
+https://{default}/:
   type: upstream
-  upstream: "app:http"
+  upstream: app:http
   cache:
     enabled: true
-
-    # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
-
-"https://www.{default}/":
+    cookies:
+    - /^SS?ESS/
+    - /^Drupal.visitor/
+https://www.{default}/:
   type: redirect
-  to: "https://{default}/"
+  to: https://{default}/
+https://www.cluj2019.drupaldays.org/:
+  primary: null
+  id: null
+  type: redirect
+  redirects:
+    expires: -1s
+    paths: {}
+  tls:
+    strict_transport_security:
+      enabled: null
+      include_subdomains: null
+      preload: null
+    min_version: null
+    client_authentication: null
+    client_certificate_authorities: []
+  to: https://cluj2019.drupaldays.org/
