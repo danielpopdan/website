@@ -173,7 +173,7 @@ class NewsletterSubscriptionForm extends FormBase {
       $command = new ReplaceCommand('#dct-newsletter-form', $html);
 
       // Adds the user to the 'Target Audience' list in mailchimp.
-      $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'Target Audience');
+      $this->mailchimpService->addMailchimpUser($form_state->getValue('email'), 'DrupalDevDays2019');
 
       // Sends a confirmation email to the subscriber.
       if (!$form_state->get('anyErrors')) {
