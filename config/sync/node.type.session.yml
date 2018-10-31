@@ -1,12 +1,7 @@
 uuid: fe230b96-6977-49bf-83d8-17b18cdb9900
 langcode: en
 status: true
-dependencies:
-  module:
-    - dct_node_access
-third_party_settings:
-  dct_node_access:
-    hide_details: 0
+dependencies: {  }
 name: Session
 type: session
 description: ''
