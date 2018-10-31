@@ -1,11 +1,9 @@
+{{ attach_library('addtoany/addtoany') }}
 <div class="homepage-spread-word">
     <div class="l-container">
         <div class="homepage-spread-word--intro large-title-block">
             <h2>{{ "Spread the word!"|t }}</h2>
             <p>{{ description }}</p>
-        </div>
-        <div class="homepage-spread-word--read-more">
-            {{ link }}
         </div>
     </div>
 </div>
@@ -30,6 +28,11 @@
             </div>
         </div>
         <h3 class="homepage-twitter--action">{{ "...and spread the word!" }}</h3>
-        {{ share }}
+        <ul class="share-links a2a_kit a2a_kit_size_32 addtoany_list open">
+            <li><a class="a2a_button_facebook share-links--link facebook"></a></li>
+            <li><a class="a2a_button_google_plus share-links--link google-plus"></a></li>
+            <li><a class="a2a_button_twitter share-links--link twitter"></a></li>
+            <li><a class="a2a_button_linkedin share-links--link linkedin"></a></li>
+        </ul>
     </div>
 </div>

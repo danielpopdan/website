@@ -67,7 +67,6 @@ module:
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
-  invisible_recaptcha: 0
   link: 0
   mailchimp: 0
   mailchimp_campaign: 0

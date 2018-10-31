@@ -485,9 +485,9 @@ img.zoom-img {
     background-size: 20rem; } }
 @media all and (min-width: 64em) {
   .header--logo a {
-    width: 13rem;
+    width: 18rem;
     height: 2rem;
-    background-size: 13rem; } }
+    background-size: 18rem; } }
 .header--menu {
   width: 80%;
   text-align: right; }
@@ -1152,9 +1152,10 @@ img.zoom-img {
   color: #fcb02a; }
 
 .share-links {
+  display: block;
   position: relative;
   margin: 1rem auto;
-  text-align: center;
+  text-align: center !important;
   z-index: 1; }
 @media all and (min-width: 48em) {
   .share-links {
