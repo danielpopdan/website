@@ -19,7 +19,7 @@ class SocialShareViewBuilder extends EntityViewBuilderBase {
    */
   public function build(array &$build) {
     $build = [
-      '#addtoany_html' => addtoany_create_node_buttons(NULL),
+      '#addtoany_html' => addtoany_create_data(NULL),
       '#theme' => 'addtoany_standard',
       '#cache' => [
         'contexts' => ['url'],
