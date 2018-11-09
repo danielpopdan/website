@@ -1273,11 +1273,11 @@ img.zoom-img {
 @media all and (min-width: 64em) {
   .sponsors-categories--category.silver {
     margin-right: 2.5rem; } }
-.sponsors-categories--category.community {
+.sponsors-categories--category.platinum {
   margin-left: 0.25rem;
   border-color: rgba(159, 26, 70, 0.2); }
 @media all and (min-width: 64em) {
-  .sponsors-categories--category.community {
+  .sponsors-categories--category.platinum {
     margin-left: 2.5rem; } }
 .sponsors-categories--category--header {
   position: absolute;
@@ -1409,19 +1409,19 @@ img.zoom-img {
 .silver .sponsors-categories--category--extras .plus-sign {
   color: #200f17; }
 
-.community .sponsors-categories--category--title {
+.platinum .sponsors-categories--category--title {
   background-color: #9f1a46; }
 
-.community .sponsors-categories--category--price {
+.platinum .sponsors-categories--category--price {
   color: #9f1a46; }
 
-.community .sponsors-categories--category--benefits li::before {
+.platinum .sponsors-categories--category--benefits li::before {
   background-color: #9f1a46; }
 
-.community .sponsors-categories--category--benefits li span {
+.platinum .sponsors-categories--category--benefits li span {
   color: #9f1a46; }
 
-.community .sponsors-categories--category--extras .plus-sign {
+.platinum .sponsors-categories--category--extras .plus-sign {
   color: #9f1a46; }
 
 .sponsors-display .sponsors-categories {
@@ -1485,9 +1485,9 @@ img.zoom-img {
 .sponsors-display .silver .large-title-block h2::after {
   border-color: #200f17; }
 
-.sponsors-display .community {
+.sponsors-display .platinum {
   margin-left: 0; }
-.sponsors-display .community .large-title-block h2::after {
+.sponsors-display .platinum .large-title-block h2::after {
   border-color: #600f2c; }
 
 .sponsors-contact--form-title {
