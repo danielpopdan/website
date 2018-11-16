@@ -26,3 +26,20 @@ https://drupaltransylvania.ro/:
     client_authentication: null
     client_certificate_authorities: []
   to: https://cluj2019.drupaldevdays.org
+http://drupaltransylvania.ro/:
+  primary: null
+  id: null
+  attributes: {}
+  type: redirect
+  redirects:
+    expires: -1s
+    paths: {}
+  tls:
+    strict_transport_security:
+      enabled: null
+      include_subdomains: null
+      preload: null
+    min_version: null
+    client_authentication: null
+    client_certificate_authorities: []
+  to: https://cluj2019.drupaldevdays.org
