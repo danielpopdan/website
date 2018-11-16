@@ -25,7 +25,7 @@ https://drupaltransylvania.ro/:
     min_version: null
     client_authentication: null
     client_certificate_authorities: []
-  to: https://cluj2019.drupaldays.org/
+  to: https://cluj2019.drupaldays.org
 http://drupaltransylvania.ro/:
   primary: null
   id: null
