@@ -49,6 +49,8 @@ hooks:
         drush -y updatedb
         drush -y config-import
         drush -y entup
+        cd themes/custom/dct_theme
+        npm install
 
 # The configuration of app when it is exposed to the web.
 web:
