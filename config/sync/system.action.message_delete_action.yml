@@ -1,16 +1,13 @@
-uuid: 17865eaa-5752-4b89-822a-fa782f813b90
+uuid: 13c18475-8129-4ec0-bdf8-599b3b2ffef9
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - contact_storage
   module:
-    - contact_storage
+    - message
 _core:
-  default_config_hash: jZQoNkJeq8A9-hHjrd3s6HE4or1uMGcZ97wa_HF_VeA
+  default_config_hash: jkka_O-z8_wLFEAEhghApPr_sq1o__PEZX0vh99TS3U
 id: message_delete_action
-label: 'Delete message'
-type: contact_message
+label: 'Delete selected messages'
+type: message
 plugin: message_delete_action
 configuration: {  }

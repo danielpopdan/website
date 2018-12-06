@@ -1,0 +1,23 @@
+uuid: 06d7c32e-ac02-4b62-9a89-2e194458fe8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_privacy
+  module:
+    - gdpr_consent
+    - user
+id: user.user.field_privacy
+field_name: field_privacy
+entity_type: user
+bundle: user
+label: Privacy
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  target_id: '1'
+field_type: gdpr_user_consent

@@ -4,8 +4,8 @@ smtp_port: null
 smtp_encryption: ssl
 smtp_username: ''
 smtp_password: ''
-sendmail_path: /usr/sbin/sendmail
-sendmail_mode: bs
+sendmail_path: '/usr/sbin/sendmail -t -i -S mailhog:1025'
+sendmail_mode: t
 spool_directory: ''
 _core:
   default_config_hash: 0SeYZshzgoabDrbz-junYqeQOQ9BypPv2gaFcnqKy0M

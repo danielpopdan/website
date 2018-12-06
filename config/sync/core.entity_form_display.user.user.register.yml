@@ -13,11 +13,13 @@ dependencies:
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organization
+    - field.field.user.user.field_privacy
     - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
     - address
+    - gdpr_consent
     - image
     - text
     - user
@@ -34,7 +36,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_bio:
-    weight: 17
+    weight: 10
     settings:
       rows: 5
       placeholder: ''
@@ -42,13 +44,13 @@ content:
     type: text_textarea
     region: content
   field_country:
-    weight: 16
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: address_country_default
     region: content
   field_drupal_org_username:
-    weight: 11
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -64,13 +66,13 @@ content:
     type: string_textfield
     region: content
   field_gender:
-    weight: 12
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_job_title:
-    weight: 14
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -86,7 +88,7 @@ content:
     type: string_textfield
     region: content
   field_organization:
-    weight: 13
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -94,8 +96,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_privacy:
+    type: gdpr_consent_widget
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_shirt_size:
-    weight: 15
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -106,7 +114,7 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: 10
+    weight: 3
     region: content
 hidden:
   commerce_remote_id: true

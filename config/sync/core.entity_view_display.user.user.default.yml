@@ -12,11 +12,13 @@ dependencies:
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organization
+    - field.field.user.user.field_privacy
     - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
     - image.style.user_profile
   module:
     - address
+    - gdpr_consent
     - image
     - options
     - text
@@ -88,6 +90,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_privacy:
+    weight: 16
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: gdpr_consent_formatter
     region: content
   field_shirt_size:
     weight: 14

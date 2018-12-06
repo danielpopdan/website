@@ -6,6 +6,7 @@ module:
   advagg_cdn: 0
   advagg_css_minify: 0
   advagg_js_minify: 0
+  anonymizer: 0
   automated_cron: 0
   better_exposed_filters: 0
   big_pipe: 0
@@ -14,6 +15,7 @@ module:
   breakpoint: 0
   calendar: 0
   calendar_datetime: 0
+  checklistapi: 0
   ckeditor: 0
   color: 0
   comment: 0
@@ -61,6 +63,9 @@ module:
   file: 0
   filter: 0
   flag: 0
+  gdpr: 0
+  gdpr_consent: 0
+  gdpr_fields: 0
   google_map_field: 0
   help: 0
   history: 0
@@ -73,6 +78,7 @@ module:
   mailchimp_lists: 0
   mailsystem: 0
   menu_ui: 0
+  message: 0
   metatag: 0
   metatag_open_graph: 0
   migrate: 0
@@ -102,6 +108,7 @@ module:
   views_templates: 0
   menu_link_content: 1
   pathauto: 1
+  simple_pass_reset: 1
   views: 10
   paragraphs: 11
   standard: 1000

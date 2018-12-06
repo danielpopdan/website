@@ -87,9 +87,9 @@ function dct_user_mail_alter(&$message) {
       dct_user_user_password_reset($message);
       break;
 
-    case 'user_register_no_approval_required':
-      dct_user_user_register($message);
-      break;
+//    case 'user_register_no_approval_required':
+//      dct_user_user_register($message);
+//      break;
 
     default:
   }
