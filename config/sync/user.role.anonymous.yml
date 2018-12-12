@@ -21,5 +21,4 @@ permissions:
   - 'search content'
   - 'submit sprint mentorship'
   - 'switch users'
-  - 'use text format full_html'
   - 'use text format restricted_html'

@@ -28,7 +28,6 @@ permissions:
   - 'switch users'
   - 'unflag add_to_my_schedule'
   - 'use text format basic_html'
-  - 'use text format full_html'
   - 'use text format mailchimp_campaign'
   - 'use text format restricted_html'
   - 'view commerce_product'

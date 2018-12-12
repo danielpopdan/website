@@ -1,0 +1,119 @@
+uuid: 6c5de32c-4d62-46e8-8310-a6cb559e2901
+langcode: en
+status: true
+dependencies: {  }
+id: user
+filenames:
+  user: ''
+bundles:
+  user:
+    field_bio:
+      bundle: user
+      name: field_bio
+      entity_type_id: user
+      rtf: remove
+      rta: inc
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_country:
+      bundle: user
+      name: field_country
+      entity_type_id: user
+      rtf: remove
+      rta: inc
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_drupal_org_username:
+      bundle: user
+      name: field_drupal_org_username
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_first_name:
+      bundle: user
+      name: field_first_name
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_gender:
+      bundle: user
+      name: field_gender
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: password_anonymizer
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_job_title:
+      bundle: user
+      name: field_job_title
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_last_name:
+      bundle: user
+      name: field_last_name
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_organization:
+      bundle: user
+      name: field_organization
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    user_picture:
+      bundle: user
+      name: user_picture
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_shirt_size:
+      bundle: user
+      name: field_shirt_size
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: true
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''

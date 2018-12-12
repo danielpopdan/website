@@ -11,9 +11,9 @@ id: user.user.field_gender
 field_name: field_gender
 entity_type: user
 bundle: user
-label: Gender
+label: 'Shirt type'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

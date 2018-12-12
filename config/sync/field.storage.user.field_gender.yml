@@ -13,10 +13,10 @@ settings:
   allowed_values:
     -
       value: M
-      label: Male
+      label: 'Slim Fit'
     -
       value: F
-      label: Female
+      label: 'Regular Fit'
   allowed_values_function: ''
 module: options
 locked: false
