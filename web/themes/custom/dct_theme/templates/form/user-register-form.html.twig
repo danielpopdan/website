@@ -22,12 +22,13 @@
 {{ form.user_picture }}
 <div class="form-two-column">
     {{ form.field_drupal_org_username }}
-    {{ form.field_gender }}
+    {{ form.field_country }}
     {{ form.field_organization }}
     {{ form.field_job_title }}
     {{ form.field_shirt_size }}
-    {{ form.field_country }}
+    {{ form.field_gender }}
 </div>
 {{ form.field_bio }}
+{{ form.field_privacy }}
 {{ form.actions }}
-{{ form|without("field_first_name", "field_last_name", "account", "user_picture", "field_drupal_org_username", "field_gender", "field_organization", "field_job_title", "actions", "field_shirt_size", "field_country", "field_bio") }}
+{{ form|without("field_first_name", "field_last_name", "account", "user_picture", "field_drupal_org_username", "field_gender", "field_organization", "field_job_title", "actions", "field_shirt_size", "field_country", "field_bio", "field_privacy") }}
