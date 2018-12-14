@@ -1,0 +1,23 @@
+user_never_lastlogin_value: '11'
+user_never_lastlogin_period: days
+user_lastlogin_value: ''
+user_lastlogin_period: days
+user_inactive_value: '11'
+user_inactive_period: days
+user_blocked_value: ''
+user_blocked_period: days
+enabled_never_loggedin_users: 1
+enabled_loggedin_users: 0
+enabled_inactive_users: 1
+enabled_blocked_users: 0
+purge_users_roles:
+  authenticated: authenticated
+  administrator: 0
+  featured_speaker: 0
+  sprint_mentor: 0
+  organizer: 0
+  attendee: 0
+purge_on_cron: 1
+inactive_user_notify_text: "Dear User, \r\n\r\nYour account has been deleted due the website’s policy to automatically remove users who match certain criteria. If you have concerns regarding the deletion, please talk to the administrator of the website. \r\n\r\nThank you"
+send_email_notification: 0
+purge_user_cancel_method: user_cancel_delete

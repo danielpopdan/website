@@ -51,6 +51,7 @@ module:
   dct_sessions: 0
   dct_sponsors: 0
   dct_user: 0
+  domain_registration: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -69,6 +70,7 @@ module:
   google_map_field: 0
   help: 0
   history: 0
+  honeypot: 0
   image: 0
   inline_entity_form: 0
   inline_form_errors: 0
@@ -90,6 +92,7 @@ module:
   page_cache: 0
   path: 0
   profile: 0
+  purge_users: 0
   quickedit: 0
   rdf: 0
   search: 0

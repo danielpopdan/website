@@ -27,7 +27,7 @@ class UserRegisterConfirmationPlugin extends PluginBase implements ConfirmationP
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('We are happy that you are interested in the event and we are eager to see you at DrupalCamp Transylvania.');
+    return t('An email has been sent to your email address to validate your account.');
   }
 
   /**
@@ -35,8 +35,8 @@ class UserRegisterConfirmationPlugin extends PluginBase implements ConfirmationP
    */
   public function getLink() {
     return [
-      'title' => $this->t('Visit your profile'),
-      'url' => Url::fromRoute('user.page'),
+      'title' => $this->t('Return to homepage'),
+      'url' => Url::fromRoute('<front>'),
     ];
   }
 

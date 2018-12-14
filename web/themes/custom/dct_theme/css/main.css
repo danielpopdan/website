@@ -2840,6 +2840,7 @@ img.zoom-img {
   display: none;
 }
 
-.user-register-form .field--name-field-country .form-item{
+.user-register-form .field--name-field-country .form-item,
+.user-form .field--name-field-country .form-item{
   margin-top: 0;
 }
