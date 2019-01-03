@@ -27,7 +27,7 @@ class SprintMentorConfirmationPlugin extends PluginBase implements ConfirmationP
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('We are glad that you want to share your knowledge at DrupalCamp Transylvania! We will take your application in consideration and we will keep in touch!');
+    return t('We are glad that you want to share your knowledge at Drupal Developer Days Transylvania! We will take your application in consideration and we will keep in touch!');
   }
 
   /**

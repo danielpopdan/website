@@ -23,8 +23,13 @@ class TicketInformation extends CheckoutPaneBase implements CheckoutPaneInterfac
   public function buildPaneForm(array $pane_form, FormStateInterface $form_state, array &$complete_form) {
     $order_items = $this->order->order_items;
     foreach ($order_items as $delta => $item) {
-      $order_item = $item->entity;
+        $order_item = $item->entity;
       /* @var $order_item \Drupal\commerce_order\Entity\OrderItemInterface */
+      $pane_form['order_item']['title_' . $delta] = [
+          '#prefix' => '<h2>',
+          '#markup' => $order_item->getTitle(),
+          '#suffix' => '</h2>',
+      ];
       $pane_form['order_item'][$delta] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Please complete the following fields with the email address of the persons should receive the ticket code(s). One unique

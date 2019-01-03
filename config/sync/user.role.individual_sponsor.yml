@@ -1,0 +1,9 @@
+uuid: 5d5d60e5-a524-4ac4-9de5-bb396900b0eb
+langcode: en
+status: true
+dependencies: {  }
+id: individual_sponsor
+label: 'Individual sponsor'
+weight: 7
+is_admin: null
+permissions: {  }

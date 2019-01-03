@@ -62,7 +62,7 @@ class HomepageConfigurationsForm extends FormBase {
     $form['date'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Date'),
-      '#description' => $this->t('The date when DrupalCamp Transylvania will take place.'),
+      '#description' => $this->t('The date when Drupal Developer Days Transylvania will take place.'),
       '#required' => TRUE,
       '#default_value' => $this->state->get('dct_homepage.date'),
     ];
@@ -70,7 +70,7 @@ class HomepageConfigurationsForm extends FormBase {
     $form['location'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Location'),
-      '#description' => $this->t('The location where DrupalCamp Transylvania will take place.'),
+      '#description' => $this->t('The location where Drupal Developer Days Transylvania will take place.'),
       '#required' => TRUE,
       '#default_value' => $this->state->get('dct_homepage.location'),
     ];

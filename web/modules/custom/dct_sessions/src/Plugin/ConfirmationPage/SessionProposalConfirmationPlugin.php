@@ -27,7 +27,7 @@ class SessionProposalConfirmationPlugin extends PluginBase implements Confirmati
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('We are glad that you want to share your knowledge at DrupalCamp Transylvania! We will take your proposal in consideration and we will keep in touch!');
+    return t('We are glad that you want to share your knowledge at Drupal Developer Days Transylvania! We will take your proposal in consideration and we will keep in touch!');
   }
 
   /**

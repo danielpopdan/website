@@ -1,0 +1,14 @@
+uuid: 89945f38-fdfc-436e-bb83-92432da25062
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.individual_sponsor
+  module:
+    - user
+id: user_add_role_action.individual_sponsor
+label: 'Add the Individual sponsor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: individual_sponsor

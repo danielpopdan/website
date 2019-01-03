@@ -300,7 +300,7 @@ function dct_commerce_mail($key, &$message, $params) {
   if ($key === 'ticket_recipient') {
     $message['from'] = \Drupal::config('system.site')->get('mail');
     $message['headers']['Content-Type'] = 'text/html';
-    $message['subject'] = t('Your have received a ticket coupon for DrupalCamp Transylvania');
+    $message['subject'] = t('Your have received a ticket coupon for Drupal Developer Days Transylvania 2019');
     $body = [
       '#theme' => 'dct_ticket_recipient',
       '#code' => $params['code'],
@@ -311,7 +311,7 @@ function dct_commerce_mail($key, &$message, $params) {
   elseif ($key === 'ticket_buyer') {
     $message['from'] = \Drupal::config('system.site')->get('mail');
     $message['headers']['Content-Type'] = 'text/html';
-    $message['subject'] = count($params['tickets']) > 1 ? t('Tickets for DrupalCamp Transylvania 2018') : t('Ticket for DrupalCamp Transylvania 2018');
+    $message['subject'] = count($params['tickets']) > 1 ? t('Tickets for Drupal Developer Days Transylvania 2019') : t('Ticket for Drupal Developer Days Transylvania 2019');
     foreach ($params['tickets'] as &$ticket) {
       $ticket = $ticket->getCode();
     }

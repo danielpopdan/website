@@ -135,7 +135,7 @@ class TicketRedemptionForm extends FormBase {
         ->load($this->currentUser->id());
       $user->addRole('attendee');
       $user->save();
-      $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DCT-2018 Participants');
+      $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DrupalDevDays2019');
 
       drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
     }

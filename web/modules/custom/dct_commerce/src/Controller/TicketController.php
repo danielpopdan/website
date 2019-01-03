@@ -135,7 +135,7 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
   public function createTicket(AccountInterface $creator, $orderItem) {
 
     // TODO: Have this made configurable somewhere.
-    $code = $this->generateTicketCode(10, 'DCT2018-');
+    $code = $this->generateTicketCode(10, 'DCT2019-');
     $values = [
       'code' => $code,
       'order_item' => $orderItem instanceof OrderItemInterface ? $orderItem->id() : NULL,

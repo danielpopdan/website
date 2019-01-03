@@ -1,5 +1,5 @@
 dct_homepage.admin.structure.settings:
-  title: 'DrupalCamp Transylvania'
+  title: 'Drupal Developer Days Transylvania'
   route_name: dct_homepage.configurations
   description: 'Manages DCT configurations.'
   parent: system.admin_config

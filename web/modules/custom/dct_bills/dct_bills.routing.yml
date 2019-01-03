@@ -11,4 +11,4 @@ dct_bills.my_invoices:
     _controller: '\Drupal\dct_bills\Controller\InvoiceController::getInvoices'
     _title: 'My invoices'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer camp settings'

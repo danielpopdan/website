@@ -57,7 +57,7 @@ class TransactionEventSubscriber implements EventSubscriberInterface {
     $order->setData('state', 'completed');
     $order->save();
     $this->ticketController->handlePaymentSuccess($order);
-    $this->invoiceGeneration->generateInvoiceToOrder($order);
+//    $this->invoiceGeneration->generateInvoiceToOrder($order);
   }
 
   /**
