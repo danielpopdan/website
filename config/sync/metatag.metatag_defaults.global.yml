@@ -7,8 +7,9 @@ _core:
 id: global
 label: Global
 tags:
-  title: '[current-page:title] | [site:name]'
   canonical_url: '[current-page:url]'
+  image_src: 'https://cluj2019.drupaldays.org/sites/default/files/2018-11/social.png'
+  title: '[current-page:title] | [site:name]'
+  og_image: 'https://cluj2019.drupaldays.org/sites/default/files/2018-11/social.png'
   og_title: '[current-page:title]'
   og_url: '[current-page:url]'
-  og_image: '[site:homepage_share_image_url]'

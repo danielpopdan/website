@@ -117,3 +117,14 @@ bundles:
       notes: ''
       relationship: 0
       sars_filename: ''
+    field_published:
+      bundle: user
+      name: field_published
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''

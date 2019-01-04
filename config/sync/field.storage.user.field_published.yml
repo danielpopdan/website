@@ -1,0 +1,18 @@
+uuid: c9db1583-0ab1-42a2-9081-caa63b77be91
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_published
+field_name: field_published
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

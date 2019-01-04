@@ -68,7 +68,10 @@ dct_sessions.user_sessions:
     _controller: '\Drupal\dct_sessions\Controller\UserSessionsController::getUserSessionsContent'
     _title: 'User Sessions'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer site settings'
+#  requirements:
+#    _permission: 'access content'
+
 
 dct_sessions.session_view:
   path: '/session/{contact_message}'

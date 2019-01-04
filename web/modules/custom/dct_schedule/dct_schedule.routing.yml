@@ -4,7 +4,7 @@ dct_schedule.schedule:
     _controller: '\Drupal\dct_schedule\Controller\ScheduleController::content'
     _title: 'Schedule'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer site settings'
 
 dct_schedule.my_schedule:
   path: '/my-schedule'
@@ -12,4 +12,6 @@ dct_schedule.my_schedule:
     _controller: '\Drupal\dct_schedule\Controller\ScheduleController::mySchedule'
     _title: 'My Schedule'
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _permission: 'administer site settings'
+#  requirements:
+#    _user_is_logged_in: 'TRUE'

@@ -124,3 +124,12 @@ function dct_commerce_update_8503() {
     $invoice_generator->generateInvoiceToOrder($order);
   }
 }
+
+/**
+ * Deletes all tickets
+ */
+function dct_commerce_update_8504() {
+    $controller = Drupal::entityTypeManager()->getStorage('dct_commerce_ticket');
+    $entities = $controller->loadMultiple();
+    $controller->delete($entities);
+}

@@ -1,0 +1,24 @@
+uuid: a6f331af-9db7-4327-85d1-bf45fb0e8271
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_published
+  module:
+    - user
+id: user.user.field_published
+field_name: field_published
+entity_type: user
+bundle: user
+label: 'Published on lists'
+description: 'Unless you opt out (“Publish in lists”), the above-listed attendee info fields plus your picture will be shown in attendee lists on the website and - depending on your speaker or volunteer status - in other lists like “volunteers” or “speakers”.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

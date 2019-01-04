@@ -2836,6 +2836,17 @@ img.zoom-img {
   width: auto;
 }
 
+.user-register-form .js-form-item-field-published-value,
+.user-form .js-form-item-field-published-value {
+  display: inline;
+}
+.user-register-form .js-form-item-field-published-value input,
+.user-form .js-form-item-field-published-value input,
+.user-register-form .js-form-item-field-published-value label,
+.user-form .js-form-item-field-published-value label {
+  width: auto;
+}
+
 .user-register-form .field--type-gdpr-user-consent .gdpr_agreed_toggle {
   display: none;
 }

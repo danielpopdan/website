@@ -10,8 +10,10 @@ dct_commerce.my_tickets:
   defaults:
     _controller: \Drupal\dct_commerce\Controller\MyTickets::renderMyTicketsPage
     _title: My tickets
+#  requirements:
+#    _permission: access ticket redemption
   requirements:
-    _permission: access ticket redemption
+    _permission: 'administer site settings'
 dct_commerce.payment_response:
   path: /checkout/response
   defaults:

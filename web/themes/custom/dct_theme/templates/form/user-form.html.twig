@@ -28,6 +28,7 @@
     {{ form.field_gender }}
 </div>
 {{ form.field_bio }}
+{{ form.field_published }}
 {{ form.field_privacy }}
 {{ form.actions }}
-{{ form|without("field_first_name", "field_last_name", "account", "user_picture", "field_drupal_org_username", "field_gender", "field_organization", "field_job_title", "actions", "field_shirt_size", "field_country", "field_bio", "field_privacy") }}
+{{ form|without("field_first_name", "field_last_name", "account", "user_picture", "field_drupal_org_username", "field_gender", "field_organization", "field_job_title", "actions", "field_shirt_size", "field_country", "field_bio", "field_privacy", "field_published") }}

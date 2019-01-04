@@ -13,6 +13,7 @@ dependencies:
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organization
     - field.field.user.user.field_privacy
+    - field.field.user.user.field_published
     - field.field.user.user.field_shirt_size
     - field.field.user.user.user_picture
     - image.style.user_list
@@ -100,6 +101,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: gdpr_consent_widget
+    region: content
+  field_published:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_shirt_size:
     weight: 10
