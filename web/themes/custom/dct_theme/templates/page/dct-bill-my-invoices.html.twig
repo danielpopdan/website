@@ -18,8 +18,8 @@
         </div>
       </div>
       <div class="my-profile-info--tabs">
-        <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
-        <a href="{{ path('dct_schedule.my_schedule') }}" class="button">{{ "My schedule"|t }}</a>
+        {#<a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>#}
+        {#<a href="{{ path('dct_schedule.my_schedule') }}" class="button">{{ "My schedule"|t }}</a>#}
         <a href="{{ path('dct_commerce.my_tickets') }}" class="button">{{ "My tickets"|t }}</a>
         <a href="{{ path('dct_bills.my_invoices') }}" class="button active-btn">{{ "My invoices"|t }}</a>
       </div>
@@ -32,7 +32,7 @@
       <div class="my-profile-session">
         {% if invoices is empty %}
           <div class="text-container">
-              <p>{{ "Currently, you didn't purchase tickets." }}</p>
+              <p>{{ "Currently, you don't have any invoice. If you already purchased a ticket, please come back later, invoice generation can take a while." }}</p>
           </div>
         {% else %}
           {% for invoice in invoices %}

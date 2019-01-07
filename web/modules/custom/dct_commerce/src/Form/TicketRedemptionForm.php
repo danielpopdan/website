@@ -134,6 +134,9 @@ class TicketRedemptionForm extends FormBase {
       $user = $this->entityTypeManager->getStorage('user')
         ->load($this->currentUser->id());
       $user->addRole('attendee');
+        if ($ticket->getOrderItem()->getPurchasedEntity()->get('sku')->value == 'ddd_individual_sponsor') {
+            $user->addRole('individual_sponsor');
+        }
       $user->save();
       $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DrupalDevDays2019');
 
