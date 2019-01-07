@@ -37,6 +37,7 @@
         "drupal/entityqueue": "1.x-dev",
         "drupal/flag": "4.0-alpha3",
         "drupal/gdpr": "2.0-alpha5",
+        "drupal/google_analytics": "2.3",
         "drupal/google_map_field": "1.5",
         "drupal/honeypot": "1.29",
         "drupal/mailchimp": "1.7",
