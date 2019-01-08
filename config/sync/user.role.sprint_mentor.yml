@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: sprint_mentor
-label: 'Sprint Mentor'
+label: 'Contribution Mentor'
 weight: 4
 is_admin: null
 permissions: {  }

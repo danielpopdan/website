@@ -1,0 +1,9 @@
+uuid: 3acbeec2-c1ab-4984-9b5a-1828f8dd0cc8
+langcode: en
+status: true
+dependencies: {  }
+id: keynote_speaker
+label: 'Keynote speaker'
+weight: 8
+is_admin: null
+permissions: {  }

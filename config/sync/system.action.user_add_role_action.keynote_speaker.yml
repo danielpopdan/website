@@ -1,0 +1,14 @@
+uuid: 6549b081-5144-40b9-83cf-03038805dfe3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.keynote_speaker
+  module:
+    - user
+id: user_add_role_action.keynote_speaker
+label: 'Add the Keynote speaker role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: keynote_speaker

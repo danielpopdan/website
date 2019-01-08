@@ -19,12 +19,15 @@
     <div class="l-container">
         <div class="title-container">
             <div class="large-title-block title">
-                <h2>{{ "Edit profile"|t }}</h2>
+                {% if logged_in %}
+                  <h2>{{ "Edit profile"|t }}</h2>
+                {% else %}
+                  <h2>{{ "Set up your password"|t }}</h2>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-
 <div class="form-general">
     <form{{ attributes.addClass(['contact-form']) }}>
         {{ children }}

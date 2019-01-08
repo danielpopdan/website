@@ -53,7 +53,11 @@
             </div>
             <div class="my-profile-info--right">
                 <div class="my-profile-info--fullname">
-                    <h2>{{ user.field_first_name.value ~ ' ' ~ user.field_last_name.value }}</h2>
+                    {% if user.field_last_name.value is not empty %}
+                        <h2>{{ user.field_first_name.value ~ ' ' ~ user.field_last_name.value }}</h2>
+                    {% else %}
+                        <h2>{{ user.field_first_name.value }}</h2>
+                    {% endif %}
                 </div>
                 <h3 class="my-profile-info--role">{{ content.roles }}</h3>
                 <div class="my-profile-info--bio">

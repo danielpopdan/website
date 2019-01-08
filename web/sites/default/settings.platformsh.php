@@ -55,6 +55,7 @@ if (getenv('PLATFORM_APP_DIR')) {
     if (!isset($settings['php_storage']['twig'])) {
         $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
     }
+    $config['google_analytics.settings']['account'] = 'UA-131843424-1';
 
 }
 

@@ -1,0 +1,14 @@
+uuid: 1536f994-1671-46bd-a0d2-d0be7e650f90
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.keynote_speaker
+  module:
+    - user
+id: user_remove_role_action.keynote_speaker
+label: 'Remove the Keynote speaker role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: keynote_speaker

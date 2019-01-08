@@ -42,7 +42,19 @@ class UserSessions {
   public static function getPublicUserRoles(AccountInterface $user) {
     $roles = $user->getRoles();
     $private_roles = ['anonymous', 'authenticated', 'administrator'];
+    $prioritized_roles = [
+      'keynote_speaker',
+      'sprint_mentor',
+      'featured_speaker',
+      'organizer',
+      'individual_sponsor',
+    ];
     $display_roles = [];
+    $is_attendee = in_array('attendee', $roles);
+    $roles = array_intersect($prioritized_roles, $roles);
+    if (empty($roles) && $is_attendee) {
+       $roles[] = 'attendee';
+    }
     foreach ($roles as $role) {
       if (!in_array($role, $private_roles)) {
         $role = Role::load($role);
