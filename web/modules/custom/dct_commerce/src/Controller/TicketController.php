@@ -112,29 +112,30 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
           );
         }
       }
-      $params['account'] = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+      $params_buyer['account'] = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+      $params_buyer['redeem_link'] = Url::fromRoute('dct_commerce.ticket_redemption_code')->setAbsolute(TRUE)->toString(TRUE)->getGeneratedUrl();
       // Send mail containing all of the codes
       // to the user who purchased the tickets.
       if ($order_item->getPurchasedEntity()->get('sku')->value == 'ddd_individual_sponsor') {
-        $params['sponsorship_tickets'] = $tickets;
+        $params_buyer['sponsorship_tickets'] = $tickets;
       }
       else {
-        $params['tickets'] = $tickets;
+        $params_buyer['tickets'] = $tickets;
       }
 
       // Add the tickets to the order item.
       $order_item->set('field_tickets', $tickets);
       $order_item->save();
     }
-      $this->mailManager->doMail(
-          'dct_commerce',
-          'ticket_buyer',
-          $this->currentUser->getEmail(),
-          $this->currentUser->getPreferredLangcode(),
-          $params,
-          NULL,
-          TRUE
-      );
+    $this->mailManager->doMail(
+      'dct_commerce',
+      'ticket_buyer',
+      $this->currentUser->getEmail(),
+      $this->currentUser->getPreferredLangcode(),
+      $params_buyer,
+      NULL,
+      TRUE
+    );
   }
 
   /**
