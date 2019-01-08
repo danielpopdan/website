@@ -307,7 +307,7 @@ function dct_commerce_mail($key, &$message, $params) {
       '#theme' => 'dct_ticket_recipient',
       '#code' => $params['code'],
       '#redeem_link' => $params['redeem_link'],
-      '#sponsorship' => $params['sponsorship'],
+      '#sponsorship' => !empty($params['sponsorship']),
     ];
     $message['body'][0] = render($body);
   }
@@ -365,7 +365,8 @@ function dct_commerce_preprocess_commerce_product(&$variables) {
   if ($product instanceof Product) {
     $variation = $product->getVariations();
     $variation = array_pop($variation);
-    $store = array_pop($product->getStores());
+    $stores = $product->getStores();
+    $store = array_pop($stores);
     $promotionalPrice = \Drupal::service('dct_commerce.promotional_price_calculator')->calculatePromotionalPrice($variation, $store);
 
     $promotion = [];

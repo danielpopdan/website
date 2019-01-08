@@ -108,4 +108,11 @@ class Ticket extends ContentEntityBase implements TicketInterface {
     return $fields;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function __toString() {
+    return $this->getCode();
+  }
+
 }
