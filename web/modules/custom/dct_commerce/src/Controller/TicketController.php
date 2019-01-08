@@ -112,21 +112,26 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
       $params['account'] = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
       // Send mail containing all of the codes
       // to the user who purchased the tickets.
-      $params['tickets'] = $tickets;
-      $this->mailManager->doMail(
-        'dct_commerce',
-        'ticket_buyer',
-        $this->currentUser->getEmail(),
-        $this->currentUser->getPreferredLangcode(),
-        $params,
-        NULL,
-        TRUE
-      );
+      if ($item->getPurchasedEntity()->get('sku')->value == 'ddd_individual_sponsor') {
+        $params['sponsorship_tickets'] = $tickets;
+      }
+      else {
+        $params['tickets'] = $tickets;
+      }
 
       // Add the tickets to the order item.
       $order_item->set('field_tickets', $tickets);
       $order_item->save();
     }
+      $this->mailManager->doMail(
+          'dct_commerce',
+          'ticket_buyer',
+          $this->currentUser->getEmail(),
+          $this->currentUser->getPreferredLangcode(),
+          $params,
+          NULL,
+          TRUE
+      );
   }
 
   /**

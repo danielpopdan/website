@@ -2,7 +2,7 @@ dct_homepage.configurations:
   path: '/admin/config/camp-transylvania'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
-    _title: 'DrupalCamp Transylvania'
+    _title: 'DrupalTransylvania'
   requirements:
     _permission: 'administer camp settings'
 
@@ -42,6 +42,6 @@ dct_homepage.front:
   path: '/node'
   defaults:
     _controller: '\Drupal\dct_homepage\Controller\FrontPageController::content'
-    _title: 'DrupalCamp Transylvania'
+    _title: 'Drupal Developer Days 2019'
   requirements:
     _permission: 'access content'

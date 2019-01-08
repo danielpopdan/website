@@ -132,7 +132,7 @@
                                                         <tr style="text-align: center;">
                                                             <td>
                                                                 <span style="text-align: center; line-height: 40px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
-                                                                    {{ "Congratulations! You have purchased ticket(s) for Drupal Developer Days Transylvania 2019!"|t }}
+                                                                    {{ "Thanks for purchasing ticket(s) for Drupal Developer Days Transylvania 2019! In case you purchased multiple tickets, please don't forget to share them and make sure that each of the coupons are redeemed."|t }}
                                                                     <br>
                                                                     {% if codes|length == 1 %}
                                                                         {{ "Your ticket coupon is"|t }}:
@@ -142,6 +142,18 @@
                                                                         <br>
                                                                     {% endif %}
                                                                     {% for code in codes %}
+                                                                        {{ code }}
+                                                                        <br>
+                                                                    {% endfor %}
+                                                                    <br>
+                                                                    {% if sponsorship_codes|length == 1 %}
+                                                                        {{ "Your individual sponsorship coupon is"|t }}:
+                                                                        <br>
+                                                                    {% else %}
+                                                                        {{ "Your individual sponsorship coupons are"|t }}:
+                                                                        <br>
+                                                                    {% endif %}
+                                                                    {% for code in sponsorship_codes %}
                                                                         {{ code }}
                                                                         <br>
                                                                     {% endfor %}
