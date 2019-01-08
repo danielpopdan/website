@@ -97,6 +97,9 @@ class TicketController extends ControllerBase implements TicketControllerInterfa
       // Send mails to each of the ticket recipients.
       for ($i = 0; $i < count($tickets); $i++) {
         if (!empty($recipients[$i])) {
+          if ($order_item->getPurchasedEntity()->get('sku')->value == 'ddd_individual_sponsor') {
+              $params['sponsorship'] = TRUE;
+          }
           $params['code'] = $tickets[$i]->getCode();
           $this->mailManager->doMail(
             'dct_commerce',

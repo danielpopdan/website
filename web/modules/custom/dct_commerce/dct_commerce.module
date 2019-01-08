@@ -260,6 +260,7 @@ function dct_commerce_theme() {
       'variables' => [
         'code' => NULL,
         'redeem_link' => NULL,
+        'sponsorship' => NULL,
       ],
     ],
     'dct_ticket_buyer' => [
@@ -306,6 +307,7 @@ function dct_commerce_mail($key, &$message, $params) {
       '#theme' => 'dct_ticket_recipient',
       '#code' => $params['code'],
       '#redeem_link' => $params['redeem_link'],
+      '#sponsorship' => $params['sponsorship'],
     ];
     $message['body'][0] = render($body);
   }
