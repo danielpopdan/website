@@ -1,0 +1,41 @@
+<div class="error-page-container">
+    <a style="margin-bottom: 40px; width:100%; text-align: center;" class="button" href="/search-tickets">Search tickets</a>
+    <div class="image-text-wrapper">
+        <div class="text-btn-wrapper">
+            {% if code['#markup'] is empty %}
+                <h2>{{ "No ticket redeemed for this user." }}</h2>
+                {% if family_name is not empty %}
+                    <p style="margin: 10px">{{ given_name }} {{ family_name }}</p>
+                {% else %}
+                    <p style="margin: 10px">{{ given_name }}</p>
+                {% endif %}
+                <p style="margin: 10px"><strong>{{ role }}</strong></p>
+                {% if username is not empty %}
+                    <p style="margin: 10px">{{ username }}</p>
+                {% endif %}
+                {% if country is not empty %}
+                    <p style="margin: 10px">Romania&nbsp;</p>
+                {% endif %}
+            {% else %}
+                {% if family_name is not empty %}
+                    <p style="margin: 10px">{{ given_name }} {{ family_name }}</p>
+                {% else %}
+                    <p style="margin: 10px">{{ given_name }}</p>
+                {% endif %}
+                <p style="margin: 10px"><strong>{{ role }}</strong></p>
+                {% if username is not empty %}
+                    <p style="margin: 10px">{{ username }}</p>
+                {% endif %}
+                {% if country is not empty %}
+                    <p style="margin: 10px">Romania&nbsp;</p>
+                {% endif %}
+                {% if shirt_size is not empty %}
+                    <p style="margin: 10px"><strong>Shirt:</strong> {{ shirt_type }}, {{ shirt_size }}</p>
+                {% endif %}
+                <p style="margin: 10px">{{ code }}</p>
+                <p style="margin: 10px">Activated on {{ current_date }}</p>
+                {{ validate }}
+            {% endif %}
+        </div>
+    </div>
+</div>

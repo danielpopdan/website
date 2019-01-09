@@ -292,6 +292,33 @@ function dct_commerce_theme() {
     'dct_commerce_checkout_review_form' => [
       'render element' => 'form',
     ],
+    'dct_event_ticket' => [
+        'variables' => [
+            'country' => NULL,
+            'given_name' => NULL,
+            'family_name' => NULL,
+            'username' => NULL,
+            'shirt_size' => NULL,
+            'shirt_type' => NULL,
+            'role' => NULL,
+            'current_date' => NULL,
+            'qrcode' => NULL,
+        ],
+    ],
+      'dct_scan_ticket' => [
+          'variables' => [
+              'country' => NULL,
+              'given_name' => NULL,
+              'family_name' => NULL,
+              'username' => NULL,
+              'shirt_size' => NULL,
+              'shirt_type' => NULL,
+              'role' => NULL,
+              'current_date' => NULL,
+              'code' => NULL,
+              'validate' => NULL,
+          ],
+      ],
   ];
 }
 
@@ -381,4 +408,10 @@ function dct_commerce_preprocess_commerce_product(&$variables) {
       'promotion' => $promotion,
     ];
   }
+}
+
+function test() {
+    $ticket = Drupal::entityTypeManager()->getStorage('dct_commerce_ticket')->load(1);
+    $generation = Drupal::service('dct_commerce.ticket_generation');
+    $generation->generateTicketToUser($ticket);
 }

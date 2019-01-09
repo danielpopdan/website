@@ -1,0 +1,10 @@
+uuid: 27efaab0-753b-41ec-a20c-8fb5430e7a63
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.ticket
+label: Ticket
+targetEntityType: user
+cache: true

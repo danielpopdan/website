@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
  * Implements hook_entity_view().
  */
 function dct_user_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if ($entity->getEntityTypeId() == 'user' && $view_mode == 'teaser') {
+  if ($entity->getEntityTypeId() == 'user' && ($view_mode == 'teaser' || $view_mode =='ticket')) {
     $build['name'] = [
       '#markup' => $entity->get('field_first_name')->value . ' ' . $entity->get('field_last_name')->value,
     ];

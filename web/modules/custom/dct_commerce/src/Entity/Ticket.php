@@ -68,6 +68,10 @@ class Ticket extends ContentEntityBase implements TicketInterface {
     return $this;
   }
 
+  public function getRedeemer() {
+      return $this->redeemer->entity;
+  }
+
   /**
    * {@inheritdoc}
    */

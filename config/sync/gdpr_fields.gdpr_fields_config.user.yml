@@ -128,3 +128,25 @@ bundles:
       notes: ''
       relationship: 0
       sars_filename: ''
+    field_ticket:
+      bundle: user
+      name: field_ticket
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_attended:
+      bundle: user
+      name: field_attended
+      entity_type_id: user
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''

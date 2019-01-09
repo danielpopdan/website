@@ -1,0 +1,27 @@
+uuid: 213cc2fa-0009-4588-90a8-236d3af0ea69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ticket
+  module:
+    - file
+    - user
+id: user.user.field_ticket
+field_name: field_ticket
+entity_type: user
+bundle: user
+label: Ticket
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

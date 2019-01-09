@@ -11,3 +11,6 @@ services:
   dct_commerce.promotional_price_calculator:
     class: 'Drupal\dct_commerce\PromoPriceCalculator'
     arguments: ['@entity_type.manager']
+  dct_commerce.ticket_generation:
+    class: 'Drupal\dct_commerce\TicketGenerationService'
+    arguments: ['@country_manager', '@state']

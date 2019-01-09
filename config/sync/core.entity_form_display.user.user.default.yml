@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.user.user.commerce_remote_id
+    - field.field.user.user.field_attended
     - field.field.user.user.field_bio
     - field.field.user.user.field_country
     - field.field.user.user.field_drupal_org_username
@@ -15,10 +16,12 @@ dependencies:
     - field.field.user.user.field_privacy
     - field.field.user.user.field_published
     - field.field.user.user.field_shirt_size
+    - field.field.user.user.field_ticket
     - field.field.user.user.user_picture
     - image.style.user_list
   module:
     - address
+    - file
     - gdpr_consent
     - image
     - text
@@ -35,6 +38,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_attended:
+    weight: 14
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_bio:
     weight: 6
     settings:
@@ -114,6 +124,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_ticket:
+    weight: 13
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  google_analytics:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
     region: content
   user_picture:
     type: image_image

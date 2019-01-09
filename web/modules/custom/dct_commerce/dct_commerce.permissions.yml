@@ -4,3 +4,6 @@ access ticket redemption:
 administer tickets:
   title: Administer tickets
   description: Allows the user to see all coupons and generate new ones
+scan ticket:
+  title: Scan ticket
+  description: Scan ticket and see ticket info

@@ -16,6 +16,7 @@
         }
     ],
     "require": {
+        "chillerlan/php-qrcode": "^3.0",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
@@ -51,6 +52,7 @@
         "drupal/simple_sitemap": "2.12.0",
         "drupal/swiftmailer": "1.0-beta1",
         "drush/drush": "^9.0.0",
+        "mpdf/mpdf": "^7.1",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"

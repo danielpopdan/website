@@ -1,0 +1,24 @@
+uuid: ef8ae0b6-6ec2-4b9f-b380-9375ec874fac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_attended
+  module:
+    - user
+id: user.user.field_attended
+field_name: field_attended
+entity_type: user
+bundle: user
+label: Attended
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

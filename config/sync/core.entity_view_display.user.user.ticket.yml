@@ -1,9 +1,9 @@
-uuid: 482011e3-1000-4163-8123-25937e19e9ed
+uuid: 7de32394-eb66-4796-b552-9e12846844c4
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.user.teaser
+    - core.entity_view_mode.user.ticket
     - field.field.user.user.commerce_remote_id
     - field.field.user.user.field_attended
     - field.field.user.user.field_bio
@@ -19,27 +19,25 @@ dependencies:
     - field.field.user.user.field_shirt_size
     - field.field.user.user.field_ticket
     - field.field.user.user.user_picture
-    - image.style.user_list
   module:
-    - image
     - user
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
-id: user.user.teaser
+id: user.user.ticket
 targetEntityType: user
 bundle: user
-mode: teaser
+mode: ticket
 content:
-  field_first_name:
-    weight: 1
+  field_drupal_org_username:
+    weight: 2
     label: hidden
     settings:
-      link_to_entity: true
+      link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_job_title:
-    weight: 3
+  field_first_name:
+    weight: 0
     label: hidden
     settings:
       link_to_entity: false
@@ -47,40 +45,32 @@ content:
     type: string
     region: content
   field_last_name:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
-      link_to_entity: true
+      link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_organization:
-    weight: 4
+    weight: 3
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  user_picture:
-    type: image
-    weight: 0
-    region: content
-    settings:
-      image_style: user_list
-      image_link: content
-    third_party_settings: {  }
-    label: hidden
 hidden:
   commerce_remote_id: true
   field_attended: true
   field_bio: true
   field_country: true
-  field_drupal_org_username: true
   field_gender: true
+  field_job_title: true
   field_privacy: true
   field_published: true
   field_shirt_size: true
   field_ticket: true
   member_for: true
   profile_customer: true
+  user_picture: true

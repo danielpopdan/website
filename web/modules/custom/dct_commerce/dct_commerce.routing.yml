@@ -26,3 +26,10 @@ dct_commerce.generate_coupons:
     _title: Coupon administration
   requirements:
     _permission: administer tickets
+dct_commerce.scan_ticket:
+  path: /scan-ticket/{user}
+  defaults:
+    _controller: \Drupal\dct_commerce\Controller\ScanTicket::content
+    _title: Tickets
+  requirements:
+    _permission:  scan ticket
