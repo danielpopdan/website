@@ -36,7 +36,7 @@ class RedemptionConfirmationPlugin extends PluginBase implements ConfirmationPag
   public function getLink() {
     return [
       'title' => $this->t('Check your ticket'),
-      'url' => Url::fromRoute('dct_commerce.my_tickets'),
+      'url' => Url::fromRoute('dct_commerce.my_coupons'),
     ];
   }
 

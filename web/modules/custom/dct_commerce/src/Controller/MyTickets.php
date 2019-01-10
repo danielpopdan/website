@@ -102,4 +102,19 @@ class MyTickets extends ControllerBase {
     return NULL;
   }
 
+    /**
+     * @return array
+     *
+     * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+     * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+     */
+    public function myTicketPage()
+    {
+        $view_builder = \Drupal::entityTypeManager()->getViewBuilder('user');
+        $storage = \Drupal::entityTypeManager()->getStorage('user');
+        $user = $storage->load(\Drupal::currentUser()->id());
+
+        return $view_builder->view($user, 'compact');
+    }
+
 }

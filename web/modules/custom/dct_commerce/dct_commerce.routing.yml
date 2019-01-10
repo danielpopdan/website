@@ -5,11 +5,11 @@ dct_commerce.ticket_redemption_code:
     _title: Redeem a coupon
   requirements:
     _permission: access ticket redemption
-dct_commerce.my_tickets:
-  path: /my-tickets
+dct_commerce.my_coupons:
+  path: /my-coupons
   defaults:
     _controller: \Drupal\dct_commerce\Controller\MyTickets::renderMyTicketsPage
-    _title: My tickets
+    _title: My Coupons
   requirements:
     _permission: access ticket redemption
 dct_commerce.payment_response:
@@ -33,3 +33,10 @@ dct_commerce.scan_ticket:
     _title: Tickets
   requirements:
     _permission:  scan ticket
+dct_commerce.my_ticket:
+  path: /my-ticket
+  defaults:
+    _controller: \Drupal\dct_commerce\Controller\MyTickets::myTicketPage
+    _title: My Ticket
+  requirements:
+    _permission: access ticket redemption

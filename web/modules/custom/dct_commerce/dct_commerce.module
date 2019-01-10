@@ -409,9 +409,3 @@ function dct_commerce_preprocess_commerce_product(&$variables) {
     ];
   }
 }
-
-function test() {
-    $ticket = Drupal::entityTypeManager()->getStorage('dct_commerce_ticket')->load(1);
-    $generation = Drupal::service('dct_commerce.ticket_generation');
-    $generation->generateTicketToUser($ticket);
-}

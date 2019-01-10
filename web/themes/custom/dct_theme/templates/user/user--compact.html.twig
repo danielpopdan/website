@@ -1,0 +1,27 @@
+<div>
+    <img src="/{{ directory }}/images/backgrounds/small-header.png"
+         alt="background">
+</div>
+
+<article{{ attributes.addClass('bought-tickets') }}>
+    <div class="my-profile">
+        <div class="my-profile--back">
+            <a href="{{ path('user.page') }}">{{ "< Back to profile"|t }}</a>
+        </div>
+        <div class="redeem-message">
+            {% if  user.field_ticket is empty  %}
+                {{ "You have not redeemed a coupon. "|t }}
+                {{ "You can redeem one "|t }} <b><a
+                        href="{{ path('dct_commerce.ticket_redemption_code') }}">{{ "here"|t }}</a></b>
+                {{ " or you can buy tickets " }} <b><a
+                        href="/buy-tickets">{{ "here."|t }}</a></b>
+            {% else %}
+                <p><b>{{ "Please do not forget to bring your ticket to the registration booth at Drupal Developer Days!"|t }}</b><p>
+               {{ content }}
+            {% endif %}
+        </div>
+        <div class="article-section">
+            {{ bought_tickets_view }}
+        </div>
+    </div>
+</article>

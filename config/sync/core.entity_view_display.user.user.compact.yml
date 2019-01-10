@@ -1,9 +1,11 @@
 uuid: 0ac4c45c-7128-47b3-a91a-59b51fb71181
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.commerce_remote_id
+    - field.field.user.user.field_attended
     - field.field.user.user.field_bio
     - field.field.user.user.field_country
     - field.field.user.user.field_drupal_org_username
@@ -12,11 +14,14 @@ dependencies:
     - field.field.user.user.field_job_title
     - field.field.user.user.field_last_name
     - field.field.user.user.field_organization
+    - field.field.user.user.field_privacy
+    - field.field.user.user.field_published
     - field.field.user.user.field_shirt_size
+    - field.field.user.user.field_ticket
     - field.field.user.user.user_picture
-    - image.style.thumbnail
   module:
-    - image
+    - file
+    - options
     - user
 _core:
   default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
@@ -25,25 +30,61 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
-  user_picture:
-    type: image
+  field_drupal_org_username:
+    type: string
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_first_name:
+    type: string
+    weight: 1
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_gender:
+    type: list_default
+    weight: 3
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  field_last_name:
+    type: string
     weight: 0
     region: content
+    label: inline
     settings:
-      image_style: thumbnail
-      image_link: content
+      link_to_entity: false
     third_party_settings: {  }
-    label: hidden
+  field_shirt_size:
+    type: list_default
+    weight: 4
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  field_ticket:
+    type: file_default
+    weight: 5
+    region: content
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
 hidden:
   commerce_remote_id: true
+  field_attended: true
   field_bio: true
   field_country: true
-  field_drupal_org_username: true
-  field_first_name: true
-  field_gender: true
   field_job_title: true
-  field_last_name: true
   field_organization: true
-  field_shirt_size: true
+  field_privacy: true
+  field_published: true
   member_for: true
   profile_customer: true
+  user_picture: true
