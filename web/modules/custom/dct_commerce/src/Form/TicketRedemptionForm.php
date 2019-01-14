@@ -139,7 +139,8 @@ class TicketRedemptionForm extends FormBase {
         }
       $user->save();
       $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DrupalDevDays2019');
-
+         $generation = \Drupal::service('dct_commerce.ticket_generation');
+         $generation->generateTicketToUser($ticket);
       drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
     }
     catch (\Exception $e) {
