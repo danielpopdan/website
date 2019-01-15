@@ -16,11 +16,14 @@
     <p style="text-align: center;">{{ given_name}}</p>
 {% endif %}
 <p style="text-align: center;"><strong>{{ role }}</strong></p>
+{% if job_title is not empty %}
+    <p style="text-align: center;">{{ job_title }}&nbsp;</p>
+{% endif %}
 {% if username is not empty %}
     <p style="text-align: center;">{{ username }}</p>
 {% endif %}
 {% if country is not empty %}
-    <p style="text-align: center;">Romania&nbsp;</p>
+    <p style="text-align: center;">{{ country }}&nbsp;</p>
 {% endif %}
 {% if shirt_size is not empty %}
     <p style="text-align: center;"><strong>Shirt:</strong> {{ shirt_type }}, {{ shirt_size }}</p>

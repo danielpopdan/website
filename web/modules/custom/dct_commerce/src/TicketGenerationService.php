@@ -35,10 +35,11 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
       $qr_code = new QRCode($options);
       $shirt_sizes = $account->getFieldDefinition('field_shirt_size')->getSetting('allowed_values');
       $shirt_types = $account->getFieldDefinition('field_gender')->getSetting('allowed_values');
+     $countries = \Drupal::service('country_manager')->getList();
     $render = [
       '#theme' => $theme,
       '#country' => [
-        '#markup' => $account->get('field_country')->value,
+        '#markup' => $countries[$account->get('field_country')->value],
       ],
       '#given_name' => [
         '#markup' => $account->get('field_first_name')->value,
@@ -48,6 +49,9 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
       ],
       '#username' => [
         '#markup' => $account->get('field_drupal_org_username')->value,
+      ],
+      '#job_title' => [
+          '#markup' => $account->get('field_job_title')->value,
       ],
       '#shirt_size' => [
         '#markup' => $shirt_sizes[$account->get('field_shirt_size')->value],

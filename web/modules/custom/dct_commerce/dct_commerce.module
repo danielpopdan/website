@@ -297,6 +297,7 @@ function dct_commerce_theme() {
             'country' => NULL,
             'given_name' => NULL,
             'family_name' => NULL,
+            'job_title' => NULL,
             'username' => NULL,
             'shirt_size' => NULL,
             'shirt_type' => NULL,
@@ -408,4 +409,10 @@ function dct_commerce_preprocess_commerce_product(&$variables) {
       'promotion' => $promotion,
     ];
   }
+}
+
+function test() {
+    $ticket = Drupal::entityTypeManager()->getStorage('dct_commerce_ticket')->load(1);
+    $generation = Drupal::service('dct_commerce.ticket_generation');
+    $generation->generateTicketToUser($ticket);
 }
