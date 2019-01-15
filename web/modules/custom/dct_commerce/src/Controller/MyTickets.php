@@ -114,7 +114,10 @@ class MyTickets extends ControllerBase {
         $storage = \Drupal::entityTypeManager()->getStorage('user');
         $user = $storage->load(\Drupal::currentUser()->id());
 
-        return $view_builder->view($user, 'compact');
+        $build =  $view_builder->view($user, 'compact');
+        $build['#cache']['contexts'][] = 'user';
+
+        return $build;
     }
 
 }
