@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_form_mode.user.register
     - field.field.user.user.commerce_remote_id
+    - field.field.user.user.field_attended
     - field.field.user.user.field_bio
     - field.field.user.user.field_country
     - field.field.user.user.field_drupal_org_username
@@ -16,6 +17,7 @@ dependencies:
     - field.field.user.user.field_privacy
     - field.field.user.user.field_published
     - field.field.user.user.field_shirt_size
+    - field.field.user.user.field_ticket
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -116,6 +118,11 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  google_analytics:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   user_picture:
     type: image_image
     settings:
@@ -127,6 +134,8 @@ content:
 hidden:
   commerce_remote_id: true
   contact: true
+  field_attended: true
+  field_ticket: true
   language: true
   path: true
   timezone: true
