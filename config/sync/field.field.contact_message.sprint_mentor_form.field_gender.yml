@@ -11,7 +11,7 @@ id: contact_message.sprint_mentor_form.field_gender
 field_name: field_gender
 entity_type: contact_message
 bundle: sprint_mentor_form
-label: Gender
+label: 'T-shirt type'
 description: ''
 required: true
 translatable: false

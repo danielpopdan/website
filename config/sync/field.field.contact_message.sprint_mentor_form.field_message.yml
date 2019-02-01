@@ -10,7 +10,7 @@ field_name: field_message
 entity_type: contact_message
 bundle: sprint_mentor_form
 label: Message
-description: ''
+description: 'Please tell something about you. If you have any contribution topics, please let us know!'
 required: false
 translatable: true
 default_value: {  }

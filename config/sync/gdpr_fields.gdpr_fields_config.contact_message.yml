@@ -1,0 +1,31 @@
+uuid: 6537c45f-bd4f-43a0-9886-5497e25e8248
+langcode: en
+status: true
+dependencies: {  }
+id: contact_message
+filenames:
+  sprint_mentor_form: ''
+bundles:
+  sprint_mentor_form:
+    field_message:
+      bundle: sprint_mentor_form
+      name: field_message
+      entity_type_id: contact_message
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_gender:
+      bundle: sprint_mentor_form
+      name: field_gender
+      entity_type_id: contact_message
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''

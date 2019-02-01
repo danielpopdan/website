@@ -15,18 +15,13 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-<div class="section-intro sponsors-intro">
-    <div class="section-intro--background"></div>
-    <div class="section-intro--text">
-        <h1 class="section-intro--title">{{ "Meet the team"|t }}</h1>
-        <div class="section-intro--details meet-team-text">
-            <p>It takes a teamwork to create a dreamwork.</p>
-        </div>
-    </div>
+<div class="sponsors-intro">
+    <img src="/{{ directory }}/images/backgrounds/small-header.png" alt="background">
 </div>
 <div class="meet-main-background">
     <div class="l-container meet-team-container">
         <div class="homepage-speakers">
+            <h2 style="text-align: center;">{{ "Meet the team"|t }}</h2>
             <div class="l-container">
                 <div class="l-row">
                     {% for row in rows %}

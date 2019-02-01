@@ -16,7 +16,7 @@ settings:
       label: 'Slim Fit'
     -
       value: F
-      label: 'Regular Fit'
+      label: 'Straight Cut'
   allowed_values_function: ''
 module: options
 locked: false

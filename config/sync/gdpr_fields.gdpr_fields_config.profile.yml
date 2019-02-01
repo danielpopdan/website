@@ -1,0 +1,31 @@
+uuid: 4f871135-3ded-4ed4-92aa-ca4e55418d59
+langcode: en
+status: true
+dependencies: {  }
+id: profile
+filenames:
+  customer: ''
+bundles:
+  customer:
+    field_tax_identification_no:
+      bundle: customer
+      name: field_tax_identification_no
+      entity_type_id: profile
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_company_registration_no:
+      bundle: customer
+      name: field_company_registration_no
+      entity_type_id: profile
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
