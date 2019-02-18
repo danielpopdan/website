@@ -32,7 +32,7 @@ function dct_sponsors_theme() {
  * Implements hook_ENTITY_TYPE_access().
  */
 function dct_sponsors_node_access(NodeInterface $node, $op, AccountInterface $account) {
-  if ($op == 'update') {
+  if ($op == 'view') {
     // Checks if the node is of type sponsor.
     if ($node->bundle() == 'sponsor') {
       // The id of the sponsor editor.
@@ -51,9 +51,28 @@ function dct_sponsors_node_access(NodeInterface $node, $op, AccountInterface $ac
  * Implements hook_form_alter().
  */
 function dct_sponsors_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'node_sponsor_edit_form') {
+  if ($form_id == 'node_sponsor_sponsor_edit_form') {
     // Checks if the current user is not the administrator.
     if (!in_array('administrator', \Drupal::currentUser()->getRoles())) {
+        $node = \Drupal::routeMatch()->getParameter('node');
+        $form['drive'] = [
+            '#prefix' => '<div class="form-item">',
+            '#weight'=> '10',
+            '#suffix' => '</div>',
+        ];
+        $form['drive']['link'] = [
+            '#type' => 'link',
+            '#title' => t($node->get('field_drive_link')->title),
+            '#url' => \Drupal\Core\Url::fromUri($node->get('field_drive_link')->uri),
+            '#attributes' => [
+                'target' => '_blank',
+            ],
+        ];
+        $form['drive']['description'] = [
+            '#prefix' => '<div class="description">',
+            '#markup' => t('Please upload all the necessary assets to Drive. Make sure you upload the <em>logo on dark and light background</em>, and it has a good quality, printable version.'),
+            '#suffix' => '</div>',
+        ];
       unset($form['revision_log']);
       unset($form['revision_information']);
       unset($form['revision']);

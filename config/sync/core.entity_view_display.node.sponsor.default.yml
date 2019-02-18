@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.sponsor.field_drive_link
     - field.field.node.sponsor.field_external_link
     - field.field.node.sponsor.field_image
     - field.field.node.sponsor.field_short_description
+    - field.field.node.sponsor.field_sp_description
     - field.field.node.sponsor.field_sponsor_editor
     - field.field.node.sponsor.field_type
     - node.type.sponsor
@@ -20,6 +22,18 @@ targetEntityType: node
 bundle: sponsor
 mode: default
 content:
+  field_drive_link:
+    weight: 107
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
   field_external_link:
     weight: 103
     label: above
@@ -43,6 +57,13 @@ content:
     region: content
   field_short_description:
     weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_sp_description:
+    weight: 106
     label: above
     settings: {  }
     third_party_settings: {  }

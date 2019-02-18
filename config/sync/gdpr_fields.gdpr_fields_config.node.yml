@@ -1,0 +1,31 @@
+uuid: e2b5b422-a0dd-4222-8edf-47063d5775c5
+langcode: en
+status: true
+dependencies: {  }
+id: node
+filenames:
+  sponsor: ''
+bundles:
+  sponsor:
+    field_sp_description:
+      bundle: sponsor
+      name: field_sp_description
+      entity_type_id: node
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+    field_drive_link:
+      bundle: sponsor
+      name: field_drive_link
+      entity_type_id: node
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: password_anonymizer
+      notes: ''
+      relationship: 0
+      sars_filename: ''

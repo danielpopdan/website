@@ -1,0 +1,5 @@
+services:
+  dct_sponsors.route_subscriber:
+    class: Drupal\dct_sponsors\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

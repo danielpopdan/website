@@ -63,6 +63,7 @@ module:
   file: 0
   filter: 0
   flag: 0
+  form_mode_routing: 0
   gdpr: 0
   gdpr_consent: 0
   gdpr_fields: 0
@@ -79,6 +80,7 @@ module:
   mailchimp_campaign: 0
   mailchimp_lists: 0
   mailsystem: 0
+  maxlength: 0
   menu_ui: 0
   message: 0
   metatag: 0

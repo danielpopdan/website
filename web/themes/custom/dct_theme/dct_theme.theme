@@ -58,4 +58,12 @@ function dct_theme_preprocess_user(&$variables) {
 
   $variables['has_user_access'] = $user->id() == $current_user->id() ? TRUE : FALSE;
   $variables['content']['roles'] = UserSessions::getPublicUserRoles($user);
+
+    $query = \Drupal\Core\Database\Database::getConnection('default')->select('node__field_sponsor_editor', 'n');
+    $query->condition('n.field_sponsor_editor_target_id', $user->id());
+    $query->addField('n', 'entity_id');
+    $results = $query->execute()->fetchAll();
+    if (!empty($results)) {
+        $variables['sponsor_id'] = $results[0]->entity_id;
+    }
 }

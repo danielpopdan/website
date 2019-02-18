@@ -2855,3 +2855,7 @@ img.zoom-img {
 .user-form .field--name-field-country .form-item{
   margin-top: 0;
 }
+
+.sponsors-display .sponsors-categories--category .single-page img {
+  max-width: 500px;
+}

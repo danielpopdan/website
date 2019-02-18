@@ -10,7 +10,7 @@ dependencies:
 id: welcometocity
 theme: dct_theme
 region: content
-weight: -6
+weight: -4
 provider: null
 plugin: welcome_to_city
 settings:
