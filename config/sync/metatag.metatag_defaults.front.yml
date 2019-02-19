@@ -8,8 +8,10 @@ id: front
 label: 'Front page'
 tags:
   canonical_url: '[site:url]'
-  description: 'Drupal Dev Days is the main international Drupal developer-oriented conference in Europe where we are gathering together community members to share knowledge and ideas, to contribute and have fun.'
+  description: 'Drupal Dev Days is the main international Drupal developer-oriented conference in Europe where we are gathering together community members to share knowledge and ideas, to contribute and have fun.  Social media hashtag: #drupaldevdays.'
   image_src: 'https://cluj2019.drupaldays.org/sites/default/files/images/social_0.png'
+  keywords: 'drupal dev days 2019'
+  news_keywords: 'Drupal Dev Days 2019'
   shortlink: '[site:url]'
   title: 'Homepage | [site:name]'
   og_image: 'https://cluj2019.drupaldays.org/sites/default/files/images/social_0.png'

@@ -9,6 +9,7 @@ label: Global
 tags:
   canonical_url: '[current-page:url]'
   image_src: 'https://cluj2019.drupaldays.org/sites/default/files/2018-11/social.png'
+  keywords: 'drupal dev days '
   title: '[current-page:title] | [site:name]'
   og_image: 'https://cluj2019.drupaldays.org/sites/default/files/2018-11/social.png'
   og_title: '[current-page:title]'

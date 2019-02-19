@@ -1,9 +1,9 @@
 method: 1
-pattern: "acceptingtwwww.club\r\ncloverfitter.club"
+pattern: "acceptingtwwww.club\r\ncloverfitter.club\r\nchapelbumbershoot.club\r\n*.club"
 message: 'You are not allowed to register for this site.'
 _core:
   default_config_hash: 0xE4emSSHTVKb88WL3yN2IahuH23p8VNAXMZNux6BKs
 actions: null
-form_build_id: form-mBSwlGa7q6s3kfP1du8B_IpbXw3-6RVSwBI2vsn4mCc
-form_token: hJtRyjlveuupjnPUNX6_wXuHiIMGt2-f3eFhu1bTvJs
+form_build_id: form-I92v05-gcBbHbhRnWL82-lFWy6pluz3yaXEQAZ_xoJs
+form_token: dVn4LLMEjrSN8H-L01rBTLFyoELxjntfVFUQ9ARTbyU
 form_id: domain_registration_admin_form
