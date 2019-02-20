@@ -17,6 +17,16 @@
           </div>
         </div>
       {% endif %}
+        {% if platinum is not empty %}
+            <div class="l-col l-col-1">
+                <div class="sponsors-categories--category platinum">
+                    <div class="large-title-block">
+                        <h2>{{ "Platinum Sponsors"|t }}</h2>
+                    </div>
+                    {{ platinum }}
+                </div>
+            </div>
+        {% endif %}
       {% if gold is not empty %}
         <div class="l-col l-col-1">
           <div class="sponsors-categories--category gold">
