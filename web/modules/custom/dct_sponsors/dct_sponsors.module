@@ -18,6 +18,7 @@ function dct_sponsors_theme() {
     'dct_sponsors_page' => [
       'variables' => [
         'diamond' => NULL,
+        'platinum' => NULL,
         'gold' => NULL,
         'silver' => NULL,
         'community' => NULL,

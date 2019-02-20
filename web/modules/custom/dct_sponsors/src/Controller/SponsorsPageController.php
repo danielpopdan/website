@@ -90,6 +90,7 @@ class SponsorsPageController extends ControllerBase {
     return [
       '#theme' => 'dct_sponsors_page',
       '#diamond' => (!empty($grouped_sponsors['diamond'])) ? $grouped_sponsors['diamond'] : NULL,
+      '#platinum' => (!empty($grouped_sponsors['platinum'])) ? $grouped_sponsors['platinum'] : NULL,
       '#gold' => (!empty($grouped_sponsors['gold'])) ? $grouped_sponsors['gold'] : NULL,
       '#silver' => (!empty($grouped_sponsors['silver'])) ? $grouped_sponsors['silver'] : NULL,
       '#community' => (!empty($grouped_sponsors['community'])) ? $grouped_sponsors['community'] : NULL,
