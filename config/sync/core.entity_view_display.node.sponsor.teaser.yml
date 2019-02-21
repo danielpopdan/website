@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.sponsor.field_drive_link
     - field.field.node.sponsor.field_external_link
     - field.field.node.sponsor.field_image
     - field.field.node.sponsor.field_short_description
+    - field.field.node.sponsor.field_sp_description
+    - field.field.node.sponsor.field_sponsor_editor
     - field.field.node.sponsor.field_type
     - node.type.sponsor
   module:
@@ -38,7 +41,7 @@ content:
     label: hidden
     settings:
       image_style: ''
-      image_link: ''
+      image_link: content
     third_party_settings: {  }
   field_short_description:
     type: text_default
@@ -49,5 +52,8 @@ content:
     third_party_settings: {  }
 hidden:
   addtoany: true
+  field_drive_link: true
+  field_sp_description: true
+  field_sponsor_editor: true
   field_type: true
   links: true
