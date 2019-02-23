@@ -49,9 +49,9 @@
                       <a href="{{ path('dct_commerce.my_ticket') }}" class="button">{{ "My ticket"|t }}</a>
                       <a href="{{ path('dct_commerce.my_coupons') }}" class="button">{{ "My coupons"|t }}</a>
                       <a href="{{ path('dct_bills.my_invoices') }}" class="button">{{ "My invoices"|t }}</a>
-                        {% if sponsor_id is not empty %}
-                      <a href="{{ path('form_mode_routing.node.sponsor_edit', {'node': sponsor_id }) }}" class="button">{{ "Edit sponsor page"|t }}</a>
-                            {% endif %}
+                        {#{% if sponsor_id is not empty %}#}
+                      {#<a href="{{ path('form_mode_routing.node.sponsor_edit', {'node': sponsor_id }) }}" class="button">{{ "Edit sponsor page"|t }}</a>#}
+                            {#{% endif %}#}
                     {% endif %}
                 </div>
             </div>
