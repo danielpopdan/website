@@ -33,7 +33,7 @@ function dct_sponsors_theme() {
  * Implements hook_ENTITY_TYPE_access().
  */
 function dct_sponsors_node_access(NodeInterface $node, $op, AccountInterface $account) {
-  if ($op == 'view') {
+  if ($op == 'view' || $op == 'update') {
     // Checks if the node is of type sponsor.
     if ($node->bundle() == 'sponsor') {
       // The id of the sponsor editor.

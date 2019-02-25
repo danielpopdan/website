@@ -27,6 +27,7 @@ permissions:
   - 'submit sprint mentorship'
   - 'switch users'
   - 'unflag add_to_my_schedule'
+  - 'use node.sponsor_edit form mode'
   - 'use text format basic_html'
   - 'use text format mailchimp_campaign'
   - 'use text format restricted_html'

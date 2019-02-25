@@ -63,6 +63,7 @@ module:
   file: 0
   filter: 0
   flag: 0
+  form_mode_manager: 0
   gdpr: 0
   gdpr_consent: 0
   gdpr_fields: 0
