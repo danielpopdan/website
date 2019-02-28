@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28ad54a1dbebffb80d608b23b64938eb",
+    "content-hash": "14d7911aa07a413fe06aea3dbbb785d7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4638,6 +4638,52 @@
                 "irc": "irc://irc.freenode.org/drupal-migrate"
             },
             "time": "2018-12-20T22:27:32+00:00"
+        },
+        {
+            "name": "drupal/officialfacebookpixel",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/officialfacebookpixel",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/officialfacebookpixel-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "e1ad90b69f8d570e8256a2945db9bb007eacdf4f"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1544380680",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "facebook",
+                    "homepage": "https://www.drupal.org/user/3598284"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/officialfacebookpixel",
+            "support": {
+                "source": "http://cgit.drupalcode.org/officialfacebookpixel"
+            }
         },
         {
             "name": "drupal/paragraphs",
