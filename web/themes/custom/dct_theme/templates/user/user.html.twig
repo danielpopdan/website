@@ -44,7 +44,7 @@
                 </div>
                 <div class="my-profile-info--tabs">
                     {% if has_user_access %}
-                      {#<a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>#}
+                      <a href="{{ path('dct_sessions.user_sessions') }}" class="button">{{ "My sessions"|t }}</a>
                       {#<a href="{{ path('dct_schedule.my_schedule') }}" class="button">{{ "My schedule"|t }}</a>#}
                       <a href="{{ path('dct_commerce.my_ticket') }}" class="button">{{ "My ticket"|t }}</a>
                       <a href="{{ path('dct_commerce.my_coupons') }}" class="button">{{ "My coupons"|t }}</a>
