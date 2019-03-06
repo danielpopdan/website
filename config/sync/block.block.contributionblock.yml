@@ -1,0 +1,20 @@
+uuid: bb544554-7533-4ead-922c-9bb38a158e8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - dct_homepage
+  theme:
+    - dct_theme
+id: contributionblock
+theme: dct_theme
+region: content
+weight: -5
+provider: null
+plugin: contribution_block
+settings:
+  id: contribution_block
+  label: 'Contribution block'
+  provider: dct_homepage
+  label_display: '0'
+visibility: {  }

@@ -17,62 +17,65 @@ use Drupal\dct_sessions\Service\SessionProposalService;
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  // Alter the email field.
-  if (!empty($form['mail'])) {
-    $form['mail']['#title'] = t('Email address');
-    $mail = $form['mail'];
-    $form['mail'] = [
-      '#type' => 'container',
-      '#parents' => [
-        'field_email_wrapper',
-      ],
-      '#attributes' => [
-        'class' => [
-          'field--type-string',
-          '"field--name-field-email',
-          'field--widget-string-textfield',
-          'form-wrapper',
-        ],
-      ],
-      'widget' => $mail
-    ];
-  }
-  // If the user is logged in, we prepopulate the form_state.
-  $currentUserId = Drupal::currentUser()->id();
-  if (!empty($currentUserId)) {
-
-    $user = User::load($currentUserId);
-    $first_name = $user->get('field_first_name')->first()->value;
-    $last_name = $user->get('field_last_name')->first()->value;
-
-    $drupal_org_username = $user->get('field_drupal_org_username')->first();
-    if ($drupal_org_username) {
-      $drupal_org_username = $drupal_org_username->value;
+function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(
+    &$form,
+    FormStateInterface $form_state,
+    $form_id
+){
+    // Alter the email field.
+    if (!empty($form['mail'])) {
+        $form['mail']['#title'] = t('Email address');
+        $mail = $form['mail'];
+        $form['mail'] = [
+            '#type' => 'container',
+            '#parents' => [
+                'field_email_wrapper',
+            ],
+            '#attributes' => [
+                'class' => [
+                    'field--type-string',
+                    '"field--name-field-email',
+                    'field--widget-string-textfield',
+                    'form-wrapper',
+                ],
+            ],
+            'widget' => $mail,
+        ];
     }
+    // If the user is logged in, we prepopulate the form_state.
+    $currentUserId = Drupal::currentUser()->id();
+    if (!empty($currentUserId)) {
+        $user = User::load($currentUserId);
+        $first_name = $user->get('field_first_name')->first()->value;
+        $last_name = $user->get('field_last_name')->first()->value;
 
-    $organization = $user->get('field_organization')->first();
-    if ($organization) {
-      $organization = $organization->target_id;
+        $drupal_org_username = $user->get('field_drupal_org_username')->first();
+        if ($drupal_org_username) {
+            $drupal_org_username = $drupal_org_username->value;
+        }
+
+        $organization = $user->get('field_organization')->first();
+        if ($organization) {
+            $organization = $organization->target_id;
+        }
+
+        $gender = $user->get('field_gender')->first()->value;
+        $shirt_size = $user->get('field_shirt_size')->first()->value;
+
+        $form['field_first_name']['widget'][0]['value']['#default_value'] = $first_name;
+        $form['field_last_name']['widget'][0]['value']['#default_value'] = $last_name;
+        $form['field_drupal_org_username']['widget'][0]['value']['#default_value'] = $drupal_org_username;
+        $form['field_organization']['widget'][0]['target_id']['#default_value'] = Term::load($organization);
+        $form['field_gender']['widget']['#default_value'] = $gender;
+        $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
+
+        $form['form_build_id']['#weight'] = 100;
+
+        $form['mail']['widget']['#type'] = 'email';
     }
-
-    $gender = $user->get('field_gender')->first()->value;
-    $shirt_size = $user->get('field_shirt_size')->first()->value;
-
-    $form['field_first_name']['widget'][0]['value']['#default_value'] = $first_name;
-    $form['field_last_name']['widget'][0]['value']['#default_value'] = $last_name;
-    $form['field_drupal_org_username']['widget'][0]['value']['#default_value'] = $drupal_org_username;
-    $form['field_organization']['widget'][0]['target_id']['#default_value'] = Term::load($organization);
-    $form['field_gender']['widget']['#default_value'] = $gender;
-    $form['field_shirt_size']['widget']['#default_value'] = $shirt_size;
-
-    $form['form_build_id']['#weight'] = 100;
-
-    $form['mail']['widget']['#type'] = 'email';
-  }
-  array_unshift($form['actions']['submit']['#submit'], 'dct_sessions_sprint_mentor_submit');
-  // The langcode is not required.
-  unset($form['langcode']);
+    array_unshift($form['actions']['submit']['#submit'], 'dct_sessions_sprint_mentor_submit');
+    // The langcode is not required.
+    unset($form['langcode']);
 }
 
 /**
@@ -80,98 +83,119 @@ function dct_sessions_form_contact_message_sprint_mentor_form_form_alter(&$form,
  *
  * @see dct_sessions_form_contact_message_sprint_mentor_form_form_alter()
  */
-function dct_sessions_sprint_mentor_submit(array $form, FormStateInterface $form_state) {
-  $values = $form_state->getValues();
-  $form_state->setValue('name', $values['field_first_name'][0]['value'] . ' ' . $values['field_last_name'][0]['value']);
+function dct_sessions_sprint_mentor_submit(array $form, FormStateInterface $form_state)
+{
+    $values = $form_state->getValues();
+    $form_state->setValue('name', $values['field_first_name'][0]['value'].' '.$values['field_last_name'][0]['value']);
 }
 
 /**
  * Implements hook_entity_operation_alter().
  */
-function dct_sessions_entity_operation_alter(array &$operations, EntityInterface $entity) {
-  if ($entity->getEntityTypeId() == 'contact_message' && $entity->bundle() == 'session_proposal_form') {
-    // Verifies if the current message is already accepted.
-    $status = !empty($entity->field_status->value) ? $entity->field_status->value : SessionProposalService::PENDING_SESSION;
-    if ($status == SessionProposalService::PENDING_SESSION && !($entity->field_node_id->value)) {
-      // Adds a new ACCEPT operation for the current message.
-      $operations['accept'] = [
-        'title' => t('Accept'),
-        'weight' => -1,
-        'url' => Url::fromRoute('dct_sessions.session_proposal_accept', ['contact_message_id' => $entity->id()]),
-      ];
-      // Adds a new REJECT operation for the current message.
-      $operations['reject'] = [
-        'title' => t('Reject'),
-        'weight' => 0,
-        'url' => Url::fromRoute('dct_sessions.session_proposal_reject', ['contact_message_id' => $entity->id()]),
-      ];
+function dct_sessions_entity_operation_alter(array &$operations, EntityInterface $entity)
+{
+    if ($entity->getEntityTypeId() == 'contact_message' && $entity->bundle() == 'session_proposal_form') {
+        // Verifies if the current message is already accepted.
+        $status = !empty($entity->field_status->value) ? $entity->field_status->value : SessionProposalService::PENDING_SESSION;
+        if ($status == SessionProposalService::PENDING_SESSION && !($entity->field_node_id->value)) {
+            // Adds a new ACCEPT operation for the current message.
+            $operations['accept'] = [
+                'title' => t('Accept'),
+                'weight' => -1,
+                'url' => Url::fromRoute(
+                    'dct_sessions.session_proposal_accept',
+                    ['contact_message_id' => $entity->id()]
+                ),
+            ];
+            // Adds a new REJECT operation for the current message.
+            $operations['reject'] = [
+                'title' => t('Reject'),
+                'weight' => 0,
+                'url' => Url::fromRoute(
+                    'dct_sessions.session_proposal_reject',
+                    ['contact_message_id' => $entity->id()]
+                ),
+            ];
+        }
     }
-  }
-
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function dct_sessions_form_contact_message_session_proposal_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  // Add the current user as a default speaker on session proposal.
-  $user_id = Drupal::currentUser()->id();
-  $current_user = Drupal::entityTypeManager()
-    ->getStorage('user')
-    ->load($user_id);
-  $form['field_user']['widget'][0]['target_id']['#default_value'] = $current_user;
-  // Remove HTML5 validation from the form.
-  $form['#attributes']['novalidate'] = 'novalidate';
-  $speaker_agreement = new FormattableMarkup('<a target="_blank" href="/speaker-agreement">@title</a>', ['@title' => 'Speaker Agreement']);
-  $form['field_agree']['widget']['value']['#title'] = t('By submitting this session I acknowledge that I have read and agree to the terms outlined in the @speaker_agreement document.', ['@speaker_agreement' => $speaker_agreement]);
-  // Adds ajax callback on session type select list.
-  $form['field_select_list']['widget']['#ajax'] = [
-    'callback' => '_change_duration_options_callback',
-    'wrapper' => 'session-duration',
-    'event' => 'change',
-    'method' => 'replace',
-  ];
+function dct_sessions_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+    if (in_array(
+        $form_id,
+        ['contact_message_session_proposal_form_form', 'contact_message_session_proposal_form_edit_form']
+    )) {
+        // Add the current user as a default speaker on session proposal.
+        $user_id = Drupal::currentUser()->id();
+        $current_user = Drupal::entityTypeManager()
+            ->getStorage('user')
+            ->load($user_id);
+        $form['field_user']['widget'][0]['target_id']['#default_value'] = $current_user;
+        // Remove HTML5 validation from the form.
+        $form['#attributes']['novalidate'] = 'novalidate';
+        $speaker_agreement = new FormattableMarkup(
+            '<a target="_blank" href="/speaker-agreement">@title</a>',
+            ['@title' => 'Speaker Agreement']
+        );
+        $form['field_agree']['widget']['value']['#title'] = t(
+            'By submitting this session I acknowledge that I have read and agree to the terms outlined in the @speaker_agreement document.',
+            ['@speaker_agreement' => $speaker_agreement]
+        );
+        // Adds ajax callback on session type select list.
+        $form['field_select_list']['widget']['#ajax'] = [
+            'callback' => '_change_duration_options_callback',
+            'wrapper' => 'session-duration',
+            'event' => 'change',
+            'method' => 'replace',
+        ];
 
-  // Sets the container id for ajax callback.
-  $form['field_duration']['#attributes']['id'] = 'session-duration';
+        // Sets the container id for ajax callback.
+        $form['field_duration']['#attributes']['id'] = 'session-duration';
 
-  // Show only the duration options for sessions.
-  $form['field_duration']['widget']['#options'] = _modify_duration_options('Session');
+        // Show only the duration options for sessions.
+        $form['field_duration']['widget']['#options'] = _modify_duration_options('Session');
 
-  $trigger = $form_state->getTriggeringElement();
-  if (!empty($trigger['#name']) && $trigger['#name'] == 'field_select_list') {
-    $selected_option = $form_state->getValue('field_select_list');
+        $trigger = $form_state->getTriggeringElement();
+        if (!empty($trigger['#name']) && $trigger['#name'] == 'field_select_list') {
+            $selected_option = $form_state->getValue('field_select_list');
 
-    // Sets the options for duration field.
-    $duration_field_options = _modify_duration_options($selected_option[0]['value']);
-    $form['field_duration']['widget']['#options'] = $duration_field_options;
+            // Sets the options for duration field.
+            $duration_field_options = _modify_duration_options($selected_option[0]['value']);
+            $form['field_duration']['widget']['#options'] = $duration_field_options;
 
-    // Sets the default value for the duration field.
-    switch ($selected_option[0]['value']) {
-      case "Session":
-        $form['field_duration']['widget']['#default_value'] = '25';
-        $form_state->set(['values', 'field_duration', 0], '25');
-        break;
+            // Sets the default value for the duration field.
+            switch ($selected_option[0]['value']) {
+                case "Session":
+                    $form['field_duration']['widget']['#default_value'] = '25';
+                    $form_state->set(['values', 'field_duration', 0], '25');
+                    break;
 
-      case "Workshop":
-        $form['field_duration']['widget']['#default_value'] = '90';
-        $form_state->set(['values', 'field_duration', 0], '90');
+                case "Workshop":
+                    $form['field_duration']['widget']['#default_value'] = '90';
+                    $form_state->set(['values', 'field_duration', 0], '90');
 
-        break;
+                    break;
+            }
+        }
+
+        $form['#validate'][] = '_session_proposal_form_validation';
+
+        // Checks if the current user is a Featured Speaker.
+        $current_user_roles = Drupal::currentUser()->getRoles();
+        if (in_array('featured_speaker', $current_user_roles)) {
+            $entity_manager = \Drupal::entityManager();
+            $entity = $entity_manager->getStorage('user')->load(
+                Drupal::currentUser()
+                    ->id()
+            );
+            // Sets the current user as the default value.
+            $form['field_user']['widget'][0]['target_id']['#default_value'] = $entity;
+        }
     }
-  }
-
-  $form['#validate'][] = '_session_proposal_form_validation';
-
-  // Checks if the current user is a Featured Speaker.
-  $current_user_roles = Drupal::currentUser()->getRoles();
-  if (in_array('featured_speaker', $current_user_roles)) {
-    $entity_manager = \Drupal::entityManager();
-    $entity = $entity_manager->getStorage('user')->load(Drupal::currentUser()
-      ->id());
-    // Sets the current user as the default value.
-    $form['field_user']['widget'][0]['target_id']['#default_value'] = $entity;
-  }
 }
 
 /**
@@ -185,8 +209,9 @@ function dct_sessions_form_contact_message_session_proposal_form_form_alter(&$fo
  * @return mixed
  *   The duration field.
  */
-function _change_duration_options_callback(array &$form, FormStateInterface $form_state) {
-  return $form['field_duration'];
+function _change_duration_options_callback(array &$form, FormStateInterface $form_state)
+{
+    return $form['field_duration'];
 }
 
 /**
@@ -197,34 +222,38 @@ function _change_duration_options_callback(array &$form, FormStateInterface $for
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The current state of the form.
  */
-function _session_proposal_form_validation(array &$form, FormStateInterface $form_state) {
-  // Verifies if the triggering element is the submit button.
-  $trigger_element = $form_state->getTriggeringElement();
-  if ($trigger_element['#type'] == 'submit') {
-    $speakers = $form_state->getValue('field_user');
-    $ids = [];
+function _session_proposal_form_validation(array &$form, FormStateInterface $form_state)
+{
+    // Verifies if the triggering element is the submit button.
+    $trigger_element = $form_state->getTriggeringElement();
+    if ($trigger_element['#type'] == 'submit') {
+        $speakers = $form_state->getValue('field_user');
+        $ids = [];
 
-    // Gets the ids for all the Feature Speakers.
-    foreach ($speakers as $key => $speaker) {
-      if (is_numeric($key)) {
-        $ids[] = $speaker['target_id'];
-      }
-    }
+        // Gets the ids for all the Feature Speakers.
+        foreach ($speakers as $key => $speaker) {
+            if (is_numeric($key)) {
+                $ids[] = $speaker['target_id'];
+            }
+        }
 
-    if (Drupal::currentUser()->id() != 1) {
-      $current_user_id = Drupal::currentUser()->id();
-      // Verififes if the current user is in the list of speakers.
-      if (!in_array($current_user_id, $ids)) {
-        $form_state->setErrorByName('field_user', 'You must be on the speaker list!');
-      }
-    }
+        if (Drupal::currentUser()->id() != 1) {
+            $current_user_id = Drupal::currentUser()->id();
+            // Verififes if the current user is in the list of speakers.
+            if (!in_array($current_user_id, $ids)) {
+                $form_state->setErrorByName('field_user', 'You must be on the speaker list!');
+            }
+        }
 
-    // Checks if the agree field is checked.
-    $agree_check = $form_state->getValue('field_agree');
-    if ($agree_check['value'] != 1) {
-      $form_state->setErrorByName('field_agree', 'You must read and agree to the terms outlined in the Speaker Agreement document.');
+        // Checks if the agree field is checked.
+        $agree_check = $form_state->getValue('field_agree');
+        if ($agree_check['value'] != 1) {
+            $form_state->setErrorByName(
+                'field_agree',
+                'You must read and agree to the terms outlined in the Speaker Agreement document.'
+            );
+        }
     }
-  }
 }
 
 /**
@@ -236,85 +265,92 @@ function _session_proposal_form_validation(array &$form, FormStateInterface $for
  * @return array
  *   The new options for the duration field.
  */
-function _modify_duration_options($select_list_option) {
-  // Gets the values for the suration field.
-  $entityManager = \Drupal::service('entity_field.manager');
-  $fields = $entityManager->getFieldStorageDefinitions('contact_message', 'session_proposal_form');
-  $options = options_allowed_values($fields['field_duration']);
+function _modify_duration_options($select_list_option)
+{
+    // Gets the values for the suration field.
+    $entityManager = \Drupal::service('entity_field.manager');
+    $fields = $entityManager->getFieldStorageDefinitions('contact_message', 'session_proposal_form');
+    $options = options_allowed_values($fields['field_duration']);
 
-  // Verifies which type of session is selected.
-  switch ($select_list_option) {
-    case "Session":
-      unset($options[90]);
-      unset($options[180]);
-      break;
+    // Verifies which type of session is selected.
+    switch ($select_list_option) {
+        case "Session":
+            unset($options[90]);
+            unset($options[180]);
+            break;
 
-    case "Workshop":
-      unset($options[25]);
-      unset($options[50]);
-      break;
-  }
+        case "Workshop":
+            unset($options[25]);
+            unset($options[50]);
+            break;
+    }
 
-  return $options;
+    return $options;
 }
 
 /**
  * Implements hook_theme().
  */
-function dct_sessions_theme() {
-  return [
-    'contact_message_session_proposal_form_form' => [
-      'render element' => 'form',
-    ],
-    'contact_message_session_proposal_form_edit_form' => [
-      'render element' => 'form',
-    ],
-    'cancel_proposal_confirmation_form' => [
-      'render element' => 'form',
-    ],
-    'dct_sessions_user_sessions_page' => [
-      'variables' => [
-        'user' => NULL,
-        'user_picture' => NULL,
-        'user_roles' => NULL,
-        'sessions' => NULL,
-      ],
-    ],
-    'dct_sessions_session_detail_page' => [
-      'variables' => [
-        'session' => NULL,
-      ],
-    ],
-  ];
+function dct_sessions_theme()
+{
+    return [
+        'contact_message_session_proposal_form_form' => [
+            'render element' => 'form',
+        ],
+        'contact_message_session_proposal_form_edit_form' => [
+            'render element' => 'form',
+        ],
+        'cancel_proposal_confirmation_form' => [
+            'render element' => 'form',
+        ],
+        'dct_sessions_user_sessions_page' => [
+            'variables' => [
+                'user' => null,
+                'user_picture' => null,
+                'user_roles' => null,
+                'sessions' => null,
+            ],
+        ],
+        'dct_sessions_session_detail_page' => [
+            'variables' => [
+                'session' => null,
+            ],
+        ],
+    ];
 }
 
 /**
  * Implements hook_entity_view().
  */
-function dct_sessions_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'session' && $view_mode == 'full') {
-    $speakers = [];
-    // Get the speakers with first and last name.
-    foreach ($entity->get('field_speakers')->getValue() as $speaker) {
-      $speaker = Drupal::entityTypeManager()
-        ->getStorage('user')
-        ->load($speaker['target_id']);
-      $speakers[$speaker->id()] = [
-        '#type' => 'link',
-        '#title' => $speaker->get('field_first_name')->value . ' ' . $speaker->get('field_last_name')->value,
-        '#url' => Url::fromRoute('entity.user.canonical', ['user' => $speaker->id()])
-      ];
-      // If there is any other speaker, add a comma between them.
-      if (count($speakers) > 1) {
-        $speakers[$speaker->id()]['#prefix'] = ', ';
-      }
+function dct_sessions_entity_view(
+    array &$build,
+    EntityInterface $entity,
+    EntityViewDisplayInterface $display,
+    $view_mode
+){
+    if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'session' && $view_mode == 'full') {
+        $speakers = [];
+        // Get the speakers with first and last name.
+        foreach ($entity->get('field_speakers')->getValue() as $speaker) {
+            $speaker = Drupal::entityTypeManager()
+                ->getStorage('user')
+                ->load($speaker['target_id']);
+            $speakers[$speaker->id()] = [
+                '#type' => 'link',
+                '#title' => $speaker->get('field_first_name')->value.' '.$speaker->get('field_last_name')->value,
+                '#url' => Url::fromRoute('entity.user.canonical', ['user' => $speaker->id()]),
+            ];
+            // If there is any other speaker, add a comma between them.
+            if (count($speakers) > 1) {
+                $speakers[$speaker->id()]['#prefix'] = ', ';
+            }
+        }
+        $build['speakers'] = $speakers;
+        // Display status just for the owner.
+        if ($entity->getOwnerId() == Drupal::currentUser()->id()) {
+            $build['session_status'] = [
+                '#markup' => t('ACCEPTED'),
+            ];
+        }
     }
-    $build['speakers'] = $speakers;
-    // Display status just for the owner.
-    if ($entity->getOwnerId() == Drupal::currentUser()->id()) {
-      $build['session_status'] = [
-        '#markup' => t('ACCEPTED'),
-      ];
-    }
-  }
 }

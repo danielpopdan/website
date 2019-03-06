@@ -5,6 +5,7 @@ dependencies: {  }
 id: node
 filenames:
   sponsor: ''
+  article: ''
 bundles:
   sponsor:
     field_sp_description:
@@ -26,6 +27,18 @@ bundles:
       rta: 'no'
       enabled: false
       anonymizer: password_anonymizer
+      notes: ''
+      relationship: 0
+      sars_filename: ''
+  article:
+    field_image_slider:
+      bundle: article
+      name: field_image_slider
+      entity_type_id: node
+      rtf: 'no'
+      rta: 'no'
+      enabled: false
+      anonymizer: ''
       notes: ''
       relationship: 0
       sars_filename: ''

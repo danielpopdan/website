@@ -88,12 +88,9 @@ content:
     region: content
   field_taxonomy_reference:
     weight: 9
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: 'Type for completion'
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_user:
     weight: 1

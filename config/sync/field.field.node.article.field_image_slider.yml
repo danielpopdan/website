@@ -1,0 +1,61 @@
+uuid: 2b602839-9020-4054-a794-ed6f7516e591
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_slider
+    - node.type.article
+    - paragraphs.paragraphs_type.image_slider_paragraph
+  module:
+    - entity_reference_revisions
+id: node.article.field_image_slider
+field_name: field_image_slider
+entity_type: node
+bundle: article
+label: 'Image slider'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      image_slider_paragraph: image_slider_paragraph
+    target_bundles_drag_drop:
+      benefits_group:
+        weight: 12
+        enabled: false
+      google_map_paragraph:
+        weight: 13
+        enabled: false
+      image:
+        weight: 14
+        enabled: false
+      image_slider_paragraph:
+        enabled: true
+        weight: 15
+      seo:
+        weight: 16
+        enabled: false
+      social_share:
+        weight: 17
+        enabled: false
+      sponsor_contact_form:
+        weight: 18
+        enabled: false
+      sponsors_extras:
+        weight: 19
+        enabled: false
+      sponsorship_container:
+        weight: 20
+        enabled: false
+      sponsorship_package:
+        weight: 21
+        enabled: false
+      text_paragraph:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

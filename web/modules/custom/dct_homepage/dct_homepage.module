@@ -31,6 +31,12 @@ function dct_homepage_theme() {
         'share' => NULL,
       ],
     ],
+      'dct_contribution_block' => [
+          'variables' => [
+              'cfp' => NULL,
+              'contribution' => NULL,
+          ],
+      ],
     'dct_welcome_to_city' => [
       'variables' => [
         'description' => NULL,
