@@ -4,6 +4,7 @@ namespace Drupal\dct_commerce;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\QRCode;
+use Drupal\Core\Transliteration\PhpTransliteration;
 use Drupal\Core\Url;
 use Mpdf\Mpdf;
 use Drupal\dct_commerce\Entity\TicketInterface;
@@ -36,22 +37,23 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
       $shirt_sizes = $account->getFieldDefinition('field_shirt_size')->getSetting('allowed_values');
       $shirt_types = $account->getFieldDefinition('field_gender')->getSetting('allowed_values');
      $countries = \Drupal::service('country_manager')->getList();
+     $transliterator = new PhpTransliteration(NULL, \Drupal::moduleHandler());
     $render = [
       '#theme' => $theme,
       '#country' => [
         '#markup' => $countries[$account->get('field_country')->value],
       ],
       '#given_name' => [
-        '#markup' => $account->get('field_first_name')->value,
+        '#markup' => $transliterator->transliterate($account->get('field_first_name')->value),
       ],
       '#family_name' => [
-        '#markup' => $account->get('field_last_name')->value,
+        '#markup' => $transliterator->transliterate($account->get('field_last_name')->value),
       ],
       '#username' => [
-        '#markup' => $account->get('field_drupal_org_username')->value,
+        '#markup' => $transliterator->transliterate($account->get('field_drupal_org_username')->value),
       ],
       '#job_title' => [
-          '#markup' => $account->get('field_job_title')->value,
+          '#markup' => $transliterator->transliterate($account->get('field_job_title')->value),
       ],
       '#shirt_size' => [
         '#markup' => $shirt_sizes[$account->get('field_shirt_size')->value],
@@ -80,7 +82,8 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
   public function generateTicketToUser(TicketInterface $ticket) {
     $account = $ticket->getRedeemer();
     // Retrieves the pdf content.
-    $this->getTicket($ticket);
+    $pdf = $this->getTicket($ticket);
+//    kint($pdf); die;
     // Creates the pdf file.
     $content = file_get_contents('public://ticket-order-' . $ticket->id() . '.pdf');
     $file = file_save_data($content, 'public://ticket-order-' . $ticket->id() . '.pdf', FILE_EXISTS_REPLACE);

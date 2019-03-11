@@ -50,6 +50,7 @@ content:
     region: content
 hidden:
   created: true
+  field_drive_link: true
   field_image: true
   field_sponsor_editor: true
   field_type: true
