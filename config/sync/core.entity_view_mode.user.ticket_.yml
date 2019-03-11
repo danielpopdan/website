@@ -1,0 +1,10 @@
+uuid: 6527acf5-645d-4e58-ae5c-e7a2a75510ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.ticket_
+label: 'Ticket Admin'
+targetEntityType: user
+cache: true

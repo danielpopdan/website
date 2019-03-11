@@ -40,3 +40,10 @@ dct_commerce.my_ticket:
     _title: My Ticket
   requirements:
     _permission: access ticket redemption
+dct_commerce.ticket_generator:
+  path: /admin/commerce/ticket_generator
+  defaults:
+    _form: Drupal\dct_commerce\Form\PdfTicketGenerationForm
+    _title: Generate a ticket
+  requirements:
+    _permission: administer tickets

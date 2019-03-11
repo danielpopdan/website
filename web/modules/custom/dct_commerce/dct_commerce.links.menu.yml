@@ -3,3 +3,8 @@ dct_commerce.commerce.coupons:
   route_name: 'dct_commerce.generate_coupons'
   parent: 'commerce.admin_commerce'
   description: 'View and generate coupons.'
+dct_commerce.commerce.generate_ticket:
+  title: 'Generate ticket'
+  route_name: 'dct_commerce.ticket_generator'
+  parent: 'commerce.admin_commerce'
+  description: 'Generate pdf tickets.'

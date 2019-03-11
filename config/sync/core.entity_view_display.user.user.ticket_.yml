@@ -1,0 +1,56 @@
+uuid: 8db6b9aa-3d08-4c53-8903-69ed9fad16cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.ticket_
+    - field.field.user.user.commerce_remote_id
+    - field.field.user.user.field_attended
+    - field.field.user.user.field_bio
+    - field.field.user.user.field_country
+    - field.field.user.user.field_drupal_org_username
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_gender
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_organization
+    - field.field.user.user.field_privacy
+    - field.field.user.user.field_published
+    - field.field.user.user.field_shirt_size
+    - field.field.user.user.field_ticket
+    - field.field.user.user.user_picture
+  module:
+    - file
+    - user
+_core:
+  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
+id: user.user.ticket_
+targetEntityType: user
+bundle: user
+mode: ticket_
+content:
+  field_ticket:
+    weight: 0
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
+    region: content
+hidden:
+  commerce_remote_id: true
+  field_attended: true
+  field_bio: true
+  field_country: true
+  field_drupal_org_username: true
+  field_first_name: true
+  field_gender: true
+  field_job_title: true
+  field_last_name: true
+  field_organization: true
+  field_privacy: true
+  field_published: true
+  field_shirt_size: true
+  member_for: true
+  profile_customer: true
+  user_picture: true
