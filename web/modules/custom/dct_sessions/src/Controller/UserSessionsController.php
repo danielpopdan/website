@@ -231,7 +231,7 @@ class UserSessionsController extends ControllerBase {
    *   If the user has access or not.
    */
   private function hasSessionPermission(MessageInterface $contact_message) {
-    if (in_array('administrator', $this->currentUser->getRoles())) {
+    if (in_array('administrator', $this->currentUser->getRoles()) || in_array('organizer', $this->currentUser->getRoles())) {
       return TRUE;
     }
 
