@@ -2858,4 +2858,5 @@ img.zoom-img {
 
 .sponsors-display .sponsors-categories--category .single-page img {
   max-width: 500px;
+  width: auto;
 }
