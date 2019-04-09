@@ -2860,3 +2860,7 @@ img.zoom-img {
   max-width: 500px;
   width: auto;
 }
+
+.sponsors-display .sponsors-categories--category img {
+  width: auto;
+}
