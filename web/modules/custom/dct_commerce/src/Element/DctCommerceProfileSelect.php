@@ -40,9 +40,6 @@ class DctCommerceProfileSelect extends ProfileSelect {
       'visible' => [
         ':input[name="payment_information[billing_information][profile_type]"]' => ['value' => 'company'],
       ],
-      'required' => [
-        ':input[name="payment_information[billing_information][profile_type]"]' => ['value' => 'company'],
-      ],
     ];
 
     // Set wrappers to the fields.
