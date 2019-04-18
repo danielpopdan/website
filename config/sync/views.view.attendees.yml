@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.teaser
-    - core.entity_view_mode.user.ticket
     - user.role.attendee
     - user.role.featured_speaker
     - user.role.individual_sponsor
@@ -81,7 +80,7 @@ display:
         type: 'entity:user'
         options:
           relationship: none
-          view_mode: ticket
+          view_mode: teaser
       fields:
         name:
           id: name
@@ -245,6 +244,18 @@ display:
             group_items: {  }
           plugin_id: boolean
       sorts:
+        field_first_name_value:
+          id: field_first_name_value
+          table: user__field_first_name
+          field: field_first_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
         random:
           id: random
           table: views

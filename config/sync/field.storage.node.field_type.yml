@@ -32,6 +32,9 @@ settings:
     -
       value: network
       label: Network
+    -
+      value: supportin_organizations
+      label: 'Supporting Organizations'
   allowed_values_function: ''
 module: options
 locked: false

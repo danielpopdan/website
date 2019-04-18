@@ -6,4 +6,7 @@ id: organizer
 label: Organizer
 weight: 5
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access toolbar'
+  - 'bypass node access'
+  - 'view the administration theme'
