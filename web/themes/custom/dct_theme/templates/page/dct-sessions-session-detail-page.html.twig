@@ -75,6 +75,14 @@
                 <p>{{ session.field_radio_button.value }}</p>
             </div>
         </div>
+        <div class="session-detail--item">
+            <div class="session-detail--item-term">
+                <p>{{ "Speaker experience:"|t }}</p>
+            </div>
+            <div class="session-detail--item-value" style="white-space: pre-wrap">
+                <p>{{ session.field_long_description.value }}</p>
+            </div>
+        </div>
         {% if session.field_file_upload.target_id %}
             <div class="session-detail--item">
                 <div class="session-detail--item-term">
