@@ -49,7 +49,7 @@ class ContributionBlock extends BlockBase implements ContainerFactoryPluginInter
   public function build() {
     $link = [
       '#type' => 'link',
-      '#title' => $this->t('Propose a session/workshop'),
+      '#title' => $this->t('Propose a workshop'),
       '#url' => Url::fromUri('internal:/call-for-papers'),
       '#attributes' => [
         'class' => [

@@ -155,9 +155,10 @@ function dct_sessions_form_alter(&$form, FormStateInterface $form_state, $form_i
 
         // Sets the container id for ajax callback.
         $form['field_duration']['#attributes']['id'] = 'session-duration';
+        unset($form['field_select_list']['widget']['#options']['Session']);
 
         // Show only the duration options for sessions.
-        $form['field_duration']['widget']['#options'] = _modify_duration_options('Session');
+        $form['field_duration']['widget']['#options'] = _modify_duration_options('Workshop');
 
         $trigger = $form_state->getTriggeringElement();
         if (!empty($trigger['#name']) && $trigger['#name'] == 'field_select_list') {
