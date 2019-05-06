@@ -2733,7 +2733,7 @@ img.zoom-img {
   display: none; }
 @media all and (min-width: 48em) {
   .session-schedule-content .day-schedule .room-schedule {
-    width: calc(100% / 4 - 7px);
+    width: calc(100% / 3 - 7px);
     margin-right: 0.625rem; }
   .session-schedule-content .day-schedule .room-schedule h2 {
     display: initial; } }
