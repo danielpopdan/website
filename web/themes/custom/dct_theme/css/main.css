@@ -2654,7 +2654,7 @@ img.zoom-img {
   -webkit-box-shadow: 0.125rem 0.125rem 0.25rem #e2e2e2;
   box-shadow: 0.125rem 0.125rem 0.25rem #e2e2e2;
   display: inline-block;
-  width: calc(100% / 3);
+  width: calc(100% / 4);
   padding: 1.35rem 1.25rem;
   background-color: #fff;
   font-size: 0.875rem;
@@ -2663,7 +2663,7 @@ img.zoom-img {
   vertical-align: middle; }
 @media all and (min-width: 48em) {
   .session-schedule-content .day-tabs-container .day-tab {
-    padding: 1.35rem 6.25rem;
+    padding: 1.35rem 5.25rem;
     font-size: 1.15rem; } }
 .session-schedule-content .day-tabs-container .day-tab:last-child {
   -webkit-box-shadow: 0 0.125rem 0.25rem #e2e2e2;
@@ -2733,7 +2733,7 @@ img.zoom-img {
   display: none; }
 @media all and (min-width: 48em) {
   .session-schedule-content .day-schedule .room-schedule {
-    width: calc(100% / 3 - 7px);
+    width: calc(100% / 4 - 7px);
     margin-right: 0.625rem; }
   .session-schedule-content .day-schedule .room-schedule h2 {
     display: initial; } }
