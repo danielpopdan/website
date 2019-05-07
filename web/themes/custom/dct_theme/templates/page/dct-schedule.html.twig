@@ -8,23 +8,31 @@
   <div class="large-title-block title">
     <h2>{{ "Schedule"|t }}</h2>
   </div>
+  <div class="homepage-spread-word">
+    <div class="l-container">
+      <div class="homepage-spread-word--intro large-title-block">
+        <h2>{{ "Monday 8:00 to Friday 23:59 contributions"|t }}</h2>
+        {{ "Room: Roma<br><br>"|t }}
+        {{ 'Sign up to be a mentor/contribute: <a hfref="http://bit.ly/DDD2019Contrib">http://bit.ly/DDD2019Contrib</a>'|t }}
+      </div>
+    </div>
+  </div>
+  <div class="homepage-spread-word">
+    <div class="l-container">
+      <div class="homepage-spread-word--intro large-title-block">
+        <h2>{{ "Monday 10:00 to Friday 18:30 BOFs"|t }}</h2>
+        {{ "Room: Diplomat <br><br>"|t }}
+        {{ 'Submission will be opening soon!'|t }}
+      </div>
+    </div>
+  </div>
   {% if logged_in %}
     <div class="schedule-legend"><p>{{ "You can add sessions to" }} <a
           href="{{ path('dct_schedule.my_schedule') }}">{{ "your schedule"|t }}</a> {{ 'by clicking on "+" sign.' }}</p>
-      <ul>
-        <li><b>Atena</b> - open for contribution from Monday to Friday, all day long</li>
-        <li><b>Diplomat</b> -  open for BOFs from Monday to Friday (10:00 - 18:30)</li>
-        <li>{{ "There will social events every night from Monday to Thursday!" }}</li>
-      </ul>
     </div>
   {% else %}
     <div class="schedule-legend"><p><a
           href="{{ path('user.login') }}">{{ "Login"|t }}</a> {{ 'in order to add sessions to your schedule.' }}</p>
-      <ul>
-        <li><b>Roma</b> - open for contribution from Monday to Friday, all day long</li>
-        <li><b>Diplomat</b> -  open for BOFs from Monday to Friday (10:00 - 18:30)</li>
-        <li>{{ "There will social events every night from Monday to Thursday!" }}</li>
-      </ul>
     </div>
   {% endif %}
   <div class="scheduler-container">
