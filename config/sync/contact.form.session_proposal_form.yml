@@ -8,7 +8,7 @@ third_party_settings:
   contact_storage:
     submit_text: 'Send message'
     show_preview: false
-    disabled_form_message: 'This contact form has been disabled.'
+    disabled_form_message: 'This session proposal period is over.'
     maximum_submissions_user: 0
     page_autoreply_format: plain_text
 id: session_proposal_form

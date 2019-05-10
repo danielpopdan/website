@@ -22,7 +22,10 @@ settings:
       label: 8.x
     -
       value: 8.5.x
-      label: 8.5.x
+      label: 8.8.x
+    -
+      value: 9.x
+      label: 9.x
   allowed_values_function: ''
 module: options
 locked: false
