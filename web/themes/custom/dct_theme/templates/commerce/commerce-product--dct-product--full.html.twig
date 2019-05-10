@@ -28,14 +28,15 @@
                 </div>
                 <h3 class="my-profile-info--role">
                     {% if product.promotional_price.promotion|length > 0 %}
-                        {{ "Regular price"|t }} {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
+                        {{ "Flash sale price"|t }} {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
                     {% else %}
-                        {{ "Regular price"|t }} {{ product.variation_price }}
+                        {{ "Flash sale price"|t }} {{ product.variation_price }}
                     {% endif %}
                 </h3>
                 <div class="my-profile-info--bio">
                     {% if product.promotional_price.promotion|length > 0 %}
-                        <p>{{ "Regular sale ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }} {{ "!" }}</p>
+{#                        <p>{{ "Regular sale ends on "|t }} {{ product.promotional_price.promotion.end_date[0].value }} {{ "!" }}</p>#}
+                        <p>{{ "Flash sale ends on 2019-05-12"}}</p>
                     {% else %}
                         <p>{{ "Sales ends on 2019-06-10!"|t }}</p>
                     {% endif %}
