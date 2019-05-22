@@ -28,9 +28,9 @@
                 </div>
                 <h3 class="my-profile-info--role">
                     {% if product.promotional_price.promotion|length > 0 %}
-                        {{ "Regular sale price"|t }} {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
+                       {{ product.promotional_price.price }} {{ product.promotional_price.currency }}
                     {% else %}
-                        {{ "Regular sale price"|t }} {{ product.variation_price }}
+                        {{ product.variation_price }}
                     {% endif %}
                 </h3>
                 <div class="my-profile-info--bio">
