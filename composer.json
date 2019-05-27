@@ -105,6 +105,11 @@
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
+        },
+        "patches": {
+            "drupal/swiftmailer": {
+                "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch" : "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch"
+            }
         }
     }
 }

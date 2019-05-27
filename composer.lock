@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40acd382af2f8781a32e6af293c0f762",
+    "content-hash": "f31ed362bd681f912b9811f3c64383a5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5492,6 +5492,9 @@
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch": "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
