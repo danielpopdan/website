@@ -71,7 +71,6 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
       '#qrcode' =>'<img src="'.(new QRCode)->render($data).'" />',
     ];
 
-    dump($data); die;
     // Attempt to generate the PDF file.
     $pdf = $this->generatePdf($render, $ticket);
 
