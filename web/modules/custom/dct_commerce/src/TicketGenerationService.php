@@ -30,6 +30,7 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
           'version'    => 5,
           'outputType' => QrCode::OUTPUT_MARKUP_SVG,
           'eccLevel'   => QRCode::ECC_L,
+        'cssClass' => 'qr-code-scan',
       ]);
 
       // invoke a fresh QRCode instance
@@ -67,9 +68,10 @@ class TicketGenerationService implements TicketGenerationServiceInterface {
       '#current_date' => [
         '#markup' => date('d.m.Y'),
       ],
-      '#qrcode' => $qr_code->render($data),
+      '#qrcode' =>'<img src="'.(new QRCode)->render($data).'" />',
     ];
 
+    dump($data); die;
     // Attempt to generate the PDF file.
     $pdf = $this->generatePdf($render, $ticket);
 

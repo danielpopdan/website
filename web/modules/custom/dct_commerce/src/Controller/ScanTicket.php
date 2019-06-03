@@ -4,6 +4,7 @@ namespace Drupal\dct_commerce\Controller;
 
 use Drupal\Console\Bootstrap\Drupal;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Database\Database;
 use Drupal\dct_sessions\Service\UserSessions;
 use Drupal\user\UserInterface;
 
@@ -11,10 +12,16 @@ class ScanTicket extends ControllerBase
 {
     public function content(UserInterface $user)
     {
-        $ticket = \Drupal::entityTypeManager()->getStorage('dct_commerce_ticket')->loadMultiple(
-            ['redeemer' => $user->id()]
+      $query = Database::getConnection('default')->select('dct_ticket', 't');
+      $query->condition('t.redeemer', $user->id());
+      $query->addField('t', 'id');
+      $results = $query->execute()->fetchAll();
+      $ticket_id = current($results);
+      if (!empty($ticket_id->id)) {
+        $ticket = \Drupal::entityTypeManager()->getStorage('dct_commerce_ticket')->load(
+          $ticket_id->id
         );
-        $ticket = current($ticket);
+      }
         $shirt_sizes = $user->getFieldDefinition('field_shirt_size')->getSetting('allowed_values');
         $shirt_types = $user->getFieldDefinition('field_gender')->getSetting('allowed_values');
         $render = [
@@ -32,10 +39,10 @@ class ScanTicket extends ControllerBase
                 '#markup' => $user->get('field_drupal_org_username')->value,
             ],
             '#shirt_size' => [
-                '#markup' => $shirt_sizes[$user->get('field_shirt_size')->value],
+                '#markup' => $shirt_sizes[$user->get('field_shirt_size_final')->value],
             ],
             '#shirt_type' => [
-                '#markup' => $shirt_types[$user->get('field_gender')->value],
+                '#markup' => $shirt_types[$user->get('field_shirt_gender')->value],
             ],
             '#role' => [
                 '#markup' => UserSessions::getPublicUserRoles($user),
