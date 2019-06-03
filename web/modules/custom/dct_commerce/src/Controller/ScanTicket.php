@@ -22,8 +22,8 @@ class ScanTicket extends ControllerBase
           $ticket_id->id
         );
       }
-        $shirt_sizes = $user->getFieldDefinition('field_shirt_size')->getSetting('allowed_values');
-        $shirt_types = $user->getFieldDefinition('field_gender')->getSetting('allowed_values');
+        $shirt_sizes = $user->getFieldDefinition('field_shirt_size_final')->getSetting('allowed_values');
+        $shirt_types = $user->getFieldDefinition('field_shirt_gender')->getSetting('allowed_values');
         $render = [
             '#theme' => 'dct_scan_ticket',
             '#country' => [
