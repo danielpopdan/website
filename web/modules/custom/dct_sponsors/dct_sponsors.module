@@ -24,6 +24,7 @@ function dct_sponsors_theme() {
         'community' => NULL,
         'network' => NULL,
         'media' => NULL,
+        'wednesday_social_night_sponsor' => NULL,
       ]
     ],
   ];

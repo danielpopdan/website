@@ -96,6 +96,7 @@ class SponsorsPageController extends ControllerBase {
       '#community' => (!empty($grouped_sponsors['community'])) ? $grouped_sponsors['community'] : NULL,
       '#network' => (!empty($grouped_sponsors['network'])) ? $grouped_sponsors['network'] : NULL,
       '#media' => (!empty($grouped_sponsors['media'])) ? $grouped_sponsors['media'] : NULL,
+      '#wednesday_social_night_sponsor' => (!empty($grouped_sponsors['wednesday_social_night_sponsor'])) ? $grouped_sponsors['wednesday_social_night_sponsor'] : NULL,
     ];
   }
 
