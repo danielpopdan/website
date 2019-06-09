@@ -47,6 +47,16 @@
           </div>
         </div>
       {% endif %}
+      {% if wednesday_social_night_sponsor is not empty %}
+        <div class="l-col l-col-1">
+          <div class="sponsors-categories--category community">
+            <div class="large-title-block">
+              <h2>{{ "Wednesday Social Night Sponsor"|t }}</h2>
+            </div>
+            {{ wednesday_social_night_sponsor }}
+          </div>
+        </div>
+      {% endif %}
       {% if community is not empty %}
         <div class="l-col l-col-1">
           <div class="sponsors-categories--category community">
