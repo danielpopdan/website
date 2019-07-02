@@ -105,5 +105,15 @@
         </div>
       </div>
     {% endif %}
+    {% if node.field_recording is not empty %}
+      <div class="session-detail--item">
+        <div class="session-detail--item-term">
+          <p>{{ "Recording"|t }}</p>
+        </div>
+        <div class="session-detail--item-value">
+          <p>{{ content.field_recording }}</p>
+        </div>
+      </div>
+    {% endif %}
   </div>
 </div>
