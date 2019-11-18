@@ -7,7 +7,7 @@
 name: 'app'
 
 # The runtime the application uses.
-type: 'php:7.2'
+type: 'php:7.3'
 
 # The relationships of the application with services or other applications.
 #
@@ -43,12 +43,11 @@ hooks:
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
         set -e
-        ./drush/platformsh_generate_drush_yml.php
+        php ./drush/platformsh_generate_drush_yml.php
         cd web
         drush -y cache-rebuild
         drush -y updatedb
         drush -y config-import
-        drush -y entup
 
 # The configuration of app when it is exposed to the web.
 web:
