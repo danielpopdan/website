@@ -138,6 +138,7 @@ content:
     label: hidden
 hidden:
   commerce_remote_id: true
+  customer_profiles: true
   field_gender: true
   field_shirt_size: true
   profile_customer: true

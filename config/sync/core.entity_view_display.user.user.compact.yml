@@ -78,6 +78,7 @@ content:
     third_party_settings: {  }
 hidden:
   commerce_remote_id: true
+  customer_profiles: true
   field_attended: true
   field_bio: true
   field_country: true

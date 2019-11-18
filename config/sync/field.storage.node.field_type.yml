@@ -35,6 +35,9 @@ settings:
     -
       value: supportin_organizations
       label: 'Supporting Organizations'
+    -
+      value: wednesday_social_night_sponsor
+      label: 'Wednesday Social Night Sponsor'
   allowed_values_function: ''
 module: options
 locked: false

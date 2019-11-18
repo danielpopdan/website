@@ -133,6 +133,7 @@ content:
 hidden:
   commerce_remote_id: true
   contact: true
+  customer_profiles: true
   field_attended: true
   field_ticket: true
   language: true
