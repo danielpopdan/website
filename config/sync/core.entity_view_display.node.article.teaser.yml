@@ -33,4 +33,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_image_slider: true
   field_seo: true

@@ -7,3 +7,4 @@ label: 'DCT Product Variation'
 orderItemType: dct_order_item
 generateTitle: false
 traits: {  }
+locked: false

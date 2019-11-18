@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Session track'
 vid: session_track
 description: ''
-hierarchy: 0
 weight: 0

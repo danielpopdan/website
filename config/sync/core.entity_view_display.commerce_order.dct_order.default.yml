@@ -92,3 +92,4 @@ hidden:
   changed: true
   order_number: true
   store_id: true
+  total_paid: true

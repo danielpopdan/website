@@ -21,4 +21,5 @@ content:
 hidden:
   addtoany: true
   body: true
+  field_image_slider: true
   field_seo: true

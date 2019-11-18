@@ -6,5 +6,7 @@ id: dct_product
 label: 'DCT Product'
 description: 'DCT product.'
 variationType: dct_product_variation
+multipleVariations: true
 injectVariationFields: true
 traits: {  }
+locked: false
