@@ -3,3 +3,4 @@ description: This module provides a set rules for accessing content.
 package: DCT
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9

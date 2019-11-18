@@ -5,12 +5,12 @@
  * Contains settings for the newsletter module.
  */
 
-use Drupal\file\Entity\File;
+use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Moves the csv file to the public directory.
  */
-function dct_newsletter_update_8001() {
+function dct_newsletter_update_8001(){
   $module_path = drupal_get_path('module', 'dct_newsletter');
   $file_path = $module_path . '/csv/users.csv';
 
@@ -20,5 +20,9 @@ function dct_newsletter_update_8001() {
   }
 
   // Copies the users file to the public directory.
-  file_unmanaged_copy($file_path, 'public://csv/users.csv', FILE_EXISTS_REPLACE);
+  \Drupal::service('file_system')->copy(
+    $file_path,
+    'public://csv/users.csv',
+    FileSystemInterface::EXISTS_REPLACE
+  );
 }

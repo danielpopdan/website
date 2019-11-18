@@ -5,6 +5,7 @@ namespace Drupal\dct_homepage\Form;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -30,16 +31,23 @@ class SpreadTheWordConfigurationForm extends FormBase {
   protected $cacheInvalidator;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs a SpreadTheWordConfigurationForm object.
    *
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
    * @param \Drupal\Core\Cache\CacheTagsInvalidatorInterface $cacheInvalidator
    *   The cache_tags.invalidator service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    */
-  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator, MessengerInterface $messenger) {
     $this->state = $state;
     $this->cacheInvalidator = $cacheInvalidator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -55,7 +63,8 @@ class SpreadTheWordConfigurationForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('state'),
-      $container->get('cache_tags.invalidator')
+      $container->get('cache_tags.invalidator'),
+      $container->get('messenger')
     );
   }
 
@@ -111,7 +120,7 @@ class SpreadTheWordConfigurationForm extends FormBase {
 
     $this->cacheInvalidator->invalidateTags(['dct_homepage.spread_word']);
 
-    drupal_set_message($this->t('The settings have been successfully saved'));
+    $this->messenger->addMessage($this->t('The settings have been successfully saved'));
   }
 
 }

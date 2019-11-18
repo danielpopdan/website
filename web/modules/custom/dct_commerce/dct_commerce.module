@@ -222,7 +222,7 @@ function dct_commerce_form_commerce_checkout_flow_dct_multistep_alter(&$form, Fo
         'error' => t('Error message'),
         'warning' => t('Warning message'),
       ],
-      'messages' => drupal_get_messages(),
+      'messages' => \Drupal::service('messenger')->all(),
     ];
     $order = \Drupal::service('current_route_match')->getParameter('commerce_order');
     $form['sidebar']['order_summary'] = [

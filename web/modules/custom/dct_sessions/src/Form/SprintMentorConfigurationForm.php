@@ -5,6 +5,7 @@ namespace Drupal\dct_sessions\Form;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,22 +30,26 @@ class SprintMentorConfigurationForm extends FormBase {
    */
   protected $cacheTagsInvalidator;
 
+  protected $messenger;
+
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('state'),
-      $container->get('cache_tags.invalidator')
+      $container->get('cache_tags.invalidator'),
+      $container->get('messenger')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheTagsInvalidator) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheTagsInvalidator, MessengerInterface $messenger) {
     $this->state = $state;
     $this->cacheTagsInvalidator = $cacheTagsInvalidator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -82,7 +87,7 @@ class SprintMentorConfigurationForm extends FormBase {
       $this->state->set('dct_sprint_mentor.intro', $form_state->getValues()['intro']);
       $this->cacheTagsInvalidator->invalidateTags(['dct_sprint_mentor']);
 
-      drupal_set_message($this->t('The settings have been successfully saved'));
+      $this->messenger->addMessage($this->t('The settings have been successfully saved'));
     }
   }
 

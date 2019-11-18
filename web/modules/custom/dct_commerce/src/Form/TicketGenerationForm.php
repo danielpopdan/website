@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Mail\MailManager;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
@@ -46,13 +47,19 @@ class TicketGenerationForm extends FormBase {
   protected $mailManager;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('dct_commerce.ticket_controller'),
-      $container->get('plugin.manager.mail')
+      $container->get('plugin.manager.mail'),
+      $container->get('messenger')
     );
   }
 
@@ -66,11 +73,12 @@ class TicketGenerationForm extends FormBase {
    * @param \Drupal\Core\Mail\MailManager $mailManager
    *   The mail manager service.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, TicketControllerInterface $ticketController, MailManager $mailManager) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, TicketControllerInterface $ticketController, MailManager $mailManager, MessengerInterface $messenger) {
     $this->entityTypeManager = $entityTypeManager;
     $this->currentUser = $this->entityTypeManager->getStorage('user')->load($this->currentUser()->id());
     $this->ticketController = $ticketController;
     $this->mailManager = $mailManager;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -129,14 +137,14 @@ class TicketGenerationForm extends FormBase {
     $coupons = $this->generateCoupons($count, $author);
     if (!empty($coupons)) {
       if ($this->sendCoupons($coupons, $author)) {
-        drupal_set_message($this->t('Successfully generated coupons.'));
+        $this->messenger->addMessage($this->t('Successfully generated coupons.'));
       }
       else {
-        drupal_set_message($this->t('The coupons were generated, but the email failed to send.'), 'warning');
+        $this->messenger->addMessage($this->t('The coupons were generated, but the email failed to send.'), 'warning');
       }
     }
     else {
-      drupal_set_message($this->t('Failed to generate the coupons.'));
+      $this->messenger->addMessage($this->t('Failed to generate the coupons.'));
     }
   }
 

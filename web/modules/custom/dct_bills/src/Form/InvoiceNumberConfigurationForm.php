@@ -4,6 +4,7 @@ namespace Drupal\dct_bills\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -22,13 +23,20 @@ class InvoiceNumberConfigurationForm extends FormBase {
   protected $state;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * Constructs a SpreadTheWordConfigurationForm object.
    *
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    */
-  public function __construct(StateInterface $state) {
+  public function __construct(StateInterface $state, MessengerInterface $messenger) {
     $this->state = $state;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -43,7 +51,8 @@ class InvoiceNumberConfigurationForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('state')
+      $container->get('state'),
+      $container->get('messenger')
     );
   }
 
@@ -74,8 +83,7 @@ class InvoiceNumberConfigurationForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->state->set('dct_bills.bill_no', $form_state->getValue('invoice_number'));
-
-    drupal_set_message($this->t('The settings have been successfully saved'));
+    $this->messenger->addMessage($this->t('The settings have been successfully saved'));
   }
 
 }

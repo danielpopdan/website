@@ -7,6 +7,7 @@ use Drupal\commerce_checkout\CheckoutOrderManagerInterface;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_payment\PaymentGatewayManager;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,11 @@ class PaymentResponse extends ControllerBase {
   protected $checkoutOrderManager;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * PaymentResponse constructor.
    *
    * @param \Drupal\commerce_payment\PaymentGatewayManager $paymentGatewayManager
@@ -45,13 +51,14 @@ class PaymentResponse extends ControllerBase {
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
-  public function __construct(PaymentGatewayManager $paymentGatewayManager, CheckoutOrderManagerInterface $checkout_order_manager) {
+  public function __construct(PaymentGatewayManager $paymentGatewayManager, CheckoutOrderManagerInterface $checkout_order_manager, MessengerInterface $messenger) {
     $configuration = $this->entityTypeManager()->getStorage('commerce_payment_gateway')->load('dct_euplatesc_gateway')->getPluginConfiguration();
     $configuration['_entity_id'] = 'dct_euplatesc_gateway';
     $configuration['merchant_id'] = \Drupal::state()->get('eu_platesc.merchant_id');
     $configuration['secret_key'] = \Drupal::state()->get('eu_platesc.secret_key');
     $this->paymentGateway = $paymentGatewayManager->createInstance('euplatesc_checkout', $configuration);
     $this->checkoutOrderManager = $checkout_order_manager;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -60,7 +67,8 @@ class PaymentResponse extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static (
       $container->get('plugin.manager.commerce_payment_gateway'),
-      $container->get('commerce_checkout.checkout_order_manager')
+      $container->get('commerce_checkout.checkout_order_manager'),
+      $container->get('messenger')
     );
   }
 
@@ -105,7 +113,7 @@ class PaymentResponse extends ControllerBase {
       ])->toString());
     }
     else {
-      drupal_set_message($this->t('Invalid request. Please contact the website administrator.'), 'warning');
+      $this->messenger->addMessage($this->t('Invalid request. Please contact the website administrator.'), 'warning');
     }
     return [
       '#theme' => 'dct_commerce_payment_response',

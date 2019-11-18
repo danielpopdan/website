@@ -5,6 +5,7 @@ namespace Drupal\dct_homepage\Form;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\file\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -30,6 +31,8 @@ class DiamondSponsorsConfigurationsForm extends FormBase {
    */
   protected $cacheInvalidator;
 
+  protected $messenger;
+
   /**
    * The number of diamond sponsors.
    *
@@ -40,9 +43,10 @@ class DiamondSponsorsConfigurationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator, MessengerInterface $messenger) {
     $this->state = $state;
     $this->cacheInvalidator = $cacheInvalidator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -58,7 +62,8 @@ class DiamondSponsorsConfigurationsForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('state'),
-      $container->get('cache_tags.invalidator')
+      $container->get('cache_tags.invalidator'),
+      $container->get('messenger')
     );
   }
 
@@ -126,7 +131,7 @@ class DiamondSponsorsConfigurationsForm extends FormBase {
     // Invalidate the cache set on DiamondSponsorsBlock.
     $this->cacheInvalidator->invalidateTags(['dct_diamond_sponsors.block_information']);
 
-    drupal_set_message($this->t('The settings have been successfully saved'));
+    $this->messenger->addMessage($this->t('The settings have been successfully saved'));
   }
 
 }

@@ -188,7 +188,7 @@ function dct_sessions_form_alter(&$form, FormStateInterface $form_state, $form_i
         // Checks if the current user is a Featured Speaker.
         $current_user_roles = Drupal::currentUser()->getRoles();
         if (in_array('featured_speaker', $current_user_roles)) {
-            $entity_manager = \Drupal::entityManager();
+            $entity_manager = \Drupal::entityTypeManager();
             $entity = $entity_manager->getStorage('user')->load(
                 Drupal::currentUser()
                     ->id()
