@@ -16,6 +16,7 @@
         }
     ],
     "require": {
+        "php": ">=7.3.0",
         "chillerlan/php-qrcode": "^3.0",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
