@@ -30,7 +30,6 @@
         "drupal/coder": "8.3.6",
         "drupal/commerce": "2.15",
         "drupal/config_installer": "1.8",
-        "drupal/console": "1.8",
         "drupal/contact_storage": "1.0-beta10",
         "drupal/core": "8.7.10",
         "drupal/domain_registration": "1.4",

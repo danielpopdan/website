@@ -12,3 +12,4 @@ id: dct_order_item
 purchasableEntityType: commerce_product_variation
 orderType: dct_order
 traits: {  }
+locked: false

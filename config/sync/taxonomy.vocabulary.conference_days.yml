@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Conference days'
 vid: conference_days
 description: ''
-hierarchy: 0
 weight: 0

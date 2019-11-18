@@ -29,7 +29,10 @@ content:
     third_party_settings: {  }
 hidden:
   addtoany: true
+  field_drive_link: true
   field_external_link: true
   field_short_description: true
+  field_sp_description: true
+  field_sponsor_editor: true
   field_type: true
   links: true

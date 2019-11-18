@@ -2,12 +2,14 @@ uuid: 95beaa92-671d-4b25-81a2-efc8fbe76470
 langcode: en
 status: true
 dependencies:
+  config:
+    - flag.flag.add_to_my_schedule
   module:
     - flag
-id: flag_action.add_to_my_schedule.unflag
+id: flag_action.add_to_my_schedule_unflag
 label: 'Unflag this item'
 type: node
-plugin: 'flag_action:add_to_my_schedule.unflag'
+plugin: 'flag_action:add_to_my_schedule_unflag'
 configuration:
   flag_id: add_to_my_schedule
   flag_action: unflag

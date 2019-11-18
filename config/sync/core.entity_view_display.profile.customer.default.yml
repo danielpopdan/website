@@ -11,11 +11,13 @@ dependencies:
     - field.field.profile.customer.field_county
     - field.field.profile.customer.field_tax_identification_no
     - field.field.profile.customer.field_telephone
+    - field.field.profile.customer.tax_number
     - profile.type.customer
   enforced:
     module:
       - commerce_order
   module:
+    - commerce_tax
     - dct_commerce
 _core:
   default_config_hash: '-D8G44VGLIAIFvoHm_u7-Awnie4iCenOWfldrpNy_ys'
@@ -86,5 +88,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  tax_number:
+    type: commerce_tax_number_default
+    settings:
+      show_verification: false
+    weight: 11
+    label: above
+    third_party_settings: {  }
     region: content
 hidden: {  }
