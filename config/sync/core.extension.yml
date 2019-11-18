@@ -69,6 +69,7 @@ module:
   gdpr: 0
   gdpr_consent: 0
   gdpr_fields: 0
+  git_deploy: 0
   google_analytics: 0
   google_map_field: 0
   help: 0
@@ -110,6 +111,8 @@ module:
   token: 0
   toolbar: 0
   tour: 0
+  update: 0
+  upgrade_status: 0
   user: 0
   views_templates: 0
   views_ui: 0

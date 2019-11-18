@@ -14,6 +14,7 @@ use Drupal\commerce_price\Calculator;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -52,6 +53,9 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
    */
   protected $state;
 
+  /** @var \Drupal\Core\Messenger\MessengerInterface */
+  protected $messenger;
+
   /**
    * Constructs a new PaymentGatewayBase object.
    *
@@ -74,10 +78,11 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, EventDispatcherInterface $eventDispatcher, StateInterface $state) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, EventDispatcherInterface $eventDispatcher, StateInterface $state, MessengerInterface $messenger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $payment_type_manager, $payment_method_type_manager, $time);
     $this->eventDispatcher = $eventDispatcher;
     $this->state = $state;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -93,7 +98,8 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $container->get('plugin.manager.commerce_payment_method_type'),
       $container->get('datetime.time'),
       $container->get('event_dispatcher'),
-      $container->get('state')
+      $container->get('state'),
+      $container->get('messenger')
     );
   }
 
@@ -165,7 +171,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $event = new EuPlatescPaymentEvent($order);
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_SUCCESS, $event);
 
-      drupal_set_message(t('The payment was made successfully.'), 'status');
+      $this->messenger->addMessage(t('The payment was made successfully.'), 'status');
 
       $order->save();
       $payment->save();
@@ -177,7 +183,7 @@ class EuPlatescCheckout extends OffsitePaymentGatewayBase implements EuPlatescCh
       $event = new EuPlatescPaymentEvent($order);
       $this->eventDispatcher->dispatch(EuPlatescEvents::PAYMENT_FAILURE, $event);
 
-      drupal_set_message('Transaction failed. You should get an email with further details.', 'error');
+      $this->messenger->addMessage('Transaction failed. You should get an email with further details.', 'error');
 
       $order->save();
       $payment->save();

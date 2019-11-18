@@ -59,6 +59,7 @@
         "drupal/simple_pass_reset": "1.0",
         "drupal/simple_sitemap": "3.4",
         "drupal/swiftmailer": "1.0-beta-2",
+        "drupal/upgrade_status": "1.1",
         "drupal/youtube": "1.0.0.",
         "drush/drush": "^9.0.0",
         "mpdf/mpdf": "^7.1",
@@ -119,5 +120,8 @@
                 "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch" : "https://www.drupal.org/files/issues/2018-06-05/2948607-13.patch"
             }
         }
+    },
+    "require-dev": {
+        "mglaman/drupal-check": "^1.0"
     }
 }

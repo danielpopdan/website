@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Mail\MailManager;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
@@ -33,26 +34,34 @@ class PdfTicketGenerationForm extends FormBase {
   protected $ticketGenerator;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('dct_commerce.ticket_generation')
+      $container->get('dct_commerce.ticket_generation'),
+      $container->get('messenger')
     );
   }
 
-    /**
-     * TicketRedemptionForm constructor.
-     *
-     * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
-     *   The entity type manager service.
-     * @param TicketGenerationService $ticketGeneration
-     *   The ticket generation service.
-     */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, TicketGenerationService $ticketGeneration) {
+  /**
+   * TicketRedemptionForm constructor.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager service.
+   * @param TicketGenerationService $ticketGeneration
+   *   The ticket generation service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   */
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, TicketGenerationService $ticketGeneration, MessengerInterface $messenger) {
     $this->entityTypeManager = $entityTypeManager;
     $this->ticketGenerator = $ticketGeneration;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -101,6 +110,6 @@ class PdfTicketGenerationForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
       $this->ticketGenerator->generateTicketToUser($form_state->get('ticket'));
 
-      drupal_set_message('The ticket was generated successfully!');
+      $this->messenger->addMessage('The ticket was generated successfully!');
   }
 }

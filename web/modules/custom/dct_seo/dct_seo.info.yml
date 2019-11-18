@@ -3,3 +3,4 @@ type: module
 description: Implements SEO improvements.
 core: 8.x
 package: DCT
+core_version_requirement: ^8 || ^9

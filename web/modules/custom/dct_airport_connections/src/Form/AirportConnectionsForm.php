@@ -59,7 +59,7 @@ class AirportConnectionsForm extends ContentEntityForm {
     $status = parent::save($form, $form_state);
 
     if ($status = SAVED_UPDATED) {
-      drupal_set_message($this->t(
+      \Drupal::service('messenger')->addMessage($this->t(
         'The airport connections %feed has been updated.',
         [
           '%feed' => $this->entity->get('title')->first()->getValue()['value']
@@ -68,7 +68,7 @@ class AirportConnectionsForm extends ContentEntityForm {
       );
     }
     else {
-      drupal_set_message($this->t(
+      \Drupal::service('messenger')->addMessage($this->t(
         'The airport connections %feed has been added.',
         [
           '%feed' => $this->entity->get('title')->first()->getValue()['value']

@@ -5,6 +5,7 @@ namespace Drupal\dct_commerce\Form;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\dct_commerce\Controller\TicketControllerInterface;
 use Drupal\dct_newsletter\Controller\MailchimpController;
@@ -44,6 +45,11 @@ class TicketRedemptionForm extends FormBase {
   protected $mailchimpService;
 
   /**
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
@@ -51,7 +57,8 @@ class TicketRedemptionForm extends FormBase {
       $container->get('current_user'),
       $container->get('dct_commerce.ticket_controller'),
       $container->get('entity_type.manager'),
-      $container->get('dct_newsletter.mailchimp_service')
+      $container->get('dct_newsletter.mailchimp_service'),
+      $container->get('messenger')
     );
   }
 
@@ -67,11 +74,12 @@ class TicketRedemptionForm extends FormBase {
    * @param \Drupal\dct_newsletter\Controller\MailchimpController $mailchimpController
    *   The Mailchimp service.
    */
-  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController, EntityTypeManagerInterface $entity_type_manager, MailchimpController $mailchimpController) {
+  public function __construct(AccountInterface $account, TicketControllerInterface $ticketController, EntityTypeManagerInterface $entity_type_manager, MailchimpController $mailchimpController, MessengerInterface $messenger) {
     $this->currentUser = $account;
     $this->ticketController = $ticketController;
     $this->entityTypeManager = $entity_type_manager;
     $this->mailchimpService = $mailchimpController;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -141,10 +149,10 @@ class TicketRedemptionForm extends FormBase {
       $this->mailchimpService->addMailchimpUser($user->getEmail(), 'DrupalDevDays2019');
          $generation = \Drupal::service('dct_commerce.ticket_generation');
          $generation->generateTicketToUser($ticket);
-      drupal_set_message($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
+      $this->messenger->addMessage($this->t('Successfully redeemed coupon %code!', ['%code' => $code]));
     }
     catch (\Exception $e) {
-      drupal_set_message($this->t('The coupon %code is already redeemed!', ['%code' => $code]));
+      $this->messenger->addMessage($this->t('The coupon %code is already redeemed!', ['%code' => $code]));
     }
   }
 

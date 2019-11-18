@@ -5,6 +5,7 @@ namespace Drupal\dct_homepage\Form;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,22 +30,27 @@ class WelcomeSectionConfigurationForm extends FormBase {
    */
   protected $cacheInvalidator;
 
+  /** @var \Drupal\Core\Messenger\MessengerInterface  */
+  protected $messenger;
+
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('state'),
-      $container->get('cache_tags.invalidator')
+      $container->get('cache_tags.invalidator'),
+      $container->get('messenger')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator) {
+  public function __construct(StateInterface $state, CacheTagsInvalidatorInterface $cacheInvalidator, MessengerInterface $messenger) {
     $this->state = $state;
     $this->cacheInvalidator = $cacheInvalidator;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -109,7 +115,7 @@ class WelcomeSectionConfigurationForm extends FormBase {
     // Add this specific cache tag for welcome section block.
     $this->cacheInvalidator->invalidateTags(['dct_homepage.welcome_section']);
 
-    drupal_set_message($this->t('The settings have been successfully saved'));
+    $this->messenger->addMessage($this->t('The settings have been successfully saved'));
   }
 
 }
