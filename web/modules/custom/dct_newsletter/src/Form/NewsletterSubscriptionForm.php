@@ -2,6 +2,7 @@
 
 namespace Drupal\dct_newsletter\Form;
 
+use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
@@ -11,7 +12,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\dct_newsletter\Controller\MailchimpController;
-use Egulias\EmailValidator\EmailValidatorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -29,7 +29,7 @@ class NewsletterSubscriptionForm extends FormBase {
   /**
    * The email validator service.
    *
-   * @var \Egulias\EmailValidator\EmailValidatorInterface
+   * @var \Drupal\Component\Utility\EmailValidatorInterface
    */
   protected $emailValidator;
 
@@ -59,7 +59,7 @@ class NewsletterSubscriptionForm extends FormBase {
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
-   * @param \Egulias\EmailValidator\EmailValidatorInterface $email_validator
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
    *   The email validator.
    * @param \Drupal\dct_newsletter\Controller\MailchimpController $mailchimp_service
    *   The mailchimp service.
