@@ -23,6 +23,9 @@ settings:
     -
       value: '180'
       label: '180'
+    -
+      value: '480'
+      label: '480'
   allowed_values_function: ''
 module: options
 locked: false

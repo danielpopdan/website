@@ -17,6 +17,9 @@ settings:
     -
       value: Workshop
       label: Workshop
+    -
+      value: Hackathon
+      label: Hackathon
   allowed_values_function: ''
 module: options
 locked: false
