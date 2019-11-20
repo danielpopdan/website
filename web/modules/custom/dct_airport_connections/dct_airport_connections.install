@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Contains install, uninstall and update hooks.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\ContentEntityType;
+
+/**
+ * Install the new entity airport_connection entity type.
+ *
+ * @throws \Drupal\Core\Entity\Exception\EntityTypeIdLengthException
+ */
+function dct_airport_connections_update_8701() {
+  $definitionManager = \Drupal::entityDefinitionUpdateManager();
+  $airportConnectionEntity = new ContentEntityType(
+    [
+      'id' => 'airport_connection',
+      'label' => t('Airport connection'),
+      'handlers' => [
+        'list_builder' => 'Drupal\Core\Entity\EntityListBuilder',
+        'views_data' => 'Drupal\views\EntityViewsData',
+        'form' => [
+          'add' => 'Drupal\dct_airport_connections\Form\AirportConnectionForm',
+          'edit' => 'Drupal\dct_airport_connections\Form\AirportConnectionForm',
+          'delete' => 'Drupal\Core\Entity\ContentEntityDeleteForm',
+        ],
+        'access' => 'Drupal\dct_airport_connections\AccessHandler\AirportConnectionAccessControlHandler',
+      ],
+      'base_table' => 'airport_connection',
+      'admin_permissions' => 'administer airport_connection entity',
+      'entity_keys' => [
+        'id' => 'id',
+      ],
+      'links' => [
+        'add-form' => '/admin/airport-connection/add',
+        'edit-form' => '/admin/airport-connection/{airport_connection}/edit',
+        'delete-form' => '/admin/airport-connection/{airport_connection}/delete',
+      ],
+    ],
+  );
+  $definitionManager->installEntityType($airportConnectionEntity);
+}
+
+/**
+ * Import the existing airport connection entities.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function dct_airport_connections_update_8702() {
+  $entityTypeManager = \Drupal::entityTypeManager();
+
+  // Create the origin.
+  $origin = [
+    'title' => 'Cluj-Napoca',
+    'latitude' => 46.770439,
+    'longitude' => 23.591423,
+    'isOrigin' => TRUE,
+    'origin' => NULL,
+  ];
+  $entity = $entityTypeManager->getStorage('airport_connection')->create(
+    $origin
+  );
+  $entity->save();
+  $originId = $entity->id();
+
+  // Import from the existing table.
+  $query = Database::getConnection()->select(
+    'airport_connections',
+    'a'
+  );
+  $query->fields('a', ['title', 'latitude', 'longitude']);
+  $connections = $query->execute()->fetchAll();
+  foreach ($connections as $connection) {
+    $values = [
+      'title' => $connection->title,
+      'latitude' => $connection->latitude,
+      'longitude' => $connection->longitude,
+      'isOrigin' => FALSE,
+      'origin' => $originId,
+    ];
+    $entity = $entityTypeManager->getStorage('airport_connection')->create(
+      $values
+    );
+    $entity->save();
+  }
+}
+
+/**
+ * Uninstall the old airport connection entity type.
+ */
+function dct_airport_connections_update_8703() {
+  $definitionManager = \Drupal::entityDefinitionUpdateManager();
+  $entityType = $definitionManager->getEntityType('airport_connections');
+  if (!empty($entityType)) {
+    $definitionManager->uninstallEntityType($entityType);
+  }
+}

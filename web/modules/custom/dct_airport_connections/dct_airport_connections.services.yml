@@ -2,3 +2,10 @@ services:
   dct_airport_connections.data_provider:
     class: Drupal\dct_airport_connections\DataProvider
     arguments: ['@entity_type.manager']
+
+  dct_airport_connections.airport_connection_repository:
+    class: Drupal\dct_airport_connections\Repository\AirportConnectionRepository
+    arguments: ['@entity_type.manager']
+
+  dct_airport_connections.airport_connection_validator:
+    class: Drupal\dct_airport_connections\Validator\AirportConnectionValidator

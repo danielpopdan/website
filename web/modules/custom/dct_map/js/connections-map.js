@@ -34,7 +34,8 @@
             }
           },
           zoom: {
-            maxLevel:10
+            maxLevel:10,
+            enabled: true
           }
         },
         plots:drupalSettings['connections-map']['plots'],
