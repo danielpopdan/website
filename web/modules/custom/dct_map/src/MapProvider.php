@@ -29,6 +29,7 @@ class MapProvider implements MapProviderInterface {
    * {@inheritdoc}
    */
   public function getMap() {
+    $connections = $this->connectionsDataProvider->getPlots();
     return [
       '#theme' => 'dct_map_connections_map',
       '#attached' => [
@@ -39,8 +40,8 @@ class MapProvider implements MapProviderInterface {
         ],
         'drupalSettings' => [
           'connections-map' => [
-            'plots' => $this->connectionsDataProvider->getPlots(),
-            'links' => $this->connectionsDataProvider->getLinks(),
+            'plots' => $connections['plots'],
+            'links' => $connections['links'],
           ],
         ],
       ],

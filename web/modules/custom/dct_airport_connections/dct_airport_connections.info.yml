@@ -1,6 +1,6 @@
-name: DCT Airport Connections
+name: DCT Airport Connection
 type: module
-description: Provides airport connections related functionality.
+description: Provides airport connection related functionality.
 package: DCT
 core: 8.x
 core_version_requirement: ^8 || ^9

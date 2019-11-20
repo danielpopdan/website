@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Drupal\dct_airport_connections;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\dct_airport_connections\Entity\AirportConnectionInterface;
 
 /**
  * Class DataProvider.
@@ -12,22 +15,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 class DataProvider implements DataProviderInterface {
 
   /**
-   * Latitude of the origin city.
-   */
-  const ORIGIN_LATITUDE = 46.770439;
-
-  /**
-   * Longitude of the origin city.
-   */
-  const ORIGIN_LONGITUDE = 23.591423;
-
-  /**
-   * Name of the origin city.
-   */
-  const ORIGIN_NAME = 'Cluj-Napoca';
-
-  /**
-   * The entity_type.manager service.
+   * The entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
@@ -37,7 +25,7 @@ class DataProvider implements DataProviderInterface {
    * DataProvider constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
-   *   The entity_type.manager service.
+   *   The entity type manager.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager) {
     $this->entityTypeManager = $entityTypeManager;
@@ -46,66 +34,79 @@ class DataProvider implements DataProviderInterface {
   /**
    * {@inheritdoc}
    */
-  public function getPlots() {
+  public function getPlots(): array {
     $plots = [];
-    $connections = $this->entityTypeManager->getStorage('airport_connections')
-      ->loadByProperties();
+    $links = [];
+    $connections = $this->entityTypeManager->getStorage('airport_connection')
+      ->loadMultiple();
 
     // Creates associative array containing the locations.
     foreach ($connections as $connection) {
-      $plots[$connection->get('title')->first()->value] = [
-        'latitude' => $connection->get('latitude')->first()->value,
-        'longitude' => $connection->get('longitude')->first()->value,
-        'size' => 5,
-        'tooltip' => [
-          'content' => $connection->get('title')->first()->value,
-        ],
-        'attrs' => [
-          'fill' => '#fcb02a',
-        ],
-        'attrsHover' => [
-          'fill' => '#721139',
-        ],
-      ];
+      $plots[$connection->label()] = $this->formatPlot($connection);
+      if (!empty($connection->getOrigin())) {
+        $link = $this->formatLink($connection);
+        $key = implode('_', $link['between']);
+        $links[$key] = $link;
+      }
     }
 
-    $plots[self::ORIGIN_NAME] = [
-      'latitude' => self::ORIGIN_LATITUDE,
-      'longitude' => self::ORIGIN_LONGITUDE,
-      'size' => 10,
+    return [
+      'plots' => $plots,
+      'links' => $links,
+    ];
+  }
+
+  /**
+   * Formats an airport connection plot.
+   *
+   * @param \Drupal\dct_airport_connections\Entity\AirportConnectionInterface $airportConnection
+   *   The airport connection entity.
+   *
+   * @return array
+   *   The formatted plot.
+   */
+  private function formatPlot(AirportConnectionInterface $airportConnection) {
+    return [
+      'latitude' => $airportConnection->getLatitude(),
+      'longitude' => $airportConnection->getLongitude(),
+      'size' => 5,
+      'tooltip' => [
+        'content' => $airportConnection->label(),
+      ],
       'attrs' => [
         'fill' => '#fcb02a',
       ],
       'attrsHover' => [
         'fill' => '#721139',
       ],
-      'tooltip' => [
-        'content' => self::ORIGIN_NAME,
-      ],
     ];
-
-    return $plots;
   }
 
   /**
-   * {@inheritdoc}
+   * Formats an airport connection link.
+   *
+   * @param \Drupal\dct_airport_connections\Entity\AirportConnectionInterface $airportConnection
+   *   The airport connection entity.
+   *
+   * @return array
+   *   The formatted link.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getLinks() {
-    $plots = $this->getPlots();
-    $links = [];
-
-    // Creates associative array containing the links between locations.
-    foreach ($plots as $title => $plot) {
-      $links[self::ORIGIN_NAME . $title] = [
-        'between' => [
-          self::ORIGIN_NAME, $title,
-        ],
-        'tooltip' => [
-          'content' => self::ORIGIN_NAME  . ' - ' . $title,
-        ]
-      ];
-    }
-    return $links;
+  private function formatLink(AirportConnectionInterface $airportConnection) {
+    $origin = $this->entityTypeManager->getStorage('airport_connection')->load(
+      $airportConnection->getOrigin()
+    );
+    return [
+      'between' => [
+        $origin->label(),
+        $airportConnection->label(),
+      ],
+      'tooltip' => [
+        'content' => $origin->label() . ' - ' . $airportConnection->label(),
+      ],
+    ];
   }
 
 }

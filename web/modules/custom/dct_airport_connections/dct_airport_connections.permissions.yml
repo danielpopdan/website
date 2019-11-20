@@ -1,9 +1,9 @@
-add airport_connections entity:
-  title: 'Add Airport connections entity'
-edit airport_connections entity:
-  title: 'Edit Airport connections entity'
-delete airport_connections entity:
-  title: 'Delete Airport connections entity'
-administer airport_connections entity:
-  title:  'Administer Airport connections entity'
+add airport_connection entity:
+  title: 'Add an airport connection entity'
+edit airport_connection entity:
+  title: 'Edit an airport connection entity'
+delete airport_connection entity:
+  title: 'Delete an airport connection entity'
+administer airport_connection entity:
+  title:  'Administer the airport connection entity'
   restrict access: TRUE
