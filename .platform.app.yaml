@@ -28,12 +28,24 @@ disk: 2048
 # directory paths, relative to the application root. The values are strings such as
 # 'shared:files/PATH', where PATH is a relative path under the mount's source directory.
 mounts:
-    '/web/sites/default/files': 'shared:files/files'
-    '/tmp': 'shared:files/tmp'
-    '/private': 'shared:files/private'
-    '/.drush': 'shared:files/.drush'
-    '/drush-backups': 'shared:files/drush-backups'
-    '/.console': 'shared:files/console'
+    '/web/files':
+        source: local
+        source_path: 'files'
+    '/tmp':
+        source: local
+        source_path: 'tmp'
+    '/private':
+        source: local
+        source_path: 'private'
+    '/.drush':
+        source: local
+        source_path: 'drush'
+    '/drush-backups':
+        source: local
+        source_path: 'drush-backups'
+    '/.console':
+        source: local
+        source_path: 'console'
 
 # Configuration of the build of this application.
 build:
