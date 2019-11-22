@@ -12,7 +12,7 @@ db:
       - maindb
       - campdb
     endpoints:
-      main:
+      default:
         default_schema: maindb
         privileges:
           maindb: admin
