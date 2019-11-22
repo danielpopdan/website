@@ -15,8 +15,8 @@ db:
       main:
         default_schema: maindb
         privileges:
-          firstdb: admin
+          maindb: admin
       camp:
         default_schema: campdb
         privileges:
-          seconddb: admin
+          campdb: admin

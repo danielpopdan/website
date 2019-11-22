@@ -15,8 +15,8 @@ $config_directories = [];
 $settings['update_free_access'] = FALSE;
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 $settings['file_scan_ignore_directories'] = [
-    'node_modules',
-    'bower_components',
+  'node_modules',
+  'bower_components',
 ];
 
 // The hash_salt should be a unique random value for each application.
@@ -27,18 +27,22 @@ $settings['file_scan_ignore_directories'] = [
 // local development.
 // $settings['hash_salt'] = 'change_me';
 
+$platformsh_subsite_id = basename(__DIR__);
+
+// Set this to true to enable Redis caching, but only after the site has been installed.
+$platformsh_enable_redis = false;
+
 // Set up a config sync directory.
 //
 // This is defined inside the read-only "config" directory, deployed via Git.
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
-$config['google_analytics.settings']['account'] = 'UA-XXXXXXXX-YY';
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync/' . $platformsh_subsite_id;
+
 // Automatic Platform.sh settings.
-if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
-    include $app_root . '/' . $site_path . '/settings.platformsh.php';
+if (file_exists($app_root . '/' . $site_path . '/../settings.platformsh.php')) {
+  include $app_root . '/' . $site_path . '/../settings.platformsh.php';
 }
 
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-    include $app_root . '/' . $site_path . '/settings.local.php';
+  include $app_root . '/' . $site_path . '/settings.local.php';
 }
-$settings['install_profile'] = 'standard';
