@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  nginx_2018:
+    image: wodby/nginx:$NGINX_TAG
+    container_name: "${PROJECT_NAME}_nginx_2018"
+    depends_on:
+      - php
+    environment:
+      NGINX_STATIC_OPEN_FILE_CACHE: "off"
+      NGINX_ERROR_LOG_LEVEL: debug
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /var/www/html/web
+      NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
+      NGINX_SERVER_NAME: '2018.dt.localhost'
+    volumes:
+      - ./:/var/www/html
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_nginx_2018.rule=Host(`2018.${PROJECT_BASE_URL}`)"

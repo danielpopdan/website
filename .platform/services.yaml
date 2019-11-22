@@ -6,3 +6,7 @@
 mysqldb:
   type: mysql:10.2
   disk: 2048
+  configuration:
+    schemas:
+      - main
+      - camp2018
