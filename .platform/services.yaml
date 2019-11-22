@@ -10,13 +10,13 @@ db:
   configuration:
     schemas:
       - maindb
-      - 2018db
+      - campdb
     endpoints:
       main:
         default_schema: maindb
         privileges:
           firstdb: admin
-      2018:
-        default_schema: 2018db
+      camp:
+        default_schema: campdb
         privileges:
           seconddb: admin

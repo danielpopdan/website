@@ -17,7 +17,7 @@ type: 'php:7.3'
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     main: 'db:main'
-    camp2018: 'dn:2018'
+    camp: 'db:camp'
 #    solr: 'solrsearch:solr'
 #    redis: 'rediscache:redis'
 
