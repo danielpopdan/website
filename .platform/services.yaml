@@ -4,9 +4,18 @@
 # to power your Platform.sh project.
 
 mysqldb:
-  type: mysql:10.2
+  type: mysql:10.4
   disk: 2048
   configuration:
     schemas:
       - main
       - camp2018
+    endpoints:
+      main:
+        default_schema: main
+        privileges:
+          main: admin
+      camp2018:
+        default_schema: camp2018
+        privileges:
+          main: admin

@@ -1,7 +1,5 @@
 <?php
 
-// @codingStandardsIgnoreFile
-
 /**
  * @file
  * Configuration file for multi-site support and directory aliasing feature.
@@ -26,9 +24,9 @@
  * example, to map https://www.drupal.org:8080/mysite/test to the configuration
  * directory sites/example.com, the array should be defined as:
  * @code
- * $sites = [
+ * $sites = array(
  *   '8080.www.drupal.org.mysite.test' => 'example.com',
- * ];
+ * );
  * @endcode
  * The URL, https://www.drupal.org:8080/mysite/test/, could be a symbolic link
  * or an Apache Alias directive that points to the Drupal root containing
@@ -55,4 +53,23 @@
  * @see \Drupal\Core\DrupalKernel::getSitePath()
  * @see https://www.drupal.org/documentation/install/multi-site
  */
-$sites[getenv('ROJECT_BASE_URL_2018')] = 'camp2018';
+
+$platformsh = new \Platformsh\ConfigReader\Config();
+
+if (!$platformsh->inRuntime()) {
+  return;
+}
+
+// The following block adds a $sites[] entry for each subdomain that is defined
+// in routes.yaml.
+// If you are not using subdomain-based multisite routes then you will need to
+// adapt the code below accordingly.
+foreach ($platformsh->getUpstreamRoutes($platformsh->applicationName) as $route) {
+  $host = parse_url($route['url'], PHP_URL_HOST);
+  if ($host !== FALSE) {
+    $subdomain = substr($host, 0, strpos($host,'.'));
+    $sites[$host] = $subdomain;
+  }
+}
+
+// Add additional domain mappings here.
