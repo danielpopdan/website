@@ -3,19 +3,20 @@
 # Each service listed will be deployed
 # to power your Platform.sh project.
 
-mysqldb:
-  type: mysql:10.4
+
+db:
+  type: 'mariadb:10.2'
   disk: 2048
   configuration:
     schemas:
-      - main
-      - camp2018
+      - maindb
+      - 2018db
     endpoints:
       main:
-        default_schema: main
+        default_schema: maindb
         privileges:
-          main: admin
-      camp2018:
-        default_schema: camp2018
+          firstdb: admin
+      2018:
+        default_schema: 2018db
         privileges:
-          main: admin
+          seconddb: admin
