@@ -37,6 +37,15 @@ mounts:
     '/private':
         source: local
         source_path: 'private'
+    '/web/files/default':
+        source: local
+        source_path: 'files'
+    '/tmp/default':
+        source: local
+        source_path: 'tmp'
+    '/private/default':
+        source: local
+        source_path: 'private'
     '/.drush':
         source: local
         source_path: 'drush'
