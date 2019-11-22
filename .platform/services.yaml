@@ -8,5 +8,5 @@ mysqldb:
   disk: 2048
   configuration:
     schemas:
-      - dev_days
+      - main
       - camp2018
