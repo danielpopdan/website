@@ -16,7 +16,7 @@ type: 'php:7.3'
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    default: 'db:main'
+    default: 'db:default'
     camp: 'db:camp'
 #    solr: 'solrsearch:solr'
 #    redis: 'rediscache:redis'
